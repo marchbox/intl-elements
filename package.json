@@ -4,6 +4,10 @@
   "description": "Custom elements for using Intl APIs declaratively.",
   "author": "zacky@marchbox.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marchbox/intl-elements"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
