@@ -4,10 +4,10 @@ export {
   IntlDisplayNames,
 };
 
-export function defaultCustomElementsIntlDisplayNames() {
+export function defineCustomElementsIntlDisplayNames() {
   customElements.define('intl-displaynames', IntlDisplayNames);
 }
 
-export function defaultCustomElements() {
-  defaultCustomElementsIntlDisplayNames();
+export function defineCustomElements() {
+  defineCustomElementsIntlDisplayNames();
 }
