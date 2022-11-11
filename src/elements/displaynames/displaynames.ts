@@ -1,105 +1,56 @@
-export default class DisplayNames extends HTMLElement {
-  static observedAttributes = [
-    'locales',
-    'type',
-    'intl-style',
-    'locale-matcher',
-    'language-display',
-    'fallback',
-    'of',
-  ];
+import {LitElement, html} from 'lit';
+import {customElement, property} from 'lit/decorators.js';
 
-  set locales(value: Intl.LocalesArgument) {
-    this.setAttribute('locales', value as string);
-  }
-  get locales(): Intl.LocalesArgument {
-    return this.getAttribute('locales') || undefined;
-  }
+@customElement('intl-displaynames')
+export default class DisplayNames extends LitElement {
+  @property()
+  locales: Intl.LocalesArgument = '';
 
-  set of(value: string) {
-    this.setAttribute('of', value);
-  }
-  get of(): string {
-    return this.getAttribute('of') || '';
-  }
+  @property()
+  of = '';
 
-  set type(value: Intl.DisplayNamesType) {
-    this.setAttribute('type', value);
-  }
-  get type(): Intl.DisplayNamesType {
-    return this.getAttribute('type') as Intl.DisplayNamesType || 'language';
+  @property()
+  type: Intl.DisplayNamesType = 'language';
+
+  @property()
+  intlStyle: Intl.RelativeTimeFormatStyle = 'long';
+
+  @property()
+  localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
+
+  @property()
+  languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
+
+  @property()
+  fallback: Intl.DisplayNamesFallback = 'code';
+
+  override createRenderRoot() {
+    return this;
   }
 
-  set intlStyle(value: Intl.RelativeTimeFormatStyle) {
-    this.setAttribute('intl-style', value);
-  }
-  get intlStyle(): Intl.RelativeTimeFormatStyle {
-    return this.getAttribute('intl-style') as Intl.RelativeTimeFormatStyle || 'long';
-  }
+  override render() {
+    let result = '';
 
-  set localeMatcher(value: Intl.RelativeTimeFormatLocaleMatcher) {
-    this.setAttribute('locale-matcher', value);
-  }
-  get localeMatcher(): Intl.RelativeTimeFormatLocaleMatcher {
-
-    return this.getAttribute('locale-matcher') as Intl.RelativeTimeFormatLocaleMatcher || 'best fit';
-  }
-
-  set languageDisplay(value: Intl.DisplayNamesLanguageDisplay) {
-    this.setAttribute('language-display', value);
-  }
-  get languageDisplay(): Intl.DisplayNamesLanguageDisplay {
-    return this.getAttribute('language-display') as Intl.DisplayNamesLanguageDisplay || 'dialect';
-  }
-
-  set fallback(value: Intl.DisplayNamesFallback) {
-    this.setAttribute('fallback', value);
-  }
-  get fallback(): Intl.DisplayNamesFallback {
-    return this.getAttribute('fallback') as Intl.DisplayNamesFallback || 'code';
-  }
-
-  connectedCallback() {
-    if (this.hasAttribute('locales')) {
-      this.locales = this.getAttribute('locales')!;
-    }
-    if (this.hasAttribute('of')) {
-      this.of = this.getAttribute('of')!;
-    }
-    if (this.hasAttribute('intl-style')) {
-      this.intlStyle = this.getAttribute('intl-style') as Intl.RelativeTimeFormatStyle;
-    }
-    if (this.hasAttribute('type')) {
-      this.type = this.getAttribute('type') as Intl.DisplayNamesType;
-    }
-    if (this.hasAttribute('locale-matcher')) {
-      this.localeMatcher = this.getAttribute('locale-matcher') as Intl.RelativeTimeFormatLocaleMatcher;
-    }
-    if (this.hasAttribute('language-display')) {
-      this.languageDisplay = this.getAttribute('language-display') as Intl.DisplayNamesLanguageDisplay;
-    }
-    if (this.hasAttribute('fallback')) {
-      this.fallback = this.getAttribute('fallback') as Intl.DisplayNamesFallback;
+    if (!this.locales || !this.of) {
+      result = 'INVALID';
+    } else {
+      try {
+        result = new Intl.DisplayNames(this.locales, {
+          type: this.type,
+          style: this.intlStyle,
+          localeMatcher: this.localeMatcher,
+          languageDisplay: this.languageDisplay,
+          fallback: this.fallback,
+        }).of(this.of) as string;
+      } catch {}
     }
 
-    this.#render();
+    return html`${result}`;
   }
+}
 
-  attributeChangedCallback() {
-    this.#render();
-  }
-
-  #render() {
-    try {
-      const result = new Intl.DisplayNames(this.locales, {
-        type: this.type,
-        style: this.intlStyle,
-        localeMatcher: this.localeMatcher,
-        languageDisplay: this.languageDisplay,
-        fallback: this.fallback,
-      }).of(this.of);
-
-      this.textContent = result ?? '';
-    } catch {}
+declare global {
+  interface HTMLElementTagNameMap {
+    'intl-displaynames': DisplayNames,
   }
 }
