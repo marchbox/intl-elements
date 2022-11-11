@@ -1,0 +1,8 @@
+{
+  "name": "intl-elements",
+  "version": "0.0.0",
+  "description": "Custom elements for using Intl APIs declaratively.",
+  "main": "dist/index.js",
+  "author": "zacky@marchbox.com",
+  "license": "MIT"
+}
