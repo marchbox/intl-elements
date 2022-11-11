@@ -5,6 +5,10 @@
   "main": "dist/index.js",
   "author": "zacky@marchbox.com",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marchbox/intl-elements"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",
