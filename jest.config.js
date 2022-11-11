@@ -7,7 +7,7 @@ export default {
     '^.+\\.(js|ts)$': 'ts-jest',
   },
   transformIgnorePatterns: [
-    // allow lit-html transformation
+    // allow lit transformation
     'node_modules/(?!(@?lit|lit-html|lit-element))/',
   ],
 };
