@@ -12,13 +12,13 @@ export default class DisplayNames extends LitElement {
   @property()
   type: Intl.DisplayNamesType = 'language';
 
-  @property()
+  @property({attribute: 'intl-style'})
   intlStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property()
+  @property({attribute: 'locale-matcher'})
   localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
-  @property()
+  @property({attribute: 'language-display'})
   languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
   @property()
@@ -31,9 +31,7 @@ export default class DisplayNames extends LitElement {
   override render() {
     let result = '';
 
-    if (!this.locales || !this.of) {
-      result = 'INVALID';
-    } else {
+    if (this.locales && this.of) {
       try {
         result = new Intl.DisplayNames(this.locales, {
           type: this.type,
