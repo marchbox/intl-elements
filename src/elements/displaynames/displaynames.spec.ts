@@ -10,5 +10,10 @@ describe('DisplayNames', () => {
 
     document.body.append(el);
     expect(el.textContent).toBe('Japanese');
+
+    el.setAttribute('of', 'zh-Hant');
+    setTimeout(() => {
+      expect(el.textContent).toBe('Chinese (Traditional)');
+    }, 0);
   });
 });
