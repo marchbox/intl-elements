@@ -2,7 +2,6 @@
   "name": "intl-elements",
   "version": "0.0.0",
   "description": "Custom elements for using Intl APIs declaratively.",
-  "main": "dist/index.js",
   "author": "zacky@marchbox.com",
   "license": "MIT",
   "repository": {
@@ -10,13 +9,21 @@
     "url": "https://github.com/marchbox/intl-elements"
   },
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.4"
   }
