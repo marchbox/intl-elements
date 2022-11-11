@@ -9,19 +9,55 @@ export default class DisplayNames extends HTMLElement {
     'of',
   ];
 
-  locales!: Intl.LocalesArgument;
+  set locales(value: Intl.LocalesArgument) {
+    this.setAttribute('locales', value as string);
+  }
+  get locales(): Intl.LocalesArgument {
+    return this.getAttribute('locales') || undefined;
+  }
 
-  of!: string;
+  set of(value: string) {
+    this.setAttribute('of', value);
+  }
+  get of(): string {
+    return this.getAttribute('of') || '';
+  }
 
-  intlStyle: Intl.RelativeTimeFormatStyle = 'long';
+  set type(value: Intl.DisplayNamesType) {
+    this.setAttribute('type', value);
+  }
+  get type(): Intl.DisplayNamesType {
+    return this.getAttribute('type') as Intl.DisplayNamesType || 'language';
+  }
 
-  type: Intl.DisplayNamesType = 'language';
+  set intlStyle(value: Intl.RelativeTimeFormatStyle) {
+    this.setAttribute('intl-style', value);
+  }
+  get intlStyle(): Intl.RelativeTimeFormatStyle {
+    return this.getAttribute('intl-style') as Intl.RelativeTimeFormatStyle || 'long';
+  }
 
-  localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
+  set localeMatcher(value: Intl.RelativeTimeFormatLocaleMatcher) {
+    this.setAttribute('locale-matcher', value);
+  }
+  get localeMatcher(): Intl.RelativeTimeFormatLocaleMatcher {
 
-  languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
+    return this.getAttribute('locale-matcher') as Intl.RelativeTimeFormatLocaleMatcher || 'best fit';
+  }
 
-  fallback: Intl.DisplayNamesFallback = 'code';
+  set languageDisplay(value: Intl.DisplayNamesLanguageDisplay) {
+    this.setAttribute('language-display', value);
+  }
+  get languageDisplay(): Intl.DisplayNamesLanguageDisplay {
+    return this.getAttribute('language-display') as Intl.DisplayNamesLanguageDisplay || 'dialect';
+  }
+
+  set fallback(value: Intl.DisplayNamesFallback) {
+    this.setAttribute('fallback', value);
+  }
+  get fallback(): Intl.DisplayNamesFallback {
+    return this.getAttribute('fallback') as Intl.DisplayNamesFallback || 'code';
+  }
 
   connectedCallback() {
     if (this.hasAttribute('locales')) {

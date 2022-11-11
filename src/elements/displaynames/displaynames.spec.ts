@@ -15,5 +15,10 @@ describe('DisplayNames', () => {
     setTimeout(() => {
       expect(el.textContent).toBe('Chinese (Traditional)');
     }, 0);
+
+    el.of = 'de';
+    setTimeout(() => {
+      expect(el.textContent).toBe('German');
+    }, 0);
   });
 });
