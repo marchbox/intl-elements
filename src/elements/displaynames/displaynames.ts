@@ -32,6 +32,9 @@ export default class DisplayNames extends LitElement {
     let result = '';
 
     if (this.locales && this.of) {
+      // Chrome doesn’t recoganize lowercase region subtags.
+      const of = this.type === 'region' ? this.of.toUpperCase() : this.of;
+
       try {
         result = new Intl.DisplayNames(this.locales, {
           type: this.type,
@@ -39,11 +42,11 @@ export default class DisplayNames extends LitElement {
           localeMatcher: this.localeMatcher,
           languageDisplay: this.languageDisplay,
           fallback: this.fallback,
-        }).of(this.of) as string;
+        }).of(of) as string;
       } catch {}
     }
 
-    return html`${result}`;
+    return result;
   }
 }
 
