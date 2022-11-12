@@ -1,10 +1,11 @@
-import {LitElement, PropertyValues} from 'lit';
+import {PropertyValues} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
+import AbstractIntlElement from '../abstract-intl-element';
 import {localesToLocaleList} from '../../utils/locales';
 
 @customElement('intl-displaynames')
-export default class DisplayNames extends LitElement {
+export default class DisplayNames extends AbstractIntlElement {
   @property({attribute: false})
   localeList: Intl.BCP47LanguageTag[] = [];
 
@@ -28,11 +29,6 @@ export default class DisplayNames extends LitElement {
 
   @property({reflect: true})
   fallback: Intl.DisplayNamesFallback = 'code';
-
-  protected override createRenderRoot() {
-    // No shadow DOM.
-    return this;
-  }
 
   protected override willUpdate(changes: PropertyValues<this>) {
     if (changes.has('locales')) {
