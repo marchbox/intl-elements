@@ -3,25 +3,25 @@ import {customElement, property} from 'lit/decorators.js';
 
 @customElement('intl-displaynames')
 export default class DisplayNames extends LitElement {
-  @property()
+  @property({reflect: true})
   locales: Intl.LocalesArgument = '';
 
-  @property()
+  @property({reflect: true})
   of = '';
 
-  @property()
+  @property({reflect: true})
   type: Intl.DisplayNamesType = 'language';
 
-  @property({attribute: 'intl-style'})
+  @property({attribute: 'intl-style', reflect: true})
   intlStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({attribute: 'locale-matcher'})
+  @property({attribute: 'locale-matcher', reflect: true})
   localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
-  @property({attribute: 'language-display'})
+  @property({attribute: 'language-display', reflect: true})
   languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
-  @property()
+  @property({reflect: true})
   fallback: Intl.DisplayNamesFallback = 'code';
 
   override createRenderRoot() {
