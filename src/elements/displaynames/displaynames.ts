@@ -1,8 +1,13 @@
-import {LitElement} from 'lit';
+import {LitElement, PropertyValues} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+
+import {localesToLocaleList} from '../../utils/locales';
 
 @customElement('intl-displaynames')
 export default class DisplayNames extends LitElement {
+  @property({attribute: false})
+  localeList: Intl.BCP47LanguageTag[] = [];
+
   @property({reflect: true})
   locales: Intl.LocalesArgument = '';
 
@@ -24,11 +29,19 @@ export default class DisplayNames extends LitElement {
   @property({reflect: true})
   fallback: Intl.DisplayNamesFallback = 'code';
 
-  override createRenderRoot() {
+  protected override createRenderRoot() {
+    // No shadow DOM.
     return this;
   }
 
-  override render() {
+  protected override willUpdate(changes: PropertyValues<this>) {
+    if (changes.has('locales')) {
+      this.localeList =
+          localesToLocaleList(this.locales as string, this.localeMatcher);
+    }
+  }
+
+  protected override render() {
     let result = '';
 
     if (this.locales && this.of) {
@@ -36,7 +49,7 @@ export default class DisplayNames extends LitElement {
       const of = this.type === 'region' ? this.of.toUpperCase() : this.of;
 
       try {
-        result = new Intl.DisplayNames(this.locales, {
+        result = new Intl.DisplayNames(this.localeList, {
           type: this.type,
           style: this.intlStyle,
           localeMatcher: this.localeMatcher,

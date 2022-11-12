@@ -24,12 +24,12 @@ describe('DisplayNames', () => {
 
   it('produces consistent result as the Intl API', async () => {
     const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'en';
+    el.locales = 'zh';
     el.of = 'ja';
     document.body.append(el);
 
     setTimeout(() => {
-      const intlResult = new Intl.DisplayNames('en', {
+      const intlResult = new Intl.DisplayNames('zh', {
         type: 'language',
       }).of('ja');
 
@@ -44,6 +44,21 @@ describe('DisplayNames', () => {
         // @ts-ignore
         style: 'standard',
       }).of('zh-Hant')
+
+      expect(el.textContent).toBe(intlResult);
+    }, 0);
+  });
+
+  it('handles multiple locales and ignores invalid ones', async () => {
+    const el = document.createElement('intl-displaynames') as DisplayNames;
+    el.locales = 'invalid ja';
+    el.of = 'zh-Hant';
+    document.body.append(el);
+
+    setTimeout(() => {
+      const intlResult = new Intl.DisplayNames(['invalid', 'ja'], {
+        type: 'language',
+      }).of('zh-Hant');
 
       expect(el.textContent).toBe(intlResult);
     }, 0);
