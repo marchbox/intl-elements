@@ -118,4 +118,20 @@ describe('DisplayNames', () => {
       expect(el.resolvedOptions()).toEqual(intlResult);
     }, 0);
   });
+
+  it('has `localeList` property as read only.', async () => {
+    const el = document.createElement('intl-displaynames') as DisplayNames;
+    el.locales = 'en';
+    document.body.append(el);
+
+    setTimeout(() => {
+      expect(el.localeList).toEqual(['en']);
+    }, 0);
+
+    // @ts-ignore
+    el.localeList = ['en', 'ja'];
+    setTimeout(() => {
+      expect(el.localeList).toEqual(['en']);
+    }, 0);
+  });
 });

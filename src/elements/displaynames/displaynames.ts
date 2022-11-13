@@ -6,6 +6,8 @@ import AbstractIntlElement from '../abstract-intl-element';
 export default class DisplayNames extends AbstractIntlElement {
   private _resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
+  protected intlObj = Intl.DisplayNames;
+
   @property({reflect: true})
   of = '';
 
