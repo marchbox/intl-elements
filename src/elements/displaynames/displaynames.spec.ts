@@ -63,4 +63,39 @@ describe('DisplayNames', () => {
       expect(el.textContent).toBe(intlResult);
     }, 0);
   });
+
+  it('handles case-insensitive region subtags', async () => {
+    const el1 = document.createElement('intl-displaynames') as DisplayNames;
+    const el2 = document.createElement('intl-displaynames') as DisplayNames;
+    const el3 = document.createElement('intl-displaynames') as DisplayNames;
+    const el4 = document.createElement('intl-displaynames') as DisplayNames;
+
+    el1.locales = 'ar';
+    el2.locales = 'ar';
+    el3.locales = 'ar';
+    el4.locales = 'ar';
+
+    el1.type = 'region';
+    el2.type = 'region';
+    el3.type = 'region';
+    el4.type = 'region';
+
+    el1.of = 'jp';
+    el2.of = 'JP';
+    el3.of = 'jP';
+    el4.of = 'Jp';
+
+    document.body.append(el1, el2, el3, el4);
+
+    setTimeout(() => {
+      const intlResult = new Intl.DisplayNames(['ar'], {
+        type: 'region',
+      }).of('jp');
+      
+      expect(el1.textContent).toBe(intlResult);
+      expect(el2.textContent).toBe(intlResult);
+      expect(el3.textContent).toBe(intlResult);
+      expect(el4.textContent).toBe(intlResult);
+    }, 0)
+  });
 });
