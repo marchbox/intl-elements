@@ -15,6 +15,8 @@ export default abstract class AbstractIntlElement extends LitElement {
 
   #localeList: Intl.BCP47LanguageTag[] = [];
 
+  #attrObserver!: MutationObserver;
+
   // `localeList` is a read-only property.
   @property({attribute: false})
   get localeList(): Intl.BCP47LanguageTag[] {
@@ -37,8 +39,21 @@ export default abstract class AbstractIntlElement extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    if (!this.hasAttribute('locales') && this.hasAttribute('lang')) {
-      this.locales = this.getAttribute('lang')!;
+    this.#maybeAdoptLangForLocales();
+
+    this.#attrObserver =
+        new MutationObserver(this.#maybeAdoptLangForLocales.bind(this));
+    this.#attrObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['lang'],
+    });
+  }
+
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    if (this.#attrObserver) {
+      this.#attrObserver.disconnect();
     }
   }
 
@@ -75,6 +90,12 @@ export default abstract class AbstractIntlElement extends LitElement {
       );
     } catch {
       this.#localeList = [];
+    }
+  }
+
+  #maybeAdoptLangForLocales() {
+    if (!this.hasAttribute('locales') && this.hasAttribute('lang')) {
+      this.locales = this.getAttribute('lang')!;
     }
   }
 }
