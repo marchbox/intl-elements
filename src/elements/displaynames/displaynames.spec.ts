@@ -147,4 +147,18 @@ describe('DisplayNames', () => {
       expect(el.textContent).toBe('英語');
     }, 0);
   });
+
+  it('prioritize `locales` over `lang` when both are present', async () => {
+    const el = document.createElement('intl-displaynames') as DisplayNames;
+    el.lang = 'en';
+    el.locales = 'zh';
+    el.of = 'ja';
+    document.body.append(el);
+
+    setTimeout(() => {
+      expect(el.getAttribute('locales')).toBe('zh');
+      expect(el.locales).toBe('zh');
+      expect(el.textContent).toBe('日语');
+    }, 0);
+  });
 });
