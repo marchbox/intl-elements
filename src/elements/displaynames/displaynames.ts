@@ -4,6 +4,8 @@ import AbstractIntlElement from '../abstract-intl-element';
 
 @customElement('intl-displaynames')
 export default class DisplayNames extends AbstractIntlElement {
+  private _resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
+
   @property({reflect: true})
   of = '';
 
@@ -19,6 +21,10 @@ export default class DisplayNames extends AbstractIntlElement {
   @property({reflect: true})
   fallback: Intl.DisplayNamesFallback = 'code';
 
+  resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
+    return this._resolvedOptions;
+  }
+
   protected override render() {
     let result = '';
 
@@ -27,13 +33,15 @@ export default class DisplayNames extends AbstractIntlElement {
       const of = this.type === 'region' ? this.of.toUpperCase() : this.of;
 
       try {
-        result = new Intl.DisplayNames(this.localeList, {
+        const dn = new Intl.DisplayNames(this.localeList, {
           type: this.type,
           style: this.intlStyle,
           localeMatcher: this.localeMatcher,
           languageDisplay: this.languageDisplay,
           fallback: this.fallback,
-        }).of(of) as string;
+        });
+        this._resolvedOptions = dn.resolvedOptions();
+        result = dn.of(of) as string;
       } catch {}
     }
 

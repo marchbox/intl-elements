@@ -98,4 +98,24 @@ describe('DisplayNames', () => {
       expect(el4.textContent).toBe(intlResult);
     }, 0)
   });
+
+  it('returns correct resolved options', async () => {
+    const el = document.createElement('intl-displaynames') as DisplayNames;
+    el.locales = 'en';
+    el.of = 'zh-Hant';
+    el.type = 'region';
+    el.intlStyle = 'narrow';
+    el.fallback = 'code';
+    document.body.append(el);
+
+    setTimeout(() => {
+      const intlResult = new Intl.DisplayNames('en', {
+        type: 'region',
+        style: 'narrow',
+        fallback: 'code',
+      }).resolvedOptions();
+
+      expect(el.resolvedOptions()).toEqual(intlResult);
+    }, 0);
+  });
 });
