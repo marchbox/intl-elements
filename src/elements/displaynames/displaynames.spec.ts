@@ -134,4 +134,17 @@ describe('DisplayNames', () => {
       expect(el.localeList).toEqual(['en']);
     }, 0);
   });
+
+  it('takes `lang` value if `locales` is missing', async () => {
+    const el = document.createElement('intl-displaynames') as DisplayNames;
+    el.lang = 'ja';
+    el.of = 'en';
+    document.body.append(el);
+
+    setTimeout(() => {
+      expect(el.getAttribute('locales')).toBe('ja');
+      expect(el.locales).toBe('ja');
+      expect(el.textContent).toBe('英語');
+    }, 0);
+  });
 });

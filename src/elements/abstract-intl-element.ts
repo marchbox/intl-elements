@@ -34,6 +34,14 @@ export default abstract class AbstractIntlElement extends LitElement {
     return this;
   }
 
+  override connectedCallback(): void {
+    super.connectedCallback();
+
+    if (!this.hasAttribute('locales') && this.hasAttribute('lang')) {
+      this.locales = this.getAttribute('lang')!;
+    }
+  }
+
   protected override shouldUpdate(changes: PropertyValues<this>): boolean {
     return this.#isValid(changes);
   }
