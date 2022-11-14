@@ -4,6 +4,7 @@
   ],
   "exclude": [
     "src/**/*.spec.ts",
+    "src/testing/**/*",
     "node_modules"
   ],
   "compilerOptions": {

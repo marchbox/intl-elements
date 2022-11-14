@@ -2,6 +2,9 @@
 export default {
   preset: 'ts-jest',
   testEnvironment: "jsdom",
+  setupFiles: [
+    './src/index.ts',
+  ],
   transform: {
     // transform files with ts-jest
     '^.+\\.(js|ts)$': 'ts-jest',

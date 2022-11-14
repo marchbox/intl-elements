@@ -1,164 +1,198 @@
-import DisplayNames from './displaynames';
+import {createTestPage} from '../../testing';
+import HTMLIntlDisplayNamesElement from './displaynames';
 
 describe('DisplayNames', () => {
   it('updates result text when both props and attributes change', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'en';
-    el.of = 'ja';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="en" of="ja"></intl-displaynames>
+      `,
+    });
+    const el = page.element!;
 
-    setTimeout(() => {
-      expect(el.textContent).toBe('Japanese');
-    }, 0);
+    expect(el.textContent).toBe('Japanese');
 
     el.setAttribute('of', 'zh-Hant');
-    setTimeout(() => {
-      expect(el.textContent).toBe('Chinese (Traditional)');
-    }, 0);
+    await el.updateComplete;
+    expect(el.textContent).toBe('Traditional Chinese');
 
     el.of = 'de';
-    setTimeout(() => {
-      expect(el.textContent).toBe('German');
-    }, 0);
+    await el.updateComplete;
+    expect(el.textContent).toBe('German');
   });
 
   it('produces consistent result as the Intl API', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'zh';
-    el.of = 'ja';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="zh" of="ja"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      const intlResult = new Intl.DisplayNames('zh', {
-        type: 'language',
-      }).of('ja');
-
-      expect(el.textContent).toBe(intlResult);
-    }, 0);
+    let intlResult = new Intl.DisplayNames('zh', {
+      type: 'language',
+    }).of('ja');
+    expect(el.textContent).toBe(intlResult);
 
     el.of = 'zh-Hant';
     el.languageDisplay = 'standard';
-    setTimeout(() => {
-      const intlResult = new Intl.DisplayNames('en', {
-        type: 'language',
-        // @ts-ignore
-        style: 'standard',
-      }).of('zh-Hant')
-
-      expect(el.textContent).toBe(intlResult);
-    }, 0);
+    intlResult = new Intl.DisplayNames('zh', {
+      type: 'language',
+      languageDisplay: 'standard',
+    }).of('zh-Hant')
+    await el.updateComplete;
+    expect(el.textContent).toBe(intlResult);
   });
 
   it('handles multiple locales and ignores invalid ones', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'invalid ja';
-    el.of = 'zh-Hant';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="invalid ja" of="zh-Hant"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      const intlResult = new Intl.DisplayNames(['invalid', 'ja'], {
-        type: 'language',
-      }).of('zh-Hant');
+    const intlResult = new Intl.DisplayNames(['invalid', 'ja'], {
+      type: 'language',
+    }).of('zh-Hant');
 
-      expect(el.textContent).toBe(intlResult);
-    }, 0);
+    expect(el.textContent).toBe(intlResult);
   });
 
   it('handles case-insensitive region subtags', async () => {
-    const el1 = document.createElement('intl-displaynames') as DisplayNames;
-    const el2 = document.createElement('intl-displaynames') as DisplayNames;
-    const el3 = document.createElement('intl-displaynames') as DisplayNames;
-    const el4 = document.createElement('intl-displaynames') as DisplayNames;
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames id="el1" locales="ar" type="region" of="jp"></intl-displaynames>
+        <intl-displaynames id="el2" locales="ar" type="region" of="JP"></intl-displaynames>
+        <intl-displaynames id="el3" locales="ar" type="region" of="jP"></intl-displaynames>
+        <intl-displaynames id="el4" locales="ar" type="region" of="Jp"></intl-displaynames>
+      `
+    });
 
-    el1.locales = 'ar';
-    el2.locales = 'ar';
-    el3.locales = 'ar';
-    el4.locales = 'ar';
+    const el1 = page.body.querySelector('#el1') as HTMLIntlDisplayNamesElement;
+    const el2 = page.body.querySelector('#el2') as HTMLIntlDisplayNamesElement;
+    const el3 = page.body.querySelector('#el3') as HTMLIntlDisplayNamesElement;
+    const el4 = page.body.querySelector('#el4') as HTMLIntlDisplayNamesElement;
 
-    el1.type = 'region';
-    el2.type = 'region';
-    el3.type = 'region';
-    el4.type = 'region';
+    const intlResult = new Intl.DisplayNames(['ar'], {
+      type: 'region',
+    }).of('JP');
 
-    el1.of = 'jp';
-    el2.of = 'JP';
-    el3.of = 'jP';
-    el4.of = 'Jp';
-
-    document.body.append(el1, el2, el3, el4);
-
-    setTimeout(() => {
-      const intlResult = new Intl.DisplayNames(['ar'], {
-        type: 'region',
-      }).of('jp');
-      
-      expect(el1.textContent).toBe(intlResult);
-      expect(el2.textContent).toBe(intlResult);
-      expect(el3.textContent).toBe(intlResult);
-      expect(el4.textContent).toBe(intlResult);
-    }, 0)
+    expect(el1.textContent).toBe(intlResult);
+    expect(el2.textContent).toBe(intlResult);
+    expect(el3.textContent).toBe(intlResult);
+    expect(el4.textContent).toBe(intlResult);
   });
 
   it('returns correct resolved options', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'en';
-    el.of = 'zh-Hant';
-    el.type = 'region';
-    el.intlStyle = 'narrow';
-    el.fallback = 'code';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames
+          locales="en"
+          of="zh-Hants"
+          type="region"
+          intl-style="narrow"
+          fallback="code"
+        ></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      const intlResult = new Intl.DisplayNames('en', {
-        type: 'region',
-        style: 'narrow',
-        fallback: 'code',
-      }).resolvedOptions();
+    const intlResult = new Intl.DisplayNames('en', {
+      type: 'region',
+      style: 'narrow',
+      fallback: 'code',
+    }).resolvedOptions();
 
-      expect(el.resolvedOptions()).toEqual(intlResult);
-    }, 0);
+    expect(el.resolvedOptions()).toEqual(intlResult);
   });
 
   it('has `localeList` property as read only.', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.locales = 'en';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      expect(el.localeList).toEqual(['en']);
-    }, 0);
+    expect(el.localeList).toEqual(['en']);
 
     // @ts-ignore
-    el.localeList = ['en', 'ja'];
-    setTimeout(() => {
-      expect(el.localeList).toEqual(['en']);
-    }, 0);
+    expect(() => {
+      el.localeList = ['en', 'ja'];
+    }).toThrow();
+    expect(el.localeList).toEqual(['en']);
   });
 
   it('takes `lang` value if `locales` is missing', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.lang = 'ja';
-    el.of = 'en';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames lang="ja" of="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      expect(el.getAttribute('locales')).toBe('ja');
-      expect(el.locales).toBe('ja');
-      expect(el.textContent).toBe('英語');
-    }, 0);
+    expect(el.getAttribute('locales')).toBe('ja');
+    expect(el.locales).toBe('ja');
+    expect(el.textContent).toBe('英語');
   });
 
   it('prioritize `locales` over `lang` when both are present', async () => {
-    const el = document.createElement('intl-displaynames') as DisplayNames;
-    el.lang = 'en';
-    el.locales = 'zh';
-    el.of = 'ja';
-    document.body.append(el);
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames lang="en" locales="zh" of="ja"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
 
-    setTimeout(() => {
-      expect(el.getAttribute('locales')).toBe('zh');
-      expect(el.locales).toBe('zh');
-      expect(el.textContent).toBe('日语');
-    }, 0);
+    expect(el.getAttribute('locales')).toBe('zh');
+    expect(el.locales).toBe('zh');
+    expect(el.textContent).toBe('日语');
+
+    el.setAttribute('lang', 'de');
+    await el.updateComplete;
+    expect(el.getAttribute('locales')).toBe('zh');
+    expect(el.locales).toBe('zh');
+    expect(el.textContent).toBe('日语');
+
+    el.lang = 'es';
+    await el.updateComplete;
+    expect(el.getAttribute('locales')).toBe('zh');
+    expect(el.locales).toBe('zh');
+    expect(el.textContent).toBe('日语');
+  });
+
+  it('adopts `lang` value if `locales` is removed', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="ja" of="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.textContent).toBe('英語');
+
+    el.removeAttribute('locales');
+    el.setAttribute('lang', 'zh');
+    await el.updateComplete;
+    expect(el.getAttribute('locales')).toBe('zh');
+    expect(el.locales).toBe('zh');
+    expect(el.textContent).toBe('英语');
+
+    el.removeAttribute('locales');
+    el.lang = 'es';
+    await el.updateComplete;
+    expect(el.getAttribute('locales')).toBe('es');
+    expect(el.locales).toBe('es');
+    expect(el.textContent).toBe('inglés');
   });
 });
