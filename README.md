@@ -16,5 +16,5 @@ dn.of('en-US'); // => '英語 (米国)'
 You can write:
 
 ```html
-<intl-displaynames locale="ja" type="language" of="en-US"></intl-displaynames>
+<intl-displaynames locales="ja" type="language" of="en-US"></intl-displaynames>
 ```
