@@ -4,7 +4,7 @@ import AbstractIntlElement from '../abstract-intl-element';
 
 @customElement('intl-displaynames')
 export default class DisplayNames extends AbstractIntlElement {
-  private _resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
+  #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
   protected intlObj = Intl.DisplayNames;
 
@@ -24,7 +24,7 @@ export default class DisplayNames extends AbstractIntlElement {
   fallback: Intl.DisplayNamesFallback = 'code';
 
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
-    return this._resolvedOptions;
+    return this.#resolvedOptions;
   }
 
   protected override render() {
@@ -42,7 +42,7 @@ export default class DisplayNames extends AbstractIntlElement {
           languageDisplay: this.languageDisplay,
           fallback: this.fallback,
         });
-        this._resolvedOptions = dn.resolvedOptions();
+        this.#resolvedOptions = dn.resolvedOptions();
         result = dn.of(of) as string;
       } catch {}
     }

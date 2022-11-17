@@ -22,7 +22,9 @@
     }
   </script>
 
-  <h1><code>intl-displaynames</code></h1>
+  <h1>intl-elements demo</h1>
+
+  <h2><code>intl-displaynames</code></h2>
   <p><intl-displaynames locales="en" of="ja"></intl-displaynames></p>
   <p>
     dialect: <intl-displaynames locales="en" of="zh-Hant"></intl-displaynames>
@@ -32,5 +34,16 @@
   <p><intl-displaynames locales="zh-CN" of="jpy" type="currency"></intl-displaynames></p>
   <p><intl-displaynames locales="ko" of="minute" type="dateTimeField"></intl-displaynames></p>
 
+  <h2><code>intl-listformat</code></h2>
+  <intl-listformat locales="en">
+    <intl-listitem>corgi</intl-listitem>
+    <intl-listitem>pomeranian</intl-listitem>
+    <intl-listitem>pug</intl-listitem>
+    <intl-listitem>shar-pei</intl-listitem>
+    <intl-listitem>pitbull</intl-listitem>
+  </intl-listformat>
+
   <script type="module" src="./dist/elements/displaynames/displaynames.js"></script>
+  <script type="module" src="./dist/elements/listformat/listformat.js"></script>
+  <script type="module" src="./dist/elements/listitem/listitem.js"></script>
 </html>

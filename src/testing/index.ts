@@ -1,7 +1,7 @@
 import type {LitElement} from 'lit';
 
 interface CreateTestPageOption {
-  element: string;
+  element: string | string[];
   html: string;
 }
 
@@ -20,8 +20,14 @@ export async function createTestPage<T extends LitElement>(
   document.body.innerHTML = option.html;
 
   try {
-    await customElements.whenDefined(option.element);
-    page.element = document.querySelector(option.element) as T;
+    if (typeof option.element === 'string') {
+      await customElements.whenDefined(option.element);
+      page.element = document.querySelector(option.element) as T;
+    } else if (Array.isArray(option.element)) {
+      await Promise.all(
+          option.element.map(el => customElements.whenDefined(el)));
+      page.element = document.querySelector(option.element[0] as string) as T;
+    }
   } catch (e) {
     throw e;
   }
