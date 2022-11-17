@@ -1,51 +1,53 @@
-import {LitElement, html} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
 
-@customElement('intl-displaynames')
-export default class DisplayNames extends LitElement {
-  @property()
-  locales: Intl.LocalesArgument = '';
+import AbstractIntlElement from '../abstract-intl-element';
 
-  @property()
+@customElement('intl-displaynames')
+export default class DisplayNames extends AbstractIntlElement {
+  private _resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
+
+  protected intlObj = Intl.DisplayNames;
+
+  @property({reflect: true})
   of = '';
 
-  @property()
+  @property({reflect: true})
   type: Intl.DisplayNamesType = 'language';
 
-  @property()
+  @property({attribute: 'intl-style', reflect: true})
   intlStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property()
-  localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
-
-  @property()
+  @property({attribute: 'language-display', reflect: true})
   languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
-  @property()
+  @property({reflect: true})
   fallback: Intl.DisplayNamesFallback = 'code';
 
-  override createRenderRoot() {
-    return this;
+  resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
+    return this._resolvedOptions;
   }
 
-  override render() {
+  protected override render() {
     let result = '';
 
-    if (!this.locales || !this.of) {
-      result = 'INVALID';
-    } else {
+    if (this.locales && this.of) {
+      // Chrome doesn’t recoganize lowercase region subtags.
+      const of = this.type === 'region' ? this.of.toUpperCase() : this.of;
+
       try {
-        result = new Intl.DisplayNames(this.locales, {
+        const dn = new Intl.DisplayNames(this.localeList, {
           type: this.type,
           style: this.intlStyle,
           localeMatcher: this.localeMatcher,
           languageDisplay: this.languageDisplay,
           fallback: this.fallback,
-        }).of(this.of) as string;
+        });
+        this._resolvedOptions = dn.resolvedOptions();
+        result = dn.of(of) as string;
       } catch {}
     }
 
-    return html`${result}`;
+    return result;
   }
 }
 

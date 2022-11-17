@@ -22,8 +22,15 @@
     }
   </script>
 
-  <p><intl-displaynames locales="en" of="ja"></intl-displaynames>
-  <p><intl-displaynames locales="en" of="jp" type="region"></intl-displaynames>
+  <h1><code>intl-displaynames</code></h1>
+  <p><intl-displaynames locales="en" of="ja"></intl-displaynames></p>
+  <p>
+    dialect: <intl-displaynames locales="en" of="zh-Hant"></intl-displaynames>
+    standard: <intl-displaynames locales="en" of="zh-Hant" language-display="standard"></intl-displaynames>
+  </p>
+  <p><intl-displaynames locales="en" of="jp" type="region"></intl-displaynames></p>
+  <p><intl-displaynames locales="zh-CN" of="jpy" type="currency"></intl-displaynames></p>
+  <p><intl-displaynames locales="ko" of="minute" type="dateTimeField"></intl-displaynames></p>
 
   <script type="module" src="./dist/elements/displaynames/displaynames.js"></script>
 </html>
