@@ -137,12 +137,16 @@ export default abstract class AbstractIntlElement extends LitElement {
       this.setAttribute(AttrName.LANG, newLang);
     }
 
-    const isRtl =
-        new Intl.Locale(newLang)?.textInfo?.direction === AttrValue.DIR_RTL;
-    if (isRtl) {
-      this.setAttribute(AttrName.DIR, AttrValue.DIR_RTL);
-    } else {
-      this.removeAttribute(AttrName.DIR);
+    try {
+      const isRtl = (new Intl.Locale(newLang))
+          .textInfo.direction === AttrValue.DIR_RTL;
+      if (isRtl) {
+        this.setAttribute(AttrName.DIR, AttrValue.DIR_RTL);
+      } else {
+        this.removeAttribute(AttrName.DIR);
+      }
+    } catch {
+      // If `Intl.Locale`s `textInfo` is not supported, do nothing.
     }
   }
 }

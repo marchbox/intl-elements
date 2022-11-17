@@ -242,4 +242,29 @@ describe('DisplayNames', () => {
 
     expect(el.getAttribute('role')).toBe('option');
   });
+
+  it('should not modify `dir` if `textInfo` is not supported', async () => {
+    // @ts-ignore
+    global.Intl.Locale = jest.fn((locale: string) => ({
+      textInfo: undefined,
+    }));
+
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="ar" of="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.getAttribute('lang')).toBe('ar');
+    expect(el.hasAttribute('dir')).toBe(false);
+
+    el.setAttribute('locales', 'ar');
+    await el.updateComplete;
+    expect(el.hasAttribute('dir')).toBe(false);
+
+    // @ts-ignore
+    global.Intl.Locale.mockRestore();
+  });
 });
