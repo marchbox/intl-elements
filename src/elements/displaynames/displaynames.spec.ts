@@ -200,13 +200,13 @@ describe('DisplayNames', () => {
     const page = await createTestPage<HTMLIntlDisplayNamesElement>({
       element: 'intl-displaynames',
       html: `
-        <intl-displaynames locales="ja" of="en"></intl-displaynames>
+        <intl-displaynames locales="he" of="en"></intl-displaynames>
       `,
     });
     const el = page.element;
 
-    expect(el.getAttribute('lang')).toBe('ja');
-    expect(el.hasAttribute('dir')).toBe(false);
+    expect(el.getAttribute('lang')).toBe('he');
+    expect(el.getAttribute('dir')).toBe('rtl');
 
     el.setAttribute('locales', 'zh');
     await el.updateComplete;
@@ -217,5 +217,29 @@ describe('DisplayNames', () => {
     await el.updateComplete;
     expect(el.getAttribute('lang')).toBe('ar');
     expect(el.getAttribute('dir')).toBe('rtl');
+  });
+
+  it('should add `none` role if role is missing', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.getAttribute('role')).toBe('none');
+  });
+
+  it('should not override author defined role', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames role="option"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.getAttribute('role')).toBe('option');
   });
 });

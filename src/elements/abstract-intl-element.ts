@@ -50,6 +50,10 @@ export default abstract class AbstractIntlElement extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
+    if (!this.hasAttribute('role')) {
+      this.setAttribute('role', 'none');
+    }
+
     this.#maybeAdoptLangForLocales();
     this.#observeLangAttr();
   }
