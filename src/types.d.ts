@@ -15,4 +15,11 @@ declare namespace Intl {
       'numberingSystem' | 'timeZone' | 'unit';
   type SupportedValuesReturnType = string[];
   function supportedValuesOf(key: SupportedValueKey): SupportedValuesReturnType;
+
+  // TODO: Remove when TypeScript adds the support.
+  interface Locale {
+    textInfo: {
+      direction: 'ltr' | 'rtl';
+    }
+  }
 }

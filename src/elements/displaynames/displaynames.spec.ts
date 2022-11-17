@@ -195,4 +195,27 @@ describe('DisplayNames', () => {
     expect(el.locales).toBe('es');
     expect(el.textContent).toBe('inglés');
   });
+
+  it('adopts `locales` value to `lang` and `dir`', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="ja" of="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.getAttribute('lang')).toBe('ja');
+    expect(el.hasAttribute('dir')).toBe(false);
+
+    el.setAttribute('locales', 'zh');
+    await el.updateComplete;
+    expect(el.getAttribute('lang')).toBe('zh');
+    expect(el.hasAttribute('dir')).toBe(false);
+
+    el.setAttribute('locales', 'ar');
+    await el.updateComplete;
+    expect(el.getAttribute('lang')).toBe('ar');
+    expect(el.getAttribute('dir')).toBe('rtl');
+  });
 });

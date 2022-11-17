@@ -10,12 +10,23 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
 
+enum AttrName {
+  LANG = 'lang',
+  DIR = 'dir',
+}
+
+enum AttrValue {
+  DIR_RTL = 'rtl',
+}
+
 export default abstract class AbstractIntlElement extends LitElement {
   protected abstract intlObj: any;
 
   #localeList: Intl.BCP47LanguageTag[] = [];
 
   #attrObserver!: MutationObserver;
+
+  #isUpdatingLangAttr = false;
 
   // `localeList` is a read-only property.
   @property({attribute: false})
@@ -40,13 +51,7 @@ export default abstract class AbstractIntlElement extends LitElement {
     super.connectedCallback();
 
     this.#maybeAdoptLangForLocales();
-
-    this.#attrObserver =
-        new MutationObserver(this.#maybeAdoptLangForLocales.bind(this));
-    this.#attrObserver.observe(this, {
-      attributes: true,
-      attributeFilter: ['lang'],
-    });
+    this.#observeLangAttr();
   }
 
   override disconnectedCallback(): void {
@@ -88,14 +93,52 @@ export default abstract class AbstractIntlElement extends LitElement {
         this.locales.split(' '),
         {localeMatcher: this.localeMatcher}
       );
+      this.#updateLangAndDirAttrs();
     } catch {
       this.#localeList = [];
     }
   }
 
+  #observeLangAttr() {
+    this.#attrObserver = new MutationObserver(() => {
+      if (!this.#isUpdatingLangAttr) {
+        this.#maybeAdoptLangForLocales();
+      } else {
+        this.#isUpdatingLangAttr = false;
+      }
+    });
+
+    this.#attrObserver.observe(this, {
+      attributes: true,
+      attributeFilter: [AttrName.LANG],
+    });
+  }
+
   #maybeAdoptLangForLocales() {
-    if (!this.hasAttribute('locales') && this.hasAttribute('lang')) {
-      this.locales = this.getAttribute('lang')!;
+    if (!this.hasAttribute('locales') && this.hasAttribute(AttrName.LANG)) {
+      this.locales = this.getAttribute(AttrName.LANG)!;
+    }
+  }
+
+  #updateLangAndDirAttrs() {
+    const newLang = this.#localeList?.[0];
+
+    if (!newLang) {
+      return;
+    }
+
+    const oldLang = this.getAttribute(AttrName.LANG);
+    if (oldLang !== newLang) {
+      this.#isUpdatingLangAttr = true;
+      this.setAttribute(AttrName.LANG, newLang);
+    }
+
+    const isRtl =
+        new Intl.Locale(newLang)?.textInfo?.direction === AttrValue.DIR_RTL;
+    if (isRtl) {
+      this.setAttribute(AttrName.DIR, AttrValue.DIR_RTL);
+    } else {
+      this.removeAttribute(AttrName.DIR);
     }
   }
 }
