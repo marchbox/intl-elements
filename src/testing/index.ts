@@ -1,4 +1,7 @@
 import type {LitElement} from 'lit';
+import {defineIntlElements} from '../index';
+
+defineIntlElements();
 
 interface CreateTestPageOption {
   element: string | string[];

@@ -1,4 +1,3 @@
-import {customElement} from "lit/decorators.js";
+import {LitElement} from "lit";
 
-@customElement('intl-listitem')
-export default class ListItem extends HTMLElement {}
+export default class extends LitElement {}
