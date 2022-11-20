@@ -29,4 +29,7 @@ declare namespace Intl {
   interface ListFormat {
     resolvedOptions(): ResolvedListFormatOptions;
   }
+
+  // TODO: Remove when this is supported in TypeScript.
+  type ListFormatPart = {type: 'element' | 'literal', value: string};
 }

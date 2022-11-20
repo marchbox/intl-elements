@@ -11,7 +11,7 @@ function getTextContent(el: HTMLIntlListFormatElement) {
   return clonedEl.textContent?.trim() || '';
 }
 
-describe('ListForm', () => {
+describe('intl-listformat', () => {
   it('updates result text when both props and attributes change', async () => {
     const page = await createTestPage<HTMLIntlListFormatElement>({
       element: ['intl-listformat', 'intl-listitem'],
