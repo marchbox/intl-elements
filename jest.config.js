@@ -1,5 +1,11 @@
 /* https://jestjs.io/docs/configuration */
 export default {
+  collectCoverage: true,
+  coverageDirectory: '.jest-coverage',
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/src/testing/',
+  ],
   preset: 'ts-jest',
   testEnvironment: "jsdom",
   setupFiles: [
