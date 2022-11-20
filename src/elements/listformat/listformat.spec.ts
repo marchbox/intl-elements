@@ -114,4 +114,27 @@ describe('ListForm', () => {
       'foo', 'bar', 'baz', 'qux', 'hello', 'world']);
     expect(getTextContent(el)).toBe(intlResult);
   });
+
+  it('returns correct resolved options', async () => {
+    const page = await createTestPage<HTMLIntlListFormatElement>({
+      element: ['intl-listformat', 'intl-listitem'],
+      html: `
+        <intl-listformat locales="de" intl-style="narrow" type="unit">
+          <intl-listitem>foo</intl-listitem>
+          <intl-listitem>bar</intl-listitem>
+          <intl-listitem>baz</intl-listitem>
+          <intl-listitem>qux</intl-listitem>
+        </intl-listformat>
+      `,
+    });
+    const el = page.element;
+
+    // @ts-ignore
+    const intlResult = new Intl.ListFormat('de', {
+      type: 'unit',
+      style: 'narrow',
+    }).resolvedOptions();
+
+    expect(el.resolvedOptions()).toEqual(intlResult);
+  });
 });

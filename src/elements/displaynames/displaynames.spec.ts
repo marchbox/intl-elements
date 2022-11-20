@@ -269,4 +269,22 @@ describe('DisplayNames', () => {
     // @ts-ignore
     global.Intl.Locale.mockRestore();
   });
+
+  it('should not modify `lang` or `dir` if `locales` is invalid', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="ar" of="en"></intl-displaynames>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.getAttribute('lang')).toBe('ar');
+    expect(el.hasAttribute('dir')).toBe(false);
+
+    el.setAttribute('locales', 'invalid');
+    await el.updateComplete;
+    expect(el.getAttribute('lang')).toBe('ar');
+    expect(el.hasAttribute('dir')).toBe(false);
+  });
 });
