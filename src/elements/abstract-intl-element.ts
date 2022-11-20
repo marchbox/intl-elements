@@ -77,15 +77,18 @@ export default abstract class AbstractIntlElement extends LitElement {
   }
 
   #isValid(changes: PropertyValues<this>): boolean {
-    return Array.from(changes.entries()).every(([key, value]) => {
+    return Array.from(changes.entries()).every(([key]) => {
+      let supported = true;
       try {
-        const supported = Intl
+        supported = Intl
             .supportedValuesOf(key as Intl.SupportedValueKey)
-            .includes(value as string);
-        if (!supported) {
-          throw new Error(`Invalid value of ${key.toString()}: ${value}`);
-        }
+            // @ts-ignore
+            .includes(this[key] as string);
       } catch {}
+
+      if (!supported) {
+        return false;
+      }
 
       return true;
     });

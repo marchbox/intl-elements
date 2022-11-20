@@ -3,7 +3,7 @@ import {describe, it, expect} from '@jest/globals';
 import {createTestPage} from '../../testing';
 import HTMLIntlDisplayNamesElement from './displaynames';
 
-describe('DisplayNames', () => {
+describe('intl-displaynames', () => {
   it('updates result text when both props and attributes change', async () => {
     const page = await createTestPage<HTMLIntlDisplayNamesElement>({
       element: 'intl-displaynames',

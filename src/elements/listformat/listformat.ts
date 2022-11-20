@@ -1,12 +1,10 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
-
-type ListFormatPart = {type: 'element' | 'literal', value: string};
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
-  #formattedParts: ListFormatPart[] = [];
+  #formattedParts: Intl.ListFormatPart[] = [];
 
   #listObserver!: MutationObserver;
 
@@ -77,7 +75,7 @@ export default class extends AbstractIntlElement {
     return this.#resolvedOptions;
   }
 
-  formatToParts(): ListFormatPart[] {
+  formatToParts(): Intl.ListFormatPart[] {
     return this.#formattedParts;
   }
 
