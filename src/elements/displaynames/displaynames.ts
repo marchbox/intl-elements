@@ -1,9 +1,8 @@
-import {customElement, property} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
 
-@customElement('intl-displaynames')
-export default class DisplayNames extends AbstractIntlElement {
+export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
   protected intlObj = Intl.DisplayNames;
@@ -48,11 +47,5 @@ export default class DisplayNames extends AbstractIntlElement {
     }
 
     return result;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'intl-displaynames': DisplayNames,
   }
 }

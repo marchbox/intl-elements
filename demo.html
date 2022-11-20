@@ -43,7 +43,8 @@
     <intl-listitem>pitbull</intl-listitem>
   </intl-listformat>
 
-  <script type="module" src="./dist/elements/displaynames/displaynames.js"></script>
-  <script type="module" src="./dist/elements/listformat/listformat.js"></script>
-  <script type="module" src="./dist/elements/listitem/listitem.js"></script>
+  <script type="module">
+    import {defineIntlElements} from './dist/index.js';
+    defineIntlElements();
+  </script>
 </html>

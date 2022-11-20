@@ -1,12 +1,15 @@
-import {customElement, property} from 'lit/decorators.js';
+import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
 
-@customElement('intl-listformat')
-export default class ListFormat extends AbstractIntlElement {
+export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
   #listObserver!: MutationObserver;
+
+  get #listItems(): HTMLElement[] {
+    return Array.from(this.querySelectorAll('intl-listitem'));
+  }
 
   protected intlObj = Intl.ListFormat;
 
@@ -18,8 +21,7 @@ export default class ListFormat extends AbstractIntlElement {
 
   @property({attribute: false})
   get list(): string[] {
-    return Array.from(this.querySelectorAll('intl-listitem'))
-        .map(el => el.textContent || '');
+    return this.#listItems.map(el => el.textContent || '');
   }
 
   override connectedCallback() {
@@ -38,7 +40,7 @@ export default class ListFormat extends AbstractIntlElement {
   }
 
   #hideListItems() {
-    this.querySelectorAll('intl-listitem').forEach(el => {
+    this.#listItems.forEach(el => {
       el.setAttribute('hidden', '');
       el.setAttribute('aria-hidden', 'true');
     });
@@ -88,11 +90,5 @@ export default class ListFormat extends AbstractIntlElement {
     }
 
     return result;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'intl-listformat': ListFormat,
   }
 }

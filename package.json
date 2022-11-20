@@ -1,21 +1,30 @@
 {
   "name": "intl-elements",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.7",
   "description": "Custom elements for using Intl APIs declaratively.",
   "author": "zacky@marchbox.com",
-  "license": "MIT",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/marchbox/intl-elements"
   },
+  "keywords": [
+    "intl",
+    "i18n",
+    "custom elements",
+    "web components"
+  ],
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "LICENSE",
+    "CHANGELOG.md",
     "package.json"
   ],
   "scripts": {
+    "prepack": "yarn build",
     "prepare": "husky install",
     "dev": "run-p -r build:watch dev:server",
     "dev:server": "run-s dev:server:wait dev:server:serve",
