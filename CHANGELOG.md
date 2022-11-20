@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- [`intl-listformat`]: Added `formatToParts()` method
+
 ## [0.0.1-alpha.7] - 2022-11-19
 
 ### Fixed
