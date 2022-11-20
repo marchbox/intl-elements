@@ -19,9 +19,12 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "LICENSE",
+    "CHANGELOG.md",
     "package.json"
   ],
   "scripts": {
+    "prepack": "yarn build",
     "prepare": "husky install",
     "dev": "run-p -r build:watch dev:server",
     "dev:server": "run-s dev:server:wait dev:server:serve",
