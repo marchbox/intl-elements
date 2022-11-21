@@ -9,7 +9,8 @@ describe('intl-relativetimeformat', () => {
     const page = await createTestPage<HTMLIntlRelativeTimeFormatElement>({
       element: 'intl-relativetimeformat',
       html: `
-        <intl-relativetimeformat locales="en" unit="year" value="10">
+        <intl-relativetimeformat locales="en"
+            format-unit="year" format-value="10">
         </intl-relativetimeformat>
       `,
     });
@@ -18,7 +19,7 @@ describe('intl-relativetimeformat', () => {
 
     expect(el.textContent.trim()).toBe(intlResult);
 
-    el.setAttribute('unit', 'invalid');
+    el.setAttribute('format-unit', 'invalid');
     await el.updateComplete;
     expect(el.textContent.trim()).toBe(intlResult);
   });
@@ -27,7 +28,8 @@ describe('intl-relativetimeformat', () => {
     const page = await createTestPage<HTMLIntlRelativeTimeFormatElement>({
       element: 'intl-relativetimeformat',
       html: `
-        <intl-relativetimeformat locales="de" unit="year" value="10">
+        <intl-relativetimeformat locales="de"
+            format-unit="year" format-value="10">
         </intl-relativetimeformat>
       `,
     });
@@ -42,7 +44,8 @@ describe('intl-relativetimeformat', () => {
     const page = await createTestPage<HTMLIntlRelativeTimeFormatElement>({
       element: 'intl-relativetimeformat',
       html: `
-        <intl-relativetimeformat locales="en" unit="year" value="10">
+        <intl-relativetimeformat locales="en"
+            format-unit="year" format-value="10">
         </intl-relativetimeformat>
       `,
     });
@@ -51,6 +54,6 @@ describe('intl-relativetimeformat', () => {
     const intlResult =
         new Intl.RelativeTimeFormat('en').formatToParts(10, 'year');
 
-    expect(el.formatToParts()).toEqual(intlResult);
+    expect(el.formattedParts).toEqual(intlResult);
   });
 });

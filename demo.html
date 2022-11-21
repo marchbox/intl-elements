@@ -31,14 +31,12 @@
   <p><intl-locale tag="zh-Hant-HK" display-string></intl-locale></p>
 
   <h2><code>intl-displaynames</code></h2>
-  <p><intl-displaynames locales="en" of="ja"></intl-displaynames></p>
-  <p>
-    dialect: <intl-displaynames locales="en" of="zh-Hant"></intl-displaynames>
-    standard: <intl-displaynames locales="en" of="zh-Hant" language-display="standard"></intl-displaynames>
-  </p>
-  <p><intl-displaynames locales="en" of="jp" type="region"></intl-displaynames></p>
-  <p><intl-displaynames locales="zh-CN" of="jpy" type="currency"></intl-displaynames></p>
-  <p><intl-displaynames locales="ko" of="minute" type="dateTimeField"></intl-displaynames></p>
+  <p><intl-displaynames locales="en" of-code="ja"></intl-displaynames></p>
+  <p>dialect: <intl-displaynames locales="en" of-code="zh-Hant"></intl-displaynames></p>
+  <p>standard: <intl-displaynames locales="en" of-code="zh-Hant" option-languagedisplay="standard"></intl-displaynames></p>
+  <p><intl-displaynames locales="en" of-code="jp" option-type="region"></intl-displaynames></p>
+  <p><intl-displaynames locales="zh-CN" of-code="jpy" option-type="currency"></intl-displaynames></p>
+  <p><intl-displaynames locales="ko" of-code="minute" option-type="dateTimeField"></intl-displaynames></p>
 
   <h2><code>intl-listformat</code></h2>
   <intl-listformat locales="en">
@@ -50,9 +48,9 @@
   </intl-listformat>
 
   <h2><code>intl-relativetimeformat</code></h2>
-  <p><intl-relativetimeformat locales="en" value="1" unit="day"></intl-relativetimeformat></p>
-  <p><intl-relativetimeformat locales="ja" value="10" unit="year"></intl-relativetimeformat></p>
-  <p><intl-relativetimeformat locales="ar" value="100" unit="minute"></intl-relativetimeformat></p>
+  <p><intl-relativetimeformat locales="en" format-value="1" format-unit="day"></intl-relativetimeformat></p>
+  <p><intl-relativetimeformat locales="ja" format-value="10" format-unit="year"></intl-relativetimeformat></p>
+  <p><intl-relativetimeformat locales="ar" format-value="100" format-unit="minute"></intl-relativetimeformat></p>
 
   <script type="module">
     import {defineIntlElements} from './dist/index.js';
