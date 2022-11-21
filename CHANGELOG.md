@@ -15,10 +15,18 @@
 
 ### Added
 
-- [`intl-listformat`]: Added `formattedParts` property to return the same value
-  as `Intl.ListFormat`’s `formatToParts()` method.
+- [`intl-displaynames`]: Added `value` read only property, its value is the same
+  as its trimmed text content
+- [`intl-listformat`]: Added `formattedParts` read only property to return the
+  same value as `Intl.ListFormat`’s `formatToParts()` method.
+- [`intl-listformat`]: Added `value` read only property, its value is the same
+  as its trimmed text content
 - [`intl-relativetimeformat`] Added the custom element
 - [`intl-locale`] Added the custom element
+
+### Changed
+
+- [`intl-listformat`] Ignores `intl-listitem` elements with empty text content
 
 ## [0.0.1-alpha.7] - 2022-11-19
 

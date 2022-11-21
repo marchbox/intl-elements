@@ -48,6 +48,17 @@ describe('intl-displaynames', () => {
     expect(el.textContent.trim()).toBe(intlResult);
   });
 
+  it('has `value` property the same as its text content', async () => {
+    const page = await createTestPage<HTMLIntlDisplayNamesElement>({
+      element: 'intl-displaynames',
+      html: `
+        <intl-displaynames locales="en" of="ja"></intl-displaynames>
+      `,
+    });
+
+    expect(page.element!.value).toBe(page.element!.textContent.trim());
+  });
+
   it('handles multiple locales and ignores invalid ones', async () => {
     const page = await createTestPage<HTMLIntlDisplayNamesElement>({
       element: 'intl-displaynames',

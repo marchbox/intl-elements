@@ -5,12 +5,10 @@ import {property} from 'lit/decorators.js';
 type LocaleValue = Intl.Locale | null;
 
 export default class extends LitElement {
-  @property({attribute: false})
   get value(): LocaleValue {
     return this.#getLocale();
   }
 
-  @property({attribute: false})
   get valueAsString(): Intl.BCP47LanguageTag | '' {
     return this.#getLocale()?.toString() ?? '';
   }

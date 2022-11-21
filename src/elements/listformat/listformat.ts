@@ -1,4 +1,3 @@
-import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
@@ -8,6 +7,8 @@ export default class extends AbstractIntlElement {
   #formattedParts: Intl.ListFormatPart[] = [];
 
   #listObserver!: MutationObserver;
+
+  #value = '';
 
   get #listItems(): HTMLElement[] {
     return Array.from(this.querySelectorAll('intl-listitem'));
@@ -22,7 +23,13 @@ export default class extends AbstractIntlElement {
   optionType: Intl.ListFormatType = 'conjunction';
 
   get list(): string[] {
-    return this.#listItems.map(el => el.textContent || '');
+    return this.#listItems
+        .map(el => (el.textContent?.trim() || ''))
+        .filter(el => el !== '');
+  }
+
+  get value(): string {
+    return this.#value;
   }
 
   override connectedCallback() {
@@ -80,8 +87,6 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    let result: unknown = nothing;
-
     if (this.locales) {
       try {
         const lf = new Intl.ListFormat(this.localeList, {
@@ -91,10 +96,10 @@ export default class extends AbstractIntlElement {
         });
         this.#resolvedOptions = lf.resolvedOptions();
         this.#formattedParts = lf.formatToParts(this.list);
-        result = lf.format(this.list) as string;
+        this.#value = lf.format(this.list) as string;
       } catch {}
     }
 
-    return result;
+    return this.#value;
   }
 }

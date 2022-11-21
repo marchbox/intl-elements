@@ -1,10 +1,11 @@
-import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
 
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
+
+  #value = '';
 
   protected intlObj = Intl.DisplayNames;
 
@@ -23,13 +24,15 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'option-fallback', reflect: true})
   optionFallback: Intl.DisplayNamesFallback = 'code';
 
+  get value(): string {
+    return this.#value;
+  }
+
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
     return this.#resolvedOptions;
   }
 
   protected override render() {
-    let result: unknown = nothing;
-
     if (this.locales && this.ofCode) {
       // Chrome doesn’t recoganize lowercase region subtags.
       const of = this.optionType === 'region' ?
@@ -44,10 +47,10 @@ export default class extends AbstractIntlElement {
           fallback: this.optionFallback,
         });
         this.#resolvedOptions = dn.resolvedOptions();
-        result = dn.of(of) as string;
+        this.#value = dn.of(of) as string;
       } catch {}
     }
 
-    return result;
+    return this.#value;
   }
 }
