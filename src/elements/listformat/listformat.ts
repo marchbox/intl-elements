@@ -21,7 +21,6 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'option-type', reflect: true})
   optionType: Intl.ListFormatType = 'conjunction';
 
-  @property({attribute: false})
   get list(): string[] {
     return this.#listItems.map(el => el.textContent || '');
   }

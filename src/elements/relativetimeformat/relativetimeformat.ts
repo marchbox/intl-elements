@@ -22,7 +22,6 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'format-unit', reflect: true})
   formatUnit!: Intl.RelativeTimeFormatUnit;
 
-  @property({attribute: false})
   get formattedParts(): Intl.RelativeTimeFormatPart[] {
     return this.#formattedParts;
   }

@@ -29,7 +29,6 @@ export default abstract class AbstractIntlElement extends LitElement {
   #isUpdatingLangAttr = false;
 
   // `localeList` is a read-only property.
-  @property({attribute: false})
   get localeList(): Intl.BCP47LanguageTag[] {
     return this.#localeList;
   }
