@@ -24,7 +24,6 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'option-fallback', reflect: true})
   optionFallback: Intl.DisplayNamesFallback = 'code';
 
-  @property({attribute: false})
   get value(): string {
     return this.#value;
   }

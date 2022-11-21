@@ -28,7 +28,6 @@ export default class extends AbstractIntlElement {
         .filter(el => el !== '');
   }
 
-  @property({attribute: false})
   get value(): string {
     return this.#value;
   }
