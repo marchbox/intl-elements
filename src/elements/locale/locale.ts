@@ -21,32 +21,22 @@ export default class extends LitElement {
   @property({reflect: true, attribute: 'display-string', type: Boolean})
   displayString = false;
 
-  @property({reflect: true, attribute: 'display-maximum', type: Boolean})
-  displayMaximum = false;
+  @property({reflect: true, attribute: 'display-maximized', type: Boolean})
+  displayMaximized = false;
 
-  @property({reflect: true, attribute: 'display-minimum', type: Boolean})
-  displayMinimum = false;
-
-  @property({attribute: false})
-  get textInfo(): Intl.LocaleTextInfo | null {
-    return this.#getLocale()?.textInfo ?? null;
-  }
-
-  @property({attribute: false})
-  get timeZones(): Intl.LocaleTimeZones | null {
-    return this.#getLocale()?.timeZones ?? null;
-  }
-
-  @property({attribute: false})
-  get weekInfo(): Intl.LocaleWeekInfo | null {
-    return this.#getLocale()?.weekInfo ?? null;
-  }
+  @property({reflect: true, attribute: 'display-minimized', type: Boolean})
+  displayMinimized = false;
 
   @property({reflect: true})
   baseName?: string;
 
   @property({reflect: true})
   calendar?: string;
+
+  @property({attribute: false})
+  get calendars(): string[] | undefined {
+    return this.#getLocale()?.calendars ?? undefined;
+  }
 
   @property({reflect: true})
   caseFirst?: Intl.LocaleCollationCaseFirst;
@@ -57,6 +47,11 @@ export default class extends LitElement {
   @property({reflect: true})
   hourCycle?: Intl.LocaleHourCycleKey;
 
+  @property({attribute: false})
+  get hourCycles(): Intl.LocaleHourCycleKey[] | undefined {
+    return this.#getLocale()?.hourCycles ?? undefined;
+  }
+
   @property({reflect: true})
   language?: string;
 
@@ -64,6 +59,11 @@ export default class extends LitElement {
   numberingSystem?: string;
 
   @property({reflect: true})
+  get numberingSystems(): string[] | undefined {
+    return this.#getLocale()?.numberingSystems ?? undefined;
+  }
+
+  @property({reflect: true, type: Boolean})
   numeric?: boolean;
 
   @property({reflect: true})
@@ -71,6 +71,21 @@ export default class extends LitElement {
 
   @property({reflect: true})
   script?: string;
+
+  @property({attribute: false})
+  get textInfo(): Intl.LocaleTextInfo | undefined {
+    return this.#getLocale()?.textInfo ?? undefined;
+  }
+
+  @property({attribute: false})
+  get timeZones(): string[] | undefined {
+    return this.#getLocale()?.timeZones ?? undefined;
+  }
+
+  @property({attribute: false})
+  get weekInfo(): Intl.LocaleWeekInfo | undefined {
+    return this.#getLocale()?.weekInfo ?? undefined;
+  }
 
   protected override createRenderRoot() {
     // No shadow DOM.
@@ -107,14 +122,12 @@ export default class extends LitElement {
   override render() {
     if (this.displayString) {
       return this.valueAsString;
-    }
-    if (this.displayMinimum) {
+    } else if (this.displayMinimized) {
       return this.minimize()?.toString() ?? '';
-    }
-    if (this.displayMaximum) {
+    } else if (this.displayMaximized) {
       return this.maximize()?.toString() ?? '';
+    } else {
+      return nothing;
     }
-
-    return nothing;
   }
 }

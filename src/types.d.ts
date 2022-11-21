@@ -22,8 +22,6 @@ declare namespace Intl {
   interface LocaleTextInfo {
     direction: LocaleTextInfoDirection;
   }
-  // See: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/timeZones
-  type LocaleTimeZones = string[];
   // See: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/weekInfo
   type LocaleWeekInfoValue = 1 | 2 | 3 | 4 | 5 | 6 | 7;
   interface LocaleWeekInfo {
@@ -32,8 +30,11 @@ declare namespace Intl {
     minimalDays: 1 | 7;
   }
   interface Locale {
+    calendars: string[];
+    hourCycles: LocaleHourCycleKey[];
+    numberingSystems: string[];
     textInfo: LocaleTextInfo;
-    timeZones: LocaleTimeZones;
+    timeZones: string[];
     weekInfo: LocaleWeekInfo;
   }
 
