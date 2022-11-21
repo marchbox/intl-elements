@@ -24,6 +24,10 @@
 - [`intl-relativetimeformat`] Added the custom element
 - [`intl-locale`] Added the custom element
 
+### Changed
+
+- [`intl-listformat`] Ignores `intl-listitem` elements with empty text content
+
 ## [0.0.1-alpha.7] - 2022-11-19
 
 ### Fixed
