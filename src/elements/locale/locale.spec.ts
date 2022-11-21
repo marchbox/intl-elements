@@ -8,10 +8,10 @@ describe('intl-locale', () => {
       element: 'intl-locale',
       html: `
         <intl-locale tag="en-US"></intl-locale>
-        <intl-locale tag="en-US" base-name="zh" region="HK"></intl-locale>
+        <intl-locale tag="en-US" option-basename="zh" option-region="HK"></intl-locale>
         <intl-locale tag="zh-Hant-u-ca-chinese"></intl-locale>
-        <intl-locale tag="es" region="419"></intl-locale>
-        <intl-locale tag="sr" script="Latn"></intl-locale>
+        <intl-locale tag="es" option-region="419"></intl-locale>
+        <intl-locale tag="sr" option-script="Latn"></intl-locale>
       `,
     });
 
@@ -55,7 +55,7 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ja" calendar="japanese" numeric></intl-locale>
+        <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
 
@@ -70,7 +70,7 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ja" calendar="japanese" numeric></intl-locale>
+        <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
 
@@ -85,7 +85,7 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ja" calendar="japanese" numeric></intl-locale>
+        <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
 
@@ -100,8 +100,8 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ko" script="kore" region="kr"
-            hourCycle="h24" display-string>
+        <intl-locale tag="ko" option-script="kore" option-region="kr"
+            option-hourcycle="h24" display-string>
         </intl-locale>
       `,
     });
@@ -118,8 +118,8 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ko" script="kore" region="kr"
-            hourCycle="h24" display-maximized>
+        <intl-locale tag="ko" option-script="kore" option-region="kr"
+            option-hourcycle="h24" display-maximized>
         </intl-locale>
       `,
     });
@@ -136,8 +136,8 @@ describe('intl-locale', () => {
     const page = await createTestPage({
       element: 'intl-locale',
       html: `
-        <intl-locale tag="ko" script="kore" region="kr"
-            hourCycle="h24" display-minimized>
+        <intl-locale tag="ko" option-script="kore" option-region="kr"
+            option-hourcycle="h24" display-minimized>
         </intl-locale>
       `,
     });
@@ -148,6 +148,35 @@ describe('intl-locale', () => {
       hourCycle: 'h24',
     }).minimize().toString();
     expect(page.element.textContent.trim()).toBe(intlResult);
+  });
+
+  it('has both option properties and exposed built-in properties', async () => {
+    const page = await createTestPage({
+      element: 'intl-locale',
+      html: `
+        <intl-locale tag="en" option-basename="zh" option-language="en"
+            option-script="latn" option-region="us" option-numeric
+            option-hourcycle="h24" option-calendar="gregory" option-casefirst="upper"
+            option-collation="phonebk" option-numberingsystem="arab"
+        ></intl-locale>
+      `,
+    });
+
+    const el = page.element;
+
+    expect(el.baseName).toBe('en-Latn-US');
+    expect(el.optionBaseName).toBe('zh');
+    expect(el.language).toBe(el.optionLanguage);
+    expect(el.script).toBe('Latn');
+    expect(el.optionScript).toBe('latn');
+    expect(el.region).toBe('US');
+    expect(el.optionRegion).toBe('us');
+    expect(el.numeric).toBe(el.optionNumeric);
+    expect(el.hourCycle).toBe(el.optionHourCycle);
+    expect(el.calendar).toBe(el.optionCalendar);
+    expect(el.caseFirst).toBe(el.optionCaseFirst);
+    expect(el.collation).toBe(el.optionCollation);
+    expect(el.numberingSystem).toBe(el.optionNumberingSystem);
   });
 
   it('produces correct `calendars` property', async  () => {
