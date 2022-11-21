@@ -18,71 +18,105 @@ export default class extends LitElement {
   @property({reflect: true})
   tag!: string;
 
-  @property({reflect: true, attribute: 'display-string', type: Boolean})
+  @property({attribute: 'display-string', reflect: true, type: Boolean})
   displayString = false;
 
-  @property({reflect: true, attribute: 'display-maximized', type: Boolean})
+  @property({attribute: 'display-maximized', reflect: true, type: Boolean})
   displayMaximized = false;
 
-  @property({reflect: true, attribute: 'display-minimized', type: Boolean})
+  @property({attribute: 'display-minimized', reflect: true, type: Boolean})
   displayMinimized = false;
 
-  @property({reflect: true})
-  baseName?: string;
+  @property({attribute: 'option-basename', reflect: true})
+  optionBaseName?: string;
 
-  @property({reflect: true})
-  calendar?: string;
+  get baseName(): string | undefined {
+    return this.#getLocale()?.baseName ?? undefined;
+  }
 
-  @property({attribute: false})
+  @property({attribute: 'option-calendar', reflect: true})
+  optionCalendar?: string;
+
+  get calendar(): string | undefined {
+    return this.#getLocale()?.calendar ?? undefined;
+  }
+
   get calendars(): string[] | undefined {
     return this.#getLocale()?.calendars ?? undefined;
   }
 
-  @property({reflect: true})
-  caseFirst?: Intl.LocaleCollationCaseFirst;
+  @property({attribute: 'option-casefirst', reflect: true})
+  optionCaseFirst?: Intl.LocaleCollationCaseFirst;
 
-  @property({reflect: true})
-  collation?: string;
+  get caseFirst(): Intl.LocaleCollationCaseFirst | undefined {
+    return this.#getLocale()?.caseFirst ?? undefined;
+  }
 
-  @property({reflect: true})
-  hourCycle?: Intl.LocaleHourCycleKey;
+  @property({attribute: 'option-collation', reflect: true})
+  optionCollation?: string;
 
-  @property({attribute: false})
+  get collation(): string | undefined {
+    return this.#getLocale()?.collation ?? undefined;
+  }
+
+  @property({attribute: 'option-hourcycle', reflect: true})
+  optionHourCycle?: Intl.LocaleHourCycleKey;
+
+  get hourCycle(): Intl.LocaleHourCycleKey | undefined {
+    return this.#getLocale()?.hourCycle ?? undefined;
+  }
+
   get hourCycles(): Intl.LocaleHourCycleKey[] | undefined {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
 
-  @property({reflect: true})
-  language?: string;
+  @property({attribute: 'option-language', reflect: true})
+  optionLanguage?: string;
 
-  @property({reflect: true})
-  numberingSystem?: string;
+  get language(): string | undefined {
+    return this.#getLocale()?.language ?? undefined;
+  }
 
-  @property({reflect: true})
+  @property({attribute: 'option-numberingsystem', reflect: true})
+  optionNumberingSystem?: string;
+
+  get numberingSystem(): string | undefined {
+    return this.#getLocale()?.numberingSystem ?? undefined;
+  }
+
   get numberingSystems(): string[] | undefined {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
 
-  @property({reflect: true, type: Boolean})
-  numeric?: boolean;
+  @property({attribute: 'option-numeric', reflect: true, type: Boolean})
+  optionNumeric?: boolean;
 
-  @property({reflect: true})
-  region?: string;
+  get numeric(): boolean | undefined {
+    return this.#getLocale()?.numeric ?? undefined;
+  }
 
-  @property({reflect: true})
-  script?: string;
+  @property({attribute: 'option-region', reflect: true})
+  optionRegion?: string;
 
-  @property({attribute: false})
+  get region(): string | undefined {
+    return this.#getLocale()?.region ?? undefined;
+  }
+
+  @property({attribute: 'option-script', reflect: true})
+  optionScript?: string;
+
+  get script(): string | undefined {
+    return this.#getLocale()?.script ?? undefined;
+  }
+
   get textInfo(): Intl.LocaleTextInfo | undefined {
     return this.#getLocale()?.textInfo ?? undefined;
   }
 
-  @property({attribute: false})
   get timeZones(): string[] | undefined {
     return this.#getLocale()?.timeZones ?? undefined;
   }
 
-  @property({attribute: false})
   get weekInfo(): Intl.LocaleWeekInfo | undefined {
     return this.#getLocale()?.weekInfo ?? undefined;
   }
@@ -103,16 +137,16 @@ export default class extends LitElement {
   #getLocale(): LocaleValue {
     try {
       return new Intl.Locale(this.tag, {
-        baseName: this.baseName,
-        calendar: this.calendar,
-        caseFirst: this.caseFirst,
-        collation: this.collation,
-        hourCycle: this.hourCycle,
-        language: this.language,
-        numberingSystem: this.numberingSystem,
-        numeric: this.numeric,
-        region: this.region,
-        script: this.script,
+        baseName: this.optionBaseName,
+        calendar: this.optionCalendar,
+        caseFirst: this.optionCaseFirst,
+        collation: this.optionCollation,
+        hourCycle: this.optionHourCycle,
+        language: this.optionLanguage,
+        numberingSystem: this.optionNumberingSystem,
+        numeric: this.optionNumeric,
+        region: this.optionRegion,
+        script: this.optionScript,
       });
     } catch {}
 

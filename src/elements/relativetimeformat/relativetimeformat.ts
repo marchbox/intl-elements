@@ -10,38 +10,39 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.RelativeTimeFormat;
 
-  @property({reflect: true, attribute: 'intl-style'})
-  intlStyle: Intl.RelativeTimeFormatStyle = 'long';
+  @property({attribute: 'option-style', reflect: true})
+  optionStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({reflect: true})
-  numeric: Intl.RelativeTimeFormatNumeric = 'always';
+  @property({attribute:'option-numeric', reflect: true})
+  optionNumeric: Intl.RelativeTimeFormatNumeric = 'always';
 
-  @property({reflect: true, type: Number})
-  value!: number;
+  @property({attribute: 'format-value', reflect: true, type: Number})
+  formatValue!: number;
 
-  @property({reflect: true})
-  unit!: Intl.RelativeTimeFormatUnit;
+  @property({attribute: 'format-unit', reflect: true})
+  formatUnit!: Intl.RelativeTimeFormatUnit;
+
+  get formattedParts(): Intl.RelativeTimeFormatPart[] {
+    return this.#formattedParts;
+  }
 
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
     return this.#resolvedOptions;
   }
 
-  formatToParts(): Intl.RelativeTimeFormatPart[] {
-    return this.#formattedParts;
-  }
-
   override render() {
     let result: unknown = nothing;
 
-    if (this.unit && this.value) {
+    if (this.formatUnit && this.formatValue) {
       try {
         const rtf = new Intl.RelativeTimeFormat(this.localeList, {
-          numeric: this.numeric,
-          style: this.intlStyle,
+          numeric: this.optionNumeric,
+          style: this.optionStyle,
         });
         this.#resolvedOptions = rtf.resolvedOptions();
-        this.#formattedParts = rtf.formatToParts(this.value, this.unit);
-        result = rtf.format(this.value, this.unit);
+        this.#formattedParts =
+            rtf.formatToParts(this.formatValue, this.formatUnit);
+        result = rtf.format(this.formatValue, this.formatUnit);
       } catch {}
     }
 

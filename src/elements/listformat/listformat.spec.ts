@@ -119,7 +119,7 @@ describe('intl-listformat', () => {
     const page = await createTestPage<HTMLIntlListFormatElement>({
       element: ['intl-listformat', 'intl-listitem'],
       html: `
-        <intl-listformat locales="de" intl-style="narrow" type="unit">
+        <intl-listformat locales="de" option-style="narrow" option-type="unit">
           <intl-listitem>foo</intl-listitem>
           <intl-listitem>bar</intl-listitem>
           <intl-listitem>baz</intl-listitem>
@@ -142,7 +142,7 @@ describe('intl-listformat', () => {
     const page = await createTestPage<HTMLIntlListFormatElement>({
       element: ['intl-listformat', 'intl-listitem'],
       html: `
-        <intl-listformat locales="de" intl-style="narrow" type="unit">
+        <intl-listformat locales="de" option-style="narrow" option-type="unit">
           <intl-listitem>foo</intl-listitem>
           <intl-listitem>bar</intl-listitem>
           <intl-listitem>baz</intl-listitem>
