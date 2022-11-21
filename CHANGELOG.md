@@ -4,8 +4,14 @@
 
 ### Added
 
+- [`intl-displaynames`]: Added `value` read only property, its value is the same
+  as its trimmed text content
 - [`intl-listformat`]: Added `formatToParts()` method
+- [`intl-listformat`]: Added `value` read only property, its value is the same
+  as its trimmed text content
 - [`intl-relativetimeformat`] Added the custom element
+- [`intl-relativetimeformat`] Added `value` read only property, its value is the
+  same as its trimmed text content
 - [`intl-locale`] Added the custom element
 
 ## [0.0.1-alpha.7] - 2022-11-19
