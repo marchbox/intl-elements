@@ -9,20 +9,20 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.DisplayNames;
 
-  @property({reflect: true})
-  of = '';
+  @property({attribute: 'of-code', reflect: true})
+  ofCode = '';
 
-  @property({reflect: true})
-  type: Intl.DisplayNamesType = 'language';
+  @property({attribute: 'option-type', reflect: true})
+  optionType: Intl.DisplayNamesType = 'language';
 
-  @property({attribute: 'intl-style', reflect: true})
-  intlStyle: Intl.RelativeTimeFormatStyle = 'long';
+  @property({attribute: 'option-style', reflect: true})
+  optionStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({attribute: 'language-display', reflect: true})
-  languageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
+  @property({attribute: 'option-languagedisplay', reflect: true})
+  optionLanguageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
-  @property({reflect: true})
-  fallback: Intl.DisplayNamesFallback = 'code';
+  @property({attribute: 'option-fallback', reflect: true})
+  optionFallback: Intl.DisplayNamesFallback = 'code';
 
   @property({attribute: false})
   get value(): string {
@@ -34,17 +34,18 @@ export default class extends AbstractIntlElement {
   }
 
   protected override render() {
-    if (this.locales && this.of) {
+    if (this.locales && this.ofCode) {
       // Chrome doesn’t recoganize lowercase region subtags.
-      const of = this.type === 'region' ? this.of.toUpperCase() : this.of;
+      const of = this.optionType === 'region' ?
+          this.ofCode.toUpperCase() : this.ofCode;
 
       try {
         const dn = new Intl.DisplayNames(this.localeList, {
-          type: this.type,
-          style: this.intlStyle,
-          localeMatcher: this.localeMatcher,
-          languageDisplay: this.languageDisplay,
-          fallback: this.fallback,
+          type: this.optionType,
+          style: this.optionStyle,
+          localeMatcher: this.optionLocaleMatcher,
+          languageDisplay: this.optionLanguageDisplay,
+          fallback: this.optionFallback,
         });
         this.#resolvedOptions = dn.resolvedOptions();
         this.#value = dn.of(of) as string;

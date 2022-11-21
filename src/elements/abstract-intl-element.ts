@@ -29,7 +29,6 @@ export default abstract class AbstractIntlElement extends LitElement {
   #isUpdatingLangAttr = false;
 
   // `localeList` is a read-only property.
-  @property({attribute: false})
   get localeList(): Intl.BCP47LanguageTag[] {
     return this.#localeList;
   }
@@ -37,8 +36,8 @@ export default abstract class AbstractIntlElement extends LitElement {
   @property({reflect: true})
   locales = '';
 
-  @property({attribute: 'locale-matcher', reflect: true})
-  localeMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
+  @property({attribute: 'option-localematcher', reflect: true})
+  optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;
 
@@ -80,8 +79,13 @@ export default abstract class AbstractIntlElement extends LitElement {
     return Array.from(changes.entries()).every(([key]) => {
       let supported = true;
       try {
+        // Transforms `optionFooBar` to `fooBar`.
+        const _key = (key as string)
+            .replace(/^[a-z]+/, '')
+            .replace(/^[A-Z]/, letter => letter.toLowerCase());
+
         supported = Intl
-            .supportedValuesOf(key as Intl.SupportedValueKey)
+            .supportedValuesOf(_key as Intl.SupportedValueKey)
             // @ts-ignore
             .includes(this[key] as string);
       } catch {}
@@ -98,7 +102,7 @@ export default abstract class AbstractIntlElement extends LitElement {
     try {
       this.#localeList = this.intlObj.supportedLocalesOf(
         this.locales.split(' '),
-        {localeMatcher: this.localeMatcher}
+        {localeMatcher: this.optionLocaleMatcher}
       );
       this.#updateLangAndDirAttrs();
     } catch {

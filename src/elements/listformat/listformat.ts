@@ -16,13 +16,12 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.ListFormat;
 
-  @property({reflect: true, attribute: 'intl-style'})
-  intlStyle: Intl.ListFormatStyle = 'long';
+  @property({attribute: 'option-style', reflect: true})
+  optionStyle: Intl.ListFormatStyle = 'long';
   
-  @property({reflect: true})
-  type: Intl.ListFormatType = 'conjunction';
+  @property({attribute: 'option-type', reflect: true})
+  optionType: Intl.ListFormatType = 'conjunction';
 
-  @property({attribute: false})
   get list(): string[] {
     return this.#listItems
         .map(el => (el.textContent?.trim() || ''))
@@ -92,9 +91,9 @@ export default class extends AbstractIntlElement {
     if (this.locales) {
       try {
         const lf = new Intl.ListFormat(this.localeList, {
-          type: this.type,
-          style: this.intlStyle,
-          localeMatcher: this.localeMatcher,
+          type: this.optionType,
+          style: this.optionStyle,
+          localeMatcher: this.optionLocaleMatcher,
         });
         this.#resolvedOptions = lf.resolvedOptions();
         this.#formattedParts = lf.formatToParts(this.list);
