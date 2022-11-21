@@ -1,3 +1,4 @@
+import {default as HTMLIntlLocaleElement} from './elements/locale/locale';
 import {default as HTMLIntlDisplayNamesElement} from './elements/displaynames/displaynames';
 import {default as HTMLIntlListFormatElement} from './elements/listformat/listformat';
 import {default as HTMLIntlListItemElement} from './elements/listitem/listitem';
@@ -5,11 +6,16 @@ import {default as HTMLIntlRelativeTimeFormatElement} from './elements/relativet
 
 declare global {
   interface HTMLElementTagNameMap {
+    'intl-locale': HTMLIntlLocaleElement;
     'intl-displaynames': HTMLIntlDisplayNamesElement;
     'intl-listformat': HTMLIntlListFormatElement;
     'intl-listitem': HTMLIntlListItemElement;
     'intl-relativetimeformat': HTMLIntlRelativeTimeFormatElement;
   }
+}
+
+export function defineIntlLocaleElement() {
+  customElements.define('intl-locale', HTMLIntlLocaleElement);
 }
 
 export function defineIntlDisplayNamesElement() {
@@ -29,6 +35,7 @@ export function defineIntlRelativeTimeFormatElement() {
 }
 
 export function defineIntlElements() {
+  defineIntlLocaleElement();
   defineIntlListItemElement();
   defineIntlDisplayNamesElement();
   defineIntlListFormatElement();
@@ -36,6 +43,7 @@ export function defineIntlElements() {
 }
 
 export {
+  HTMLIntlLocaleElement,
   HTMLIntlDisplayNamesElement,
   HTMLIntlListFormatElement,
   HTMLIntlListItemElement,

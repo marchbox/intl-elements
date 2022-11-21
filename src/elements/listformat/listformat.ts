@@ -1,3 +1,4 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
@@ -80,7 +81,7 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    let result = '';
+    let result: unknown = nothing;
 
     if (this.locales) {
       try {
