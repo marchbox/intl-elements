@@ -27,6 +27,21 @@ export default class extends LitElement {
   @property({reflect: true, attribute: 'display-minimum', type: Boolean})
   displayMinimum = false;
 
+  @property({attribute: false})
+  get textInfo(): Intl.LocaleTextInfo | null {
+    return this.#getLocale()?.textInfo ?? null;
+  }
+
+  @property({attribute: false})
+  get timeZones(): Intl.LocaleTimeZones | null {
+    return this.#getLocale()?.timeZones ?? null;
+  }
+
+  @property({attribute: false})
+  get weekInfo(): Intl.LocaleWeekInfo | null {
+    return this.#getLocale()?.weekInfo ?? null;
+  }
+
   @property({reflect: true})
   baseName?: string;
 
@@ -71,22 +86,22 @@ export default class extends LitElement {
   }
 
   #getLocale(): LocaleValue {
-    if (!this.tag) {
-      return null;
-    }
+    try {
+      return new Intl.Locale(this.tag, {
+        baseName: this.baseName,
+        calendar: this.calendar,
+        caseFirst: this.caseFirst,
+        collation: this.collation,
+        hourCycle: this.hourCycle,
+        language: this.language,
+        numberingSystem: this.numberingSystem,
+        numeric: this.numeric,
+        region: this.region,
+        script: this.script,
+      });
+    } catch {}
 
-    return new Intl.Locale(this.tag, {
-      baseName: this.baseName,
-      calendar: this.calendar,
-      caseFirst: this.caseFirst,
-      collation: this.collation,
-      hourCycle: this.hourCycle,
-      language: this.language,
-      numberingSystem: this.numberingSystem,
-      numeric: this.numeric,
-      region: this.region,
-      script: this.script,
-    });
+    return null;
   }
 
   override render() {

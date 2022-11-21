@@ -6,6 +6,7 @@
 
 - [`intl-listformat`]: Added `formatToParts()` method
 - [`intl-relativetimeformat`] Added the custom element
+- [`intl-locale`] Added the custom element
 
 ## [0.0.1-alpha.7] - 2022-11-19
 
