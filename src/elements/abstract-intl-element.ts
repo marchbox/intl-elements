@@ -48,8 +48,6 @@ export default abstract class AbstractIntlElement extends LitElement {
   @property({attribute: 'option-localematcher', reflect: true})
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
-  abstract resolvedOptions(): ResolvedOptionsReturnType;
-
   protected override createRenderRoot() {
     // No shadow DOM.
     return this;
@@ -83,6 +81,8 @@ export default abstract class AbstractIntlElement extends LitElement {
       this.#updateLocaleList();
     }
   }
+
+  abstract resolvedOptions(): ResolvedOptionsReturnType;
 
   // Makes sure some Intl option values are valid.
   #isValid(changes: PropertyValues<this>): boolean {
