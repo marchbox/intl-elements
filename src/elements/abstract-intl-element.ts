@@ -10,6 +10,15 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
 
+type IntlObjType = typeof Intl.Collator |
+    typeof Intl.DateTimeFormat |
+    typeof Intl.DisplayNames |
+    typeof Intl.ListFormat |
+    typeof Intl.NumberFormat |
+    typeof Intl.PluralRules |
+    typeof Intl.RelativeTimeFormat |
+    typeof Intl.Segmenter;
+
 enum AttrName {
   LANG = 'lang',
   DIR = 'dir',
@@ -20,7 +29,7 @@ enum AttrValue {
 }
 
 export default abstract class AbstractIntlElement extends LitElement {
-  protected abstract intlObj: any;
+  protected abstract intlObj: IntlObjType;
 
   #localeList: Intl.BCP47LanguageTag[] = [];
 
@@ -75,6 +84,7 @@ export default abstract class AbstractIntlElement extends LitElement {
     }
   }
 
+  // Makes sure some Intl option values are valid.
   #isValid(changes: PropertyValues<this>): boolean {
     return Array.from(changes.entries()).every(([key]) => {
       let supported = true;
