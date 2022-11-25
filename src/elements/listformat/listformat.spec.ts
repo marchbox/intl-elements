@@ -68,27 +68,6 @@ describe('intl-listformat', () => {
     expect(page.element!.value).toBe(getTextContent(page.element));
   });
 
-  it('handles multiple locales and ignores invalid ones', async () => {
-    const page = await createTestPage<HTMLIntlListFormatElement>({
-      element: ['intl-listformat', 'intl-listitem'],
-      html: `
-        <intl-listformat locales="invalid zh en">
-          <intl-listitem>foo</intl-listitem>
-          <intl-listitem>bar</intl-listitem>
-          <intl-listitem>baz</intl-listitem>
-          <intl-listitem>qux</intl-listitem>
-        </intl-listformat>
-      `,
-    });
-    const el = page.element;
-
-    // @ts-ignore
-    let intlResult = new Intl.ListFormat('zh').format([
-      'foo', 'bar', 'baz', 'qux']);
-
-    expect(getTextContent(el)).toBe(intlResult);
-  });
-
   it('reacts to intl-listitem children changes', async () => {
     const page = await createTestPage<HTMLIntlListFormatElement>({
       element: ['intl-listformat', 'intl-listitem'],

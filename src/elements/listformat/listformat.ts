@@ -24,7 +24,7 @@ export default class extends AbstractIntlElement {
 
   get list(): string[] {
     return this.#listItems
-        .map(el => (el.textContent?.trim() || ''))
+        .map(el => (el.textContent!.trim() || ''))
         .filter(el => el !== '');
   }
 
@@ -58,7 +58,7 @@ export default class extends AbstractIntlElement {
     this.#listObserver = new MutationObserver(entries => {
       const hasUpdate = entries.some(entry => {
         if (entry.type === 'characterData') {
-          return entry.target.parentElement?.tagName === 'INTL-LISTITEM';
+          return entry.target.parentElement!.tagName === 'INTL-LISTITEM';
         }
         return true;
       });

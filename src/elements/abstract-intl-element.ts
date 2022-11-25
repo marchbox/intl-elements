@@ -142,7 +142,7 @@ export default abstract class AbstractIntlElement extends LitElement {
   }
 
   #updateLangAndDirAttrs() {
-    const newLang = this.#localeList?.[0];
+    const newLang = this.#localeList[0];
 
     if (!newLang) {
       return;
