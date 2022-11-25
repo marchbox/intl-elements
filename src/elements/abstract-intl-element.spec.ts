@@ -6,7 +6,7 @@ import AbstractIntlElement from './abstract-intl-element';
 
 class FakeIntlObj {
   static supportedLocalesOf(list: string[]) {
-    const supportedLocales = ['ar', 'en', 'ja', 'zh-Hant'];
+    const supportedLocales = ['ar', 'en', 'es', 'ja', 'zh', 'zh-Hant'];
     if (list.includes('invalid')) {
       throw new RangeError();
     }
