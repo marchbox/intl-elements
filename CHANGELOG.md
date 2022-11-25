@@ -12,6 +12,8 @@
     arguments of a method, e.g. `format-unit` / `formatUnit`, `of-code` /
     `ofCode`, etc.
   * `locales`: This attribute remains unchanged
+- All `option-*` attributes are not reflected from their corresponding
+  properties anymore.
 
 ### Added
 
@@ -23,6 +25,8 @@
   as its trimmed text content
 - [`intl-relativetimeformat`] Added the custom element
 - [`intl-locale`] Added the custom element
+- Specifiying locales with the new `locales-from`, an ancestor element with the
+  `lang` attribute or an ancestor `intl-locale` element.
 
 ### Changed
 

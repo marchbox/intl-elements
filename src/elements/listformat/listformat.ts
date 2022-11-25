@@ -16,10 +16,10 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.ListFormat;
 
-  @property({attribute: 'option-style', reflect: true})
+  @property({attribute: 'option-style'})
   optionStyle: Intl.ListFormatStyle = 'long';
   
-  @property({attribute: 'option-type', reflect: true})
+  @property({attribute: 'option-type'})
   optionType: Intl.ListFormatType = 'conjunction';
 
   get list(): string[] {

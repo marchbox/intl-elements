@@ -52,10 +52,10 @@ export default abstract class AbstractIntlElement extends LitElement {
   @property({reflect: true})
   locales = '';
 
-  @property({reflect: true, attribute: 'locales-from'})
+  @property({attribute: 'locales-from'})
   localesFrom = '';
 
-  @property({attribute: 'option-localematcher', reflect: true})
+  @property({attribute: 'option-localematcher'})
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   protected override createRenderRoot() {

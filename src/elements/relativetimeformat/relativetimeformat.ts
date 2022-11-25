@@ -11,10 +11,10 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.RelativeTimeFormat;
 
-  @property({attribute: 'option-style', reflect: true})
+  @property({attribute: 'option-style'})
   optionStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({attribute:'option-numeric', reflect: true})
+  @property({attribute:'option-numeric'})
   optionNumeric: Intl.RelativeTimeFormatNumeric = 'always';
 
   @property({attribute: 'format-value', reflect: true, type: Number})

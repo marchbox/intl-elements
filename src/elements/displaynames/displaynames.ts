@@ -12,16 +12,16 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'of-code', reflect: true})
   ofCode = '';
 
-  @property({attribute: 'option-type', reflect: true})
+  @property({attribute: 'option-type'})
   optionType: Intl.DisplayNamesType = 'language';
 
-  @property({attribute: 'option-style', reflect: true})
+  @property({attribute: 'option-style'})
   optionStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({attribute: 'option-languagedisplay', reflect: true})
+  @property({attribute: 'option-languagedisplay'})
   optionLanguageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
-  @property({attribute: 'option-fallback', reflect: true})
+  @property({attribute: 'option-fallback'})
   optionFallback: Intl.DisplayNamesFallback = 'code';
 
   get value(): string {
