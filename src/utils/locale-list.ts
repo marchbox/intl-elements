@@ -112,9 +112,7 @@ export default class implements DOMTokenList {
 
   supports(locale: string): boolean {
     const normalizedLocale = normalizeLocale(locale);
-    if (normalizedLocale === null) {
-      return false;
-    }
-    return this.#intlObj.supportedLocalesOf(locale).length > 0;
+    return Boolean(normalizedLocale) &&
+        this.#intlObj.supportedLocalesOf(normalizedLocale).length > 0;
   }
 }

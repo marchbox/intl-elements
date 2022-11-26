@@ -1,14 +1,12 @@
-export function normalizeLocale(locale: string): Intl.BCP47LanguageTag | null {
-  if (typeof locale !== 'string') {
-    return null;
+export function normalizeLocale(locale: string): Intl.BCP47LanguageTag | '' {
+  if (typeof locale === 'string') {
+    locale = locale.trim().replace(/_/g, '-');
+    try {
+      return Intl.getCanonicalLocales(locale)[0]!;
+    } catch {}
   }
 
-  locale = locale.trim().replace(/_/g, '-');
-  try {
-    return Intl.getCanonicalLocales(locale)?.[0] || null;
-  } catch {}
-
-  return null;
+  return '';
 }
 
 export function normalizeLocales(locales: string): Intl.BCP47LanguageTag[] {

@@ -21,10 +21,10 @@ describe('normalizeLocale()', () => {
   });
 
   it('returns null with invalid locale', async () => {
-    expect(normalizeLocale('')).toBeNull();
-    expect(normalizeLocale('veryveryinvalid')).toBeNull();
+    expect(normalizeLocale('')).toBe('');
+    expect(normalizeLocale('veryveryinvalid')).toBe('');
     // @ts-ignore
-    expect(normalizeLocale(419)).toBeNull();
+    expect(normalizeLocale(419)).toBe('');
   });
 });
 
