@@ -175,9 +175,7 @@ export default abstract class AbstractIntlElement extends LitElement {
           this.locales.split(' '), this.intlObj, this.optionLocaleMatcher);
     }
 
-    if (this.#localeList.length > 0) {
-      this.#updateLangAndDirAttrs();
-    }
+    this.#updateLangAndDirAttrs();
   }
 
   #getLocalesByLangAttr(): string[] {
@@ -223,11 +221,6 @@ export default abstract class AbstractIntlElement extends LitElement {
   #observeAttrs() {
     this.#attrObserver = new MutationObserver(entries => {
       const {attributeName} = entries[0]!;
-
-      if (!attributeName) {
-        return;
-      }
-
       let locales: string[] = [];
 
       switch (attributeName) {
