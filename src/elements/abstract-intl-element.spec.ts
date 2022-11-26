@@ -59,6 +59,20 @@ describe('AbstractIntlElement', () => {
     expect(el.localeList).toEqual(['ja']);
   });
 
+  // TODO: Unskip this.
+  it.skip('trims `locales` attribute before parsing', async () => {
+    const page = await createTestPage<TestIntlElement>({
+      element: 'intl-foo',
+      html: `
+        <intl-foo locales="   en      ja  ">
+        </intl-foo>
+      `,
+    });
+    const el = page.element;
+
+    expect(el.localeList).toEqual(['en', 'ja']);
+  });
+
   it('empties the locale list if it contains any invalid locale', async () => {
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',
@@ -375,6 +389,7 @@ describe('AbstractIntlElement', () => {
     expect(el.localeList).toEqual(['ja']);
   });
 
+  // TODO: Unskip this.
   it.skip('observes the `intl-locale` elements associated by `locales-from` ' +
       'and updates the locale list', async () => {
     const page = await createTestPage<TestIntlElement>({
@@ -397,6 +412,7 @@ describe('AbstractIntlElement', () => {
     expect(el.localeList).toEqual(['zh', 'fr']);
   });
 
+  // TODO: Unskip this.
   it.skip('observes ancestors for `lang` attribute and `intl-locale` element changes', async () => {
     const page = await createTestPage<TestIntlElement>({
       element: ['intl-foo', 'intl-locale'],
