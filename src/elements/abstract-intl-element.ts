@@ -1,6 +1,7 @@
 import {LitElement, PropertyValues} from 'lit';
 import {property} from 'lit/decorators.js';
 
+import {IntlObjType} from '../utils/locale-list.js';
 import HTMLIntlLocaleElement from './locale/locale';
 
 type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
@@ -11,15 +12,6 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedPluralRulesOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
-
-type IntlObjType = typeof Intl.Collator |
-    typeof Intl.DateTimeFormat |
-    typeof Intl.DisplayNames |
-    typeof Intl.ListFormat |
-    typeof Intl.NumberFormat |
-    typeof Intl.PluralRules |
-    typeof Intl.RelativeTimeFormat |
-    typeof Intl.Segmenter;
 
 function getSupportedLocales(
   locales: string[],
