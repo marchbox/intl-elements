@@ -6,7 +6,7 @@ import AbstractIntlElement from './abstract-intl-element';
 
 class FakeIntlObj {
   static supportedLocalesOf(list: string[]) {
-    const supportedLocales = ['ar', 'en', 'es', 'ja', 'zh', 'zh-Hant'];
+    const supportedLocales = ['ar', 'en', 'es', 'ja', 'fr', 'zh', 'zh-Hant'];
     if (list.includes('invalid')) {
       throw new RangeError();
     }
@@ -29,7 +29,7 @@ class TestIntlElement extends AbstractIntlElement {
   // @ts-ignore
   intlObj = FakeIntlObj;
 
-  @property({attribute: 'format-unit', reflect: true})
+  @property({attribute: 'format-unit'})
   // @ts-ignore
   formatUnit = 'day';
 
@@ -197,9 +197,8 @@ describe('AbstractIntlElement', () => {
 
   it('should not modify `dir` if `textInfo` is not supported', async () => {
     // @ts-ignore
-    global.Intl.Locale = jest.fn((locale: string) => ({
-      textInfo: undefined,
-    }));
+    const mockTextInfo = jest.spyOn(Intl.Locale.prototype, 'textInfo', 'get');
+    mockTextInfo.mockReturnValue(undefined);
 
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',
@@ -217,7 +216,7 @@ describe('AbstractIntlElement', () => {
     expect(el.hasAttribute('dir')).toBe(false);
 
     // @ts-ignore
-    global.Intl.Locale.mockRestore();
+    mockTextInfo.mockRestore();
   });
 
   it('should not modify `lang` or `dir` if `locales` is invalid', async () => {
@@ -230,23 +229,15 @@ describe('AbstractIntlElement', () => {
     const el = page.element;
 
     expect(el.getAttribute('lang')).toBe('ar');
-    expect(el.hasAttribute('dir')).toBe(false);
+    expect(el.getAttribute('dir')).toBe('rtl');
 
     el.setAttribute('locales', 'invalid');
     await el.updateComplete;
     expect(el.getAttribute('lang')).toBe('ar');
-    expect(el.hasAttribute('dir')).toBe(false);
+    expect(el.getAttribute('dir')).toBe('rtl');
   });
 
   it('rejects invalid atttibute values', async () => {
-    // @ts-ignore
-    global.Intl.supportedValuesOf = jest.fn((key: string) => {
-      switch (key) {
-        case 'unit':
-          return ['day', 'year'];
-      }
-    });
-
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',
       html: `
@@ -260,8 +251,101 @@ describe('AbstractIntlElement', () => {
     el.setAttribute('format-unit', 'invalid');
     await el.updateComplete;
     expect(el.textContent.trim()).toBe('year');
+  });
 
-    // @ts-ignore
-    global.Intl.supportedValuesOf.mockRestore();
+  describe('locale list determination prioritization', () => {
+    it('1. `locales` attribute', async () => {
+      const page = await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <intl-locale tag="zh">
+            <intl-locale id="my-ja" tag="ja"></intl-locale>
+            <intl-locale id="my-fr" tag="fr"></intl-locale>
+            <div lang="es">
+              <intl-foo locales="en" lang="ar" locales-from="my-ja my-fr">
+              </intl-foo>
+            </div>
+          </intl-locale>
+        `,
+      });
+      const el = page.element;
+
+      expect(el.localeList).toEqual(['en']);
+    });
+
+    it('2. `lang` attribute', async () => {
+      const page = await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <intl-locale tag="zh">
+            <intl-locale id="my-ja" tag="ja" display-string></intl-locale>
+            <intl-locale id="my-fr" tag="fr"></intl-locale>
+            <div lang="es">
+              <intl-foo lang="ar" locales-from="my-ja my-fr">
+              </intl-foo>
+            </div>
+          </intl-locale>
+        `,
+      });
+      const el = page.element;
+
+      expect(el.localeList).toEqual(['ar']);
+    });
+
+    it('3. `locales-from` attribute', async () => {
+      const page = await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <intl-locale tag="zh">
+            <intl-locale id="my-ja" tag="ja"></intl-locale>
+            <intl-locale id="my-fr" tag="fr"></intl-locale>
+            <div lang="es">
+              <intl-foo locales-from="my-ja my-fr"></intl-foo>
+            </div>
+          </intl-locale>
+        `,
+      });
+      const el = page.element;
+
+      expect(el.localeList).toEqual(['ja', 'fr']);
+    });
+
+    it('4.1. closest ancestor’s `lang`', async () => {
+      await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <intl-locale tag="zh">
+            <div lang="es">
+              <intl-foo></intl-foo>
+              <intl-foo></intl-foo>
+            </div>
+          </intl-locale>
+        `,
+      });
+      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlElement>;
+
+      expect(els[0]!.localeList).toEqual(['es']);
+      expect(els[1]!.localeList).toEqual(['es']);
+    });
+
+    it('4.2. closest ancestor `intl-locale` element', async () => {
+      await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <div lang="es">
+            <intl-locale tag="zh">
+              <div>
+                <intl-foo></intl-foo>
+                <intl-foo></intl-foo>
+              </div>
+            </intl-locale>
+          </div>
+        `,
+      });
+      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlElement>;
+
+      expect(els[0]!.localeList).toEqual(['zh']);
+      expect(els[1]!.localeList).toEqual(['zh']);
+    });
   });
 });

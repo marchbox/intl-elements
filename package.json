@@ -33,7 +33,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch --no-coverage"
   },
   "devDependencies": {
     "@types/jest": "^29.2.2",

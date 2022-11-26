@@ -159,8 +159,10 @@ export default abstract class AbstractIntlElement extends LitElement {
 
     for (const adoptFunc of adoptFuncs) {
       const locales = adoptFunc.call(this);
-      if (getSupportedLocales(locales, this.intlObj, this.optionLocaleMatcher)
-              .length !== 0) {
+      const supportedLocales =
+          getSupportedLocales(locales, this.intlObj, this.optionLocaleMatcher);
+
+      if (supportedLocales.length !== 0) {
         this.locales = locales.join(' ');
         break;
       }
@@ -193,13 +195,11 @@ export default abstract class AbstractIntlElement extends LitElement {
 
     return this.getAttribute('locales-from')!.split(' ')
         .map(id => {
-          const el = document.getElementById(id) as HTMLIntlLocaleElement;
-          if (el && el.nodeName === 'INTL-LOCALE') {
-            return el.valueAsString;
-          }
-          return null;
+          const el = document
+              .querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement;
+          return el?.valueAsString ?? null;
         })
-        .filter(locale => locale !== null) as string[];
+        .filter(locale => locale !== null);
   }
 
   #getLocalesByAncestor(): string[] {

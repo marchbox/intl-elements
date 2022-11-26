@@ -49,6 +49,7 @@ describe('intl-locale', () => {
     });
 
     expect(page.element.value).toBeNull();
+    expect(page.element.valueAsString).toBe('');
   });
 
   it('produces consistent string value as the Intl APIs', async () => {
