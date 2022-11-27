@@ -192,14 +192,8 @@ export default abstract class AbstractIntlElement extends LitElement {
   }
 
   #observeAttrs() {
-    this.#attrObserver = new MutationObserver(entries => {
-      switch (entries[0]!.attributeName) {
-        case 'lang':
-          this.#localeList.value = this.#getLocalesFromLangAttr();
-          break;
-        case 'locales-from':
-          this.#localeList.value = this.#getLocalesFromLocalesFromAttr();
-      }
+    this.#attrObserver = new MutationObserver(() => {
+      this.#localeList.value = this.#getAdditionalLocales();
     });
     this.#attrObserver.observe(this, {
       attributes: true,
@@ -211,9 +205,20 @@ export default abstract class AbstractIntlElement extends LitElement {
     this.#localesFromElementsObserver = new MutationObserver(() => {
       this.#localeList.value = this.#getAdditionalLocales();
     });
+
+    // Observing parent nodes because the `<intl-locale>` elements can be
+    // removed from the DOM.
+    const parents: ParentNode[] = [];
     for (const el of this.#localesFromElements) {
-      this.#localesFromElementsObserver.observe(el, {
+      if (!el.parentNode || parents.includes(el.parentNode)) {
+        continue;
+      }
+
+      parents.push(el.parentNode);
+      this.#localesFromElementsObserver.observe(el.parentNode, {
         attributes: true,
+        childList: true,
+        subtree: true,
       });
     }
   }
