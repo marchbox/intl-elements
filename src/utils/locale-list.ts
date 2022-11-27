@@ -12,9 +12,9 @@ export type IntlObjType = typeof Intl.Collator |
 export type LocaleListOnChangeCallback = (list: LocaleList) => void;
 
 export default class LocaleList implements DOMTokenList {
-  #list: string[] = [];
+  #list: Intl.BCP47LanguageTag[] = [];
   #intlObj: IntlObjType;
-  #onChangeCallbacks: ((list: DOMTokenList) => void)[] = [];
+  #onChangeCallbacks: LocaleListOnChangeCallback[] = [];
 
   [index: number]: string;
 
@@ -27,7 +27,8 @@ export default class LocaleList implements DOMTokenList {
   }
 
   set value(val: string) {
-    this.#list = val.toString().trim().split(' ');
+    this.#list = val.toString().trim().split(' ')
+        .filter(locale => this.supports(locale));
     this.#triggerOnChange();
   }
 
@@ -36,11 +37,11 @@ export default class LocaleList implements DOMTokenList {
   }
 
   constructor(intlObj: IntlObjType, list: string) {
-    this.value = list;
     this.#intlObj = intlObj;
+    this.value = list;
   }
 
-  onChange(callback: (list: DOMTokenList) => void): void {
+  onChange(callback: LocaleListOnChangeCallback): void {
     this.#onChangeCallbacks.push(callback);
   }
 
@@ -62,7 +63,7 @@ export default class LocaleList implements DOMTokenList {
 
   add(...vals: string[]): void {
     for (const val of vals) {
-      if (!this.contains(val)) {
+      if (!this.contains(val) && this.supports(val)) {
         this.#list.push(val.toString());
         this.#triggerOnChange();
       }
@@ -99,7 +100,7 @@ export default class LocaleList implements DOMTokenList {
 
   replace(oldVal: string, newVal: string): boolean {
     const index = this.#list.indexOf(oldVal.toString());
-    if (index !== -1) {
+    if (index !== -1 && this.supports(newVal)) {
       this.#list.splice(index, 1, newVal.toString());
       this.#triggerOnChange();
       return true;
@@ -120,9 +121,9 @@ export default class LocaleList implements DOMTokenList {
     return this.#list.values();
   }
 
-  forEach(callback: (val: string, key: number, list: DOMTokenList) => void): void {
+  forEach(callback: (val: string, key: number, list: LocaleList) => void): void {
     this.#list.forEach((val, key) =>
-        callback(val, key, this as unknown as DOMTokenList));
+        callback(val, key, this as unknown as LocaleList));
   }
 
   supports(locale: string): boolean {

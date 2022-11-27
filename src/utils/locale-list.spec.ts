@@ -199,4 +199,10 @@ describe('LocaleList', () => {
     expect(iterator.next().value).toBe('en-GB');
     expect(iterator.next().done).toBe(true);
   });
+
+  it('removes invalid locales', async () => {
+    const list = new LocaleList(Intl.DisplayNames, 'en-US en-GB invalid');
+
+    expect(list.value).toBe('en-US en-GB');
+  });
 });
