@@ -1,4 +1,4 @@
-import { normalizeLocale } from "./locales";
+import {normalizeLocale} from "./locales";
 
 export type IntlObjType = typeof Intl.Collator |
     typeof Intl.DateTimeFormat |
@@ -9,9 +9,12 @@ export type IntlObjType = typeof Intl.Collator |
     typeof Intl.RelativeTimeFormat |
     typeof Intl.Segmenter;
 
-export default class implements DOMTokenList {
+export type LocaleListOnChangeCallback = (list: LocaleList) => void;
+
+export default class LocaleList implements DOMTokenList {
   #list: string[] = [];
   #intlObj: IntlObjType;
+  #onChangeCallbacks: ((list: DOMTokenList) => void)[] = [];
 
   [index: number]: string;
 
@@ -25,6 +28,7 @@ export default class implements DOMTokenList {
 
   set value(val: string) {
     this.#list = val.toString().trim().split(' ');
+    this.#triggerOnChange();
   }
 
   get length(): number {
@@ -34,6 +38,14 @@ export default class implements DOMTokenList {
   constructor(intlObj: IntlObjType, list: string) {
     this.value = list;
     this.#intlObj = intlObj;
+  }
+
+  onChange(callback: (list: DOMTokenList) => void): void {
+    this.#onChangeCallbacks.push(callback);
+  }
+
+  #triggerOnChange(): void {
+    this.#onChangeCallbacks.forEach(callback => callback(this));
   }
 
   toString(): string {
@@ -52,6 +64,7 @@ export default class implements DOMTokenList {
     for (const val of vals) {
       if (!this.contains(val)) {
         this.#list.push(val.toString());
+        this.#triggerOnChange();
       }
     }
   }
@@ -61,6 +74,7 @@ export default class implements DOMTokenList {
       const index = this.#list.indexOf(val.toString());
       if (index !== -1) {
         this.#list.splice(index, 1);
+        this.#triggerOnChange();
       }
     }
   }
@@ -87,6 +101,7 @@ export default class implements DOMTokenList {
     const index = this.#list.indexOf(oldVal.toString());
     if (index !== -1) {
       this.#list.splice(index, 1, newVal.toString());
+      this.#triggerOnChange();
       return true;
     } else {
       return false;
