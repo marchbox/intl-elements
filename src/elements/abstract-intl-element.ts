@@ -4,6 +4,8 @@ import {property} from 'lit/decorators.js';
 import {default as LocaleList, IntlObjType} from '../utils/locale-list';
 import HTMLIntlLocaleElement from './locale/locale';
 
+const RELEVANT_ANCESTOR_QUERY = '[lang], intl-locale';
+
 type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedDateTimeFormatOptions |
     Intl.ResolvedDisplayNamesOptions |
@@ -67,7 +69,6 @@ export default abstract class AbstractIntlElement extends LitElement {
     if (this.#localeList.length === 0) {
       this.#localeList.value = this.#getAdditionalLocales();
     }
-    this.#observeForLocaleList();
   }
 
   override disconnectedCallback(): void {
@@ -95,6 +96,10 @@ export default abstract class AbstractIntlElement extends LitElement {
       this.#isUpdatingLocales = true;
       this.#localeList.value = this.locales ?? this.#getAdditionalLocales();
     }
+  }
+
+  protected override firstUpdated() {
+    this.#observeForLocaleList();
   }
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;
@@ -160,14 +165,15 @@ export default abstract class AbstractIntlElement extends LitElement {
           return document
               .querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement;
         })
-        .filter(Boolean);
+        .filter(Boolean)
+        .filter(el => el.valueAsString !== '');
 
     return this.#localesFromElements
         .map(el => el.valueAsString).join(' ');
   }
 
   #getLocalesFromAncestor(): string {
-    const el = this.closest('[lang], intl-locale') as HTMLElement;
+    const el = this.closest(RELEVANT_ANCESTOR_QUERY) as HTMLElement;
     if (!el) {
       return '';
     }
@@ -175,7 +181,7 @@ export default abstract class AbstractIntlElement extends LitElement {
     if (el.tagName === 'INTL-LOCALE') {
       return (el as HTMLIntlLocaleElement).valueAsString;
     } else {
-      return el.getAttribute('lang') || '';
+      return el.getAttribute('lang')!;
     }
   }
 
@@ -213,7 +219,27 @@ export default abstract class AbstractIntlElement extends LitElement {
   }
 
   #observeAncestor() {
-    // TODO: Implement.
+    this.#ancestorObserver = new MutationObserver(async (entries) => {
+      const relevantAncestor = entries.find(entry => {
+        return entry.target !== this &&
+            entry.target === this.closest(RELEVANT_ANCESTOR_QUERY);
+      })?.target as HTMLElement | undefined;
+
+      if (!relevantAncestor) {
+        return;
+      }
+
+      if (relevantAncestor.tagName === 'INTL-LOCALE') {
+        await (relevantAncestor as HTMLIntlLocaleElement).updateComplete;
+      }
+
+      this.#localeList.value = this.#getAdditionalLocales();
+    });
+    this.#ancestorObserver.observe(document.body, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+    });
   }
 
   // Makes sure some Intl option values and method arguments are valid.

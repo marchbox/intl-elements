@@ -330,6 +330,10 @@ describe('AbstractIntlElement', () => {
     });
     const el = page.element;
 
+    expect(el.localesFromElements).toEqual([
+      document.getElementById('my-ja'),
+      document.getElementById('my-fr'),
+    ]);
     expect(el.localeList.value).toBe('ja fr');
   });
 
@@ -356,34 +360,61 @@ describe('AbstractIntlElement', () => {
     expect(el.localeList.value).toBe('zh fr');
   });
 
-  // TODO: Unskip this.
-  it.skip('observes ancestors for `lang` attribute and `intl-locale` element changes', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: ['intl-foo', 'intl-locale'],
-      html: `
-        <intl-locale tag="zh">
-          <div lang="es">
-            <intl-foo></intl-foo>
-          </div>
-        </intl-locale>
-      `,
+  describe('observes ancestors for `lang` attribute and `intl-locale` element changes', () => {
+    let el1: TestIntlElement;
+    let el2: TestIntlElement;
+
+    beforeEach(async () => {
+      await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <intl-locale tag="zh">
+            <div lang="es">
+              <intl-foo id="el1"></intl-foo>
+            </div>
+            <intl-foo id="el2"></intl-foo>
+          </intl-locale>
+        `,
+      });
+      el1 = document.getElementById('el1')! as TestIntlElement;
+      el2 = document.getElementById('el2')! as TestIntlElement;
+
+      expect(el1.localeList.value).toBe('es');
+      expect(el2.localeList.value).toBe('zh');
     });
-    const el = page.element!;
 
-    expect(el.localeList.value).toBe('es');
+    it('observes ancestor’s `lang` attribute changes', async () => {
+      const div = document.querySelector('div')!;
+      div.setAttribute('lang', 'fr');
 
-    const div = document.querySelector('div')!;
-    div.setAttribute('lang', 'fr');
-    await el.updateComplete;
-    expect(el.localeList.value).toBe('fr');
+      await el1.updateComplete;
+      await el2.updateComplete;
 
-    const intlLocale = document.querySelector('intl-locale')!;
-    intlLocale.append(el);
-    await el.updateComplete;
-    expect(el.localeList.value).toEqual('zh');
+      expect(el1.localeList.value).toBe('fr');
+      expect(el2.localeList.value).toBe('zh');
+    });
 
-    intlLocale.setAttribute('tag', 'ja');
-    await el.updateComplete;
-    expect(el.localeList.value).toEqual('ja');
+    it('observes ancestor `intl-locale` element changes', async () => {
+      const intlLocale = document.querySelector('intl-locale')!;
+      intlLocale.setAttribute('tag', 'ja');
+
+      await intlLocale.updateComplete;
+      await el1.updateComplete;
+      await el2.updateComplete;
+
+      expect(el1.localeList.value).toBe('es');
+      expect(el2.localeList.value).toBe('ja');
+    });
+
+    it('observes closest relevant ancestor changes', async () => {
+      const intlLocale = document.querySelector('intl-locale')!;
+      intlLocale.append(el1);
+
+      await el1.updateComplete;
+      await el2.updateComplete;
+
+      expect(el1.localeList.value).toBe('zh');
+      expect(el2.localeList.value).toBe('zh');
+    });
   });
 });
