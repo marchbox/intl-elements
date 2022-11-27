@@ -27,6 +27,11 @@
 - [`intl-locale`] Added the custom element
 - Specifiying locales with the new `locales-from`, an ancestor element with the
   `lang` attribute or an ancestor `intl-locale` element.
+- `localeList` property is now a `LocaleList`, which implements the
+  `DOMTokenList` interface, and can be used similarly to the `classList`
+  property.
+- Locales are now normalized to BCP 47 language tags before being passed to the
+  `Intl` constructors, and invalid locales are now removed.
 
 ### Changed
 

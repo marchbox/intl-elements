@@ -1,6 +1,7 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
+import {IntlObjType} from '../../utils/locale-list';
 
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedRelativeTimeFormatOptions;
@@ -31,6 +32,10 @@ export default class extends AbstractIntlElement {
     return this.#formattedParts;
   }
 
+  protected getIntlObj(): IntlObjType {
+    return Intl.RelativeTimeFormat;
+  }
+
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
     return this.#resolvedOptions;
   }
@@ -38,7 +43,7 @@ export default class extends AbstractIntlElement {
   override render() {
     if (this.formatUnit && this.formatValue) {
       try {
-        const rtf = new Intl.RelativeTimeFormat(this.localeList, {
+        const rtf = new Intl.RelativeTimeFormat(this.localeList.value, {
           numeric: this.optionNumeric,
           style: this.optionStyle,
         });

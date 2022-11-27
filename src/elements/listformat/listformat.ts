@@ -1,6 +1,7 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
+import {IntlObjType} from '../../utils/locale-list';
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
@@ -78,6 +79,10 @@ export default class extends AbstractIntlElement {
     });
   }
 
+  protected getIntlObj(): IntlObjType {
+    return Intl.ListFormat;
+  }
+
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }
@@ -89,7 +94,7 @@ export default class extends AbstractIntlElement {
   override render() {
     if (this.locales) {
       try {
-        const lf = new Intl.ListFormat(this.localeList, {
+        const lf = new Intl.ListFormat(this.localeList.value, {
           type: this.optionType,
           style: this.optionStyle,
           localeMatcher: this.optionLocaleMatcher,

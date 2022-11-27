@@ -1,13 +1,12 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
+import {IntlObjType} from '../../utils/locale-list';
 
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
   #value = '';
-
-  protected intlObj = Intl.DisplayNames;
 
   @property({attribute: 'of-code', reflect: true})
   ofCode = '';
@@ -28,6 +27,10 @@ export default class extends AbstractIntlElement {
     return this.#value;
   }
 
+  protected getIntlObj(): IntlObjType {
+    return Intl.DisplayNames;
+  }
+
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
     return this.#resolvedOptions;
   }
@@ -39,7 +42,7 @@ export default class extends AbstractIntlElement {
           this.ofCode.toUpperCase() : this.ofCode;
 
       try {
-        const dn = new Intl.DisplayNames(this.localeList, {
+        const dn = new Intl.DisplayNames(this.localeList.value, {
           type: this.optionType,
           style: this.optionStyle,
           localeMatcher: this.optionLocaleMatcher,

@@ -6,12 +6,17 @@ import AbstractIntlElement from './abstract-intl-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
 class FakeIntlObj {
-  static supportedLocalesOf(list: string[]) {
+  static supportedLocalesOf(list: string | string[]) {
     const supportedLocales = ['ar', 'en', 'es', 'ja', 'fr', 'zh', 'zh-Hant'];
-    if (list.includes('invalid')) {
+    if (list.includes('veryveryinvalid')) {
       throw new RangeError();
     }
-    return list.filter(locale => supportedLocales.includes(locale));
+    if (Array.isArray(list)) {
+      return list.filter(locale => supportedLocales.includes(locale));
+    } else if (typeof list === 'string') {
+      return supportedLocales.includes(list) ? [list] : [];
+    }
+    return [];
   }
 
   format(unit: string): string {
@@ -27,15 +32,17 @@ class FakeIntlObj {
 }
 
 class TestIntlElement extends AbstractIntlElement {
-  // @ts-ignore
-  intlObj = FakeIntlObj;
-
   @property({attribute: 'format-unit'})
   // @ts-ignore
   formatUnit = 'day';
 
   resolvedOptions(): any {
     return {};
+  }
+
+  // @ts-ignore
+  getIntlObj() {
+    return FakeIntlObj;
   }
 
   override render() {
@@ -46,21 +53,20 @@ class TestIntlElement extends AbstractIntlElement {
 customElements.define('intl-foo', TestIntlElement);
 
 describe('AbstractIntlElement', () => {
-  it('handles multiple locales and ignores unsupported ones', async () => {
+  it('handles multiple locales and ignores unsupported and invalid ones', async () => {
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',
       html: `
-        <intl-foo locales="he ja">
+        <intl-foo locales="he ja veryveryveryinvalid">
         </intl-foo>
       `,
     });
     const el = page.element;
 
-    expect(el.localeList).toEqual(['ja']);
+    expect(el.localeList.value).toEqual('ja');
   });
 
-  // TODO: Unskip this.
-  it.skip('trims `locales` attribute before parsing', async () => {
+  it('trims `locales` attribute before parsing', async () => {
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',
       html: `
@@ -70,73 +76,7 @@ describe('AbstractIntlElement', () => {
     });
     const el = page.element;
 
-    expect(el.localeList).toEqual(['en', 'ja']);
-  });
-
-  it('empties the locale list if it contains any invalid locale', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: 'intl-foo',
-      html: `
-        <intl-foo locales="invalid ja">
-        </intl-foo>
-      `,
-    });
-    const el = page.element;
-
-    expect(el.localeList).toEqual([]);
-  });
-
-  it('has `localeList` property as read only.', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: 'intl-foo',
-      html: `
-        <intl-foo locales="en"></intl-foo>
-      `,
-    });
-    const el = page.element;
-
-    expect(el.localeList).toEqual(['en']);
-
-    // @ts-ignore
-    expect(() => {
-      el.localeList = ['en', 'ja'];
-    }).toThrow();
-    expect(el.localeList).toEqual(['en']);
-  });
-
-  it('takes `lang` value if `locales` is missing', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: 'intl-foo',
-      html: `
-        <intl-foo lang="ja"></intl-foo>
-      `,
-    });
-    const el = page.element;
-
-    expect(el.getAttribute('locales')).toBe('ja');
-    expect(el.locales).toBe('ja');
-  });
-
-  it('adopts `lang` value if `locales` is removed', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: 'intl-foo',
-      html: `
-        <intl-foo locales="ja"></intl-foo>
-      `,
-    });
-    const el = page.element;
-
-    el.removeAttribute('locales');
-    el.setAttribute('lang', 'zh');
-    await el.updateComplete;
-    expect(el.getAttribute('locales')).toBe('zh');
-    expect(el.locales).toBe('zh');
-
-    el.removeAttribute('locales');
-    el.lang = 'es';
-    await el.updateComplete;
-    expect(el.getAttribute('locales')).toBe('es');
-    expect(el.locales).toBe('es');
+    expect(el.localeList.value).toEqual('en ja');
   });
 
   it('adopts `locales` value to `lang` and `dir`', async () => {
@@ -151,7 +91,7 @@ describe('AbstractIntlElement', () => {
     expect(el.getAttribute('lang')).toBe('he');
     expect(el.getAttribute('dir')).toBe('rtl');
 
-    el.setAttribute('locales', 'zh');
+    el.locales = 'zh';
     await el.updateComplete;
     expect(el.getAttribute('lang')).toBe('zh');
     expect(el.hasAttribute('dir')).toBe(false);
@@ -222,7 +162,7 @@ describe('AbstractIntlElement', () => {
     expect(el.getAttribute('lang')).toBe('ar');
     expect(el.getAttribute('dir')).toBe('rtl');
 
-    el.setAttribute('locales', 'invalid');
+    el.setAttribute('locales', 'veryveryinvalid');
     await el.updateComplete;
     expect(el.getAttribute('lang')).toBe('ar');
     expect(el.getAttribute('dir')).toBe('rtl');
@@ -261,7 +201,7 @@ describe('AbstractIntlElement', () => {
       });
       const el = page.element;
 
-      expect(el.localeList).toEqual(['en']);
+      expect(el.localeList.value).toEqual('en');
     });
 
     it('2. `lang` attribute', async () => {
@@ -280,7 +220,7 @@ describe('AbstractIntlElement', () => {
       });
       const el = page.element;
 
-      expect(el.localeList).toEqual(['ar']);
+      expect(el.localeList.value).toEqual('ar');
     });
 
     it('3. `locales-from` attribute', async () => {
@@ -298,7 +238,7 @@ describe('AbstractIntlElement', () => {
       });
       const el = page.element;
 
-      expect(el.localeList).toEqual(['ja', 'fr']);
+      expect(el.localeList.value).toEqual('ja fr');
     });
 
     it('4.1. closest ancestor’s `lang`', async () => {
@@ -315,8 +255,8 @@ describe('AbstractIntlElement', () => {
       });
       const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlElement>;
 
-      expect(els[0]!.localeList).toEqual(['es']);
-      expect(els[1]!.localeList).toEqual(['es']);
+      expect(els[0]!.localeList.value).toEqual('es');
+      expect(els[1]!.localeList.value).toEqual('es');
     });
 
     it('4.2. closest ancestor `intl-locale` element', async () => {
@@ -335,9 +275,59 @@ describe('AbstractIntlElement', () => {
       });
       const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlElement>;
 
-      expect(els[0]!.localeList).toEqual(['zh']);
-      expect(els[1]!.localeList).toEqual(['zh']);
+      expect(els[0]!.localeList.value).toEqual('zh');
+      expect(els[1]!.localeList.value).toEqual('zh');
     });
+  });
+
+  it('observes `locales` attribute changes', async () => {
+    const page = await createTestPage<TestIntlElement>({
+      element: 'intl-foo',
+      html: `
+        <intl-foo locales="en"></intl-foo>
+      `,
+    });
+    const el = page.element!;
+
+    expect(el.localeList.value).toEqual('en');
+
+    el.setAttribute('locales', 'en ja');
+    await el.updateComplete;
+    expect(el.localeList.value).toEqual('en ja');
+  });
+
+  describe('observes `locales` attribute removal and fallback', () => {
+    it.todo('1. `lang` attribute');
+    it.todo('2. `locales-from` attribute');
+    it.todo('3.1. closest ancestor’s `lang`');
+    it.todo('3.2. closest ancestor `intl-locale` element');
+  });
+
+  it.todo('observes `lang` attribute changes');
+
+  describe('observes `lang` attribute removal and fallback', () => {
+    it.todo('1. `locales-from` attribute');
+    it.todo('2.1. closest ancestor’s `lang`');
+    it.todo('2.2. closest ancestor `intl-locale` element');
+  });
+
+  // TODO: Unskip this.
+  it.skip('observes the `locales-from` attribute and updates the locale list', async () => {
+    const page = await createTestPage<TestIntlElement>({
+      element: ['intl-foo', 'intl-locale'],
+      html: `
+        <intl-locale id="my-ja" tag="ja"></intl-locale>
+        <intl-locale id="my-fr" tag="fr"></intl-locale>
+        <intl-foo locales-from="my-ja my-fr"></intl-foo>
+      `,
+    });
+    const el = page.element!;
+
+    expect(el.localeList.value).toEqual('ja fr');
+
+    el.setAttribute('locales-from', 'my-ja');
+    await el.updateComplete;
+    expect(el.localeList.value).toEqual('ja');
   });
 
   it('uses locales from `intl-locale` elements associated by `locales-from`', async () => {
@@ -352,41 +342,7 @@ describe('AbstractIntlElement', () => {
     });
     const el = page.element;
 
-    expect(el.localeList).toEqual(['ja', 'fr']);
-  });
-
-  it('observes `locales` attribute changes', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: 'intl-foo',
-      html: `
-        <intl-foo locales="en"></intl-foo>
-      `,
-    });
-    const el = page.element!;
-
-    expect(el.localeList).toEqual(['en']);
-
-    el.setAttribute('locales', 'en ja');
-    await el.updateComplete;
-    expect(el.localeList).toEqual(['en', 'ja']);
-  });
-
-  it('observes the `locales-from` attribute and updates the locale list', async () => {
-    const page = await createTestPage<TestIntlElement>({
-      element: ['intl-foo', 'intl-locale'],
-      html: `
-        <intl-locale id="my-ja" tag="ja"></intl-locale>
-        <intl-locale id="my-fr" tag="fr"></intl-locale>
-        <intl-foo locales-from="my-ja my-fr"></intl-foo>
-      `,
-    });
-    const el = page.element!;
-
-    expect(el.localeList).toEqual(['ja', 'fr']);
-
-    el.setAttribute('locales-from', 'my-ja');
-    await el.updateComplete;
-    expect(el.localeList).toEqual(['ja']);
+    expect(el.localeList.value).toEqual('ja fr');
   });
 
   // TODO: Unskip this.
@@ -402,14 +358,14 @@ describe('AbstractIntlElement', () => {
     });
     const el = page.element!;
 
-    expect(el.localeList).toEqual(['ja', 'fr']);
+    expect(el.localeList.value).toEqual('ja fr');
 
     const myJaEl = document.getElementById('my-ja')! as HTMLIntlLocaleElement;
     myJaEl.tag = 'zh';
     await myJaEl.updateComplete;
 
     expect(myJaEl.valueAsString).toBe('zh');
-    expect(el.localeList).toEqual(['zh', 'fr']);
+    expect(el.localeList.value).toEqual('zh fr');
   });
 
   // TODO: Unskip this.
@@ -426,20 +382,20 @@ describe('AbstractIntlElement', () => {
     });
     const el = page.element!;
 
-    expect(el.localeList).toEqual(['es']);
+    expect(el.localeList.value).toEqual('es');
 
     const div = document.querySelector('div')!;
     div.setAttribute('lang', 'fr');
     await el.updateComplete;
-    expect(el.localeList).toEqual(['fr']);
+    expect(el.localeList.value).toEqual('fr');
 
     const intlLocale = document.querySelector('intl-locale')!;
     intlLocale.append(el);
     await el.updateComplete;
-    expect(el.localeList).toEqual(['zh']);
+    expect(el.localeList.value).toEqual('zh');
 
     intlLocale.setAttribute('tag', 'ja');
     await el.updateComplete;
-    expect(el.localeList).toEqual(['ja']);
+    expect(el.localeList.value).toEqual('ja');
   });
 });
