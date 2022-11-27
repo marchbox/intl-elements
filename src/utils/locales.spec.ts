@@ -4,6 +4,7 @@ import {
   normalizeLocale,
   normalizeLocales,
   normalizeLocaleList,
+  isLocaleRtl,
 } from './locales';
 
 describe('normalizeLocale()', () => {
@@ -52,5 +53,24 @@ describe('normalizeLocaleList()', () => {
       'zh-Hant',
       '    ',
     ])).toEqual(['en', 'zh-Hant']);
+  });
+});
+
+describe('isLocaleRtl()', () => {
+  it('detects RTL locales', async () => {
+    expect(isLocaleRtl('ar')).toBe(true);
+    expect(isLocaleRtl('ar-EG')).toBe(true);
+  });
+
+  it('detects LTR locales', async () => {
+    expect(isLocaleRtl('en')).toBe(false);
+    expect(isLocaleRtl('en-US')).toBe(false);
+  });
+
+  it('returns false for invalid locales', async () => {
+    expect(isLocaleRtl('')).toBe(false);
+    expect(isLocaleRtl('veryveryveryinvalid')).toBe(false);
+    // @ts-ignore
+    expect(isLocaleRtl(123123)).toBe(false);
   });
 });

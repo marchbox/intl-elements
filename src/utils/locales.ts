@@ -30,3 +30,11 @@ export function normalizeLocaleList(list: string[]): Intl.BCP47LanguageTag[] {
       .map(normalizeLocale)
       .filter(Boolean) as Intl.BCP47LanguageTag[];
 }
+
+export function isLocaleRtl(locale: Intl.BCP47LanguageTag): boolean {
+  try {
+    return new Intl.Locale(locale).textInfo.direction === 'rtl';
+  } catch {}
+
+  return false;
+}
