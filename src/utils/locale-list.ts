@@ -18,9 +18,7 @@ export default class LocaleList implements DOMTokenList {
 
   [index: number]: string;
 
-  [Symbol.iterator](): IterableIterator<string> {
-    return this.#list[Symbol.iterator]();
-  }
+  [Symbol.toStringTag]: string = 'LocaleList';
 
   get value(): string {
     return this.#list.join(' ');
@@ -41,12 +39,8 @@ export default class LocaleList implements DOMTokenList {
     this.value = list;
   }
 
-  onChange(callback: LocaleListOnChangeCallback): void {
-    this.#onChangeCallbacks.push(callback);
-  }
-
-  #triggerOnChange(): void {
-    this.#onChangeCallbacks.forEach(callback => callback(this));
+  [Symbol.iterator](): IterableIterator<string> {
+    return this.#list[Symbol.iterator]();
   }
 
   toString(): string {
@@ -130,5 +124,13 @@ export default class LocaleList implements DOMTokenList {
     const normalizedLocale = normalizeLocale(locale);
     return Boolean(normalizedLocale) &&
         this.#intlObj.supportedLocalesOf(normalizedLocale).length > 0;
+  }
+
+  onChange(callback: LocaleListOnChangeCallback): void {
+    this.#onChangeCallbacks.push(callback);
+  }
+
+  #triggerOnChange(): void {
+    this.#onChangeCallbacks.forEach(callback => callback(this));
   }
 }

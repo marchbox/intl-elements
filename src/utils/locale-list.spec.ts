@@ -228,6 +228,15 @@ describe('LocaleList', () => {
     expect(iterator.next().done).toBe(true);
   });
 
+  it.skip('returns correct member with given index via bracket notion', async () => {
+    // @ts-ignore
+    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+
+    expect(list[0]).toBe('en-US');
+    expect(list[1]).toBe('en-GB');
+    expect(list[2]).toBe(undefined);
+  });
+
   it('removes invalid locales', async () => {
     // @ts-ignore
     const list = new LocaleList(FakeIntlObj, 'en-US en-GB invalid');
