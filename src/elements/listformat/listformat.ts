@@ -92,18 +92,16 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    if (this.locales) {
-      try {
-        const lf = new Intl.ListFormat(this.localeList.value, {
-          type: this.optionType,
-          style: this.optionStyle,
-          localeMatcher: this.optionLocaleMatcher,
-        });
-        this.#resolvedOptions = lf.resolvedOptions();
-        this.#formattedParts = lf.formatToParts(this.list);
-        this.#value = lf.format(this.list) as string;
-      } catch {}
-    }
+    try {
+      const lf = new Intl.ListFormat(this.localeList.value, {
+        type: this.optionType,
+        style: this.optionStyle,
+        localeMatcher: this.optionLocaleMatcher,
+      });
+      this.#resolvedOptions = lf.resolvedOptions();
+      this.#formattedParts = lf.formatToParts(this.list);
+      this.#value = lf.format(this.list) as string;
+    } catch {}
 
     return this.#value;
   }

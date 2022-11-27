@@ -36,7 +36,7 @@ export default class extends AbstractIntlElement {
   }
 
   protected override render() {
-    if (this.locales && this.ofCode) {
+    if (this.ofCode) {
       // Chrome doesn’t recoganize lowercase region subtags.
       const of = this.optionType === 'region' ?
           this.ofCode.toUpperCase() : this.ofCode;
