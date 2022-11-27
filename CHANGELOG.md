@@ -12,6 +12,8 @@
     arguments of a method, e.g. `format-unit` / `formatUnit`, `of-code` /
     `ofCode`, etc.
   * `locales`: This attribute remains unchanged
+- All `option-*` attributes are not reflected from their corresponding
+  properties anymore.
 
 ### Added
 
@@ -23,10 +25,23 @@
   as its trimmed text content
 - [`intl-relativetimeformat`] Added the custom element
 - [`intl-locale`] Added the custom element
+- Specifiying locales with the new `locales-from`, an ancestor element with the
+  `lang` attribute or an ancestor `intl-locale` element
 
 ### Changed
 
 - [`intl-listformat`] Ignores `intl-listitem` elements with empty text content
+- `localeList` property is now a `LocaleList`, which implements the
+  `DOMTokenList` interface, and can be used similarly to the `classList`
+  property
+- Locales are now normalized to BCP 47 language tags before being passed to the
+  `Intl` constructors, and invalid locales are now removed
+- `localeList` changes will only result in `locales` changes if `locales`
+  has been defined by the user
+
+### Removed
+
+- `lang` and `dir` no longer reflect the first locale in `localeList`
 
 ## [0.0.1-alpha.7] - 2022-11-19
 

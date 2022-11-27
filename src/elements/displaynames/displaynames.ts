@@ -1,31 +1,34 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
+import {IntlObjType} from '../../utils/locale-list';
 
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
   #value = '';
 
-  protected intlObj = Intl.DisplayNames;
-
   @property({attribute: 'of-code', reflect: true})
   ofCode = '';
 
-  @property({attribute: 'option-type', reflect: true})
+  @property({attribute: 'option-type'})
   optionType: Intl.DisplayNamesType = 'language';
 
-  @property({attribute: 'option-style', reflect: true})
+  @property({attribute: 'option-style'})
   optionStyle: Intl.RelativeTimeFormatStyle = 'long';
 
-  @property({attribute: 'option-languagedisplay', reflect: true})
+  @property({attribute: 'option-languagedisplay'})
   optionLanguageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
 
-  @property({attribute: 'option-fallback', reflect: true})
+  @property({attribute: 'option-fallback'})
   optionFallback: Intl.DisplayNamesFallback = 'code';
 
   get value(): string {
     return this.#value;
+  }
+
+  protected getIntlObj(): IntlObjType {
+    return Intl.DisplayNames;
   }
 
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
@@ -33,13 +36,13 @@ export default class extends AbstractIntlElement {
   }
 
   protected override render() {
-    if (this.locales && this.ofCode) {
+    if (this.ofCode) {
       // Chrome doesn’t recoganize lowercase region subtags.
       const of = this.optionType === 'region' ?
           this.ofCode.toUpperCase() : this.ofCode;
 
       try {
-        const dn = new Intl.DisplayNames(this.localeList, {
+        const dn = new Intl.DisplayNames(this.localeList.value, {
           type: this.optionType,
           style: this.optionStyle,
           localeMatcher: this.optionLocaleMatcher,

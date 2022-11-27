@@ -25,14 +25,14 @@ export default class extends LitElement {
   @property({attribute: 'display-minimized', reflect: true, type: Boolean})
   displayMinimized = false;
 
-  @property({attribute: 'option-basename', reflect: true})
+  @property({attribute: 'option-basename'})
   optionBaseName?: string;
 
   get baseName(): string | undefined {
     return this.#getLocale()?.baseName ?? undefined;
   }
 
-  @property({attribute: 'option-calendar', reflect: true})
+  @property({attribute: 'option-calendar'})
   optionCalendar?: string;
 
   get calendar(): string | undefined {
@@ -43,21 +43,21 @@ export default class extends LitElement {
     return this.#getLocale()?.calendars ?? undefined;
   }
 
-  @property({attribute: 'option-casefirst', reflect: true})
+  @property({attribute: 'option-casefirst'})
   optionCaseFirst?: Intl.LocaleCollationCaseFirst;
 
   get caseFirst(): Intl.LocaleCollationCaseFirst | undefined {
     return this.#getLocale()?.caseFirst ?? undefined;
   }
 
-  @property({attribute: 'option-collation', reflect: true})
+  @property({attribute: 'option-collation'})
   optionCollation?: string;
 
   get collation(): string | undefined {
     return this.#getLocale()?.collation ?? undefined;
   }
 
-  @property({attribute: 'option-hourcycle', reflect: true})
+  @property({attribute: 'option-hourcycle'})
   optionHourCycle?: Intl.LocaleHourCycleKey;
 
   get hourCycle(): Intl.LocaleHourCycleKey | undefined {
@@ -68,14 +68,14 @@ export default class extends LitElement {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
 
-  @property({attribute: 'option-language', reflect: true})
+  @property({attribute: 'option-language'})
   optionLanguage?: string;
 
   get language(): string | undefined {
     return this.#getLocale()?.language ?? undefined;
   }
 
-  @property({attribute: 'option-numberingsystem', reflect: true})
+  @property({attribute: 'option-numberingsystem'})
   optionNumberingSystem?: string;
 
   get numberingSystem(): string | undefined {
@@ -86,21 +86,21 @@ export default class extends LitElement {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
 
-  @property({attribute: 'option-numeric', reflect: true, type: Boolean})
+  @property({attribute: 'option-numeric', type: Boolean})
   optionNumeric?: boolean;
 
   get numeric(): boolean | undefined {
     return this.#getLocale()?.numeric ?? undefined;
   }
 
-  @property({attribute: 'option-region', reflect: true})
+  @property({attribute: 'option-region'})
   optionRegion?: string;
 
   get region(): string | undefined {
     return this.#getLocale()?.region ?? undefined;
   }
 
-  @property({attribute: 'option-script', reflect: true})
+  @property({attribute: 'option-script'})
   optionScript?: string;
 
   get script(): string | undefined {

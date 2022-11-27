@@ -16,6 +16,10 @@ declare namespace Intl {
   type SupportedValuesReturnType = string[];
   function supportedValuesOf(key: SupportedValueKey): SupportedValuesReturnType;
 
+  // TODO: Remove when TypeScript supports this:
+  // See: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/getCanonicalLocales
+  function getCanonicalLocales(locales: string | string[]): string[];
+
   // TODO: Remove when TypeScript adds the support.
   type LocaleTextInfoDirection = 'lrt' | 'rtl';
   // See: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/textInfo

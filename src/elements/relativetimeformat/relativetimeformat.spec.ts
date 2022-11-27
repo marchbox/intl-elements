@@ -5,25 +5,6 @@ import {createTestPage} from '../../testing';
 import HTMLIntlRelativeTimeFormatElement from './relativetimeformat';
 
 describe('intl-relativetimeformat', () => {
-  it('rejects invalid atttibute values', async () => {
-    const page = await createTestPage<HTMLIntlRelativeTimeFormatElement>({
-      element: 'intl-relativetimeformat',
-      html: `
-        <intl-relativetimeformat locales="en"
-            format-unit="year" format-value="10">
-        </intl-relativetimeformat>
-      `,
-    });
-    const el = page.element!;
-    const intlResult = new Intl.RelativeTimeFormat('en').format(10, 'year');
-
-    expect(el.textContent.trim()).toBe(intlResult);
-
-    el.setAttribute('format-unit', 'invalid');
-    await el.updateComplete;
-    expect(el.textContent.trim()).toBe(intlResult);
-  });
-
   it('has `value` property the same as its text content', async () => {
     const page = await createTestPage<HTMLIntlRelativeTimeFormatElement>({
       element: 'intl-relativetimeformat',

@@ -1,6 +1,7 @@
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
+import {IntlObjType} from '../../utils/locale-list';
 export default class extends AbstractIntlElement {
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
@@ -16,15 +17,15 @@ export default class extends AbstractIntlElement {
 
   protected intlObj = Intl.ListFormat;
 
-  @property({attribute: 'option-style', reflect: true})
+  @property({attribute: 'option-style'})
   optionStyle: Intl.ListFormatStyle = 'long';
   
-  @property({attribute: 'option-type', reflect: true})
+  @property({attribute: 'option-type'})
   optionType: Intl.ListFormatType = 'conjunction';
 
   get list(): string[] {
     return this.#listItems
-        .map(el => (el.textContent?.trim() || ''))
+        .map(el => (el.textContent!.trim() || ''))
         .filter(el => el !== '');
   }
 
@@ -58,7 +59,7 @@ export default class extends AbstractIntlElement {
     this.#listObserver = new MutationObserver(entries => {
       const hasUpdate = entries.some(entry => {
         if (entry.type === 'characterData') {
-          return entry.target.parentElement?.tagName === 'INTL-LISTITEM';
+          return entry.target.parentElement!.tagName === 'INTL-LISTITEM';
         }
         return true;
       });
@@ -78,6 +79,10 @@ export default class extends AbstractIntlElement {
     });
   }
 
+  protected getIntlObj(): IntlObjType {
+    return Intl.ListFormat;
+  }
+
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }
@@ -87,18 +92,16 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    if (this.locales) {
-      try {
-        const lf = new Intl.ListFormat(this.localeList, {
-          type: this.optionType,
-          style: this.optionStyle,
-          localeMatcher: this.optionLocaleMatcher,
-        });
-        this.#resolvedOptions = lf.resolvedOptions();
-        this.#formattedParts = lf.formatToParts(this.list);
-        this.#value = lf.format(this.list) as string;
-      } catch {}
-    }
+    try {
+      const lf = new Intl.ListFormat(this.localeList.value, {
+        type: this.optionType,
+        style: this.optionStyle,
+        localeMatcher: this.optionLocaleMatcher,
+      });
+      this.#resolvedOptions = lf.resolvedOptions();
+      this.#formattedParts = lf.formatToParts(this.list);
+      this.#value = lf.format(this.list) as string;
+    } catch {}
 
     return this.#value;
   }

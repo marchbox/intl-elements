@@ -48,7 +48,37 @@ describe('intl-locale', () => {
       `,
     });
 
-    expect(page.element.value).toBeNull();
+    const el = page.element;
+
+    expect(el.value).toBeNull();
+    expect(el.valueAsString).toBe('');
+
+    expect(el.baseName).toBeUndefined();
+    expect(el.optionBaseName).toBeUndefined();
+    expect(el.language).toBeUndefined();
+    expect(el.optionLanguage).toBeUndefined();
+    expect(el.script).toBeUndefined();
+    expect(el.optionScript).toBeUndefined();
+    expect(el.region).toBeUndefined();
+    expect(el.optionRegion).toBeUndefined();
+    expect(el.numeric).toBeUndefined();
+    expect(el.optionNumeric).toBeUndefined();
+    expect(el.hourCycle).toBeUndefined();
+    expect(el.optionHourCycle).toBeUndefined();
+    expect(el.hourCycles).toBeUndefined();
+    expect(el.calendar).toBeUndefined();
+    expect(el.optionCalendar).toBeUndefined();
+    expect(el.calendars).toBeUndefined();
+    expect(el.caseFirst).toBeUndefined();
+    expect(el.optionCaseFirst).toBeUndefined();
+    expect(el.collation).toBeUndefined();
+    expect(el.optionCollation).toBeUndefined();
+    expect(el.numberingSystem).toBeUndefined();
+    expect(el.optionNumberingSystem).toBeUndefined();
+    expect(el.numberingSystems).toBeUndefined();
+    expect(el.textInfo).toBeUndefined();
+    expect(el.timeZones).toBeUndefined();
+    expect(el.weekInfo).toBeUndefined();
   });
 
   it('produces consistent string value as the Intl APIs', async () => {
@@ -114,6 +144,18 @@ describe('intl-locale', () => {
     expect(page.element.textContent.trim()).toBe(intlResult);
   });
 
+  it('prints out empty string if locale is invalid', async () => {
+    const page = await createTestPage({
+      element: 'intl-locale',
+      html: `
+        <intl-locale tag="veryveryinvalid" display-string>
+        </intl-locale>
+      `,
+    });
+
+    expect(page.element.textContent.trim()).toBe('');
+  });
+
   it('prints out correct maximized string value', async () => {
     const page = await createTestPage({
       element: 'intl-locale',
@@ -130,6 +172,18 @@ describe('intl-locale', () => {
       hourCycle: 'h24',
     }).maximize().toString();
     expect(page.element.textContent.trim()).toBe(intlResult);
+  });
+
+  it('prints out empty maximized string if locale is invalid', async () => {
+    const page = await createTestPage({
+      element: 'intl-locale',
+      html: `
+        <intl-locale tag="veryveryinvalid" display-maximized>
+        </intl-locale>
+      `,
+    });
+
+    expect(page.element.textContent.trim()).toBe('');
   });
 
   it('prints out correct minimized string value', async () => {
@@ -150,6 +204,18 @@ describe('intl-locale', () => {
     expect(page.element.textContent.trim()).toBe(intlResult);
   });
 
+  it('prints out empty minimized string if locale is invalid', async () => {
+    const page = await createTestPage({
+      element: 'intl-locale',
+      html: `
+        <intl-locale tag="veryveryinvalid" display-minimized>
+        </intl-locale>
+      `,
+    });
+
+    expect(page.element.textContent.trim()).toBe('');
+  });
+
   it('has both option properties and exposed built-in properties', async () => {
     const page = await createTestPage({
       element: 'intl-locale',
@@ -164,6 +230,19 @@ describe('intl-locale', () => {
 
     const el = page.element;
 
+    const intlResult = new Intl.Locale('en', {
+      baseName: 'zh',
+      language: 'en',
+      script: 'latn',
+      region: 'us',
+      numeric: true,
+      hourCycle: 'h24',
+      calendar: 'gregory',
+      caseFirst: 'upper',
+      collation: 'phonebk',
+      numberingSystem: 'arab',
+    });
+
     expect(el.baseName).toBe('en-Latn-US');
     expect(el.optionBaseName).toBe('zh');
     expect(el.language).toBe(el.optionLanguage);
@@ -171,12 +250,26 @@ describe('intl-locale', () => {
     expect(el.optionScript).toBe('latn');
     expect(el.region).toBe('US');
     expect(el.optionRegion).toBe('us');
-    expect(el.numeric).toBe(el.optionNumeric);
-    expect(el.hourCycle).toBe(el.optionHourCycle);
-    expect(el.calendar).toBe(el.optionCalendar);
-    expect(el.caseFirst).toBe(el.optionCaseFirst);
-    expect(el.collation).toBe(el.optionCollation);
-    expect(el.numberingSystem).toBe(el.optionNumberingSystem);
+    expect(el.numeric).toBe(true);
+    expect(el.optionNumeric).toBe(true);
+    expect(el.hourCycle).toBe('h24');
+    expect(el.optionHourCycle).toBe('h24');
+    expect(el.hourCycles).toEqual(['h24']);
+    expect(el.calendar).toBe('gregory');
+    expect(el.optionCalendar).toBe('gregory');
+    expect(el.calendars).toEqual(['gregory']);
+    expect(el.caseFirst).toBe('upper');
+    expect(el.optionCaseFirst).toBe('upper');
+    expect(el.collation).toBe('phonebk');
+    expect(el.optionCollation).toBe('phonebk');
+    expect(el.numberingSystem).toBe('arab');
+    expect(el.optionNumberingSystem).toBe('arab');
+    expect(el.numberingSystems).toEqual(['arab']);
+    expect(el.textInfo).toEqual({direction: 'ltr'});
+    // @ts-ignore
+    expect(el.timeZones).toEqual(intlResult.timeZones);
+    // @ts-ignore
+    expect(el.weekInfo).toEqual(intlResult.weekInfo);
   });
 
   it('produces correct `calendars` property', async  () => {
