@@ -2,7 +2,6 @@ import {LitElement, PropertyValues} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlObjType} from '../utils/locale-list';
-import {isLocaleRtl} from '../utils/locales';
 import HTMLIntlLocaleElement from './locale/locale';
 
 type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
@@ -15,15 +14,16 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedSegmenterOptions;
 
 export default abstract class AbstractIntlElement extends LitElement {
-  #previousLocaleList?: LocaleList;
-
   #attrObserver!: MutationObserver;
+  #localesFromElementsObserver!: MutationObserver;
   #ancestorObserver!: MutationObserver;
 
-  #isUpdatingLangAttr = false;
-  #isUpdatingLocalesAttr = false;
-
+  #previousLocaleList?: LocaleList;
   #localeList!: LocaleList;
+
+  #isUpdatingLocales = false;
+
+  #localesFromElements: HTMLIntlLocaleElement[] = [];
 
   @property({attribute: false})
   get localeList(): LocaleList {
@@ -31,17 +31,14 @@ export default abstract class AbstractIntlElement extends LitElement {
   }
 
   @property({reflect: true})
-  get locales(): string | null {
-    return this.getAttribute('locales');
-  }
-
-  set locales(value: string | null) {
-    this.#isUpdatingLocalesAttr = true;
-    this.localeList.value = value ?? '';
-  }
+  locales?: string;
 
   @property({attribute: 'locales-from'})
   localesFrom = '';
+
+  get localesFromElements(): HTMLIntlLocaleElement[] {
+    return this.#localesFromElements;
+  }
 
   @property({attribute: 'option-localematcher'})
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
@@ -49,7 +46,8 @@ export default abstract class AbstractIntlElement extends LitElement {
   constructor() {
     super();
 
-    this.#setUpLocaleList();
+    this.#localeList = new LocaleList(this.getIntlObj(), '');
+    this.#localeList.onChange(this.#handleLocaleListChange.bind(this));
   }
 
   protected override createRenderRoot() {
@@ -66,8 +64,8 @@ export default abstract class AbstractIntlElement extends LitElement {
 
     this.#localeList.value = this.getAttribute('locales') ?? '';
 
-    if (this.localeList.length === 0) {
-      this.localeList.value = this.#getInitialLocales();
+    if (this.#localeList.length === 0) {
+      this.#localeList.value = this.#getAdditionalLocales();
     }
     this.#observeForLocaleList();
   }
@@ -79,6 +77,10 @@ export default abstract class AbstractIntlElement extends LitElement {
       this.#attrObserver.disconnect();
     }
 
+    if (this.#localesFromElementsObserver) {
+      this.#localesFromElementsObserver.disconnect();
+    }
+
     if (this.#ancestorObserver) {
       this.#ancestorObserver.disconnect();
     }
@@ -88,41 +90,28 @@ export default abstract class AbstractIntlElement extends LitElement {
     return this.#isValid(changes);
   }
 
+  protected override willUpdate(changes: PropertyValues<this>) {
+    if (changes.has('locales')) {
+      this.#isUpdatingLocales = true;
+      this.#localeList.value = this.locales ?? this.#getAdditionalLocales();
+    }
+  }
+
   abstract resolvedOptions(): ResolvedOptionsReturnType;
 
   protected abstract getIntlObj(): IntlObjType;
 
-  #setUpLocaleList() {
-    this.#localeList = new LocaleList(this.getIntlObj(), '');
-    this.#localeList.onChange(() => {
-      // Updates `locales` attribute.
-      if (!this.#isUpdatingLocalesAttr) {
-        this.locales = this.localeList.value;
-      } else {
-        this.#isUpdatingLocalesAttr = false;
+  #handleLocaleListChange() {
+    if (!this.#isUpdatingLocales) {
+      if (this.hasAttribute('locales')) {
+        this.locales = this.#localeList.value;
       }
-
-      // Updates `lang` and `dir` attributes.
-      const primaryLang = this.localeList.item(0);
-      if (!this.#isUpdatingLangAttr) {
-        if (primaryLang && primaryLang !== this.lang) {
-          this.setAttribute('lang', primaryLang);
-
-          if (isLocaleRtl(primaryLang)) {
-            this.setAttribute('dir', 'rtl');
-          } else {
-            this.removeAttribute('dir');
-          }
-        }
-      } else {
-        this.#isUpdatingLangAttr = false;
-      }
-
-      this.requestUpdate('localeList', this.#previousLocaleList);
-
-      this.#previousLocaleList =
-          new LocaleList(this.getIntlObj(), this.localeList.value);
-    });
+    } else {
+      this.#isUpdatingLocales = false;
+    }
+    this.requestUpdate('localeList', this.#previousLocaleList);
+    this.#previousLocaleList =
+        new LocaleList(this.getIntlObj(), this.#localeList.value);
   }
 
   // An intl element uses multiple signals to determine the locales. The
@@ -138,7 +127,7 @@ export default abstract class AbstractIntlElement extends LitElement {
   //    using the `locales-from` attribute which allows you to associate
   //    multiple locales, only the closest `lang` attribute or `<intl-locale>`
   //    element is used, so you can only associate ONE locale in this way.
-  #getInitialLocales(): string {
+  #getAdditionalLocales(): string {
     let locales = '';
 
     const funcs = [
@@ -166,12 +155,15 @@ export default abstract class AbstractIntlElement extends LitElement {
       return '';
     }
 
-    const ids = this.localesFrom.split(' ');
-    return ids.map(id => {
-      const el =
-          document.querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement;
-      return el?.valueAsString ?? '';;
-    }).filter(Boolean).join(' ');
+    this.#localesFromElements = this.localesFrom.split(' ')
+        .map(id => {
+          return document
+              .querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement;
+        })
+        .filter(Boolean);
+
+    return this.#localesFromElements
+        .map(el => el.valueAsString).join(' ');
   }
 
   #getLocalesFromAncestor(): string {
@@ -189,11 +181,35 @@ export default abstract class AbstractIntlElement extends LitElement {
 
   #observeForLocaleList() {
     this.#observeAttrs();
+    this.#observeLocalesFromElements();
     this.#observeAncestor();
   }
 
   #observeAttrs() {
-    // TODO: Implement.
+    this.#attrObserver = new MutationObserver(entries => {
+      switch (entries[0]!.attributeName) {
+        case 'lang':
+          this.#localeList.value = this.#getLocalesFromLangAttr();
+          break;
+        case 'locales-from':
+          this.#localeList.value = this.#getLocalesFromLocalesFromAttr();
+      }
+    });
+    this.#attrObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ['lang', 'locales-from'],
+    });
+  }
+
+  #observeLocalesFromElements() {
+    this.#localesFromElementsObserver = new MutationObserver(() => {
+      this.#localeList.value = this.#getAdditionalLocales();
+    });
+    for (const el of this.#localesFromElements) {
+      this.#localesFromElementsObserver.observe(el, {
+        attributes: true,
+      });
+    }
   }
 
   #observeAncestor() {
