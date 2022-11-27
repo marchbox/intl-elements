@@ -64,11 +64,7 @@ export default abstract class AbstractIntlElement extends LitElement {
       this.setAttribute('role', 'none');
     }
 
-    this.#localeList.value = this.getAttribute('locales') ?? '';
-
-    if (this.#localeList.length === 0) {
-      this.#localeList.value = this.#getAdditionalLocales();
-    }
+    this.#localeList.value = this.#getAdditionalLocales();
   }
 
   override disconnectedCallback(): void {
@@ -136,19 +132,24 @@ export default abstract class AbstractIntlElement extends LitElement {
     let locales = '';
 
     const funcs = [
+      this.#getLocalesFromLocalesAttr,
       this.#getLocalesFromLangAttr,
       this.#getLocalesFromLocalesFromAttr,
       this.#getLocalesFromAncestor,
     ];
 
     for (const func of funcs) {
-      locales = func.call(this);
+      locales = new LocaleList(this.getIntlObj(), func.call(this)).value;
       if (locales) {
         break;
       }
     }
 
     return locales;
+  }
+
+  #getLocalesFromLocalesAttr(): string {
+    return this.locales ?? '';
   }
 
   #getLocalesFromLangAttr(): string {

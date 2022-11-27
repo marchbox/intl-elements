@@ -139,6 +139,24 @@ describe('AbstractIntlElement', () => {
       expect(el.localeList.value).toBe('en');
     });
 
+    it('keeps locale list based on `locales` attribute when ancestor changed', async () => {
+      const page = await createTestPage<TestIntlElement>({
+        element: ['intl-foo', 'intl-locale'],
+        html: `
+          <div lang="es">
+            <intl-foo locales="en">
+            </intl-foo>
+          </div>
+        `,
+      });
+      const el = page.element;
+      const divEl = document.querySelector('div[lang="es"]')!;
+
+      divEl.setAttribute('lang', 'zh');
+      await el.updateComplete;
+      expect(el.localeList.value).toBe('en');
+    });
+
     test('2. `lang` attribute', async () => {
       const page = await createTestPage<TestIntlElement>({
         element: ['intl-foo', 'intl-locale'],
