@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.0.1-alpha.8] - 2022-11-27
+
 ### BREAKING CHANGES
 
 - Renamed all attributes and properties to one of the following format:
@@ -33,7 +35,8 @@
 - [`intl-listformat`] Ignores `intl-listitem` elements with empty text content
 - `localeList` property is now a `LocaleList`, which implements the
   `DOMTokenList` interface, and can be used similarly to the `classList`
-  property
+  property, but accessing members with the bracket notation, e.g.
+  `localeList[0]`, `localeList[1]`, etc., is not supported
 - Locales are now normalized to BCP 47 language tags before being passed to the
   `Intl` constructors, and invalid locales are now removed
 - `localeList` changes will only result in `locales` changes if `locales`
