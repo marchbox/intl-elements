@@ -51,4 +51,7 @@ declare namespace Intl {
 
   // TODO: Remove when this is supported in TypeScript.
   type ListFormatPart = {type: 'element' | 'literal', value: string};
+
+  // TODO: Remove when this is supported in TypeScript.
+  type SegmenterGranularity = 'grapheme' | 'word' | 'sentence' | undefined;
 }
