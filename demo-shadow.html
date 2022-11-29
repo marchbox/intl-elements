@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8">
+  <title>intl-elements demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .seg {
+      white-space: nowrap;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "@lit": "./node_modules/@lit/index.js",
+        "@lit/reactive-element": "./node_modules/@lit/reactive-element/reactive-element.js",
+        "@lit/reactive-element/": "./node_modules/@lit/reactive-element/",
+        "lit": "./node_modules/lit/index.js",
+        "lit/": "./node_modules/lit/",
+        "lit-element/": "./node_modules/lit-element/",
+        "lit-html": "./node_modules/lit-html/lit-html.js",
+        "lit-html/": "./node_modules/lit-html/"
+      }
+    }
+  </script>
+
+  <h1>intl-elements demo</h1>
+
+  <h2><code>intl-locale</code></h2>
+  <p><intl-locale tag="zh-CN"></intl-locale></p>
+  <p>
+    <intl-locale tag="ko" option-script="kore" option-region="kr" option-hourcycle="h24">
+      <intl-locale-string />
+      <intl-locale-maximize />
+      <intl-locale-minimize />
+    </intl-locale>
+  </p>
+
+  <h2><code>intl-displaynames</code></h2>
+  <p>
+    <intl-displaynames locales="ko" option-type="language">
+      <intl-displaynames-of><data value="zh">Chinese</data></intl-displaynames-of>
+    </intl-displaynames>
+    <intl-displaynames locales="ko" option-type="dateTimeField">
+      <intl-displaynames-of><data value="minute">Minute</data></intl-displaynames-of>
+    </intl-displaynames>
+  </p>
+
+  <h2><code>intl-listformat</code></h2>
+  <p>
+    <intl-listformat locales="en">
+      <intl-listformat-format>
+        <data value="corgi">Corgi</data>
+        <data value="pomerania">Pomeranian</data>
+        <data value="pug">Pug</data>
+        <data value="shar-pei">Shar-pei</data>
+        <data value="pitbull">Pitbull</data>
+      </intl-listformat-format>
+    </intl-listformat>
+  </p>
+
+  <h2><code>intl-relativetimeformat</code></h2>
+  <p>
+    <intl-relativetimeformat locales="ar">
+      <intl-relativetimeformat-format>
+        <data slot="value">10</data>
+        <data slot="unit">minute</data>
+      </intl-relativetimeformat-format>
+      <intl-relativetimeformat-format>
+        <data value="10">10</data> <data value="minute">Min.</data>
+      </intl-relativetimeformat-format>
+    </intl-relativetimeformat>
+  </p>
+
+  <h2><code>intl-segmenter</code></h2>
+  <p>
+    <intl-segmenter locales="ja" option-granularity="word">
+      <intl-segmenter-segment>
+        こんにちは世界
+        <template slot="word-like"><span class="word"><ins></ins></span></template>
+        <template slot="non-word-like"><span><ins></ins></span></template>
+      </intl-segmenter-segment>
+    </intl-segmenter>
+  </p>
+  <p>
+    <intl-segmenter locales="hi" option-granularity="word">
+      <intl-segmenter-segment>
+        हैलो वर्ल्ड!
+        <template><span class="word"><ins></ins></span></template>
+        <template slot="non-word-like"><span><ins></ins></span></template>
+      </intl-segmenter-segment>
+    </intl-segmenter>
+  </p>
+
+  <h2><code>intl-datetimeformat</code></h2>
+
+  <inlt-datetimeformat locales="he">
+    <p>
+      <intl-datetimeformat-format>
+        <time datetime="1965-07-12">July 12, 1965</time>
+      </intl-datetimeformat-format>
+    </p>
+    <p>
+      <intl-datetimeformat-formatrange>
+        <time datetime="1965-07-12">July 12, 1965</time> ~
+        <time datetime="2022-11-28">November 28, 2022</time>
+      </intl-datetimeformat-formatrange>
+    </p>
+    <p>
+      <intl-datetimeformat-formatrange>
+        <time slot="start" datetime="1965-07-12">July 12, 1965</time> to
+        <time slot="end" datetime="2022-11-28">November 28, 2022</time>
+      </intl-datetimeformat-formatrange>
+    </p>
+  </inlt-datetimeformat>
+
+  <h2><code>intl-pluralrules</code></h2>
+
+  <intl-pluralrules locales="en">
+    <p>
+      <intl-pluralrules-select>
+        <data value="1">1 dog</data>
+        <template slot="zero"><ins></ins> dogs</template>
+        <template slot="one"><ins></ins> dog</template>
+        <template slot="two"><ins></ins> dogs</template>
+        <template slot="few"><ins></ins> dogs</template>
+        <template slot="many"><ins></ins> dogs</template>
+      </intl-pluralrules-select>
+    </p>
+  </intl-pluralrules>
+
+  <script type="module">
+    import {defineIntlElements} from './dist/index.js';
+    defineIntlElements();
+  </script>
+</html>
