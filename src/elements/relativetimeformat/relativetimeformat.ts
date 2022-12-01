@@ -6,7 +6,7 @@ import AbstractIntlElement from '../abstract-intl-element';
 export default class extends AbstractIntlElement {
   protected static override displayElementNames = new Set([
     'intl-relativetimeformat-format',
-    'intl-relativetimeformat-formatrange',
+    'intl-relativetimeformat-formattoparts',
   ]);
 
   protected static override intlApi = Intl.RelativeTimeFormat;
