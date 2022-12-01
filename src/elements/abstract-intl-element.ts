@@ -81,17 +81,9 @@ export default abstract class AbstractIntlElement extends LitElement {
   override disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    if (this.#attrObserver) {
-      this.#attrObserver.disconnect();
-    }
-
-    if (this.#localesFromElementsObserver) {
-      this.#localesFromElementsObserver.disconnect();
-    }
-
-    if (this.#ancestorObserver) {
-      this.#ancestorObserver.disconnect();
-    }
+    this.#attrObserver?.disconnect();
+    this.#localesFromElementsObserver?.disconnect();
+    this.#ancestorObserver?.disconnect();
   }
 
   protected override shouldUpdate(changes: PropertyValues<this>): boolean {

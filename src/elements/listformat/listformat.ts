@@ -48,9 +48,7 @@ export default class extends AbstractIntlElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    if (this.#listObserver) {
-      this.#listObserver.disconnect();
-    }
+    this.#listObserver?.disconnect();
   }
 
   #hideListItems() {
