@@ -1,15 +1,22 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
-import {IntlObjType} from '../../utils/locale-list';
 
 export default class extends AbstractIntlElement {
+  protected static override displayElementNames = new Set([
+    'intl-displaynames-of',
+  ]);
+
+  protected static override intlApi = Intl.DisplayNames;
+
   #resolvedOptions!: Intl.ResolvedDisplayNamesOptions;
 
-  #value = '';
+  #intlObject!: Intl.DisplayNames;
 
-  @property({attribute: 'of-code', reflect: true})
-  ofCode = '';
+  get intlObject(): Intl.DisplayNames {
+    return this.#intlObject;
+  }
 
   @property({attribute: 'option-type'})
   optionType: Intl.DisplayNamesType = 'language';
@@ -23,37 +30,22 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'option-fallback'})
   optionFallback: Intl.DisplayNamesFallback = 'code';
 
-  get value(): string {
-    return this.#value;
-  }
-
-  protected getIntlObj(): IntlObjType {
-    return Intl.DisplayNames;
-  }
-
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
     return this.#resolvedOptions;
   }
 
   protected override render() {
-    if (this.ofCode) {
-      // Chrome doesn’t recoganize lowercase region subtags.
-      const of = this.optionType === 'region' ?
-          this.ofCode.toUpperCase() : this.ofCode;
+    try {
+      this.#intlObject = new Intl.DisplayNames(this.localeList.value, {
+        type: this.optionType,
+        style: this.optionStyle,
+        localeMatcher: this.optionLocaleMatcher,
+        languageDisplay: this.optionLanguageDisplay,
+        fallback: this.optionFallback,
+      });
+      this.#resolvedOptions = this.#intlObject.resolvedOptions();
+    } catch {}
 
-      try {
-        const dn = new Intl.DisplayNames(this.localeList.value, {
-          type: this.optionType,
-          style: this.optionStyle,
-          localeMatcher: this.optionLocaleMatcher,
-          languageDisplay: this.optionLanguageDisplay,
-          fallback: this.optionFallback,
-        });
-        this.#resolvedOptions = dn.resolvedOptions();
-        this.#value = dn.of(of) as string;
-      } catch {}
-    }
-
-    return this.#value;
+    return nothing;
   }
 }

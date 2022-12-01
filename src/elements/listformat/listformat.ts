@@ -1,21 +1,30 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
-import {IntlObjType} from '../../utils/locale-list';
+
 export default class extends AbstractIntlElement {
+  protected static override displayElementNames = new Set([
+    'intl-listformat-format',
+  ]);
+
+  protected static override intlApi = Intl.ListFormat;
+
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
   #formattedParts: Intl.ListFormatPart[] = [];
 
   #listObserver!: MutationObserver;
 
-  #value = '';
+  #intlObject!: Intl.ListFormat;
 
   get #listItems(): HTMLElement[] {
     return Array.from(this.querySelectorAll('intl-listitem'));
   }
 
-  protected intlObj = Intl.ListFormat;
+  get intlObject(): Intl.ListFormat {
+    return this.#intlObject;
+  }
 
   @property({attribute: 'option-style'})
   optionStyle: Intl.ListFormatStyle = 'long';
@@ -27,10 +36,6 @@ export default class extends AbstractIntlElement {
     return this.#listItems
         .map(el => (el.textContent!.trim() || ''))
         .filter(el => el !== '');
-  }
-
-  get value(): string {
-    return this.#value;
   }
 
   override connectedCallback() {
@@ -79,10 +84,6 @@ export default class extends AbstractIntlElement {
     });
   }
 
-  protected getIntlObj(): IntlObjType {
-    return Intl.ListFormat;
-  }
-
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }
@@ -93,16 +94,15 @@ export default class extends AbstractIntlElement {
 
   override render() {
     try {
-      const lf = new Intl.ListFormat(this.localeList.value, {
+      this.#intlObject = new Intl.ListFormat(this.localeList.value, {
         type: this.optionType,
         style: this.optionStyle,
         localeMatcher: this.optionLocaleMatcher,
       });
-      this.#resolvedOptions = lf.resolvedOptions();
-      this.#formattedParts = lf.formatToParts(this.list);
-      this.#value = lf.format(this.list) as string;
+      this.#resolvedOptions = this.#intlObject.resolvedOptions();
+      this.#formattedParts = this.#intlObject.formatToParts(this.list);
     } catch {}
 
-    return this.#value;
+    return nothing;
   }
 }

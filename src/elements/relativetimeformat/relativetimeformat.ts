@@ -1,16 +1,25 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractIntlElement from '../abstract-intl-element';
-import {IntlObjType} from '../../utils/locale-list';
 
 export default class extends AbstractIntlElement {
+  protected static override displayElementNames = new Set([
+    'intl-relativetimeformat-format',
+    'intl-relativetimeformat-formatrange',
+  ]);
+
+  protected static override intlApi = Intl.RelativeTimeFormat;
+
   #resolvedOptions!: Intl.ResolvedRelativeTimeFormatOptions;
 
   #formattedParts: Intl.RelativeTimeFormatPart[] = [];
 
-  #value = '';
+  #intlObject!: Intl.RelativeTimeFormat;
 
-  protected intlObj = Intl.RelativeTimeFormat;
+  get intlObject(): Intl.RelativeTimeFormat {
+    return this.#intlObject;
+  }
 
   @property({attribute: 'option-style'})
   optionStyle: Intl.RelativeTimeFormatStyle = 'long';
@@ -18,22 +27,8 @@ export default class extends AbstractIntlElement {
   @property({attribute:'option-numeric'})
   optionNumeric: Intl.RelativeTimeFormatNumeric = 'always';
 
-  @property({attribute: 'format-value', reflect: true, type: Number})
-  formatValue!: number;
-
-  @property({attribute: 'format-unit', reflect: true})
-  formatUnit!: Intl.RelativeTimeFormatUnit;
-
-  get value(): string {
-    return this.#value;
-  }
-
   get formattedParts(): Intl.RelativeTimeFormatPart[] {
     return this.#formattedParts;
-  }
-
-  protected getIntlObj(): IntlObjType {
-    return Intl.RelativeTimeFormat;
   }
 
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
@@ -41,19 +36,14 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    if (this.formatUnit && this.formatValue) {
-      try {
-        const rtf = new Intl.RelativeTimeFormat(this.localeList.value, {
-          numeric: this.optionNumeric,
-          style: this.optionStyle,
-        });
-        this.#resolvedOptions = rtf.resolvedOptions();
-        this.#formattedParts =
-            rtf.formatToParts(this.formatValue, this.formatUnit);
-        this.#value = rtf.format(this.formatValue, this.formatUnit);
-      } catch {}
-    }
+    try {
+      this.#intlObject = new Intl.RelativeTimeFormat(this.localeList.value, {
+        numeric: this.optionNumeric,
+        style: this.optionStyle,
+      });
+      this.#resolvedOptions = this.#intlObject.resolvedOptions();
+    } catch {}
 
-    return this.#value;
+    return nothing;
   }
 }

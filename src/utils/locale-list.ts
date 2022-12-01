@@ -1,6 +1,6 @@
 import {normalizeLocale} from "./locales";
 
-export type IntlObjType = typeof Intl.Collator |
+export type IntlApiType = typeof Intl.Collator |
     typeof Intl.DateTimeFormat |
     typeof Intl.DisplayNames |
     typeof Intl.ListFormat |
@@ -13,7 +13,7 @@ export type LocaleListOnChangeCallback = (list: LocaleList) => void;
 
 export default class LocaleList implements DOMTokenList {
   #list: Intl.BCP47LanguageTag[] = [];
-  #intlObj: IntlObjType;
+  #intlApi: IntlApiType;
   #onChangeCallbacks: LocaleListOnChangeCallback[] = [];
 
   [index: number]: string;
@@ -34,8 +34,8 @@ export default class LocaleList implements DOMTokenList {
     return this.#list.length;
   }
 
-  constructor(intlObj: IntlObjType, list: string) {
-    this.#intlObj = intlObj;
+  constructor(intlApi: IntlApiType, list: string) {
+    this.#intlApi = intlApi;
     this.value = list;
   }
 
@@ -123,7 +123,7 @@ export default class LocaleList implements DOMTokenList {
   supports(locale: string): boolean {
     const normalizedLocale = normalizeLocale(locale);
     return Boolean(normalizedLocale) &&
-        this.#intlObj.supportedLocalesOf(normalizedLocale).length > 0;
+        this.#intlApi.supportedLocalesOf(normalizedLocale).length > 0;
   }
 
   onChange(callback: LocaleListOnChangeCallback): void {
