@@ -2,7 +2,7 @@ import {LitElement, css} from "lit";
 
 const CHILDREN_QUERY_SELECTOR = 'data[value],template';
 
-export default abstract class AbstractIntlDisplayElement<P> extends LitElement {
+export default abstract class AbstractIntlConsumerElement<P> extends LitElement {
   static override styles = css`
     :host([hidden]),
     ::slotted(data) {

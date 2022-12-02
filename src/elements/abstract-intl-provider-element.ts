@@ -36,7 +36,7 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
 
   #localesFromElements: HTMLIntlLocaleElement[] = [];
 
-  protected static displayElementNames: Set<string>;
+  protected static consumerElementNames: Set<string>;
 
   protected static intlApi: IntlApiType;
 
@@ -103,9 +103,9 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
 
   override updated() {
     // @ts-ignore
-    const names = this.constructor.displayElementNames;
+    const names = this.constructor.consumerElementNames;
     if (!names) {
-      throw new Error('Missing static property `displayElementNames`.');
+      throw new Error('Missing static property `consumerElementNames`.');
     }
 
     const query = Array.from(names.values()).join(',');

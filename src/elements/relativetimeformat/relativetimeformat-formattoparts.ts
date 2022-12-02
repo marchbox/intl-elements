@@ -1,8 +1,8 @@
 import {html} from 'lit';
 
-import HTMLIntlRelativeTimeFormatDisplayElement from './abstract-intl-relativetimeformat-display-element';
+import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-intl-relativetimeformat-consumer-element';
 
-export default class extends HTMLIntlRelativeTimeFormatDisplayElement {
+export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
   #value: Intl.RelativeTimeFormatPart[] = [];
 
   get value(): Intl.RelativeTimeFormatPart[] {

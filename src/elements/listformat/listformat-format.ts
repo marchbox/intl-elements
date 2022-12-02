@@ -1,8 +1,8 @@
 import {html} from 'lit';
 
-import AbstractIntlListFormatDisplayElement from './abstract-intl-listformat-display-element';
+import AbstractIntlListFormatConsumerElement from './abstract-intl-listformat-consumer-element';
 
-export default class extends AbstractIntlListFormatDisplayElement {
+export default class extends AbstractIntlListFormatConsumerElement {
   #value: string = '';
 
   get value(): string {

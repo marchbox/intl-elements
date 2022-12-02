@@ -1,7 +1,7 @@
-import AbstractIntlDisplayElement from '../abstract-intl-display-element';
+import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
 import HTMLIntlListFormatElement from './listformat';
 
-export default abstract class extends AbstractIntlDisplayElement<HTMLIntlListFormatElement> {
+export default abstract class extends AbstractIntlConsumerElement<HTMLIntlListFormatElement> {
   protected static override providerElementName = 'intl-listformat';
 
   protected get list(): string[] {

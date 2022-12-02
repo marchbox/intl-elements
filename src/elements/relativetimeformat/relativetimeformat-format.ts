@@ -1,8 +1,8 @@
 import {html} from 'lit';
 
-import AbstractIntlRelativeTimeFormatDisplayElement from './abstract-intl-relativetimeformat-display-element';
+import AbstractIntlRelativeTimeFormatConsumerElement from './abstract-intl-relativetimeformat-consumer-element';
 
-export default class extends AbstractIntlRelativeTimeFormatDisplayElement {
+export default class extends AbstractIntlRelativeTimeFormatConsumerElement {
   #value: string = '';
 
   get value(): string {

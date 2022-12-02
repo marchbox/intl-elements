@@ -4,7 +4,7 @@ import {property} from 'lit/decorators.js';
 import AbstractIntlProviderElement from '../abstract-intl-provider-element';
 
 export default class extends AbstractIntlProviderElement {
-  protected static override displayElementNames = new Set([
+  protected static override consumerElementNames = new Set([
     'intl-relativetimeformat-format',
     'intl-relativetimeformat-formattoparts',
   ]);

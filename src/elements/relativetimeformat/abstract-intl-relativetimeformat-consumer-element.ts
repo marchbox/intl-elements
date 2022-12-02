@@ -1,7 +1,7 @@
-import AbstractIntlDisplayElement from '../abstract-intl-display-element';
+import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
 import HTMLIntlRelativeTimeFormatElement from './relativetimeformat';
 
-export default abstract class extends AbstractIntlDisplayElement<HTMLIntlRelativeTimeFormatElement> {
+export default abstract class extends AbstractIntlConsumerElement<HTMLIntlRelativeTimeFormatElement> {
   protected static override providerElementName = 'intl-relativetimeformat';
 
   protected get rtime(): number {

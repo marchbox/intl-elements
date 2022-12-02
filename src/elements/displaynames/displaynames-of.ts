@@ -1,9 +1,9 @@
 import {html} from 'lit';
 
-import AbstractIntlDisplayElement from '../abstract-intl-display-element';
+import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
 import HTMLIntlDisplayNamesElement from './displaynames';
 
-export default class extends AbstractIntlDisplayElement<HTMLIntlDisplayNamesElement> {
+export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesElement> {
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {
