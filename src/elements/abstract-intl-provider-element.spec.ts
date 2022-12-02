@@ -1,4 +1,4 @@
-import {describe, it, expect} from '@jest/globals';
+import {expect, describe, it, jest} from '@jest/globals';
 
 import {
   TestIntlProviderElement,

@@ -5,7 +5,7 @@ import AbstractIntlListFormatConsumerElement from './abstract-intl-listformat-co
 export default class extends AbstractIntlListFormatConsumerElement {
   #value: Intl.ListFormatPart[] = [];
 
-  get value(): Intl.ListFormatPart[] {
+  override get value(): Intl.ListFormatPart[] {
     return this.#value;
   }
 

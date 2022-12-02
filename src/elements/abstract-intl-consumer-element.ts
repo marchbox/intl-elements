@@ -2,7 +2,7 @@ import {LitElement, css} from "lit";
 
 const CHILDREN_QUERY_SELECTOR = 'data[value],template';
 
-export default abstract class AbstractIntlConsumerElement<P> extends LitElement {
+export default abstract class AbstractIntlConsumerElement<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
     ::slotted(data) {
@@ -24,6 +24,8 @@ export default abstract class AbstractIntlConsumerElement<P> extends LitElement 
     // @ts-ignore
     return this.closest(this.constructor.providerElementName) ?? undefined;
   }
+
+  abstract get value(): V;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -85,8 +87,10 @@ export default abstract class AbstractIntlConsumerElement<P> extends LitElement 
         .map(el => el.value);
   }
 
+  /*
   protected getTemplate(key?: string): HTMLTemplateElement | null {
     const query = `template${key ? `[slot="${key}"]` : ''}`;
     return this.querySelector(query) as HTMLTemplateElement | null;
   }
+  */
 }

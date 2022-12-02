@@ -1,7 +1,9 @@
 import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
 import HTMLIntlRelativeTimeFormatElement from './relativetimeformat';
 
-export default abstract class extends AbstractIntlConsumerElement<HTMLIntlRelativeTimeFormatElement> {
+type ValueType = string | Intl.RelativeTimeFormatPart[];
+
+export default abstract class extends AbstractIntlConsumerElement<HTMLIntlRelativeTimeFormatElement, ValueType> {
   protected static override providerElementName = 'intl-relativetimeformat';
 
   protected get rtime(): number {
@@ -11,7 +13,4 @@ export default abstract class extends AbstractIntlConsumerElement<HTMLIntlRelati
   protected get unit(): string {
     return this.getData('unit')[0] ?? this.getData()[1] ?? '';
   }
-
-  abstract value: string | Intl.RelativeTimeFormatPart[];
 }
-

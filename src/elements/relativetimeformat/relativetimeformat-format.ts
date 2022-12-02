@@ -5,7 +5,7 @@ import AbstractIntlRelativeTimeFormatConsumerElement from './abstract-intl-relat
 export default class extends AbstractIntlRelativeTimeFormatConsumerElement {
   #value: string = '';
 
-  get value(): string {
+  override get value(): string {
     return this.#value;
   }
 

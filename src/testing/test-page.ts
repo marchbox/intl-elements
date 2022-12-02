@@ -16,13 +16,13 @@ interface TestPage {
 export async function createTestPage<T extends LitElement>(
   option: CreateTestPageOption
 ): Promise<TestPage> {
-  const page: TestPage = {
-    body: document.body as HTMLBodyElement,
-  };
-
-  document.body.innerHTML = option.html;
-
   try {
+    const page: TestPage = {
+      body: document.body as HTMLBodyElement,
+    };
+
+    document.body.innerHTML = option.html;
+
     if (typeof option.element === 'string') {
       await customElements.whenDefined(option.element);
       page.element = document.querySelector(option.element) as T;
@@ -31,9 +31,9 @@ export async function createTestPage<T extends LitElement>(
           option.element.map(el => customElements.whenDefined(el)));
       page.element = document.querySelector(option.element[0] as string) as T;
     }
+
+    return page;
   } catch (e) {
     throw e;
   }
-
-  return page;
 }

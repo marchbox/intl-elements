@@ -5,7 +5,7 @@ import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-intl-relativet
 export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
   #value: Intl.RelativeTimeFormatPart[] = [];
 
-  get value(): Intl.RelativeTimeFormatPart[] {
+  override get value(): Intl.RelativeTimeFormatPart[] {
     return this.#value;
   }
 

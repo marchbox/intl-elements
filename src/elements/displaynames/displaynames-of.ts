@@ -3,7 +3,7 @@ import {html} from 'lit';
 import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
 import HTMLIntlDisplayNamesElement from './displaynames';
 
-export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesElement> {
+export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesElement, string> {
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {
@@ -12,7 +12,7 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesEle
 
   #value: string = '';
 
-  get value() {
+  override get value() {
     return this.#value;
   }
 

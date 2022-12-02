@@ -5,7 +5,7 @@ import AbstractIntlListFormatConsumerElement from './abstract-intl-listformat-co
 export default class extends AbstractIntlListFormatConsumerElement {
   #value: string = '';
 
-  get value(): string {
+  override get value(): string {
     return this.#value;
   }
 
