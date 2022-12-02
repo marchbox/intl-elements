@@ -1,11 +1,12 @@
 import {describe, it, expect} from '@jest/globals';
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {createTestPage} from '../testing';
 import AbstractIntlProviderElement from './abstract-intl-provider-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
-class FakeIntlObj {
+class FakeIntlApi {
   static supportedLocalesOf(list: string | string[]) {
     const supportedLocales = ['ar', 'en', 'es', 'ja', 'fr', 'zh', 'zh-Hant'];
     if (list.includes('veryveryinvalid')) {
@@ -32,7 +33,17 @@ class FakeIntlObj {
 }
 
 class TestIntlElement extends AbstractIntlProviderElement {
-  override intlObject = FakeIntlObj;
+  // @ts-ignore
+  protected static override intlApi = FakeIntlApi;
+
+  protected static override consumerElementNames = new Set(['bar']);
+
+  #intlObject!: FakeIntlApi;
+
+  // @ts-ignore
+  get intlObject(): FakeIntlApi {
+    return this.#intlObject;
+  }
 
   @property({attribute: 'format-unit'})
   // @ts-ignore
@@ -43,7 +54,9 @@ class TestIntlElement extends AbstractIntlProviderElement {
   }
 
   override render() {
-    return new FakeIntlObj().format(this.formatUnit);
+    this.#intlObject = new FakeIntlApi();
+
+    return nothing;
   }
 }
 
@@ -109,11 +122,11 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = page.element!;
 
-    expect(el.textContent.trim()).toBe('year');
-
+    const spy = jest.spyOn(el, 'update');
     el.setAttribute('format-unit', 'invalid');
     await el.updateComplete;
-    expect(el.textContent.trim()).toBe('year');
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
   });
 
   describe('locale list determination prioritization', () => {
