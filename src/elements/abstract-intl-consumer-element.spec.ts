@@ -44,13 +44,13 @@ describe('AbstractIntlConsumerElement', () => {
     class BadConsumerElement extends AbstractIntlConsumerElement<TestIntlProviderElement, string> {
       value = '';
     }
-    customElements.define('bad-consumer-element', BadConsumerElement);
+    customElements.define('bad-consumer', BadConsumerElement);
 
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['bad-consumer-element', 'intl-foo'],
+    const page = await createTestPage<BadConsumerElement>({
+      element: ['bad-consumer', 'intl-foo'],
       html: `
         <intl-foo locale="en">
-          <bad-consumer-element></bad-consumer-element>
+          <bad-consumer></bad-consumer>
         </intl-foo>
       `,
     });
@@ -85,16 +85,151 @@ describe('AbstractIntlConsumerElement', () => {
     expect(el.getAttribute('role')).toBe('none');
   });
 
-  it.todo('throws if it contains elements other than <data value> and/or <template>');
-  it.todo('throws if non-<data value> and/or <template> elements are slotted');
-  it.todo('throws if it contains direct text content without setting `allowTextContent` to be `true`');
-  it.todo('throws if direct text content is added');
+  it('returns correct value with the `value` read-only property', async () => {
+    const page1 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar><data value="day"></data></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el1 = page1.element;
+    expect(el1.value).toBe('day');
 
-  it.todo('gets the correct data from `<data value>` elements');
-  it.todo('updates when elements are added to the default slot');
-  it.todo('updates when elements are added to a named slot');
-  it.todo('updates when elements are removed from the default slot');
-  it.todo('updates when elements are removed from a named slot');
+    const page2 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar><data value="year"></data></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el2 = page2.element;
+    expect(el2.value).toBe('year');
+
+    const page3 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar><data value="month"></data></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el3 = page3.element;
+    expect(el3.value).toBe('');
+  });
+
+  it('gets the correct data from default slots', async () => {
+    const page1 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar><data value="day"></data></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el1 = page1.element;
+
+    expect(el1.getData()).toEqual(['day']);
+
+    const page2 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data value="year"></data>
+            <data value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el2 = page2.element;
+
+    expect(el2.getData()).toEqual(['day', 'year', 'month']);
+  });
+
+  it('gets the correct data from named slots', async () => {
+    const page1 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data slot="foo" value="day"></data>
+            <data slot="bar" value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el1 = page1.element;
+
+    expect(el1.getData('foo')).toEqual(['day']);
+    expect(el1.getData('bar')).toEqual(['month']);
+
+    const page2 = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data slot="foo" value="day"></data>
+            <data slot="foo" value="year"></data>
+            <data slot="foo" value="month"></data>
+            <data slot="bar" value="hour"></data>
+            <data slot="bar" value="minute"></data>
+            <data slot="bar" value="second"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el2 = page2.element;
+
+    expect(el2.getData('foo')).toEqual(['day', 'year', 'month']);
+    expect(el2.getData('bar')).toEqual(['hour', 'minute', 'second']);
+  });
+
+  it('updates when elements are added to the default slot', async () => {
+    const page = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = page.element;
+    const spy = jest.spyOn(el, 'requestUpdate');
+
+    const dataEl = document.createElement('data');
+    dataEl.setAttribute('value', 'day');
+    el.appendChild(dataEl);
+
+    await el.updateComplete;
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockRestore();
+  });
+
+  it('updates when elements are removed from the default slot', async () => {
+    const page = await createTestPage<TestIntlConsumerElement>({
+      element: ['intl-foo-bar', 'intl-foo'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar><data value="day"></data></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = page.element;
+    const spy = jest.spyOn(el, 'requestUpdate');
+
+    const dataEl = el.querySelector('data');
+    dataEl.remove();
+
+    await el.updateComplete;
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockRestore();
+  });
 
   it('observes slotted `<data>` element’s `value` attribute changes and updates', async () => {
     const page = await createTestPage<TestIntlConsumerElement>({
@@ -114,7 +249,7 @@ describe('AbstractIntlConsumerElement', () => {
     dataEl.setAttribute('value', 'bar');
     await el.updateComplete;
 
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
 
     spy.mockRestore();
   });
@@ -144,4 +279,9 @@ describe('AbstractIntlConsumerElement', () => {
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });
+
+  it.todo('throws if it contains elements other than <data value> and/or <template>');
+  it.todo('throws if non-<data value> and/or <template> elements are slotted');
+  it.todo('throws if it contains direct text content without setting `allowTextContent` to be `true`');
+  it.todo('throws if direct text content is added');
 });

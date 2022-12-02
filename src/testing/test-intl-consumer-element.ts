@@ -8,11 +8,19 @@ export default class extends AbstractIntlConsumerElement<TestIntlProviderElement
 
   #value: string = '';
 
+  get #data(): string {
+    return this.getData()[0] ?? '';
+  }
+
   get value(): string {
     return this.#value;
   }
 
   override render() {
+    if (this.#data && this.provider) {
+      this.#value = this.provider.intlObject.format(this.#data);
+    }
+
     return html`
       <span role="none" part="value">${this.#value}</span>
       <slot></slot>

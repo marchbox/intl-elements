@@ -1,10 +1,12 @@
 import {expect, describe, it, jest} from '@jest/globals';
 
 import {
+  FakeIntlApi,
   TestIntlProviderElement,
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
+import AbstractIntlProviderElement from './abstract-intl-provider-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
 defineTestIntlElements();
@@ -586,5 +588,19 @@ describe('AbstractIntlProviderElement', () => {
       expect(el1.localeList.value).toBe('zh');
       expect(el2.localeList.value).toBe('zh');
     });
+  });
+
+  // TODO: Test this.
+  it.skip('throws if the `consumerElementNames` static property isn’t defined', async () => {
+    class BadProviderElement extends AbstractIntlProviderElement {
+      // @ts-ignore
+      intlObject = new FakeIntlApi();
+
+      // @ts-ignore
+      resolvedOptions() {
+        return {};
+      }
+    }
+    customElements.define('bad-provider', BadProviderElement);
   });
 });
