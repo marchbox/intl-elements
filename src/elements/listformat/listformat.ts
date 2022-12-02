@@ -6,6 +6,7 @@ import AbstractIntlProviderElement from '../abstract-intl-provider-element';
 export default class extends AbstractIntlProviderElement {
   protected static override displayElementNames = new Set([
     'intl-listformat-format',
+    'intl-listformat-formattoparts',
   ]);
 
   protected static override intlApi = Intl.ListFormat;
