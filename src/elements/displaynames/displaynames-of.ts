@@ -3,13 +3,11 @@ import {html} from 'lit';
 import AbstractIntlDisplayElement from '../abstract-intl-display-element';
 import HTMLIntlDisplayNamesElement from './displaynames';
 
-export default class extends AbstractIntlDisplayElement {
+export default class extends AbstractIntlDisplayElement<HTMLIntlDisplayNamesElement> {
+  protected static override providerElementName = 'intl-displaynames';
+
   get #data(): string {
     return this.getData()[0] ?? '';
-  }
-
-  get #parent(): HTMLIntlDisplayNamesElement | undefined {
-    return this.closest('intl-displaynames') ?? undefined;
   }
 
   #value: string = '';
@@ -23,12 +21,12 @@ export default class extends AbstractIntlDisplayElement {
   }
 
   override render() {
-    if (this.#data && this.#parent) {
+    if (this.#data && this.provider) {
       // Chrome doesn’t recoganize lowercase region subtags.
-      const of = this.#parent.resolvedOptions().type === 'region' ?
+      const of = this.provider.resolvedOptions().type === 'region' ?
           this.#data.toUpperCase() : this.#data;
 
-      this.#value = this.#parent.intlObject.of(of) ?? '';
+      this.#value = this.provider.intlObject.of(of) ?? '';
     }
 
     return html`

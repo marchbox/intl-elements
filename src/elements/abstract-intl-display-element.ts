@@ -2,7 +2,7 @@ import {LitElement, css} from "lit";
 
 const CHILDREN_QUERY_SELECTOR = 'data[value],template';
 
-export default abstract class AbstractIntlDisplayElement extends LitElement {
+export default abstract class AbstractIntlDisplayElement<P> extends LitElement {
   static override styles = css`
     :host([hidden]),
     ::slotted(data) {
@@ -13,6 +13,17 @@ export default abstract class AbstractIntlDisplayElement extends LitElement {
   #slottedElementObserver!: MutationObserver;
 
   protected static allowTextContent = false;
+
+  protected static providerElementName: string;
+
+  protected get provider(): P | undefined {
+    // @ts-ignore
+    if (!this.constructor.providerElementName) {
+      throw new Error('providerElementName is not defined');
+    }
+    // @ts-ignore
+    return this.closest(this.constructor.providerElementName) ?? undefined;
+  }
 
   override connectedCallback() {
     super.connectedCallback();

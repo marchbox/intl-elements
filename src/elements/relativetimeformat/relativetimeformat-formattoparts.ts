@@ -10,8 +10,8 @@ export default class extends HTMLIntlRelativeTimeFormatDisplayElement {
   }
 
   override render() {
-    if (this.rtime && this.unit && this.parent) {
-      this.#value = this.parent.intlObject.formatToParts(
+    if (this.rtime && this.unit && this.provider) {
+      this.#value = this.provider.intlObject.formatToParts(
         this.rtime,
         this.unit as Intl.RelativeTimeFormatUnit
       );

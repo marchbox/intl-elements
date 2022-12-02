@@ -10,8 +10,8 @@ export default class extends AbstractIntlListFormatDisplayElement {
   }
 
   override render() {
-    if (this.list) {
-      this.#value = this.parent!.intlObject.format(this.list);
+    if (this.list && this.provider) {
+      this.#value = this.provider.intlObject.format(this.list);
     }
 
     return html`
