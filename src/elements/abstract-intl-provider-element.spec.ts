@@ -2,7 +2,7 @@ import {describe, it, expect} from '@jest/globals';
 import {property} from 'lit/decorators.js';
 
 import {createTestPage} from '../testing';
-import AbstractIntlElement from './abstract-intl-element';
+import AbstractIntlProviderElement from './abstract-intl-provider-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
 class FakeIntlObj {
@@ -31,18 +31,15 @@ class FakeIntlObj {
   }
 }
 
-class TestIntlElement extends AbstractIntlElement {
+class TestIntlElement extends AbstractIntlProviderElement {
+  override intlObject = FakeIntlObj;
+
   @property({attribute: 'format-unit'})
   // @ts-ignore
   formatUnit = 'day';
 
   resolvedOptions(): any {
     return {};
-  }
-
-  // @ts-ignore
-  getIntlObj() {
-    return FakeIntlObj;
   }
 
   override render() {
@@ -52,7 +49,7 @@ class TestIntlElement extends AbstractIntlElement {
 
 customElements.define('intl-foo', TestIntlElement);
 
-describe('AbstractIntlElement', () => {
+describe('AbstractIntlProviderElement', () => {
   it('handles multiple locales and ignores unsupported and invalid ones', async () => {
     const page = await createTestPage<TestIntlElement>({
       element: 'intl-foo',

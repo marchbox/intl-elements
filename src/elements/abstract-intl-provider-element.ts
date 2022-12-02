@@ -24,7 +24,7 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
 
-export default abstract class AbstractIntlElement extends LitElement {
+export default abstract class AbstractIntlProviderElement extends LitElement {
   #attrObserver!: MutationObserver;
   #localesFromElementsObserver!: MutationObserver;
   #ancestorObserver!: MutationObserver;
@@ -109,7 +109,7 @@ export default abstract class AbstractIntlElement extends LitElement {
     }
 
     const query = Array.from(names.values()).join(',');
-    (this.querySelectorAll(query) as NodeListOf<AbstractIntlElement>)
+    (this.querySelectorAll(query) as NodeListOf<AbstractIntlProviderElement>)
         .forEach(el => el.requestUpdate?.());
   }
 
