@@ -8,7 +8,7 @@ export default class TestIntlProviderElement extends AbstractIntlProviderElement
   // @ts-ignore
   protected static override intlApi = FakeIntlApi;
 
-  protected static override consumerElementNames = new Set(['bar']);
+  protected static override consumerElementNames = new Set(['intl-foo-bar']);
 
   #intlObject!: FakeIntlApi;
 

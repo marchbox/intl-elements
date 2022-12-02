@@ -3,10 +3,11 @@ import {describe, it, expect} from '@jest/globals';
 import {
   TestIntlProviderElement,
   createTestPage,
+  defineTestIntlElements,
 } from '../testing';
 import HTMLIntlLocaleElement from './locale/locale';
 
-customElements.define('intl-foo', TestIntlProviderElement);
+defineTestIntlElements();
 
 describe('AbstractIntlProviderElement', () => {
   it('handles multiple locales and ignores unsupported and invalid ones', async () => {
