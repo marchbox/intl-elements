@@ -43,11 +43,13 @@ export default abstract class AbstractIntlDisplayElement extends LitElement {
   }
 
   protected override firstUpdated() {
-    const assignedEls = Array.from(this.renderRoot.querySelectorAll('slot'))
+    const slotEls = this.renderRoot.querySelectorAll('slot');
+    const assignedEls = Array.from(slotEls)
         .map(slot => slot.assignedElements())
         .flat()
         .filter(el => el.nodeName === 'DATA');
 
+    // Observe slotted element changes.
     this.#slottedElementObserver = new MutationObserver(() => {
       this.requestUpdate();
     });
@@ -57,6 +59,13 @@ export default abstract class AbstractIntlDisplayElement extends LitElement {
         attributeFilter: ['value'],
       });
     }
+
+    // Listen to slot changes.
+    slotEls.forEach(slot => {
+      slot.addEventListener('slotchange', evt => {
+        this.requestUpdate();
+      })
+    });
   }
 
   protected getData(key?: string): string[] {
