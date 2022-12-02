@@ -62,7 +62,7 @@ export default abstract class AbstractIntlDisplayElement extends LitElement {
 
     // Listen to slot changes.
     slotEls.forEach(slot => {
-      slot.addEventListener('slotchange', evt => {
+      slot.addEventListener('slotchange', () => {
         this.requestUpdate();
       })
     });
