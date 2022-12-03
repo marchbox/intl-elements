@@ -9,13 +9,13 @@ import {
 } from './elements/displaynames';
 import {
   HTMLIntlListFormatElement,
-  // HTMLIntlListFormatFormatElement,
+  HTMLIntlListFormatFormatElement,
   defineIntlListFormatElements,
 } from './elements/listformat';
 import {
   HTMLIntlRelativeTimeFormatElement,
-  // HTMLIntlRelativeTimeFormatFormatElement,
-  // HTMLIntlRelativeTimeFormatFormatRangeElement,
+  HTMLIntlRelativeTimeFormatFormatElement,
+  HTMLIntlRelativeTimeFormatFormatToPartsElement,
   defineIntlRelativeTimeFormatElements,
 } from './elements/relativetimeformat';
 
@@ -31,5 +31,8 @@ export {
   HTMLIntlDisplayNamesElement,
   HTMLIntlDisplayNamesOfElement,
   HTMLIntlListFormatElement,
+  HTMLIntlListFormatFormatElement,
   HTMLIntlRelativeTimeFormatElement,
+  HTMLIntlRelativeTimeFormatFormatElement,
+  HTMLIntlRelativeTimeFormatFormatToPartsElement,
 }

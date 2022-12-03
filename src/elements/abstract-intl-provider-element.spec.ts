@@ -1,5 +1,3 @@
-import {expect, describe, it, jest} from '@jest/globals';
-
 import {
   FakeIntlApi,
   TestIntlProviderElement,

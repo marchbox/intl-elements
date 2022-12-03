@@ -1,5 +1,3 @@
-import {describe, it, expect} from '@jest/globals';
-
 import {createTestPage} from '../../testing';
 import HTMLIntlDisplayNamesElement from './displaynames';
 

@@ -1,6 +1,3 @@
-
-import {describe, it, expect} from '@jest/globals';
-
 import {createTestPage} from '../../testing';
 import HTMLIntlRelativeTimeFormatElement from './relativetimeformat';
 

@@ -1,5 +1,3 @@
-import {expect, describe, it, jest} from '@jest/globals';
-
 import {
   TestIntlProviderElement,
   TestIntlConsumerElement,
@@ -22,7 +20,7 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = page.element;
 
-    expect(window.getComputedStyle(el).display).toBe('none');
+    expect(el).not.toBeVisible();
   });
 
   it('gets the correct provider element', async () => {

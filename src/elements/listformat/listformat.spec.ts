@@ -1,5 +1,3 @@
-import {describe, it, expect} from '@jest/globals';
-
 import {createTestPage} from '../../testing';
 import HTMLIntlListItemElement from '../listitem/listitem';
 import HTMLIntlListFormatElement from './listformat';
