@@ -1,6 +1,3 @@
-// @ts-nocheck
-import {getByText} from '@testing-library/dom';
-
 import {createTestPage} from '../../testing';
 import HTMLIntlDisplayNamesElement from './displaynames';
 import HTMLIntlDisplayNamesOfElement from './displaynames-of';
@@ -38,9 +35,9 @@ describe('intl-displaynames', () => {
       `,
     });
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
-    const shadow = el.shadowRoot as ShadowRoot;
+    const span = el.shadowRoot!.querySelector('span');
 
-    expect(getByText(shadow, el.value)).toBeInTheDocument();
+    expect(span?.textContent?.trim()).toBe(el.value);
   });
 
   it('handles case-insensitive region subtags', async () => {
@@ -61,10 +58,10 @@ describe('intl-displaynames', () => {
       type: 'region',
     }).of('JP');
 
-    expect(els.item(0).value).toBe(intlResult);
-    expect(els.item(1).value).toBe(intlResult);
-    expect(els.item(2).value).toBe(intlResult);
-    expect(els.item(3).value).toBe(intlResult);
+    expect(els[0].value).toBe(intlResult);
+    expect(els[1].value).toBe(intlResult);
+    expect(els[2].value).toBe(intlResult);
+    expect(els[3].value).toBe(intlResult);
   });
 
   it('returns correct resolved options', async () => {

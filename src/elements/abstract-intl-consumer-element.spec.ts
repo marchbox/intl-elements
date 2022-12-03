@@ -10,31 +10,32 @@ defineTestIntlElements();
 
 describe('AbstractIntlConsumerElement', () => {
   it('hides if it has `hidden` attribute', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar hidden></intl-foo-bar>
         </intl-foo-bar>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
     expect(el).not.toBeVisible();
   });
 
   it('gets the correct provider element', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar></intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el = page.element;
-    const providerEl = document.querySelector('intl-foo');
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
 
+    // @ts-ignore
     expect(el.provider).toBe(providerEl);
   });
 
@@ -44,96 +45,83 @@ describe('AbstractIntlConsumerElement', () => {
     }
     customElements.define('bad-consumer', BadConsumerElement);
 
-    const page = await createTestPage<BadConsumerElement>({
-      element: ['bad-consumer', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'bad-consumer'],
       html: `
         <intl-foo locale="en">
           <bad-consumer></bad-consumer>
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('bad-consumer') as BadConsumerElement;
 
+    // @ts-ignore
     expect(() => {el.provider;}).toThrow('providerElementName is not defined');
   });
 
   it('returns `undefined` if no provider as parent', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo-bar></intl-foo-bar>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
+    // @ts-ignore
     expect(el.provider).toBeUndefined();
   });
 
   it('has `role="none"`', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar></intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
     expect(el.getAttribute('role')).toBe('none');
   });
 
   it('returns correct value with the `value` read-only property', async () => {
-    const page1 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="day"></data></intl-foo-bar>
         </intl-foo>
-      `,
-    });
-    const el1 = page1.element;
-    expect(el1.value).toBe('day');
-
-    const page2 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
-      html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="year"></data></intl-foo-bar>
         </intl-foo>
-      `,
-    });
-    const el2 = page2.element;
-    expect(el2.value).toBe('year');
-
-    const page3 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
-      html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="month"></data></intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el3 = page3.element;
-    expect(el3.value).toBe('');
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
+
+    expect(els[0]!.value).toBe('day');
+    expect(els[1]!.value).toBe('year');
+    expect(els[2]!.value).toBe('');
   });
 
   it('gets the correct data from default slots', async () => {
-    const page1 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="day"></data></intl-foo-bar>
         </intl-foo>
-      `,
-    });
-    const el1 = page1.element;
-
-    expect(el1.getData()).toEqual(['day']);
-
-    const page2 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
-      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data value="year"></data>
+            <data value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
         <intl-foo locale="en">
           <intl-foo-bar>
             <data value="day"></data>
@@ -143,14 +131,17 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el2 = page2.element;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
 
-    expect(el2.getData()).toEqual(['day', 'year', 'month']);
+    // @ts-ignore
+    expect(els[0]!.getData()).toEqual(['day']);
+    // @ts-ignore
+    expect(els[1]!.getData()).toEqual(['day', 'year', 'month']);
   });
 
   it('gets the correct data from named slots', async () => {
-    const page1 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
@@ -158,16 +149,6 @@ describe('AbstractIntlConsumerElement', () => {
             <data slot="bar" value="month"></data>
           </intl-foo-bar>
         </intl-foo>
-      `,
-    });
-    const el1 = page1.element;
-
-    expect(el1.getData('foo')).toEqual(['day']);
-    expect(el1.getData('bar')).toEqual(['month']);
-
-    const page2 = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
-      html: `
         <intl-foo locale="en">
           <intl-foo-bar>
             <data slot="foo" value="day"></data>
@@ -180,22 +161,28 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el2 = page2.element;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
 
-    expect(el2.getData('foo')).toEqual(['day', 'year', 'month']);
-    expect(el2.getData('bar')).toEqual(['hour', 'minute', 'second']);
+    // @ts-ignore
+    expect(els[0]!.getData('foo')).toEqual(['day']);
+    // @ts-ignore
+    expect(els[0]!.getData('bar')).toEqual(['month']);
+    // @ts-ignore
+    expect(els[1]!.getData('foo')).toEqual(['day', 'year', 'month']);
+    // @ts-ignore
+    expect(els[1]!.getData('bar')).toEqual(['hour', 'minute', 'second']);
   });
 
   it('updates when elements are added to the default slot', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar></intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const spy = jest.spyOn(el, 'requestUpdate');
 
     const dataEl = document.createElement('data');
@@ -209,19 +196,19 @@ describe('AbstractIntlConsumerElement', () => {
   });
 
   it('updates when elements are removed from the default slot', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="day"></data></intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const spy = jest.spyOn(el, 'requestUpdate');
 
     const dataEl = el.querySelector('data');
-    dataEl.remove();
+    dataEl!.remove();
 
     await el.updateComplete;
     expect(spy).toHaveBeenCalledTimes(1);
@@ -230,8 +217,8 @@ describe('AbstractIntlConsumerElement', () => {
   });
 
   it('observes slotted `<data>` element’s `value` attribute changes and updates', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
@@ -240,11 +227,11 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
 
-    dataEl.setAttribute('value', 'bar');
+    dataEl!.setAttribute('value', 'bar');
     await el.updateComplete;
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -253,8 +240,8 @@ describe('AbstractIntlConsumerElement', () => {
   });
 
   it('doesn’t update if non-`value` attribute changes on slotted `<data>` element', async () => {
-    const page = await createTestPage<TestIntlConsumerElement>({
-      element: ['intl-foo-bar', 'intl-foo'],
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
@@ -263,16 +250,16 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
 
-    dataEl.setAttribute('class', 'foo');
+    dataEl!.setAttribute('class', 'foo');
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
 
-    dataEl.textContent = 'Hello';
+    dataEl!.textContent = 'Hello';
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
