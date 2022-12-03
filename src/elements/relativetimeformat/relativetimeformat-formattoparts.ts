@@ -11,10 +11,12 @@ export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
 
   override render() {
     if (this.rtime && this.unit && this.provider) {
-      this.#value = this.provider.intlObject.formatToParts(
-        this.rtime,
-        this.unit as Intl.RelativeTimeFormatUnit
-      );
+      try {
+        this.#value = this.provider.intlObject.formatToParts(
+          this.rtime,
+          this.unit as Intl.RelativeTimeFormatUnit
+        );
+      } catch {}
     }
 
     return html`

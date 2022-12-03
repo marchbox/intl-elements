@@ -11,7 +11,9 @@ export default class extends AbstractIntlListFormatConsumerElement {
 
   override render() {
     if (this.list && this.provider) {
-      this.#value = this.provider.intlObject.format(this.list);
+      try {
+        this.#value = this.provider.intlObject.format(this.list);
+      } catch {}
     }
 
     return html`

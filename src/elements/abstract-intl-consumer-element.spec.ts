@@ -265,6 +265,9 @@ describe('AbstractIntlConsumerElement', () => {
     spy.mockRestore();
   });
 
+  it.todo('trims data values');
+  it.todo('ignores empty data values');
+
   it.todo('throws if it contains elements other than <data value> and/or <template>');
   it.todo('throws if non-<data value> and/or <template> elements are slotted');
   it.todo('throws if it contains direct text content without setting `allowTextContent` to be `true`');

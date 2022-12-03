@@ -13,8 +13,6 @@ export default class extends AbstractIntlProviderElement {
 
   #resolvedOptions!: Intl.ResolvedRelativeTimeFormatOptions;
 
-  #formattedParts: Intl.RelativeTimeFormatPart[] = [];
-
   #intlObject!: Intl.RelativeTimeFormat;
 
   get intlObject(): Intl.RelativeTimeFormat {
@@ -26,10 +24,6 @@ export default class extends AbstractIntlProviderElement {
 
   @property({attribute:'option-numeric'})
   optionNumeric: Intl.RelativeTimeFormatNumeric = 'always';
-
-  get formattedParts(): Intl.RelativeTimeFormatPart[] {
-    return this.#formattedParts;
-  }
 
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
     return this.#resolvedOptions;

@@ -26,7 +26,9 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesEle
       const of = this.provider.resolvedOptions().type === 'region' ?
           this.#data.toUpperCase() : this.#data;
 
-      this.#value = this.provider.intlObject.of(of) ?? '';
+      try {
+        this.#value = this.provider.intlObject.of(of) ?? '';
+      } catch {}
     }
 
     return html`
