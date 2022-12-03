@@ -58,10 +58,10 @@ describe('intl-displaynames', () => {
       type: 'region',
     }).of('JP');
 
-    expect(els[0].value).toBe(intlResult);
-    expect(els[1].value).toBe(intlResult);
-    expect(els[2].value).toBe(intlResult);
-    expect(els[3].value).toBe(intlResult);
+    expect(els[0]!.value).toBe(intlResult);
+    expect(els[1]!.value).toBe(intlResult);
+    expect(els[2]!.value).toBe(intlResult);
+    expect(els[3]!.value).toBe(intlResult);
   });
 
   it('returns correct resolved options', async () => {
