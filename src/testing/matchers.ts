@@ -29,14 +29,12 @@ export function toHaveShadowPartsCount(
       `Received: ${this.utils.printExpected(parts?.length ?? 0)}`,
       `Expected: ${not}${this.utils.printReceived(count)}`,
     ].join('\n'),
-    pass: count === undefined ? parts?.length > 0 : parts?.length === count,
+    pass: parts !== undefined &&
+        (count === undefined ? parts?.length > 0 : parts?.length === count),
   };
 };
 
-export function toHaveShadowPart(
-  el: Element,
-  part: string
-) {
+export function toHaveShadowPart(el: Element, part: string) {
   return toHaveShadowPartsCount.call(this, el, part);
 }
 
