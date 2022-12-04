@@ -658,4 +658,19 @@ describe('AbstractIntlProviderElement', () => {
     // @ts-ignore
     spy2.mockRestore();
   });
+
+  it('ignores unrecognized descendants from its consumer list', async () => {
+    await createTestPage({
+      elements: ['intl-foo'],
+      html: `
+        <intl-foo>
+          <intl-baz></intl-baz>
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
+
+    expect(el.consumerElements).toHaveLength(1);
+  });
 });

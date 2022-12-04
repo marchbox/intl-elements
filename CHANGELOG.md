@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- All consumer elements now can specify their provider element via the
+  `provider` attribute, hence, they no long need to be descendants of their
+  provider elements.
 
 ---
 
@@ -11,7 +15,7 @@ None.
 ### BREAKING CHANGES
 
 - Redesigned all the custom element APIs, details will be added to README.md
-  with the `1.0.0` release.
+  with the `1.0.0` release
 
 ---
 

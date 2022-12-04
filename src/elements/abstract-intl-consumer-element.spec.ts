@@ -70,6 +70,21 @@ describe('AbstractIntlConsumerElement', () => {
     expect(el.providerElement).toBe(providerEl);
   });
 
+  it('ignores unrecognized elements when searching for provider', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <div id="provider"></div>
+        <intl-foo id="provider"></intl-foo>
+        <intl-foo-bar provider="provider"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
+  });
+
   it('throws if parent element name isn’t defined', async () => {
     class BadConsumerElement extends AbstractIntlConsumerElement<TestIntlProviderElement, string> {
       value = '';

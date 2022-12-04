@@ -33,7 +33,9 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
     }
 
     if (this.provider !== undefined && this.provider !== '') {
-      const providerEl = document.getElementById(this.provider);
+      // @ts-ignore
+      const query = `${this.constructor.providerElementName}#${this.provider}`;
+      const providerEl = document.querySelector(query);
       if (providerEl) {
         return providerEl as P;
       }
