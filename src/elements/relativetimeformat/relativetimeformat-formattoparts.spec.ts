@@ -36,8 +36,7 @@ describe('intl-relativetimeformat-formattoparts', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value.map(part => part.value).join(''))
-        .toBe(span.textContent?.trim());
+    expect(span).toHaveTextContent(el.value.map(part => part.value).join(''));
   });
 
   it('renders an empty string and has `value` as an empty array with invalid data', async () => {
@@ -56,7 +55,9 @@ describe('intl-relativetimeformat-formattoparts', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value).toEqual([]);
-    expect(span.textContent?.trim()).toBe('');
+    expect(el.value).toEqual([]);
+    expect(span).toHaveTextContent('');
   });
+
+  it.todo('renders Shadow Parts')
 });

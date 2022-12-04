@@ -45,7 +45,7 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    expect(el.getAttribute('role')).toBe('none');
+    expect(el).toHaveAttribute('role', 'none');
   });
 
   it('should not override author defined role', async () => {
@@ -57,7 +57,7 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    expect(el.getAttribute('role')).toBe('option');
+    expect(el).toHaveAttribute('role', 'option');
   });
 
   it('rejects invalid atttibute values', async () => {
@@ -217,7 +217,7 @@ describe('AbstractIntlProviderElement', () => {
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
     expect(el.localeList.value).toBe('en');
-    expect(el.getAttribute('locales')).toBeNull();
+    expect(el).not.toHaveAttribute('locales');
 
     el.setAttribute('locales', 'invalid');
     await el.updateComplete;
@@ -227,9 +227,9 @@ describe('AbstractIntlProviderElement', () => {
     // TODO: Find out why this triggered 2 updates
     await el.updateComplete;
     await el.updateComplete;
-    expect(el.getAttribute('lang')).toBe('ja');
+    expect(el).toHaveAttribute('lang', 'ja');
+    expect(el).toHaveAttribute('locales', 'ja');
     expect(el.localeList.value).toBe('ja');
-    expect(el.getAttribute('locales')).toBe('ja');
   });
 
   describe('observes `locales` attribute removal and fallback', () => {

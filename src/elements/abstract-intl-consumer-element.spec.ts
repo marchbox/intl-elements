@@ -83,7 +83,7 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
-    expect(el.getAttribute('role')).toBe('none');
+    expect(el).toHaveAttribute('role', 'none');
   });
 
   it('returns correct value with the `value` read-only property', async () => {

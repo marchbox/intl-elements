@@ -37,6 +37,8 @@ describe('intl-listformat-format', () => {
     const shadow = el.shadowRoot as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el.value).toEqual(span.textContent?.trim());
+    expect(span).toHaveTextContent(el.value);
   });
+
+  it.todo('renders Shadow Parts')
 });

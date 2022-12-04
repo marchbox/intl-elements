@@ -36,7 +36,7 @@ describe('intl-relativetimeformat-format', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value).toBe(span.textContent?.trim());
+    expect(span).toHaveTextContent(el.value);
   });
 
   it('renders an empty string', async () => {
@@ -55,7 +55,9 @@ describe('intl-relativetimeformat-format', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value).toBe('');
-    expect(span.textContent?.trim()).toBe('');
+    expect(el.value).toBe('');
+    expect(span).toHaveTextContent('');
   });
+
+  it.todo('renders Shadow Parts')
 });
