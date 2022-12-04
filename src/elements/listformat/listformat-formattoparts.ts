@@ -10,9 +10,9 @@ export default class extends AbstractIntlListFormatConsumerElement {
   }
 
   override render() {
-    if (this.list && this.provider) {
+    if (this.list && this.providerElement) {
       try {
-        this.#value = this.provider.intlObject.formatToParts(this.list);
+        this.#value = this.providerElement.intlObject.formatToParts(this.list);
       } catch {}
     }
 

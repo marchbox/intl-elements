@@ -23,20 +23,66 @@ describe('AbstractIntlConsumerElement', () => {
     expect(el).not.toBeVisible();
   });
 
-  it('gets the correct provider element', async () => {
+  it('gets the correct provider element from ancestor', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
-          <intl-foo-bar></intl-foo-bar>
+          <p>
+            <intl-foo-bar></intl-foo-bar>
+          </p>
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    // @ts-ignore
-    expect(el.provider).toBe(providerEl);
+    expect(el.providerElement).toBe(providerEl);
+  });
+
+  it('gets the correct provider element from `provider` reference', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="provider" locales="en"></intl-foo>
+        <intl-foo-bar provider="provider"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
+  });
+
+  it('prioritize ancestor over reference', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="provider" locales="ja"></intl-foo>
+        <intl-foo locales="en">
+          <intl-foo-bar provider="provider"></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo:nth-child(2)') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
+  });
+
+  it('ignores unrecognized elements when searching for provider', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <div id="provider"></div>
+        <intl-foo id="provider"></intl-foo>
+        <intl-foo-bar provider="provider"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
   });
 
   it('throws if parent element name isn’t defined', async () => {
@@ -55,8 +101,8 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('bad-consumer') as BadConsumerElement;
 
-    // @ts-ignore
-    expect(() => {el.provider;}).toThrow('providerElementName is not defined');
+    expect(() => {el.providerElement;})
+        .toThrow('providerElementName is not defined');
   });
 
   it('returns `undefined` if no provider as parent', async () => {
@@ -68,8 +114,7 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
-    // @ts-ignore
-    expect(el.provider).toBeUndefined();
+    expect(el.providerElement).toBeUndefined();
   });
 
   it('has `role="none"`', async () => {
@@ -83,7 +128,7 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
-    expect(el.getAttribute('role')).toBe('none');
+    expect(el).toHaveAttribute('role', 'none');
   });
 
   it('returns correct value with the `value` read-only property', async () => {
@@ -265,8 +310,41 @@ describe('AbstractIntlConsumerElement', () => {
     spy.mockRestore();
   });
 
-  it.todo('trims data values');
-  it.todo('ignores empty data values');
+  it('trims data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value=" day "></data>
+            <data value=" year "></data>
+            <data value=" month "></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    // @ts-ignore
+    expect(el.getData()).toEqual(['day', 'year', 'month']);
+  });
+
+  it('ignores empty data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data value=""></data>
+            <data value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    // @ts-ignore
+    expect(el.getData()).toEqual(['day', 'month']);
+  });
 
   it.todo('throws if it contains elements other than <data value> and/or <template>');
   it.todo('throws if non-<data value> and/or <template> elements are slotted');

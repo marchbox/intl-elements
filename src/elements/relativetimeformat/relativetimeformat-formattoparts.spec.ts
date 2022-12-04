@@ -36,8 +36,7 @@ describe('intl-relativetimeformat-formattoparts', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value.map(part => part.value).join(''))
-        .toBe(span.textContent?.trim());
+    expect(span).toHaveTextContent(el.value.map(part => part.value).join(''));
   });
 
   it('renders an empty string and has `value` as an empty array with invalid data', async () => {
@@ -56,7 +55,28 @@ describe('intl-relativetimeformat-formattoparts', () => {
     const shadow = el.shadowRoot! as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el!.value).toEqual([]);
-    expect(span.textContent?.trim()).toBe('');
+    expect(el.value).toEqual([]);
+    expect(span).toHaveTextContent('');
+  });
+
+  it('renders Shadow Parts', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],
+      html: `
+        <intl-relativetimeformat locales="en">
+          <intl-relativetimeformat-formattoparts>
+            <data value="10.5"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-formattoparts>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-formattoparts') as HTMLIntlRelativeTimeFormatFormatToPartsElement;
+
+    expect(el).toHaveShadowPartsCount('value', 1);
+    expect(el).toHaveShadowPartsCount('literal', 2);
+    expect(el).toHaveShadowPartsCount('integer', 1);
+    expect(el).toHaveShadowPartsCount('decimal', 1);
+    expect(el).toHaveShadowPartsCount('fraction', 1);
   });
 });

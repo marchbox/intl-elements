@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <meta charset="utf-8">
   <title>intl-elements demo</title>
@@ -28,45 +28,40 @@
   <h1>intl-elements demo</h1>
 
   <h2><code>intl-locale</code></h2>
-  <p><intl-locale tag="zh-CN"></intl-locale></p>
-  <p>
-    <intl-locale tag="ko" option-script="kore" option-region="kr" option-hourcycle="h24">
-      <intl-locale-string />
-      <intl-locale-maximize />
-      <intl-locale-minimize />
-    </intl-locale>
-  </p>
+  <p><intl-locale tag="zh-cn"></intl-locale></p>
+  <p><intl-locale tag="ko" option-script="kore" option-region="kr" option-hourcycle="h24"></intl-locale></p>
 
   <h2><code>intl-displaynames</code></h2>
-  <intl-displaynames locales="en" option-type="language">
-    <p><intl-displaynames-of><data value="zh-CN">Chinese</data></intl-displaynames-of></p>
-    <p><intl-displaynames-of><data value="zh-Hant">Chinese</data></intl-displaynames-of></p>
+  <intl-displaynames id="language" locales="en" option-type="language">
+    <p><intl-displaynames-of><data value="zh-cn">chinese</data></intl-displaynames-of></p>
+    <p><intl-displaynames-of><data value="zh-hant">chinese</data></intl-displaynames-of></p>
   </intl-displaynames>
   <p>
     <intl-displaynames locales="ko" option-type="dateTimeField">
-      <intl-displaynames-of><data value="minute">Minute</data></intl-displaynames-of>
+      <intl-displaynames-of><data value="minute">minute</data></intl-displaynames-of>
     </intl-displaynames>
   </p>
+  <p><intl-displaynames-of provider="language"><data value="hi"></data></intl-displaynames-of></p>
 
   <h2><code>intl-listformat</code></h2>
   <intl-listformat locales="en">
     <p>
       <intl-listformat-format>
-        <data value="corgi">Corgi</data>
-        <data value="pomerania">Pomeranian</data>
-        <data value="pug">Pug</data>
-        <data value="shar-pei">Shar-pei</data>
-        <data value="pitbull">Pitbull</data>
+        <data value="corgi">corgi</data>
+        <data value="pomerania">pomeranian</data>
+        <data value="pug">pug</data>
+        <data value="shar-pei">shar-pei</data>
+        <data value="pitbull">pitbull</data>
       </intl-listformat-format>
     </p>
     <p>
       <intl-listformat-formattoparts>
-        <data value="corgi">Corgi</data>
-        <data value="pomerania">Pomeranian</data>
-        <data value="pug">Pug</data>
-        <data value="shar-pei">Shar-pei</data>
-        <data value="pitbull">Pitbull</data>
-      </intl-listformat-format>
+        <data value="corgi">corgi</data>
+        <data value="pomerania">pomeranian</data>
+        <data value="pug">pug</data>
+        <data value="shar-pei">shar-pei</data>
+        <data value="pitbull">pitbull</data>
+      </intl-listformat-formattoparts>
     </p>
   </intl-listformat>
 
@@ -81,14 +76,14 @@
     <p>
       <intl-relativetimeformat-format>
         <data value="1.5">1.5</data>
-        <data value="minute">Min.</data>
+        <data value="minute">min.</data>
       </intl-relativetimeformat-format>
     </p>
     <p>
       <intl-relativetimeformat-formattoparts>
         <data value="-3.5">-3.5</data>
         <data value="quarters">quarters</data>
-      </intl-relativetimeformat-format>
+      </intl-relativetimeformat-formattoparts>
     </p>
   </intl-relativetimeformat>
 
@@ -117,19 +112,19 @@
   <inlt-datetimeformat locales="he">
     <p>
       <intl-datetimeformat-format>
-        <time datetime="1965-07-12">July 12, 1965</time>
+        <time datetime="1965-07-12">july 12, 1965</time>
       </intl-datetimeformat-format>
     </p>
     <p>
       <intl-datetimeformat-formatrange>
-        <time datetime="1965-07-12">July 12, 1965</time> ~
-        <time datetime="2022-11-28">November 28, 2022</time>
+        <time datetime="1965-07-12">july 12, 1965</time> ~
+        <time datetime="2022-11-28">november 28, 2022</time>
       </intl-datetimeformat-formatrange>
     </p>
     <p>
       <intl-datetimeformat-formatrange>
-        <time slot="start" datetime="1965-07-12">July 12, 1965</time> to
-        <time slot="end" datetime="2022-11-28">November 28, 2022</time>
+        <time slot="start" datetime="1965-07-12">july 12, 1965</time> to
+        <time slot="end" datetime="2022-11-28">november 28, 2022</time>
       </intl-datetimeformat-formatrange>
     </p>
   </inlt-datetimeformat>
@@ -175,12 +170,12 @@
     </intl-collator-sort>
 
     <intl-collator-match>
-      <data slot="target"></data>
-    </intl-collator-sort>
+      <data slot="target" value="foo"></data>
+    </intl-collator-match>
   </intl-collator>
 
   <script type="module">
-    import {defineIntlElements} from './dist/index.js';
+    import {defineIntlElements} from './dist/src/index.js';
     defineIntlElements();
   </script>
 </html>

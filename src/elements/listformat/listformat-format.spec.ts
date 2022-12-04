@@ -37,6 +37,25 @@ describe('intl-listformat-format', () => {
     const shadow = el.shadowRoot as ShadowRoot;
     const span = shadow.querySelector('span') as HTMLSpanElement;
 
-    expect(el.value).toEqual(span.textContent?.trim());
+    expect(span).toHaveTextContent(el.value);
+  });
+
+  it('renders Shadow Parts', async () => {
+    await createTestPage({
+      elements: ['intl-listformat', 'intl-listformat-format'],
+      html: `
+        <intl-listformat locales="en">
+          <intl-listformat-format>
+            <data value="foo"></data>
+            <data value="bar"></data>
+          </intl-listformat-format>
+        </intl-listformat>
+      `,
+    });
+    const el = document.querySelector('intl-listformat-format') as HTMLIntlListFormatFormatElement;
+
+    expect(el).toHaveShadowPartsCount('value', 1);
+    expect(el).not.toHaveShadowPart('literal');
+    expect(el).not.toHaveShadowPart('element');
   });
 });

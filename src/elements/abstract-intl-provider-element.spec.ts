@@ -1,6 +1,7 @@
 import {
   FakeIntlApi,
   TestIntlProviderElement,
+  TestIntlConsumerElement,
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
@@ -45,7 +46,7 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    expect(el.getAttribute('role')).toBe('none');
+    expect(el).toHaveAttribute('role', 'none');
   });
 
   it('should not override author defined role', async () => {
@@ -57,7 +58,7 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    expect(el.getAttribute('role')).toBe('option');
+    expect(el).toHaveAttribute('role', 'option');
   });
 
   it('rejects invalid atttibute values', async () => {
@@ -217,7 +218,7 @@ describe('AbstractIntlProviderElement', () => {
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
     expect(el.localeList.value).toBe('en');
-    expect(el.getAttribute('locales')).toBeNull();
+    expect(el).not.toHaveAttribute('locales');
 
     el.setAttribute('locales', 'invalid');
     await el.updateComplete;
@@ -227,9 +228,9 @@ describe('AbstractIntlProviderElement', () => {
     // TODO: Find out why this triggered 2 updates
     await el.updateComplete;
     await el.updateComplete;
-    expect(el.getAttribute('lang')).toBe('ja');
+    expect(el).toHaveAttribute('lang', 'ja');
+    expect(el).toHaveAttribute('locales', 'ja');
     expect(el.localeList.value).toBe('ja');
-    expect(el.getAttribute('locales')).toBe('ja');
   });
 
   describe('observes `locales` attribute removal and fallback', () => {
@@ -589,7 +590,7 @@ describe('AbstractIntlProviderElement', () => {
     });
   });
 
-  // TODO: Test this.
+  // TODO
   it.skip('throws if the `consumerElementNames` static property isn’t defined', async () => {
     class BadProviderElement extends AbstractIntlProviderElement {
       // @ts-ignore
@@ -601,5 +602,75 @@ describe('AbstractIntlProviderElement', () => {
       }
     }
     customElements.define('bad-provider', BadProviderElement);
+
+    await createTestPage({
+      elements: ['bad-provider'],
+      html: `
+        <bad-provider></bad-provider>
+      `,
+    });
+    const el = document.querySelector('bad-provider')! as BadProviderElement;
+
+    expect(() => el.consumerElements).toThrow();
+  });
+
+  it('gets consumer elements from both the descendants and referenced', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="foo">
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+        <intl-foo-bar provider="foo"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
+    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestIntlConsumerElement[];
+
+    expect(el.consumerElements).toEqual(bars);
+  });
+
+  it('updates consumer elements when itself is updated', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="foo" locales="en">
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+        <intl-foo-bar provider="foo"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
+    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestIntlConsumerElement[];
+    // @ts-ignore
+    const spy1 = jest.spyOn(bars[0], 'update');
+    // @ts-ignore
+    const spy2 = jest.spyOn(bars[1], 'update');
+
+    el.setAttribute('locales', 'fr');
+    await el.updateComplete;
+
+    expect(spy1).toHaveBeenCalled();
+    expect(spy2).toHaveBeenCalled();
+
+    // @ts-ignore
+    spy1.mockRestore();
+    // @ts-ignore
+    spy2.mockRestore();
+  });
+
+  it('ignores unrecognized descendants from its consumer list', async () => {
+    await createTestPage({
+      elements: ['intl-foo'],
+      html: `
+        <intl-foo>
+          <intl-baz></intl-baz>
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
+
+    expect(el.consumerElements).toHaveLength(1);
   });
 });

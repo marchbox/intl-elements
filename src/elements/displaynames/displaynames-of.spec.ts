@@ -18,7 +18,7 @@ describe('intl-displaynames', () => {
     const spans = shadow.querySelectorAll('span');
 
     for (const span of spans) {
-      expect(span.getAttribute('role')).toBe('none');
+      expect(span).toHaveAttribute('role', 'none');
     }
   });
 
@@ -36,7 +36,7 @@ describe('intl-displaynames', () => {
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
     const span = el.shadowRoot!.querySelector('span');
 
-    expect(span?.textContent?.trim()).toBe(el.value);
+    expect(span).toHaveTextContent(el.value);
   });
 
   it('handles case-insensitive region subtags', async () => {
@@ -75,7 +75,7 @@ describe('intl-displaynames', () => {
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
     const span = el.shadowRoot!.querySelector('span');
 
-    expect(span?.textContent?.trim()).toBe('');
+    expect(span).toHaveTextContent('');
   });
 
   it('renders an empty string if the data is invalid', async () => {
@@ -90,7 +90,7 @@ describe('intl-displaynames', () => {
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
     const span = el.shadowRoot!.querySelector('span');
 
-    expect(span?.textContent?.trim()).toBe('');
+    expect(span).toHaveTextContent('');
   });
 
   it('renders an empty string if the data is not supported', async () => {
@@ -105,6 +105,22 @@ describe('intl-displaynames', () => {
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
     const span = el.shadowRoot!.querySelector('span');
 
-    expect(span?.textContent?.trim()).toBe('');
+    expect(span).toHaveTextContent('');
+  });
+
+  it('renders Shadow Parts', async () => {
+    await createTestPage({
+      elements: ['intl-displaynames', 'intl-displaynames-of'],
+      html: `
+        <intl-displaynames locales="en">
+          <intl-displaynames-of>
+            <data value="zh"></data>
+          </intl-displaynames-of>
+        </intl-displaynames>
+      `,
+    });
+    const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
+
+    expect(el).toHaveShadowPart('value');
   });
 });

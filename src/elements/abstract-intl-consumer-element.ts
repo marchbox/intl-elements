@@ -1,4 +1,5 @@
-import {LitElement, css} from "lit";
+import {LitElement, css} from 'lit';
+import {property} from 'lit/decorators.js';
 
 const CHILDREN_QUERY_SELECTOR = 'data[value],template';
 
@@ -16,13 +17,31 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
 
   protected static providerElementName: string;
 
-  protected get provider(): P | undefined {
+  @property({reflect: true})
+  provider ?:string;
+
+  // TODO: Cache this.
+  get providerElement(): P | undefined {
     // @ts-ignore
     if (!this.constructor.providerElementName) {
       throw new Error('providerElementName is not defined');
     }
     // @ts-ignore
-    return this.closest(this.constructor.providerElementName) ?? undefined;
+    const providerAncestor = this.closest(this.constructor.providerElementName);
+    if (providerAncestor) {
+      return providerAncestor as P;
+    }
+
+    if (this.provider !== undefined && this.provider !== '') {
+      // @ts-ignore
+      const query = `${this.constructor.providerElementName}#${this.provider}`;
+      const providerEl = document.querySelector(query);
+      if (providerEl) {
+        return providerEl as P;
+      }
+    }
+
+    return undefined;
   }
 
   abstract get value(): V;

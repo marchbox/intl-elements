@@ -144,7 +144,7 @@ describe('intl-locale', () => {
       region: 'kr',
       hourCycle: 'h24',
     }).toString();
-    expect(el.textContent?.trim()).toBe(intlResult);
+    expect(el).toHaveTextContent(intlResult);
   });
 
   it('prints out empty string if locale is invalid', async () => {
@@ -157,7 +157,7 @@ describe('intl-locale', () => {
     });
     const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(el.textContent?.trim()).toBe('');
+    expect(el).toHaveTextContent('');
   });
 
   it('prints out correct maximized string value', async () => {
@@ -176,7 +176,7 @@ describe('intl-locale', () => {
       region: 'kr',
       hourCycle: 'h24',
     }).maximize().toString();
-    expect(el.textContent?.trim()).toBe(intlResult);
+    expect(el).toHaveTextContent(intlResult);
   });
 
   it('prints out empty maximized string if locale is invalid', async () => {
@@ -189,7 +189,7 @@ describe('intl-locale', () => {
     });
     const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(el.textContent?.trim()).toBe('');
+    expect(el).toHaveTextContent('');
   });
 
   it('prints out correct minimized string value', async () => {
@@ -208,7 +208,7 @@ describe('intl-locale', () => {
       region: 'kr',
       hourCycle: 'h24',
     }).minimize().toString();
-    expect(el.textContent?.trim()).toBe(intlResult);
+    expect(el).toHaveTextContent(intlResult);
   });
 
   it('prints out empty minimized string if locale is invalid', async () => {
@@ -221,7 +221,7 @@ describe('intl-locale', () => {
     });
     const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(el.textContent?.trim()).toBe('');
+    expect(el).toHaveTextContent('');
   });
 
   it('has both option properties and exposed built-in properties', async () => {
