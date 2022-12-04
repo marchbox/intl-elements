@@ -108,5 +108,19 @@ describe('intl-displaynames', () => {
     expect(span).toHaveTextContent('');
   });
 
-  it.todo('renders Shadow Parts')
+  it('renders Shadow Parts', async () => {
+    await createTestPage({
+      elements: ['intl-displaynames', 'intl-displaynames-of'],
+      html: `
+        <intl-displaynames locales="en">
+          <intl-displaynames-of>
+            <data value="zh"></data>
+          </intl-displaynames-of>
+        </intl-displaynames>
+      `,
+    });
+    const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
+
+    expect(el).toHaveShadowPart('value');
+  });
 });

@@ -265,8 +265,41 @@ describe('AbstractIntlConsumerElement', () => {
     spy.mockRestore();
   });
 
-  it.todo('trims data values');
-  it.todo('ignores empty data values');
+  it('trims data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value=" day "></data>
+            <data value=" year "></data>
+            <data value=" month "></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    // @ts-ignore
+    expect(el.getData()).toEqual(['day', 'year', 'month']);
+  });
+
+  it('ignores empty data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data value=""></data>
+            <data value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    // @ts-ignore
+    expect(el.getData()).toEqual(['day', 'month']);
+  });
 
   it.todo('throws if it contains elements other than <data value> and/or <template>');
   it.todo('throws if non-<data value> and/or <template> elements are slotted');

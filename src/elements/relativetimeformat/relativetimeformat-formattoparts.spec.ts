@@ -59,5 +59,24 @@ describe('intl-relativetimeformat-formattoparts', () => {
     expect(span).toHaveTextContent('');
   });
 
-  it.todo('renders Shadow Parts')
+  it('renders Shadow Parts', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],
+      html: `
+        <intl-relativetimeformat locales="en">
+          <intl-relativetimeformat-formattoparts>
+            <data value="10.5"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-formattoparts>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-formattoparts') as HTMLIntlRelativeTimeFormatFormatToPartsElement;
+
+    expect(el).toHaveShadowPartsCount('value', 1);
+    expect(el).toHaveShadowPartsCount('literal', 2);
+    expect(el).toHaveShadowPartsCount('integer', 1);
+    expect(el).toHaveShadowPartsCount('decimal', 1);
+    expect(el).toHaveShadowPartsCount('fraction', 1);
+  });
 });

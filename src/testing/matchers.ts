@@ -4,7 +4,7 @@
 export function toHaveShadowPartsCount(
   el: Element,
   part: string,
-  count = 1
+  count?: number,
 ) {
   if (!(el instanceof Element)) {
     throw new Error('toHaveShadowPart() must be called on an Element');
@@ -14,7 +14,7 @@ export function toHaveShadowPartsCount(
     throw new Error('`part` must have a non-empty string');
   }
 
-  if (typeof count !== 'number') {
+  if (typeof count !== 'number' && count !== undefined) {
     throw new Error('`count` must have a number');
   }
 
@@ -29,7 +29,7 @@ export function toHaveShadowPartsCount(
       `Received: ${this.utils.printExpected(parts?.length ?? 0)}`,
       `Expected: ${not}${this.utils.printReceived(count)}`,
     ].join('\n'),
-    pass: parts?.length === count,
+    pass: count === undefined ? parts?.length > 0 : parts?.length === count,
   };
 };
 
@@ -37,7 +37,7 @@ export function toHaveShadowPart(
   el: Element,
   part: string
 ) {
-  return toHaveShadowPartsCount.call(this, el, part, 1);
+  return toHaveShadowPartsCount.call(this, el, part);
 }
 
 declare global {
