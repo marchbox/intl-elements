@@ -17,8 +17,8 @@ export default class extends AbstractIntlConsumerElement<TestIntlProviderElement
   }
 
   override render() {
-    if (this.#data && this.provider) {
-      this.#value = this.provider.intlObject.format(this.#data);
+    if (this.#data && this.providerElement) {
+      this.#value = this.providerElement.intlObject.format(this.#data);
     }
 
     return html`

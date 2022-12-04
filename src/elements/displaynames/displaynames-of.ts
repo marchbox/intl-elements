@@ -21,13 +21,13 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesEle
   }
 
   override render() {
-    if (this.#data && this.provider) {
+    if (this.#data && this.providerElement) {
       // Chrome doesn’t recoganize lowercase region subtags.
-      const of = this.provider.resolvedOptions().type === 'region' ?
+      const of = this.providerElement.resolvedOptions().type === 'region' ?
           this.#data.toUpperCase() : this.#data;
 
       try {
-        this.#value = this.provider.intlObject.of(of) ?? '';
+        this.#value = this.providerElement.intlObject.of(of) ?? '';
       } catch {}
     }
 

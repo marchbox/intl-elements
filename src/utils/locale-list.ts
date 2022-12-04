@@ -1,4 +1,4 @@
-import {normalizeLocale} from "./locales";
+import {normalizeLocale} from './locales';
 
 export type IntlApiType = typeof Intl.Collator |
     typeof Intl.DateTimeFormat |

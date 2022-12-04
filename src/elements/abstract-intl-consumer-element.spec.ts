@@ -35,8 +35,7 @@ describe('AbstractIntlConsumerElement', () => {
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
 
-    // @ts-ignore
-    expect(el.provider).toBe(providerEl);
+    expect(el.providerElement).toBe(providerEl);
   });
 
   it('throws if parent element name isn’t defined', async () => {
@@ -55,8 +54,8 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('bad-consumer') as BadConsumerElement;
 
-    // @ts-ignore
-    expect(() => {el.provider;}).toThrow('providerElementName is not defined');
+    expect(() => {el.providerElement;})
+        .toThrow('providerElementName is not defined');
   });
 
   it('returns `undefined` if no provider as parent', async () => {
@@ -68,8 +67,7 @@ describe('AbstractIntlConsumerElement', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
 
-    // @ts-ignore
-    expect(el.provider).toBeUndefined();
+    expect(el.providerElement).toBeUndefined();
   });
 
   it('has `role="none"`', async () => {
