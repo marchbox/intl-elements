@@ -2,10 +2,18 @@
 
 ## [Unreleased]
 
+None.
+
+---
+
+## [0.0.1-alpha.9] - 2022-12-03
+
 ### BREAKING CHANGES
 
-- Redesigned the custom element API, details will be added to README.md with
-  `1.0.0` release.
+- Redesigned all the custom element APIs, details will be added to README.md
+  with the `1.0.0` release.
+
+---
 
 ## [0.0.1-alpha.8] - 2022-11-27
 
@@ -51,6 +59,8 @@
 
 - `lang` and `dir` no longer reflect the first locale in `localeList`
 
+---
+
 ## [0.0.1-alpha.7] - 2022-11-19
 
 ### Fixed
@@ -64,6 +74,9 @@
 ### Added
 
 - Include LICENSE in the package
+
+---
+
 ## [0.0.1-alpha.6] - 2022-11-17
 
 ### Added
