@@ -74,16 +74,16 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
     const descendantQuery = Array.from(names.values()).join(',');
     const descendantConsumers = Array.from(this
         .querySelectorAll(descendantQuery) as NodeListOf<ConsumerElement>);
-    let remoteConsumers: ConsumerElement[] = [];
+    let cousinConsumers: ConsumerElement[] = [];
 
     if (this.id) {
-      const remoteQuery = Array.from(names.values())
+      const cousinQuery = Array.from(names.values())
           .map(name => `${name}[provider="${this.id}"]`).join(',');
-      remoteConsumers = Array.from(document
-          .querySelectorAll(remoteQuery) as NodeListOf<ConsumerElement>);
+      cousinConsumers = Array.from(document
+          .querySelectorAll(cousinQuery) as NodeListOf<ConsumerElement>);
     }
 
-    return [...descendantConsumers, ...remoteConsumers];
+    return [...descendantConsumers, ...cousinConsumers];
   }
 
   protected override createRenderRoot() {
