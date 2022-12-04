@@ -30,7 +30,7 @@
     "dev:server": "run-s dev:server:wait dev:server:serve",
     "dev:server:wait": "wait-on dist/index.js",
     "dev:server:serve": "web-dev-server",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc && rm dist/jest-setup.* && rm -rf dist/src/testing",
     "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch --no-coverage"

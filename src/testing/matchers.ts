@@ -1,21 +1,20 @@
 /// <reference types="jest" />
 // @ts-nocheck
 
-export function toHaveShadowPartsCount(
-  el: Element,
-  part: string,
-  count?: number,
-) {
+const createToHaveShadowPartsMatcher = (
+  name: string,
+  anyCount: boolean = false
+) => function (el: Element, part: string, count: number) {
   if (!(el instanceof Element)) {
-    throw new Error('toHaveShadowPart() must be called on an Element');
+    throw new Error(`${name}() must be called on an Element`);
   }
 
   if (typeof part !== 'string' && part !== '') {
-    throw new Error('`part` must have a non-empty string');
+    throw new Error('`part` must be a non-empty string');
   }
 
-  if (typeof count !== 'number' && count !== undefined) {
-    throw new Error('`count` must have a number');
+  if (!anyCount && typeof count !== 'number') {
+    throw new Error('`count` must be a number');
   }
 
   const parts = el.shadowRoot?.querySelectorAll(`[part="${part}"]`);
@@ -27,16 +26,18 @@ export function toHaveShadowPartsCount(
     message: () => [
       `expected element ${to} have ${count} Shadow Part${plural} named '${part}'`,
       `Received: ${this.utils.printExpected(parts?.length ?? 0)}`,
-      `Expected: ${not}${this.utils.printReceived(count)}`,
+      `Expected: ${not}${this.utils.printReceived(anyCount ? '>= 1' : count)}`,
     ].join('\n'),
     pass: parts !== undefined &&
-        (count === undefined ? parts?.length > 0 : parts?.length === count),
+        (anyCount ? parts?.length > 0 : parts?.length === count),
   };
 };
 
-export function toHaveShadowPart(el: Element, part: string) {
-  return toHaveShadowPartsCount.call(this, el, part);
-}
+export default {
+  toHaveShadowPartsCount:
+      createToHaveShadowPartsMatcher('toHaveShadowPartsCount'),
+  toHaveShadowPart: createToHaveShadowPartsMatcher('toHaveShadowPart', true),
+};
 
 declare global {
   namespace jest {

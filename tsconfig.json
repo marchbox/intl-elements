@@ -1,6 +1,7 @@
 {
   "include": [
-    "src/"
+    "src/",
+    "jest-setup.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts",
