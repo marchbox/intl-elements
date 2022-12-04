@@ -1,11 +1,10 @@
-import {describe, it, expect} from '@jest/globals';
-
 import {createTestPage} from '../../testing';
+import HTMLIntlLocaleElement from './locale';
 
 describe('intl-locale', () => {
   it('produces consistent locale as the Intl APIs', async () => {
     await createTestPage({
-      element: 'intl-locale',
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="en-US"></intl-locale>
         <intl-locale tag="en-US" option-basename="zh" option-region="HK"></intl-locale>
@@ -41,14 +40,14 @@ describe('intl-locale', () => {
   });
 
   it('handles invalid locale without error and returns null', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="veryveryinvalid"></intl-locale>
       `,
     });
 
-    const el = page.element;
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     expect(el.value).toBeNull();
     expect(el.valueAsString).toBe('');
@@ -82,143 +81,152 @@ describe('intl-locale', () => {
   });
 
   it('produces consistent string value as the Intl APIs', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ja', {
       calendar: 'japanese',
       numeric: true,
     }).toString();
-    expect(page.element.valueAsString).toBe(intlResult);
+    expect(el.valueAsString).toBe(intlResult);
   });
 
   it('produces consistent maximized value as the Intl APIs', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ja', {
       calendar: 'japanese',
       numeric: true,
     }).maximize();
-    expect(page.element.maximize()).toEqual(intlResult);
+    expect(el.maximize()).toEqual(intlResult);
   });
 
   it('produces consistent minimized value as the Intl APIs', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ja', {
       calendar: 'japanese',
       numeric: true,
     }).minimize();
-    expect(page.element.minimize()).toEqual(intlResult);
+    expect(el.minimize()).toEqual(intlResult);
   });
 
   it('prints out correct string value', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ko" option-script="kore" option-region="kr"
             option-hourcycle="h24" display-string>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ko', {
       script: 'kore',
       region: 'kr',
       hourCycle: 'h24',
     }).toString();
-    expect(page.element.textContent.trim()).toBe(intlResult);
+    expect(el.textContent?.trim()).toBe(intlResult);
   });
 
   it('prints out empty string if locale is invalid', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="veryveryinvalid" display-string>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(page.element.textContent.trim()).toBe('');
+    expect(el.textContent?.trim()).toBe('');
   });
 
   it('prints out correct maximized string value', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ko" option-script="kore" option-region="kr"
             option-hourcycle="h24" display-maximized>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ko', {
       script: 'kore',
       region: 'kr',
       hourCycle: 'h24',
     }).maximize().toString();
-    expect(page.element.textContent.trim()).toBe(intlResult);
+    expect(el.textContent?.trim()).toBe(intlResult);
   });
 
   it('prints out empty maximized string if locale is invalid', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="veryveryinvalid" display-maximized>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(page.element.textContent.trim()).toBe('');
+    expect(el.textContent?.trim()).toBe('');
   });
 
   it('prints out correct minimized string value', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ko" option-script="kore" option-region="kr"
             option-hourcycle="h24" display-minimized>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('ko', {
       script: 'kore',
       region: 'kr',
       hourCycle: 'h24',
     }).minimize().toString();
-    expect(page.element.textContent.trim()).toBe(intlResult);
+    expect(el.textContent?.trim()).toBe(intlResult);
   });
 
   it('prints out empty minimized string if locale is invalid', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="veryveryinvalid" display-minimized>
         </intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
-    expect(page.element.textContent.trim()).toBe('');
+    expect(el.textContent?.trim()).toBe('');
   });
 
   it('has both option properties and exposed built-in properties', async () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="en" option-basename="zh" option-language="en"
             option-script="latn" option-region="us" option-numeric
@@ -228,7 +236,7 @@ describe('intl-locale', () => {
       `,
     });
 
-    const el = page.element;
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     const intlResult = new Intl.Locale('en', {
       baseName: 'zh',
@@ -273,47 +281,50 @@ describe('intl-locale', () => {
   });
 
   it('produces correct `calendars` property', async  () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="en-US"></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     // @ts-ignore
     const intlResult = new Intl.Locale('en-US').calendars;
-    expect(page.element.calendars).toEqual(intlResult);
+    expect(el.calendars).toEqual(intlResult);
   });
 
   it('produces correct `hourCycles` property', async  () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="en-US"></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     // @ts-ignore
     const intlResult = new Intl.Locale('en-US').hourCycles;
-    expect(page.element.hourCycles).toEqual(intlResult);
+    expect(el.hourCycles).toEqual(intlResult);
   });
 
   it('produces correct `numberingSystems` property', async  () => {
-    const page = await createTestPage({
-      element: 'intl-locale',
+    await createTestPage({
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="fa-IR"></intl-locale>
       `,
     });
+    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
 
     // @ts-ignore
     const intlResult = new Intl.Locale('fa-IR').numberingSystems;
-    expect(page.element.numberingSystems).toEqual(intlResult);
+    expect(el.numberingSystems).toEqual(intlResult);
   });
 
   it('produces correct `textInfo` property', async  () => {
     await createTestPage({
-      element: 'intl-locale',
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="ar"></intl-locale>
         <intl-locale tag="am"></intl-locale>
@@ -333,7 +344,7 @@ describe('intl-locale', () => {
 
   it('produces correct `timeZones` property', async  () => {
     await createTestPage({
-      element: 'intl-locale',
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="en-US"></intl-locale>
         <intl-locale tag="zh-CN"></intl-locale>
@@ -357,7 +368,7 @@ describe('intl-locale', () => {
 
   it('produces correct `weekInfo` property', async  () => {
     await createTestPage({
-      element: 'intl-locale',
+      elements: ['intl-locale'],
       html: `
         <intl-locale tag="de-AT"></intl-locale>
         <intl-locale tag="zh-Hant-TW-u-ca-chinese"></intl-locale>

@@ -1,21 +1,23 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import AbstractIntlElement from '../abstract-intl-element';
-import {IntlObjType} from '../../utils/locale-list';
-export default class extends AbstractIntlElement {
+import AbstractIntlProviderElement from '../abstract-intl-provider-element';
+
+export default class extends AbstractIntlProviderElement {
+  protected static override consumerElementNames = new Set([
+    'intl-listformat-format',
+    'intl-listformat-formattoparts',
+  ]);
+
+  protected static override intlApi = Intl.ListFormat;
+
   #resolvedOptions!: Intl.ResolvedListFormatOptions;
 
-  #formattedParts: Intl.ListFormatPart[] = [];
+  #intlObject!: Intl.ListFormat;
 
-  #listObserver!: MutationObserver;
-
-  #value = '';
-
-  get #listItems(): HTMLElement[] {
-    return Array.from(this.querySelectorAll('intl-listitem'));
+  get intlObject(): Intl.ListFormat {
+    return this.#intlObject;
   }
-
-  protected intlObj = Intl.ListFormat;
 
   @property({attribute: 'option-style'})
   optionStyle: Intl.ListFormatStyle = 'long';
@@ -23,86 +25,28 @@ export default class extends AbstractIntlElement {
   @property({attribute: 'option-type'})
   optionType: Intl.ListFormatType = 'conjunction';
 
-  get list(): string[] {
-    return this.#listItems
-        .map(el => (el.textContent!.trim() || ''))
-        .filter(el => el !== '');
-  }
-
-  get value(): string {
-    return this.#value;
-  }
-
   override connectedCallback() {
     super.connectedCallback();
-
-    this.#hideListItems();
-    this.#observeListItems();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-
-    if (this.#listObserver) {
-      this.#listObserver.disconnect();
-    }
-  }
-
-  #hideListItems() {
-    this.#listItems.forEach(el => {
-      el.setAttribute('hidden', '');
-      el.setAttribute('aria-hidden', 'true');
-    });
-  }
-
-  #observeListItems() {
-    this.#listObserver = new MutationObserver(entries => {
-      const hasUpdate = entries.some(entry => {
-        if (entry.type === 'characterData') {
-          return entry.target.parentElement!.tagName === 'INTL-LISTITEM';
-        }
-        return true;
-      });
-
-      if (!hasUpdate) {
-        return;
-      }
-
-      this.#hideListItems();
-      this.requestUpdate();
-    });
-
-    this.#listObserver.observe(this, {
-      childList: true,
-      subtree: true,
-      characterData: true,
-    });
-  }
-
-  protected getIntlObj(): IntlObjType {
-    return Intl.ListFormat;
   }
 
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }
 
-  formatToParts(): Intl.ListFormatPart[] {
-    return this.#formattedParts;
-  }
-
   override render() {
     try {
-      const lf = new Intl.ListFormat(this.localeList.value, {
+      this.#intlObject = new Intl.ListFormat(this.localeList.value, {
         type: this.optionType,
         style: this.optionStyle,
         localeMatcher: this.optionLocaleMatcher,
       });
-      this.#resolvedOptions = lf.resolvedOptions();
-      this.#formattedParts = lf.formatToParts(this.list);
-      this.#value = lf.format(this.list) as string;
+      this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 
-    return this.#value;
+    return nothing;
   }
 }
