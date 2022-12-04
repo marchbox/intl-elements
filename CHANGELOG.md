@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+
+- Redesigned the custom element API, details will be added to README.md with
+  `1.0.0` release.
+
 ## [0.0.1-alpha.8] - 2022-11-27
 
 ### BREAKING CHANGES
