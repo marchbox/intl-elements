@@ -2,14 +2,13 @@
 export default {
   collectCoverage: true,
   coverageDirectory: '.jest-coverage',
-  coveragePathIgnorePatterns: [
-    '/node_modules/',
-    '/src/testing/',
+  collectCoverageFrom: [
+    'src/{elements,utils}/**/*.ts',
   ],
   preset: 'ts-jest',
   testEnvironment: "jsdom",
-  setupFiles: [
-    './src/index.ts',
+  setupFilesAfterEnv: [
+    './src/testing/jest-setup.ts',
   ],
   transform: {
     // transform files with ts-jest

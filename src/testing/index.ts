@@ -1,39 +1,15 @@
-import type {LitElement} from 'lit';
-import {defineIntlElements} from '../index';
+import TestIntlProviderElement from './test-intl-provider-element';
+import TestIntlConsumerElement from './test-intl-consumer-element';
 
-defineIntlElements();
+export {FakeIntlApi} from './fake-intl-api';
+export {createTestPage} from './test-page';
 
-interface CreateTestPageOption {
-  element: string | string[];
-  html: string;
+export function defineTestIntlElements() {
+  customElements.define('intl-foo', TestIntlProviderElement);
+  customElements.define('intl-foo-bar', TestIntlConsumerElement);
 }
 
-interface TestPage {
-  body: HTMLBodyElement;
-  element?: any;
-}
-
-export async function createTestPage<T extends LitElement>(
-  option: CreateTestPageOption
-): Promise<TestPage> {
-  const page: TestPage = {
-    body: document.body as HTMLBodyElement,
-  };
-
-  document.body.innerHTML = option.html;
-
-  try {
-    if (typeof option.element === 'string') {
-      await customElements.whenDefined(option.element);
-      page.element = document.querySelector(option.element) as T;
-    } else if (Array.isArray(option.element)) {
-      await Promise.all(
-          option.element.map(el => customElements.whenDefined(el)));
-      page.element = document.querySelector(option.element[0] as string) as T;
-    }
-  } catch (e) {
-    throw e;
-  }
-
-  return page;
+export {
+  TestIntlProviderElement,
+  TestIntlConsumerElement,
 }
