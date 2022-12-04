@@ -23,17 +23,49 @@ describe('AbstractIntlConsumerElement', () => {
     expect(el).not.toBeVisible();
   });
 
-  it('gets the correct provider element', async () => {
+  it('gets the correct provider element from ancestor', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
-          <intl-foo-bar></intl-foo-bar>
+          <p>
+            <intl-foo-bar></intl-foo-bar>
+          </p>
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
     const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
+  });
+
+  it('gets the correct provider element from `provider` reference', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="provider" locales="en"></intl-foo>
+        <intl-foo-bar provider="provider"></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.providerElement).toBe(providerEl);
+  });
+
+  it('prioritize ancestor over reference', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo id="provider" locales="ja"></intl-foo>
+        <intl-foo locales="en">
+          <intl-foo-bar provider="provider"></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const providerEl = document.querySelector('intl-foo:nth-child(2)') as TestIntlProviderElement;
 
     expect(el.providerElement).toBe(providerEl);
   });

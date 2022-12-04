@@ -20,13 +20,26 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
   @property({reflect: true})
   provider ?:string;
 
+  // TODO: Cache this.
   get providerElement(): P | undefined {
     // @ts-ignore
     if (!this.constructor.providerElementName) {
       throw new Error('providerElementName is not defined');
     }
     // @ts-ignore
-    return this.closest(this.constructor.providerElementName) ?? undefined;
+    const providerAncestor = this.closest(this.constructor.providerElementName);
+    if (providerAncestor) {
+      return providerAncestor as P;
+    }
+
+    if (this.provider !== undefined && this.provider !== '') {
+      const providerEl = document.getElementById(this.provider);
+      if (providerEl) {
+        return providerEl as P;
+      }
+    }
+
+    return undefined;
   }
 
   abstract get value(): V;
