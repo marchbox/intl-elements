@@ -2,6 +2,7 @@ import {LitElement, PropertyValues} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list';
+import AbstractIntlConsumerElement from './abstract-intl-consumer-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
 export type IntlObjectType = Intl.Collator |
@@ -23,6 +24,8 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedPluralRulesOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
+
+type ConsumerElement = AbstractIntlConsumerElement<AbstractIntlProviderElement, any>;
 
 export default abstract class AbstractIntlProviderElement extends LitElement {
   #attrObserver!: MutationObserver;
@@ -59,6 +62,29 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
 
   @property({attribute: 'option-localematcher'})
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
+
+  // TODO: Cache the list.
+  get consumerElements(): ConsumerElement[] {
+    // @ts-ignore
+    const names = this.constructor.consumerElementNames;
+    if (!names) {
+      throw new Error('Missing static property `consumerElementNames`.');
+    }
+
+    const descendantQuery = Array.from(names.values()).join(',');
+    const descendantConsumers = Array.from(this
+        .querySelectorAll(descendantQuery) as NodeListOf<ConsumerElement>);
+    let cousinConsumers: ConsumerElement[] = [];
+
+    if (this.id) {
+      const cousinQuery = Array.from(names.values())
+          .map(name => `${name}[provider="${this.id}"]`).join(',');
+      cousinConsumers = Array.from(document
+          .querySelectorAll(cousinQuery) as NodeListOf<ConsumerElement>);
+    }
+
+    return [...descendantConsumers, ...cousinConsumers];
+  }
 
   protected override createRenderRoot() {
     // No shadow DOM.
@@ -102,15 +128,7 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
   }
 
   override updated() {
-    // @ts-ignore
-    const names = this.constructor.consumerElementNames;
-    if (!names) {
-      throw new Error('Missing static property `consumerElementNames`.');
-    }
-
-    const query = Array.from(names.values()).join(',');
-    (this.querySelectorAll(query) as NodeListOf<AbstractIntlProviderElement>)
-        .forEach(el => el.requestUpdate?.());
+    this.consumerElements.forEach(el => el.requestUpdate?.());
   }
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;

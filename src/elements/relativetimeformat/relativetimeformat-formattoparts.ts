@@ -10,9 +10,9 @@ export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
   }
 
   override render() {
-    if (this.rtime && this.unit && this.provider) {
+    if (this.rtime && this.unit && this.providerElement) {
       try {
-        this.#value = this.provider.intlObject.formatToParts(
+        this.#value = this.providerElement.intlObject.formatToParts(
           this.rtime,
           this.unit as Intl.RelativeTimeFormatUnit
         );

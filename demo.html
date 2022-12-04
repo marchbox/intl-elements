@@ -32,15 +32,16 @@
   <p><intl-locale tag="ko" option-script="kore" option-region="kr" option-hourcycle="h24"></intl-locale></p>
 
   <h2><code>intl-displaynames</code></h2>
-  <intl-displaynames locales="en" option-type="language">
+  <intl-displaynames id="language" locales="en" option-type="language">
     <p><intl-displaynames-of><data value="zh-cn">chinese</data></intl-displaynames-of></p>
     <p><intl-displaynames-of><data value="zh-hant">chinese</data></intl-displaynames-of></p>
   </intl-displaynames>
   <p>
-    <intl-displaynames locales="ko" option-type="datetimefield">
+    <intl-displaynames locales="ko" option-type="dateTimeField">
       <intl-displaynames-of><data value="minute">minute</data></intl-displaynames-of>
     </intl-displaynames>
   </p>
+  <p><intl-displaynames-of provider="language"><data value="hi"></data></intl-displaynames-of></p>
 
   <h2><code>intl-listformat</code></h2>
   <intl-listformat locales="en">
@@ -174,7 +175,7 @@
   </intl-collator>
 
   <script type="module">
-    import {defineintlelements} from './dist/index.js';
-    defineintlelements();
+    import {defineIntlElements} from './dist/src/index.js';
+    defineIntlElements();
   </script>
 </html>
