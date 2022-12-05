@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+None
+
+---
+
+## [0.0.1-alpha.10] - 2022-12-04
+
 ### Added
 
 - All consumer elements now can specify their provider element via the
