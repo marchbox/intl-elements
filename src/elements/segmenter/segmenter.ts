@@ -27,7 +27,7 @@ export default class extends AbstractIntlProviderElement {
 
   override render() {
     try {
-      this.#intlObject = new Intl.Segmenter(this.localeList.value, {
+      this.#intlObject = new Intl.Segmenter(this.localeList.valueAsArray, {
         granularity: this.optionGranularity,
         localeMatcher: this.optionLocaleMatcher,
       });

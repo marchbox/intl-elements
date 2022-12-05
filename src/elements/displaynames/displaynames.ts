@@ -36,7 +36,7 @@ export default class extends AbstractIntlProviderElement {
 
   protected override render() {
     try {
-      this.#intlObject = new Intl.DisplayNames(this.localeList.value, {
+      this.#intlObject = new Intl.DisplayNames(this.localeList.valueAsArray, {
         type: this.optionType,
         style: this.optionStyle,
         localeMatcher: this.optionLocaleMatcher,

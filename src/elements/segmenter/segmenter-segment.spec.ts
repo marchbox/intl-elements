@@ -127,21 +127,4 @@ describe('intl-segmenter-segment', () => {
     expect(el).toHaveShadowPart('segment');
     expect(el).not.toHaveShadowPart('wordlike');
   });
-
-  it('renders an empty string with an invalid locale', async () => {
-    await createTestPage({
-      elements: ['intl-segmenter', 'intl-segmenter-segment'],
-      html: `
-        <intl-segmenter locales="invalid">
-          <intl-segmenter-segment>
-            Hello, world!
-          </intl-segmenter-segment>
-        </intl-segmenter>
-      `,
-    });
-    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
-    const span = el.shadowRoot?.querySelector('span') as HTMLSpanElement;
-
-    expect(span!).toHaveTextContent('');
-  });
 });

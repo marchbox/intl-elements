@@ -1,4 +1,15 @@
 export class FakeIntlApi {
+  // @ts-ignore
+  #locales: string[];
+  // @ts-ignore
+  #options: any;
+
+  constructor(locales: string | string[], options: any = {}) {
+    // @ts-ignore
+    this.#locales = Intl.getCanonicalLocales(locales);
+    this.#options = options;
+  }
+
   static supportedLocalesOf(list: string | string[]) {
     const supportedLocales = ['ar', 'en', 'es', 'ja', 'fr', 'zh', 'zh-Hant'];
     if (list.includes('veryveryinvalid')) {

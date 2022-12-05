@@ -2,7 +2,12 @@
 
 ## [Unreleased]
 
-None
+### Fixed
+
+- When the `locales` attrbute contains multiple locales separated by
+  whitespaces, its `Intl` object throws errors. This is due to the `locales`
+  argument passed into an `Intl` is incorrectly typed as a string instead of
+  an array
 
 ---
 

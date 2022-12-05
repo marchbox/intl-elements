@@ -30,6 +30,10 @@ export default class LocaleList implements DOMTokenList {
     this.#triggerOnChange();
   }
 
+  get valueAsArray(): string[] {
+    return this.#list;
+  }
+
   get length(): number {
     return this.#list.length;
   }

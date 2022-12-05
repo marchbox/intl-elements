@@ -26,7 +26,7 @@ export default class TestIntlProviderElement extends AbstractIntlProviderElement
   }
 
   override render() {
-    this.#intlObject = new FakeIntlApi();
+    this.#intlObject = new FakeIntlApi(this.localeList.valueAsArray);
 
     return nothing;
   }
