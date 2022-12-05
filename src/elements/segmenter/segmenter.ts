@@ -1,32 +1,24 @@
+import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import {IntlObjType} from '../../utils/locale-list';
-import AbstractIntlElement from '../abstract-intl-element';
+import AbstractIntlProviderElement from '../abstract-intl-provider-element';
 
-export default class extends AbstractIntlElement {
+export default class extends AbstractIntlProviderElement {
+  protected static override intlApi = Intl.Segmenter;
+
+  protected static override consumerElementNames = new Set([
+    'intl-segmenter-segment',
+  ]);
+
+  #intlObject!: Intl.Segmenter;
+
   #resolvedOptions!: Intl.ResolvedSegmenterOptions;
-
-  #value?: Intl.Segments;
-
-  get value(): Intl.Segments | undefined {
-    return this.#value;
-  }
-
-  get valueAsDocumentFragment(): DocumentFragment | undefined {
-    // TODO: Implement this.
-    return document.createDocumentFragment();
-  }
-
-  get valueAsHTMLString(): string {
-    // TODO: Implement this.
-    return '';
-  }
 
   @property({attribute: 'option-granularity'})
   optionGranularity: Intl.SegmenterGranularity = 'grapheme';
 
-  protected override getIntlObj(): IntlObjType {
-    return Intl.Segmenter;
+  get intlObject(): Intl.Segmenter {
+    return this.#intlObject;
   }
 
   resolvedOptions(): Intl.ResolvedSegmenterOptions {
@@ -34,15 +26,14 @@ export default class extends AbstractIntlElement {
   }
 
   override render() {
-    const segmenter = new Intl.Segmenter(this.localeList.value, {
-      granularity: this.optionGranularity,
-      localeMatcher: this.optionLocaleMatcher,
-    });
+    try {
+      this.#intlObject = new Intl.Segmenter(this.localeList.value, {
+        granularity: this.optionGranularity,
+        localeMatcher: this.optionLocaleMatcher,
+      });
+      this.#resolvedOptions = this.#intlObject.resolvedOptions();
+    } catch {}
 
-    this.#value = segmenter.segment(this.textContent?.trim() || '');
-    this.#resolvedOptions = segmenter.resolvedOptions();
-
-    // TODO: Implement this.
-    return this.valueAsDocumentFragment;
+    return nothing;
   }
 }

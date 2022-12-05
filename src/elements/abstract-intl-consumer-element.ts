@@ -106,11 +106,4 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
         .map(el => el.value.trim())
         .filter(value => value !== '');
   }
-
-  /*
-  protected getTemplate(key?: string): HTMLTemplateElement | null {
-    const query = `template${key ? `[slot="${key}"]` : ''}`;
-    return this.querySelector(query) as HTMLTemplateElement | null;
-  }
-  */
 }

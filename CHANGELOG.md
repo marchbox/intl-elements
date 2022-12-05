@@ -6,7 +6,9 @@
 
 - All consumer elements now can specify their provider element via the
   `provider` attribute, hence, they no long need to be descendants of their
-  provider elements.
+  provider elements
+- [`intl-segmenter`] Added the custom element
+- [`intl-segmenter-segment`] Added the custom element
 
 ---
 

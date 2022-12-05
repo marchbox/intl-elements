@@ -1,24 +1,19 @@
-import {describe, it, expect} from '@jest/globals';
-
 import {createTestPage} from '../../testing';
 import HTMLIntlSegmenterElement from './segmenter';
 
 describe('intl-segmenter', () => {
-  it.skip('renders document fragment based on the given user template', async () => {
-    const page = await createTestPage<HTMLIntlSegmenterElement>({
-      element: ['intl-segmenter', 'intl-output'],
+  it('returns correct resolved options', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter'],
       html: `
-        <intl-segmenter locales="en" option-granularity="word">
-          Hello, world!!
-          <template>
-            <span><intl-output /></span>
-          </template>
-        </intl-segmenter>
+        <intl-segmenter locales="de"></intl-segmenter>
       `,
     });
-    const el = page.element;
+    const el = document.querySelector('intl-segmenter') as HTMLIntlSegmenterElement;
+    // @ts-ignore
+    const intlResult = new Intl.Segmenter('de').resolvedOptions();
 
-    expect(el.valueAsHTMLString).toBe('<span>Hello</span><span>,</span><span>world</span><span>!</span><span>!</span>');
+    expect(el.resolvedOptions()).toEqual(intlResult);
   });
 
   it.todo('throws an error if any child node is neither a template element nor a text node');
