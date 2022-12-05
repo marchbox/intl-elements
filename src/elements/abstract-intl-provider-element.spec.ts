@@ -642,10 +642,8 @@ describe('AbstractIntlProviderElement', () => {
     });
     const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
     const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestIntlConsumerElement[];
-    // @ts-ignore
-    const spy1 = jest.spyOn(bars[0], 'update');
-    // @ts-ignore
-    const spy2 = jest.spyOn(bars[1], 'update');
+    const spy1 = jest.spyOn(bars[0]!, 'requestUpdate');
+    const spy2 = jest.spyOn(bars[1]!, 'requestUpdate');
 
     el.setAttribute('locales', 'fr');
     await el.updateComplete;
@@ -653,9 +651,7 @@ describe('AbstractIntlProviderElement', () => {
     expect(spy1).toHaveBeenCalled();
     expect(spy2).toHaveBeenCalled();
 
-    // @ts-ignore
     spy1.mockRestore();
-    // @ts-ignore
     spy2.mockRestore();
   });
 
