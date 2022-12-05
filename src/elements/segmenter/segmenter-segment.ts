@@ -18,6 +18,16 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElemen
     return this.textContent!.trim() || '';
   }
 
+  #getParts(segment: Intl.SegmentData): string {
+    const parts = ['segment'];
+
+    if (segment.isWordLike) {
+      parts.push('wordlike');
+    }
+
+    return parts.join(' ');
+  }
+
   override render() {
     let isGranularityWord = false;
 
@@ -30,12 +40,10 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElemen
     }
 
     return html`
-      <span role="none" part="value">
-        ${Array.from(this.#value ?? []).map(segment =>
-          isGranularityWord && !segment.isWordLike ? segment.segment :
-            html`<span part="segment${segment.isWordLike ? ' wordlike' : ''}" role="none">${segment.segment}</span>`
-        )}
-      </span>
+      <span role="none" part="value">${Array.from(this.#value ?? []).map(segment =>
+        isGranularityWord && !segment.isWordLike ? segment.segment :
+          html`<span part=${this.#getParts(segment)} role="none">${segment.segment}</span>`
+      )}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
         <slot name="word-like"></slot>
