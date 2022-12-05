@@ -6,7 +6,7 @@
     body {
       font-family: sans-serif;
     }
-    .seg {
+    intl-segmenter-segment::part(wordlike) {
       white-space: nowrap;
     }
   </style>
@@ -90,20 +90,17 @@
   <h2><code>intl-segmenter</code></h2>
   <p>
     <intl-segmenter locales="ja" option-granularity="word">
-      <intl-segmenter-segment>
-        こんにちは世界
-        <template slot="word-like"><span class="word"><ins></ins></span></template>
-        <template slot="non-word-like"><span><ins></ins></span></template>
-      </intl-segmenter-segment>
+      <intl-segmenter-segment>こんにちは世界</intl-segmenter-segment>
     </intl-segmenter>
   </p>
   <p>
-    <intl-segmenter locales="hi" option-granularity="word">
-      <intl-segmenter-segment>
-        हैलो वर्ल्ड!
-        <template><span class="word"><ins></ins></span></template>
-        <template slot="non-word-like"><span><ins></ins></span></template>
-      </intl-segmenter-segment>
+    <intl-segmenter locales="hi">
+      <intl-segmenter-segment>हैलो वर्ल्ड!</intl-segmenter-segment>
+    </intl-segmenter>
+  </p>
+  <p>
+    <intl-segmenter locales="zh" option-granularity="word">
+      <intl-segmenter-segment>神奇一刻（DisneyBox.com）是非官方的迪士尼爱好者互联网交流平台。我们通过论坛（即迪士尼华语坛）把全球喜爱迪士尼的华人连接在一起，让大家分享对迪士尼的情感和欢乐，并通过迪士尼百科资料库、迪士尼歌词库、Dissenger 等内容丰富的专业栏目为广大影迷提供信息和交流的机会。</intl-segmenter-segment>
     </intl-segmenter>
   </p>
 

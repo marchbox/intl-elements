@@ -18,12 +18,18 @@ import {
   HTMLIntlRelativeTimeFormatFormatToPartsElement,
   defineIntlRelativeTimeFormatElements,
 } from './elements/relativetimeformat';
+import {
+  HTMLIntlSegmenterElement,
+  HTMLIntlSegmenterSegmentElement,
+  defineIntlSegmenterElements,
+} from './elements/segmenter';
 
 export function defineIntlElements() {
   defineIntlLocaleElements();
   defineIntlDisplayNamesElements();
   defineIntlListFormatElements();
   defineIntlRelativeTimeFormatElements();
+  defineIntlSegmenterElements();
 }
 
 export {
@@ -35,4 +41,6 @@ export {
   HTMLIntlRelativeTimeFormatElement,
   HTMLIntlRelativeTimeFormatFormatElement,
   HTMLIntlRelativeTimeFormatFormatToPartsElement,
+  HTMLIntlSegmenterElement,
+  HTMLIntlSegmenterSegmentElement,
 }

@@ -17,14 +17,15 @@ const createToHaveShadowPartsMatcher = (
     throw new Error('`count` must be a number');
   }
 
-  const parts = el.shadowRoot?.querySelectorAll(`[part="${part}"]`);
+  const parts = el.shadowRoot?.querySelectorAll(`[part~="${part}"]`);
   const to = this.isNot ? 'not to' : 'to';
   const not = this.isNot ? 'not ' : '';
   const plural = count === 1 ? '' : 's';
+  const expectedAmount = anyCount ? '' : ` ${count}`;
 
   return {
     message: () => [
-      `expected element ${to} have ${count} Shadow Part${plural} named '${part}'`,
+      `expected element ${to} have${expectedAmount} Shadow Part${plural} named '${part}'`,
       `Received: ${this.utils.printExpected(parts?.length ?? 0)}`,
       `Expected: ${not}${this.utils.printReceived(anyCount ? '>= 1' : count)}`,
     ].join('\n'),

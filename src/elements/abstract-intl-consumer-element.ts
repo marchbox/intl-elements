@@ -76,20 +76,26 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
 
   protected override firstUpdated() {
     const slotEls = this.renderRoot.querySelectorAll('slot');
-    const assignedEls = Array.from(slotEls)
-        .map(slot => slot.assignedElements())
+    const assignedNodes = Array.from(slotEls)
+        .map(slot => slot.assignedNodes({flatten: true}))
         .flat()
-        .filter(el => el.nodeName === 'DATA');
+        .filter(node =>
+            // @ts-ignore
+            (this.constructor.allowTextContent && node.nodeType === Node.TEXT_NODE) ||
+            node.nodeName === 'DATA');
 
     // Observe slotted element changes.
     this.#slottedElementObserver = new MutationObserver(() => {
       this.requestUpdate();
     });
-    for (const el of assignedEls) {
-      this.#slottedElementObserver.observe(el, {
+    for (const node of assignedNodes) {
+      const options = node.nodeType === Node.TEXT_NODE ? {
+        characterData: true,
+      } : {
         attributes: true,
         attributeFilter: ['value'],
-      });
+      };
+      this.#slottedElementObserver.observe(node, options);
     }
 
     // Listen to slot changes.
@@ -106,11 +112,4 @@ export default abstract class AbstractIntlConsumerElement<P, V> extends LitEleme
         .map(el => el.value.trim())
         .filter(value => value !== '');
   }
-
-  /*
-  protected getTemplate(key?: string): HTMLTemplateElement | null {
-    const query = `template${key ? `[slot="${key}"]` : ''}`;
-    return this.querySelector(query) as HTMLTemplateElement | null;
-  }
-  */
 }

@@ -310,6 +310,31 @@ describe('AbstractIntlConsumerElement', () => {
     spy.mockRestore();
   });
 
+  it('observes text content changes if text content is allowed', async () => {
+    class TextIntlConsumerElement2 extends TestIntlConsumerElement {
+      static override allowTextContent = true;
+    }
+    customElements.define('intl-foo-baz', TextIntlConsumerElement2);
+
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-baz'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-baz>Hello, world!</intl-foo-baz>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-baz') as TestIntlConsumerElement;
+    const spy = jest.spyOn(el, 'requestUpdate');
+
+    el.textContent = 'Hello, moon!';
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockRestore();
+  });
+
   it('trims data values', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
