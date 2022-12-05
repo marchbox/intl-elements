@@ -32,6 +32,7 @@ export default class extends AbstractIntlProviderElement {
   override render() {
     try {
       this.#intlObject = new Intl.RelativeTimeFormat(this.localeList.value, {
+        localeMatcher: this.optionLocaleMatcher,
         numeric: this.optionNumeric,
         style: this.optionStyle,
       });
