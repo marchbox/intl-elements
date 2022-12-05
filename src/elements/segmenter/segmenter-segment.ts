@@ -15,7 +15,7 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElemen
   }
 
   get input(): string {
-    return this.textContent?.trim() || '';
+    return this.textContent!.trim() || '';
   }
 
   override render() {

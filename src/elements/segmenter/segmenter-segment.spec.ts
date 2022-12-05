@@ -9,7 +9,6 @@ describe('intl-segmenter-segment', () => {
         <intl-segmenter locales="en">
           <intl-segmenter-segment>
             Hello, world!
-            <template><span><ins></ins></span></template>
           </intl-segmenter-segment>
         </intl-segmenter>
       `,
@@ -21,6 +20,23 @@ describe('intl-segmenter-segment', () => {
     expect(el.value).toEqual(intlResult);
   });
 
+  it('hides slotted contents', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+    const span = el.shadowRoot?.querySelector('span[hidden]') as HTMLSlotElement;
+
+    expect(span!).not.toBeVisible();
+  });
+
   it('gets the correct text as input', async () => {
     await createTestPage({
       elements: ['intl-segmenter', 'intl-segmenter-segment'],
@@ -28,13 +44,104 @@ describe('intl-segmenter-segment', () => {
         <intl-segmenter locales="en">
           <intl-segmenter-segment>
             Hello, world!
-            <template><span><ins></ins></span></template>
+          </intl-segmenter-segment>
+          <intl-segmenter-segment></intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const els = document.querySelectorAll('intl-segmenter-segment') as NodeListOf<HTMLIntlSegmenterElement>;
+
+    expect(els[0]!.input).toBe('Hello, world!');
+    expect(els[1]!.input).toBe('');
+  });
+
+  it('updates when the text content changes', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+    // @ts-ignore
+    const intlResult = new Intl.Segmenter('en').segment('Hello, moon!');
+
+    el.textContent = 'Hello, moon!';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(el.value).toEqual(intlResult);
+  });
+
+  it('renders Shadow Parts with grapheme granularity', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en">
+          <intl-segmenter-segment>
+            Hello, world!
           </intl-segmenter-segment>
         </intl-segmenter>
       `,
     });
     const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
 
-    expect(el.input).toBe('Hello, world!');
+    expect(el).toHaveShadowPart('segment');
+    expect(el).not.toHaveShadowPart('wordlike');
+  });
+
+  it('renders Shadow Parts with word granularity', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en" option-granularity="word">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+
+    expect(el).toHaveShadowPart('segment');
+    expect(el).toHaveShadowPart('wordlike');
+  });
+
+  it('renders Shadow Parts with sentence granularity', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en" option-granularity="sentence">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+
+    expect(el).toHaveShadowPart('segment');
+    expect(el).not.toHaveShadowPart('wordlike');
+  });
+
+  it('renders an empty string with an invalid locale', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="invalid">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+    const span = el.shadowRoot?.querySelector('span') as HTMLSpanElement;
+
+    expect(span!).toHaveTextContent('');
   });
 });
