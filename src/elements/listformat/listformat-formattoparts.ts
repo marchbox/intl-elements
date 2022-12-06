@@ -21,7 +21,9 @@ export default class extends AbstractIntlListFormatConsumerElement {
         ${this.#value.map(part =>
             html`<span part="${part.type}" role="none">${part.value}</span>`)}
       </span>
-      <slot></slot>
+      <span aria-hidden="true" hidden>
+        <slot></slot>
+      </span>
     `;
   }
 }

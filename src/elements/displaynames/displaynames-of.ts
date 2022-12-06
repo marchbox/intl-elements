@@ -33,7 +33,9 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesEle
 
     return html`
       <span role="none" part="value">${this.#value}</span>
-      <slot></slot>
+      <span aria-hidden="true" hidden>
+        <slot></slot>
+      </span>
     `;
   }
 }

@@ -1,7 +1,7 @@
 import {createTestPage} from '../../testing';
 import HTMLIntlDisplayNamesOfElement from './displaynames-of';
 
-describe('intl-displaynames', () => {
+describe('intl-displaynames-of', () => {
   it('renders `<span>` elements with `role="none"`', async () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
@@ -15,11 +15,9 @@ describe('intl-displaynames', () => {
     });
     const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
     const shadow = el.shadowRoot as ShadowRoot;
-    const spans = shadow.querySelectorAll('span');
+    const span = shadow.querySelector('span');
 
-    for (const span of spans) {
-      expect(span).toHaveAttribute('role', 'none');
-    }
+    expect(span).toHaveAttribute('role', 'none');
   });
 
   it('has `value` property the same as its text content', async () => {
@@ -61,6 +59,23 @@ describe('intl-displaynames', () => {
     expect(els[1]!.value).toBe(intlResult);
     expect(els[2]!.value).toBe(intlResult);
     expect(els[3]!.value).toBe(intlResult);
+  });
+
+  it('hides slotted contents', async () => {
+    await createTestPage({
+      elements: ['intl-displaynames', 'intl-displaynames-of'],
+      html: `
+        <intl-displaynames locales="en">
+          <intl-displaynames-of>
+            <data value="ja"></data>
+          </intl-displaynames-of>
+        </intl-displaynames>
+      `,
+    });
+    const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
+    const span = el.shadowRoot?.querySelector('span[hidden]') as HTMLSlotElement;
+
+    expect(span!).not.toBeVisible();
   });
 
   it('renders an empty string if no data provided', async () => {

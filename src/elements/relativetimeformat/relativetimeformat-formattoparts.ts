@@ -24,9 +24,11 @@ export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
         ${this.#value.map(part =>
             html`<span part="${part.type}" role="none">${part.value}</span>`)}
       </span>
-      <slot name="rtime"></slot>
-      <slot name="unit"></slot>
-      <slot></slot>
+      <span aria-hidden="true" hidden>
+        <slot name="rtime"></slot>
+        <slot name="unit"></slot>
+        <slot></slot>
+      </span>
     `;
   }
 }

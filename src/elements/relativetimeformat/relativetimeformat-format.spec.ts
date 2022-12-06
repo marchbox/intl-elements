@@ -39,6 +39,24 @@ describe('intl-relativetimeformat-format', () => {
     expect(span).toHaveTextContent(el.value);
   });
 
+  it('hides slotted contents', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-format'],
+      html: `
+        <intl-relativetimeformat locales="en">
+          <intl-relativetimeformat-format>
+            <data value="10"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-format>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-format') as HTMLIntlRelativeTimeFormatFormatElement;
+    const span = el.shadowRoot?.querySelector('span[hidden]') as HTMLSlotElement;
+
+    expect(span!).not.toBeVisible();
+  });
+
   it('renders an empty string', async () => {
     await createTestPage({
       elements: ['intl-relativetimeformat', 'intl-relativetimeformat-format'],
