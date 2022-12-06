@@ -1,8 +1,6 @@
 import {LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
 
-const CHILDREN_QUERY_SELECTOR = 'data[value],template';
-
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
@@ -13,7 +11,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
 
   #slottedElementObserver!: MutationObserver;
 
-  protected static allowTextContent = false;
+  protected static observesText = false;
 
   protected static providerElementName: string;
 
@@ -52,26 +50,12 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'none');
     }
-
-    if (Array.from(this.children)
-        .find(el => !el.matches(CHILDREN_QUERY_SELECTOR))) {
-      throw new Error('This element must only contain <data value> and/or ' +
-        '<template> elements.');
-    }
-
-    const text = Array.from(this.childNodes)
-        .find(el => el.nodeType === Node.TEXT_NODE)?.nodeValue?.trim() ?? '';
-    // @ts-ignore
-    if (!this.constructor.allowTextContent && text) {
-      throw new Error('This element must not contain any direct text content.' +
-          ` Text found: ${text}.`);
-    }
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.#slottedElementObserver?.disconnect();
+    this.#slottedElementObserver.disconnect();
   }
 
   protected override firstUpdated() {
@@ -81,7 +65,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .flat()
         .filter(node =>
             // @ts-ignore
-            (this.constructor.allowTextContent && node.nodeType === Node.TEXT_NODE) ||
+            (this.constructor.observesText && node.nodeType === Node.TEXT_NODE) ||
             node.nodeName === 'DATA');
 
     // Observe slotted element changes.

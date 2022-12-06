@@ -4,7 +4,7 @@ import AbstractConsumer from '../abstract-consumer';
 import HTMLIntlSegmenterElement from './segmenter';
 
 export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
-  protected static override allowTextContent = true;
+  protected static override observesText = true;
 
   protected static override providerElementName = 'intl-segmenter';
 

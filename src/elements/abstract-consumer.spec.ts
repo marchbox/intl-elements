@@ -312,7 +312,7 @@ describe('AbstractConsumer', () => {
 
   it('observes text content changes if text content is allowed', async () => {
     class TextIntlConsumerElement2 extends TestConsumer {
-      static override allowTextContent = true;
+      static override observesText = true;
     }
     customElements.define('intl-foo-baz', TextIntlConsumerElement2);
 
@@ -370,9 +370,4 @@ describe('AbstractConsumer', () => {
     // @ts-ignore
     expect(el.getData()).toEqual(['day', 'month']);
   });
-
-  it.todo('throws if it contains elements other than <data value> and/or <template>');
-  it.todo('throws if non-<data value> and/or <template> elements are slotted');
-  it.todo('throws if it contains direct text content without setting `allowTextContent` to be `true`');
-  it.todo('throws if direct text content is added');
 });

@@ -6,8 +6,6 @@ type ValueType = string | Intl.NumberFormatPart[];
 export default abstract class extends AbstractConsumer<NumberFormat, ValueType> {
   protected static override providerElementName = 'intl-numberformat';
 
-  protected static override allowTextContent = true;
-
   protected get number(): number {
     return Number(this.getData()[0]);
   }
