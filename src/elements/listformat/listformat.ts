@@ -25,14 +25,6 @@ export default class extends AbstractIntlProviderElement {
   @property({attribute: 'option-type'})
   optionType: Intl.ListFormatType = 'conjunction';
 
-  override connectedCallback() {
-    super.connectedCallback();
-  }
-
-  override disconnectedCallback() {
-    super.disconnectedCallback();
-  }
-
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }

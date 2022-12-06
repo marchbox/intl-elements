@@ -17,16 +17,28 @@ export default class TestIntlProviderElement extends AbstractIntlProviderElement
     return this.#intlObject;
   }
 
-  @property({attribute: 'format-unit'})
+  @property({attribute: 'option-unit'})
   // @ts-ignore
-  formatUnit = 'day';
+  optionUnit = 'day';
+
+  @property({attribute: 'option-currency'})
+  // @ts-ignore
+  optionCurrency?: string;
+
+  @property({attribute: 'option-timezone'})
+  // @ts-ignore
+  optionTimeZone?: string;
 
   resolvedOptions(): any {
     return {};
   }
 
   override render() {
-    this.#intlObject = new FakeIntlApi(this.localeList.valueAsArray);
+    this.#intlObject = new FakeIntlApi(this.localeList.valueAsArray, {
+      unit: this.optionUnit,
+      currency: this.optionCurrency,
+      timeZone: this.optionTimeZone,
+    });
 
     return nothing;
   }

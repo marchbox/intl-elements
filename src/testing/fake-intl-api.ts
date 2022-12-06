@@ -1,8 +1,18 @@
+export interface FakeIntlApiOptions {
+  unit?: string;
+  currency?: string;
+  timeZone?: string;
+}
+
+export type ResolvedFakeIntlApiOptions = FakeIntlApiOptions & {
+  locales: string[];
+};
+
 export class FakeIntlApi {
   // @ts-ignore
   #locales: string[];
   // @ts-ignore
-  #options: any;
+  #options: FakeIntlApiOptions;
 
   constructor(locales: string | string[], options: any = {}) {
     // @ts-ignore
@@ -21,6 +31,15 @@ export class FakeIntlApi {
       return supportedLocales.includes(list) ? [list] : [];
     }
     return [];
+  }
+
+  resolvedOptions(): ResolvedFakeIntlApiOptions {
+    return {
+      locales: this.#locales,
+      unit: this.#options.unit,
+      currency: this.#options.currency,
+      timeZone: this.#options.timeZone,
+    };
   }
 
   format(unit: string): string {

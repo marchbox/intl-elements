@@ -61,21 +61,37 @@ describe('AbstractIntlProviderElement', () => {
     expect(el).toHaveAttribute('role', 'option');
   });
 
-  it('rejects invalid atttibute values', async () => {
+  // TODO: Think about how to better test this. Invalid values are treated as
+  // empty strings now.
+  it.skip('rejects invalid atttibute values', async () => {
     await createTestPage({
       elements: ['intl-foo'],
       html: `
-        <intl-foo locales="en" format-unit="year"></intl-foo>
+        <intl-foo locales="en" option-unit="year"></intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo') as TestIntlProviderElement;
 
     // @ts-ignore
     const spy = jest.spyOn(el, 'update');
-    el.setAttribute('format-unit', 'invalid');
+    el.setAttribute('option-unit', 'invalid');
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
+  });
+
+  // TODO: Add test for `option-timezone`.
+  it('handles option values as case-insensitive', async () => {
+    await createTestPage({
+      elements: ['intl-foo'],
+      html: `
+        <intl-foo option-unit="DaY" option-currency="usd"></intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+
+    expect(el.optionUnit).toBe('day');
+    expect(el.optionCurrency).toBe('USD');
   });
 
   describe('locale list determination prioritization', () => {

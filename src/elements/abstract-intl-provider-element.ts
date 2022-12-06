@@ -1,7 +1,8 @@
-import {LitElement, PropertyValues} from 'lit';
+import {LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list';
+import {SUPPORTED_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties';
 import AbstractIntlConsumerElement from './abstract-intl-consumer-element';
 import HTMLIntlLocaleElement from './locale/locale';
 
@@ -112,15 +113,32 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
     this.#ancestorObserver?.disconnect();
   }
 
-  protected override shouldUpdate(changes: PropertyValues<this>): boolean {
-    return this.#isValid(changes);
+  protected override shouldUpdate(changes: Map<string, unknown>): boolean {
+    // Makes sure the canonical new value is not the same as the old value.
+    // TODO: Creates a custom decorator that extends lit’s `@property`
+    // decorator and custom the `converter()` and `hasChanged()` functions with
+    // canonical value conversion and evaluation.
+    return Array.from(changes.entries()).every(([key, oldValue]) => {
+      // @ts-ignore
+      const canonicalValue = getCanonicalOptionValue(key, this[key]);
+      return canonicalValue !== oldValue;
+    });
   }
 
-  protected override willUpdate(changes: PropertyValues<this>) {
+  protected override willUpdate(changes: Map<string, unknown>) {
     if (changes.has('locales')) {
       this.#isUpdatingLocales = true;
       this.#localeList.value = this.locales ?? this.#getAdditionalLocales();
     }
+
+    // Canonicalizes the new values.
+    // TODO: After creating a custom property decorator, this can be removed.
+    Array.from(changes.keys())
+      .filter(key => SUPPORTED_OPTION_KEYS.includes(key))
+      .forEach(key => {
+        // @ts-ignore
+        this[key] = getCanonicalOptionValue(key, this[key]);
+      });
   }
 
   protected override firstUpdated() {
@@ -281,30 +299,6 @@ export default abstract class AbstractIntlProviderElement extends LitElement {
       attributes: true,
       childList: true,
       subtree: true,
-    });
-  }
-
-  // Makes sure some Intl option values and method arguments are valid.
-  #isValid(changes: PropertyValues<this>): boolean {
-    return Array.from(changes.entries()).every(([key]) => {
-      let supported = true;
-      try {
-        // Transforms `optionFooBar` to `fooBar`.
-        const _key = (key as string)
-            .replace(/^[a-z]+/, '')
-            .replace(/^[A-Z]/, letter => letter.toLowerCase());
-
-        supported = Intl
-            .supportedValuesOf(_key as Intl.SupportedValueKey)
-            // @ts-ignore
-            .includes(this[key] as string);
-      } catch {}
-
-      if (!supported) {
-        return false;
-      }
-
-      return true;
     });
   }
 }
