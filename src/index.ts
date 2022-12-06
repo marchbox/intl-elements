@@ -14,10 +14,10 @@ import {
 } from './elements/listformat';
 import {
   HTMLIntlNumberFormatElement,
-  // HTMLIntlNumberFormatFormatElement,
-  // HTMLIntlNumberFormatFormatToPartsElement,
-  // HTMLIntlNumberFormatFormatToRangeElement,
-  // HTMLIntlNumberFormatFormatToRangeToPartsElement,
+  HTMLIntlNumberFormatFormatElement,
+  HTMLIntlNumberFormatFormatToPartsElement,
+  HTMLIntlNumberFormatFormatRangeElement,
+  HTMLIntlNumberFormatFormatRangeToPartsElement,
   defineIntlNumberFormatElements,
 } from './elements/numberformat';
 import {
@@ -48,10 +48,10 @@ export {
   HTMLIntlListFormatElement,
   HTMLIntlListFormatFormatElement,
   HTMLIntlNumberFormatElement,
-  // HTMLIntlNumberFormatFormatElement,
-  // HTMLIntlNumberFormatFormatToPartsElement,
-  // HTMLIntlNumberFormatFormatToRangeElement,
-  // HTMLIntlNumberFormatFormatToRangeToPartsElement,
+  HTMLIntlNumberFormatFormatElement,
+  HTMLIntlNumberFormatFormatToPartsElement,
+  HTMLIntlNumberFormatFormatRangeElement,
+  HTMLIntlNumberFormatFormatRangeToPartsElement,
   HTMLIntlRelativeTimeFormatElement,
   HTMLIntlRelativeTimeFormatFormatElement,
   HTMLIntlRelativeTimeFormatFormatToPartsElement,

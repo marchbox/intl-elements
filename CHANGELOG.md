@@ -8,6 +8,11 @@
   whitespaces, its `Intl` object throws errors. This is due to the `locales`
   argument passed into an `Intl` is incorrectly typed as a string instead of
   an array
+- [`intl-numberformat`] Added the custom element.
+- [`intl-numberformat-format`] Added the custom element.
+- [`intl-numberformat-formattoparts`] Added the custom element.
+- [`intl-numberformat-formatrange`] Added the custom element.
+- [`intl-numberformat-formatrangetoparts`] Added the custom element.
 
 ---
 
