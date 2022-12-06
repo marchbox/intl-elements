@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-export function defineIntlLocaleElements() {
+export function defineIntlNumberFormatElements() {
   customElements.define('intl-numberformat', HTMLIntlNumberFormatElement);
   // customElements.define('intl-numberformat-format', HTMLIntlNumberFormatFormatElement);
   // customElements.define('intl-numberformat-formatrange', HTMLIntlNumberFormatFormatRangeElement);

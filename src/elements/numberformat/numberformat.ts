@@ -22,7 +22,7 @@ export default class extends AbstractIntlProviderElement {
   }
 
   @property({attribute: 'option-style'})
-  optionStyle: 'decimal' | 'currenty' | 'percent' | 'unit' = 'decimal';
+  optionStyle: 'decimal' | 'currency' | 'percent' | 'unit' = 'decimal';
 
   @property({attribute: 'option-compactdisplay'})
   optionCompactDisplay: 'short' | 'long' = 'short';
@@ -64,10 +64,10 @@ export default class extends AbstractIntlProviderElement {
   optionMaximumFractionDigits?: number;
 
   @property({attribute: 'option-minimumsignificantdigits', type: Number})
-  optionMinimumSignificantDigits = 1;
+  optionMinimumSignificantDigits?: number;
 
-  @property({attribute: 'option-maximumsignificantdigits'})
-  optionMaximumSignificantDigits = 21;
+  @property({attribute: 'option-maximumsignificantdigits', type: Number})
+  optionMaximumSignificantDigits?: number;
 
   resolvedOptions(): Intl.ResolvedNumberFormatOptions {
     return this.#resolvedOptions;
