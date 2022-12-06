@@ -1,7 +1,7 @@
 import { createTestPage } from "../../testing";
-import AbstractIntlRelativetimeformatConsumerElement from "./abstract-intl-relativetimeformat-consumer-element";
+import AbstractRelativeTimeFormatConsumer from "./abstract-relativetimeformat-consumer";
 
-class TestIntlRelativeTimeFormatConsumerElement extends AbstractIntlRelativetimeformatConsumerElement {
+class TestIntlRelativeTimeFormatConsumerElement extends AbstractRelativeTimeFormatConsumer {
   #value = '';
 
   get value(): string {
@@ -11,7 +11,7 @@ class TestIntlRelativeTimeFormatConsumerElement extends AbstractIntlRelativetime
 
 customElements.define('test-consumer', TestIntlRelativeTimeFormatConsumerElement);
 
-describe('AbstractIntlRelativeTimeFormatConsumerElement', () => {
+describe('AbstractRelativeTimeFormatConsumer', () => {
   it('gets correct data from named slots', async () => {
     await createTestPage({
       elements: ['intl-relativetimeformat', 'test-consumer'],

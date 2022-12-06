@@ -1,8 +1,8 @@
 import {html} from 'lit';
 
-import AbstractIntlListFormatConsumerElement from './abstract-intl-listformat-consumer-element';
+import AbstractListFormatConsumer from './abstract-listformat-consumer';
 
-export default class extends AbstractIntlListFormatConsumerElement {
+export default class extends AbstractListFormatConsumer {
   #value: Intl.ListFormatPart[] = [];
 
   override get value(): Intl.ListFormatPart[] {

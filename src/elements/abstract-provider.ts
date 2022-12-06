@@ -3,7 +3,7 @@ import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list';
 import {SUPPORTED_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties';
-import AbstractIntlConsumerElement from './abstract-intl-consumer-element';
+import AbstractConsumer from './abstract-consumer';
 import HTMLIntlLocaleElement from './locale/locale';
 
 export type IntlObjectType = Intl.Collator |
@@ -26,9 +26,9 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
     Intl.ResolvedRelativeTimeFormatOptions |
     Intl.ResolvedSegmenterOptions;
 
-type ConsumerElement = AbstractIntlConsumerElement<AbstractIntlProviderElement, any>;
+type ConsumerElement = AbstractConsumer<AbstractProvider, any>;
 
-export default abstract class AbstractIntlProviderElement extends LitElement {
+export default abstract class AbstractProvider extends LitElement {
   #attrObserver!: MutationObserver;
   #localesFromElementsObserver!: MutationObserver;
   #ancestorObserver!: MutationObserver;

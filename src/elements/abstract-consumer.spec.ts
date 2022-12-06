@@ -1,14 +1,14 @@
 import {
-  TestIntlProviderElement,
-  TestIntlConsumerElement,
+  TestProvider,
+  TestConsumer,
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
-import AbstractIntlConsumerElement from './abstract-intl-consumer-element';
+import AbstractConsumer from './abstract-consumer';
 
 defineTestIntlElements();
 
-describe('AbstractIntlConsumerElement', () => {
+describe('AbstractConsumer', () => {
   it('hides if it has `hidden` attribute', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
@@ -18,7 +18,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
 
     expect(el).not.toBeVisible();
   });
@@ -34,8 +34,8 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
-    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    const providerEl = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.providerElement).toBe(providerEl);
   });
@@ -48,8 +48,8 @@ describe('AbstractIntlConsumerElement', () => {
         <intl-foo-bar provider="provider"></intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
-    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    const providerEl = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.providerElement).toBe(providerEl);
   });
@@ -64,8 +64,8 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
-    const providerEl = document.querySelector('intl-foo:nth-child(2)') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    const providerEl = document.querySelector('intl-foo:nth-child(2)') as TestProvider;
 
     expect(el.providerElement).toBe(providerEl);
   });
@@ -79,17 +79,17 @@ describe('AbstractIntlConsumerElement', () => {
         <intl-foo-bar provider="provider"></intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
-    const providerEl = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    const providerEl = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.providerElement).toBe(providerEl);
   });
 
   it('throws if parent element name isn’t defined', async () => {
-    class BadConsumerElement extends AbstractIntlConsumerElement<TestIntlProviderElement, string> {
+    class BadConsumer extends AbstractConsumer<TestProvider, string> {
       value = '';
     }
-    customElements.define('bad-consumer', BadConsumerElement);
+    customElements.define('bad-consumer', BadConsumer);
 
     await createTestPage({
       elements: ['intl-foo', 'bad-consumer'],
@@ -99,7 +99,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('bad-consumer') as BadConsumerElement;
+    const el = document.querySelector('bad-consumer') as BadConsumer;
 
     expect(() => {el.providerElement;})
         .toThrow('providerElementName is not defined');
@@ -112,7 +112,7 @@ describe('AbstractIntlConsumerElement', () => {
         <intl-foo-bar></intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
 
     expect(el.providerElement).toBeUndefined();
   });
@@ -126,7 +126,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
 
     expect(el).toHaveAttribute('role', 'none');
   });
@@ -146,7 +146,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     expect(els[0]!.value).toBe('day');
     expect(els[1]!.value).toBe('year');
@@ -176,7 +176,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     // @ts-ignore
     expect(els[0]!.getData()).toEqual(['day']);
@@ -206,7 +206,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestIntlConsumerElement>;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     // @ts-ignore
     expect(els[0]!.getData('foo')).toEqual(['day']);
@@ -227,7 +227,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     const spy = jest.spyOn(el, 'requestUpdate');
 
     const dataEl = document.createElement('data');
@@ -249,7 +249,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     const spy = jest.spyOn(el, 'requestUpdate');
 
     const dataEl = el.querySelector('data');
@@ -272,7 +272,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
 
@@ -295,7 +295,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
 
@@ -311,7 +311,7 @@ describe('AbstractIntlConsumerElement', () => {
   });
 
   it('observes text content changes if text content is allowed', async () => {
-    class TextIntlConsumerElement2 extends TestIntlConsumerElement {
+    class TextIntlConsumerElement2 extends TestConsumer {
       static override allowTextContent = true;
     }
     customElements.define('intl-foo-baz', TextIntlConsumerElement2);
@@ -324,7 +324,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-baz') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-baz') as TestConsumer;
     const spy = jest.spyOn(el, 'requestUpdate');
 
     el.textContent = 'Hello, moon!';
@@ -348,7 +348,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     // @ts-ignore
     expect(el.getData()).toEqual(['day', 'year', 'month']);
   });
@@ -366,7 +366,7 @@ describe('AbstractIntlConsumerElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestIntlConsumerElement;
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
     // @ts-ignore
     expect(el.getData()).toEqual(['day', 'month']);
   });

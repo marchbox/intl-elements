@@ -1,9 +1,9 @@
 import {TemplateResult, html} from 'lit';
 
-import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
+import AbstractConsumer from '../abstract-consumer';
 import HTMLIntlSegmenterElement from './segmenter';
 
-export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
+export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
   protected static override allowTextContent = true;
 
   protected static override providerElementName = 'intl-segmenter';

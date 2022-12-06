@@ -1,7 +1,7 @@
 import {createTestPage} from '../../testing';
-import AbstractIntlListformatConsumerElement from './abstract-intl-listformat-consumer-element';
+import AbstractListFormatConsumer from './abstract-listformat-consumer';
 
-class TestIntlListFormatConsumerElement extends AbstractIntlListformatConsumerElement {
+class TestListFormatConsumer extends AbstractListFormatConsumer {
   #value = '';
 
   get value() {
@@ -9,7 +9,7 @@ class TestIntlListFormatConsumerElement extends AbstractIntlListformatConsumerEl
   }
 }
 
-customElements.define('test-consumer', TestIntlListFormatConsumerElement);
+customElements.define('test-consumer', TestListFormatConsumer);
 
 describe('AbtractIntlListFormatConsumerElement', () => {
   it('has `list` property value from the given data', async () => {
@@ -25,7 +25,7 @@ describe('AbtractIntlListFormatConsumerElement', () => {
       `,
     });
 
-    const el = document.querySelector('test-consumer') as TestIntlListFormatConsumerElement;
+    const el = document.querySelector('test-consumer') as TestListFormatConsumer;
 
     // @ts-ignore
     expect(el.list).toEqual(['foo', 'bar']);
@@ -44,7 +44,7 @@ describe('AbtractIntlListFormatConsumerElement', () => {
       `,
     });
 
-    const el = document.querySelector('test-consumer') as TestIntlListFormatConsumerElement;
+    const el = document.querySelector('test-consumer') as TestListFormatConsumer;
 
     // @ts-ignore
     expect(el.list).toEqual(['foo', 'bar']);

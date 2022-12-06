@@ -3,7 +3,7 @@ import {property} from 'lit/decorators.js';
 
 const CHILDREN_QUERY_SELECTOR = 'data[value],template';
 
-export default abstract class AbstractIntlConsumerElement<P, V> extends LitElement {
+export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
     ::slotted(data) {

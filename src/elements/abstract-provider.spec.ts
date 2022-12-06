@@ -1,16 +1,16 @@
 import {
   FakeIntlApi,
-  TestIntlProviderElement,
-  TestIntlConsumerElement,
+  TestProvider,
+  TestConsumer,
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
-import AbstractIntlProviderElement from './abstract-intl-provider-element';
+import AbstractProvider from './abstract-provider';
 import HTMLIntlLocaleElement from './locale/locale';
 
 defineTestIntlElements();
 
-describe('AbstractIntlProviderElement', () => {
+describe('AbstractProvider', () => {
   it('handles multiple locales and ignores unsupported and invalid ones', async () => {
     await createTestPage({
       elements: ['intl-foo'],
@@ -19,7 +19,7 @@ describe('AbstractIntlProviderElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('ja');
   });
@@ -32,7 +32,7 @@ describe('AbstractIntlProviderElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('en ja');
   });
@@ -44,7 +44,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el).toHaveAttribute('role', 'none');
   });
@@ -56,7 +56,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo role="option"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el).toHaveAttribute('role', 'option');
   });
@@ -70,7 +70,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo locales="en" option-unit="year"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     // @ts-ignore
     const spy = jest.spyOn(el, 'update');
@@ -88,7 +88,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo option-unit="DaY" option-currency="usd"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.optionUnit).toBe('day');
     expect(el.optionCurrency).toBe('USD');
@@ -109,7 +109,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en');
     });
@@ -124,7 +124,7 @@ describe('AbstractIntlProviderElement', () => {
           </div>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
       const divEl = document.querySelector('div[lang="es"]')!;
 
       divEl.setAttribute('lang', 'zh');
@@ -146,7 +146,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('ar');
     });
@@ -164,7 +164,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('ja fr');
     });
@@ -181,7 +181,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlProviderElement>;
+      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestProvider>;
 
       expect(els[0]!.localeList.value).toBe('es');
       expect(els[1]!.localeList.value).toBe('es');
@@ -201,7 +201,7 @@ describe('AbstractIntlProviderElement', () => {
           </div>
         `,
       });
-      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestIntlProviderElement>;
+      const els = document.querySelectorAll('intl-foo') as NodeListOf<TestProvider>;
 
       expect(els[0]!.localeList.value).toBe('zh');
       expect(els[1]!.localeList.value).toBe('zh');
@@ -215,7 +215,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo locales="en"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('en');
 
@@ -231,7 +231,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo lang="en"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('en');
     expect(el).not.toHaveAttribute('locales');
@@ -257,7 +257,7 @@ describe('AbstractIntlProviderElement', () => {
           <intl-foo locales="ar"></intl-foo>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('ar');
 
@@ -274,7 +274,7 @@ describe('AbstractIntlProviderElement', () => {
           <intl-foo locales="ar" lang="zh"></intl-foo>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('ar');
 
@@ -294,7 +294,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en zh');
 
@@ -312,7 +312,7 @@ describe('AbstractIntlProviderElement', () => {
           </div>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en zh');
 
@@ -330,7 +330,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en ja');
 
@@ -347,7 +347,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo lang="en"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('en');
 
@@ -368,7 +368,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en');
 
@@ -386,7 +386,7 @@ describe('AbstractIntlProviderElement', () => {
           </div>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en');
 
@@ -404,7 +404,7 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('en');
 
@@ -424,7 +424,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo locales-from="my-ja my-fr my-invalid"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localesFromElements).toEqual([
       document.getElementById('my-ja'),
@@ -442,7 +442,7 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo locales-from="my-ja my-fr"></intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('ja fr');
 
@@ -462,7 +462,7 @@ describe('AbstractIntlProviderElement', () => {
         </div>
       `,
     });
-    const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.localeList.value).toBe('ja fr');
 
@@ -481,7 +481,7 @@ describe('AbstractIntlProviderElement', () => {
           <intl-foo locales-from="my-ja my-fr"></intl-foo>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
 
       expect(el.localeList.value).toBe('ja fr');
 
@@ -503,7 +503,7 @@ describe('AbstractIntlProviderElement', () => {
           <intl-foo locales-from="my-ja my-fr"></intl-foo>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
       const myJaEl = document.getElementById('my-ja')! as HTMLIntlLocaleElement;
       const myFrEl = document.getElementById('my-fr')! as HTMLIntlLocaleElement;
 
@@ -533,7 +533,7 @@ describe('AbstractIntlProviderElement', () => {
           </div>
         `,
       });
-      const el = document.querySelector('intl-foo') as TestIntlProviderElement;
+      const el = document.querySelector('intl-foo') as TestProvider;
       const myJaEl = document.getElementById('my-ja')! as HTMLIntlLocaleElement;
       const myFrEl = document.getElementById('my-fr')! as HTMLIntlLocaleElement;
 
@@ -549,8 +549,8 @@ describe('AbstractIntlProviderElement', () => {
   });
 
   describe('observes ancestors for `lang` attribute and `intl-locale` element changes', () => {
-    let el1: TestIntlProviderElement;
-    let el2: TestIntlProviderElement;
+    let el1: TestProvider;
+    let el2: TestProvider;
 
     beforeEach(async () => {
       await createTestPage({
@@ -564,8 +564,8 @@ describe('AbstractIntlProviderElement', () => {
           </intl-locale>
         `,
       });
-      el1 = document.getElementById('el1')! as TestIntlProviderElement;
-      el2 = document.getElementById('el2')! as TestIntlProviderElement;
+      el1 = document.getElementById('el1')! as TestProvider;
+      el2 = document.getElementById('el2')! as TestProvider;
 
       expect(el1.localeList.value).toBe('es');
       expect(el2.localeList.value).toBe('zh');
@@ -608,7 +608,7 @@ describe('AbstractIntlProviderElement', () => {
 
   // TODO
   it.skip('throws if the `consumerElementNames` static property isn’t defined', async () => {
-    class BadProviderElement extends AbstractIntlProviderElement {
+    class BadProvider extends AbstractProvider {
       // @ts-ignore
       intlObject = new FakeIntlApi();
 
@@ -617,7 +617,7 @@ describe('AbstractIntlProviderElement', () => {
         return {};
       }
     }
-    customElements.define('bad-provider', BadProviderElement);
+    customElements.define('bad-provider', BadProvider);
 
     await createTestPage({
       elements: ['bad-provider'],
@@ -625,7 +625,7 @@ describe('AbstractIntlProviderElement', () => {
         <bad-provider></bad-provider>
       `,
     });
-    const el = document.querySelector('bad-provider')! as BadProviderElement;
+    const el = document.querySelector('bad-provider')! as BadProvider;
 
     expect(() => el.consumerElements).toThrow();
   });
@@ -640,8 +640,8 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo-bar provider="foo"></intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
-    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestIntlConsumerElement[];
+    const el = document.querySelector('intl-foo')! as TestProvider;
+    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestConsumer[];
 
     expect(el.consumerElements).toEqual(bars);
   });
@@ -656,8 +656,8 @@ describe('AbstractIntlProviderElement', () => {
         <intl-foo-bar provider="foo"></intl-foo-bar>
       `,
     });
-    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
-    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestIntlConsumerElement[];
+    const el = document.querySelector('intl-foo')! as TestProvider;
+    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestConsumer[];
     const spy1 = jest.spyOn(bars[0]!, 'requestUpdate');
     const spy2 = jest.spyOn(bars[1]!, 'requestUpdate');
 
@@ -681,7 +681,7 @@ describe('AbstractIntlProviderElement', () => {
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo')! as TestIntlProviderElement;
+    const el = document.querySelector('intl-foo')! as TestProvider;
 
     expect(el.consumerElements).toHaveLength(1);
   });

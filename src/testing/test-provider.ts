@@ -1,10 +1,10 @@
 import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import AbstractIntlProviderElement from '../elements/abstract-intl-provider-element';
+import AbstractProvider from '../elements/abstract-provider';
 import {FakeIntlApi} from './fake-intl-api';
 
-export default class TestIntlProviderElement extends AbstractIntlProviderElement {
+export default class extends AbstractProvider {
   // @ts-ignore
   protected static override intlApi = FakeIntlApi;
 
