@@ -13,6 +13,7 @@
 - [`intl-numberformat-formattoparts`] Added the custom element.
 - [`intl-numberformat-formatrange`] Added the custom element.
 - [`intl-numberformat-formatrangetoparts`] Added the custom element.
+- All attribute values are case-insensitive now.
 
 ---
 

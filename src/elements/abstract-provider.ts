@@ -2,7 +2,7 @@ import {LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list';
-import {SUPPORTED_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties';
+import {SPECIAL_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties';
 import AbstractConsumer from './abstract-consumer';
 import HTMLIntlLocaleElement from './locale/locale';
 
@@ -134,7 +134,7 @@ export default abstract class AbstractProvider extends LitElement {
     // Canonicalizes the new values.
     // TODO: After creating a custom property decorator, this can be removed.
     Array.from(changes.keys())
-      .filter(key => SUPPORTED_OPTION_KEYS.includes(key))
+      .filter(key => SPECIAL_OPTION_KEYS.includes(key))
       .forEach(key => {
         // @ts-ignore
         this[key] = getCanonicalOptionValue(key, this[key]);
