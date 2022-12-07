@@ -1,5 +1,5 @@
-import { createTestPage } from "../../testing";
-import AbstractRelativeTimeFormatConsumer from "./abstract-relativetimeformat-consumer";
+import {createTestPage} from '../../testing';
+import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer';
 
 class TestIntlRelativeTimeFormatConsumerElement extends AbstractRelativeTimeFormatConsumer {
   #value = '';
@@ -109,7 +109,7 @@ describe('AbstractRelativeTimeFormatConsumer', () => {
     const el = document.querySelector('test-consumer') as TestIntlRelativeTimeFormatConsumerElement;
 
     // @ts-ignore
-    expect(el.rtime).toBe(undefined);
+    expect(el.rtime).toBeNaN();
   });
 
   it('gets an empty string `unit` if no slotted element', async () => {

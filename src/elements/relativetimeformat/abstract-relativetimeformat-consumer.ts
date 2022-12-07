@@ -6,14 +6,8 @@ type ValueType = string | Intl.RelativeTimeFormatPart[];
 export default abstract class extends AbstractConsumer<HTMLIntlRelativeTimeFormatElement, ValueType> {
   protected static override providerElementName = 'intl-relativetimeformat';
 
-  protected get rtime(): number | undefined {
-    let data = Number(this.getData('rtime')[0]);
-
-    if (!data || isNaN(data)) {
-      data = Number(this.getData()[0]);
-    }
-
-    return Boolean(data) ? data : undefined;
+  protected get rtime(): number {
+    return Number(this.getData('rtime')[0] ?? this.getData()[0]);
   }
 
   protected get unit(): string {

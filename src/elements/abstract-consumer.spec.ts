@@ -218,6 +218,24 @@ describe('AbstractConsumer', () => {
     expect(els[1]!.getData('bar')).toEqual(['hour', 'minute', 'second']);
   });
 
+  it('ignores named slots when getting data from default slots', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data slot="foo" value="month"></data>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+
+    // @ts-ignore
+    expect(el.getData()).toEqual(['day']);
+  });
+
   it('updates when elements are added to the default slot', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
