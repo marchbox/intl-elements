@@ -16,8 +16,6 @@ import {
   HTMLIntlNumberFormatElement,
   HTMLIntlNumberFormatFormatElement,
   HTMLIntlNumberFormatFormatToPartsElement,
-  HTMLIntlNumberFormatFormatRangeElement,
-  HTMLIntlNumberFormatFormatRangeToPartsElement,
   defineIntlNumberFormatElements,
 } from './elements/numberformat';
 import {
@@ -50,8 +48,6 @@ export {
   HTMLIntlNumberFormatElement,
   HTMLIntlNumberFormatFormatElement,
   HTMLIntlNumberFormatFormatToPartsElement,
-  HTMLIntlNumberFormatFormatRangeElement,
-  HTMLIntlNumberFormatFormatRangeToPartsElement,
   HTMLIntlRelativeTimeFormatElement,
   HTMLIntlRelativeTimeFormatFormatElement,
   HTMLIntlRelativeTimeFormatFormatToPartsElement,

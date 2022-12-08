@@ -7,8 +7,8 @@ export default class extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-numberformat-format',
     'intl-numberformat-formattoparts',
-    'intl-numberformat-formatrange',
-    'intl-numberformat-formatrangetoparts',
+    // 'intl-numberformat-formatrange',
+    // 'intl-numberformat-formatrangetoparts',
   ]);
 
   protected static override intlApi = Intl.NumberFormat;
