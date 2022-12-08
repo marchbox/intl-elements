@@ -1,4 +1,6 @@
-import {TemplateResult, html} from 'lit';
+import {TemplateResult, html, nothing} from 'lit';
+import {map} from 'lit/directives/map.js';
+import {when} from 'lit/directives/when.js';
 
 import AbstractConsumer from '../abstract-consumer';
 import HTMLIntlSegmenterElement from './segmenter';
@@ -37,15 +39,21 @@ export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Seg
         this.#value = this.providerElement.intlObject.segment(this.input);
         isGranularityWord =
             this.providerElement.resolvedOptions().granularity === 'word';
-        segmentHtml = html`${Array.from(this.#value).map(segment =>
-          isGranularityWord && !segment.isWordLike ? segment.segment :
-          html`<span part=${this.#getParts(segment)}
-              role="none">${segment.segment}</span>`)}`;
+        segmentHtml = html`
+          ${map(Array.from(this.#value), segment =>
+            when(isGranularityWord && !segment.isWordLike,
+              () => segment.segment,
+              () => html`<span part=${this.#getParts(segment)}
+                  role="none">${segment.segment}</span>`))}
+        `;
       } catch {}
     }
 
     return html`
-      <span role="none" part="value">${segmentHtml}</span>
+      <span role="none" part="value"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >${segmentHtml}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
         <slot name="word-like"></slot>

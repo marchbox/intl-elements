@@ -1,7 +1,5 @@
 import {
   normalizeLocale,
-  normalizeLocales,
-  normalizeLocaleList,
   isLocaleRtl,
 } from './locales';
 
@@ -24,33 +22,6 @@ describe('normalizeLocale()', () => {
     expect(normalizeLocale('veryveryinvalid')).toBe('');
     // @ts-ignore
     expect(normalizeLocale(419)).toBe('');
-  });
-});
-
-describe('normalizeLocales()', () => {
-  it('removes extra whitespaces', async () => {
-    expect(normalizeLocales('  en    zh  ja  ')).toEqual(['en', 'zh', 'ja']);
-  })
-
-  it('ignores invalid locale', async () => {
-    expect(normalizeLocales('')).toEqual([]);
-    expect(normalizeLocales('veryveryinvalid en zh')).toEqual(['en', 'zh']);
-    // @ts-ignore
-    expect(normalizeLocales(419)).toEqual([]);
-  });
-});
-
-describe('normalizeLocaleList()', () => {
-  it('removes invalid entries', async () => {
-    expect(normalizeLocaleList([
-      '',
-      'en',
-      // @ts-ignore
-      1231231,
-      'veryveryveryinvalid',
-      'zh-Hant',
-      '    ',
-    ])).toEqual(['en', 'zh-Hant']);
   });
 });
 

@@ -102,4 +102,37 @@ describe('intl-numberformat-formattoparts', () => {
     expect(el).toHaveShadowPartsCount('minusSign', 1);
     expect(el).toHaveShadowPartsCount('group', 1);
   });
+  
+  it('adds `lang` and `dir` on the value part element', async () => {
+    await createTestPage({
+      elements: ['intl-numberformat', 'intl-numberformat-formattoparts'],
+      html: `
+        <intl-numberformat locales="ar" option-style="unit"
+            option-unit="kilometer">
+          <intl-numberformat-formattoparts>
+            Amount: <data value="-100000.5"></data>
+          </intl-numberformat-formattoparts>
+        </intl-numberformat>
+      `,
+    });
+    const el = document.querySelector('intl-numberformat-formattoparts') as HTMLIntlNumberFormatFormatToPartsElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveAttribute('lang', 'ar');
+    expect(span).toHaveAttribute('dir', 'rtl');
+
+    el.providerElement!.locales = 'en';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).toHaveAttribute('lang', 'en');
+    expect(span).not.toHaveAttribute('dir');
+
+    el.providerElement!.locales = '$invalid';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).not.toHaveAttribute('lang');
+    expect(span).not.toHaveAttribute('dir');
+  });
 });

@@ -14,6 +14,9 @@
 - [`intl-numberformat`] Added the custom element.
 - [`intl-numberformat-format`] Added the custom element.
 - [`intl-numberformat-formattoparts`] Added the custom element.
+- All consumer element’s `value` part element now has `lang` and `dir`
+  attributes set based on the first locale in their provider element’s
+  `localeList` property
 
 ### Changed
 
