@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+None.
+
+---
+
+## [0.0.1-alpha.11] - 2022-12-07
+
 ### Fixed
 
 - When the `locales` attrbute contains multiple locales separated by
