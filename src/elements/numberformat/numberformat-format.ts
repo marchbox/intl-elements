@@ -1,18 +1,18 @@
 import {html} from 'lit';
 
-import AbstractListFormatConsumer from './abstract-listformat-consumer';
+import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
 
-export default class extends AbstractListFormatConsumer {
+export default class extends AbstractNumberFormatConsumer {
   #value: string = '';
 
-  override get value(): string {
+  get value(): string {
     return this.#value;
   }
 
   override render() {
-    if (this.list && this.providerElement) {
+    if (this.number && this.providerElement) {
       try {
-        this.#value = this.providerElement.intlObject.format(this.list);
+        this.#value = this.providerElement.intlObject.format(this.number);
       } catch {}
     }
 

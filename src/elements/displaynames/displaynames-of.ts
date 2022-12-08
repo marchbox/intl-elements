@@ -1,9 +1,9 @@
 import {html} from 'lit';
 
-import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
+import AbstractConsumer from '../abstract-consumer';
 import HTMLIntlDisplayNamesElement from './displaynames';
 
-export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesElement, string> {
+export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {
@@ -33,7 +33,9 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlDisplayNamesEle
 
     return html`
       <span role="none" part="value">${this.#value}</span>
-      <slot></slot>
+      <span aria-hidden="true" hidden>
+        <slot></slot>
+      </span>
     `;
   }
 }

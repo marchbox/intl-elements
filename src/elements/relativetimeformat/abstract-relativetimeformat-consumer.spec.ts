@@ -1,7 +1,7 @@
-import { createTestPage } from "../../testing";
-import AbstractIntlRelativetimeformatConsumerElement from "./abstract-intl-relativetimeformat-consumer-element";
+import {createTestPage} from '../../testing';
+import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer';
 
-class TestIntlRelativeTimeFormatConsumerElement extends AbstractIntlRelativetimeformatConsumerElement {
+class TestIntlRelativeTimeFormatConsumerElement extends AbstractRelativeTimeFormatConsumer {
   #value = '';
 
   get value(): string {
@@ -11,7 +11,7 @@ class TestIntlRelativeTimeFormatConsumerElement extends AbstractIntlRelativetime
 
 customElements.define('test-consumer', TestIntlRelativeTimeFormatConsumerElement);
 
-describe('AbstractIntlRelativeTimeFormatConsumerElement', () => {
+describe('AbstractRelativeTimeFormatConsumer', () => {
   it('gets correct data from named slots', async () => {
     await createTestPage({
       elements: ['intl-relativetimeformat', 'test-consumer'],
@@ -109,7 +109,7 @@ describe('AbstractIntlRelativeTimeFormatConsumerElement', () => {
     const el = document.querySelector('test-consumer') as TestIntlRelativeTimeFormatConsumerElement;
 
     // @ts-ignore
-    expect(el.rtime).toBe(undefined);
+    expect(el.rtime).toBeNaN();
   });
 
   it('gets an empty string `unit` if no slotted element', async () => {

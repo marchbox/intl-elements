@@ -20,6 +20,24 @@ describe('intl-relativetimeformat-formattoparts', () => {
     expect(el!.value).toEqual(intlResult);
   });
 
+  it('hides slotted contents', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],
+      html: `
+        <intl-relativetimeformat locales="en">
+          <intl-relativetimeformat-formattoparts>
+            <data value="10"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-formattoparts>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-formattoparts') as HTMLIntlRelativeTimeFormatFormatToPartsElement;
+    const span = el.shadowRoot?.querySelector('span[hidden]') as HTMLSlotElement;
+
+    expect(span!).not.toBeVisible();
+  });
+
   it('has `value` property the same as its text content', async () => {
     await createTestPage({
       elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],

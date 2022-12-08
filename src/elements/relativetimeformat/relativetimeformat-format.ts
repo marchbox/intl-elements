@@ -1,8 +1,8 @@
 import {html} from 'lit';
 
-import AbstractIntlRelativeTimeFormatConsumerElement from './abstract-intl-relativetimeformat-consumer-element';
+import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer';
 
-export default class extends AbstractIntlRelativeTimeFormatConsumerElement {
+export default class extends AbstractRelativeTimeFormatConsumer {
   #value: string = '';
 
   override get value(): string {
@@ -19,9 +19,11 @@ export default class extends AbstractIntlRelativeTimeFormatConsumerElement {
 
     return html`
       <span role="none" part="value">${this.#value}</span>
-      <slot name="rtime"></slot>
-      <slot name="unit"></slot>
-      <slot></slot>
+      <span aria-hidden="true" hidden>
+        <slot name="rtime"></slot>
+        <slot name="unit"></slot>
+        <slot></slot>
+      </span>
     `;
   }
 }

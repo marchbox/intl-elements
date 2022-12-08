@@ -1,18 +1,19 @@
 import {html} from 'lit';
 
-import AbstractListFormatConsumer from './abstract-listformat-consumer';
+import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
 
-export default class extends AbstractListFormatConsumer {
-  #value: Intl.ListFormatPart[] = [];
+export default class extends AbstractNumberFormatConsumer {
+  #value: Intl.NumberFormatPart[] = [];
 
-  override get value(): Intl.ListFormatPart[] {
+  get value(): Intl.NumberFormatPart[] {
     return this.#value;
   }
 
   override render() {
-    if (this.list && this.providerElement) {
+    if (this.number && this.providerElement) {
       try {
-        this.#value = this.providerElement.intlObject.formatToParts(this.list);
+        this.#value =
+            this.providerElement.intlObject.formatToParts(this.number);
       } catch {}
     }
 

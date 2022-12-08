@@ -1,10 +1,10 @@
-import {html} from 'lit';
+import {TemplateResult, html} from 'lit';
 
-import AbstractIntlConsumerElement from '../abstract-intl-consumer-element';
+import AbstractConsumer from '../abstract-consumer';
 import HTMLIntlSegmenterElement from './segmenter';
 
-export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
-  protected static override allowTextContent = true;
+export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
+  protected static override observesText = true;
 
   protected static override providerElementName = 'intl-segmenter';
 
@@ -30,20 +30,22 @@ export default class extends AbstractIntlConsumerElement<HTMLIntlSegmenterElemen
 
   override render() {
     let isGranularityWord = false;
+    let segmentHtml: TemplateResult | string = '';
 
     if (this.providerElement) {
       try {
         this.#value = this.providerElement.intlObject.segment(this.input);
         isGranularityWord =
             this.providerElement.resolvedOptions().granularity === 'word';
+        segmentHtml = html`${Array.from(this.#value).map(segment =>
+          isGranularityWord && !segment.isWordLike ? segment.segment :
+          html`<span part=${this.#getParts(segment)}
+              role="none">${segment.segment}</span>`)}`;
       } catch {}
     }
 
     return html`
-      <span role="none" part="value">${Array.from(this.#value ?? []).map(segment =>
-        isGranularityWord && !segment.isWordLike ? segment.segment :
-          html`<span part=${this.#getParts(segment)} role="none">${segment.segment}</span>`
-      )}</span>
+      <span role="none" part="value">${segmentHtml}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
         <slot name="word-like"></slot>

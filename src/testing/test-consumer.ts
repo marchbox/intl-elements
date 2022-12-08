@@ -1,9 +1,9 @@
 import {html} from 'lit';
 
-import AbstractIntlConsumerElement from '../elements/abstract-intl-consumer-element';
-import TestIntlProviderElement from './test-intl-provider-element';
+import AbstractConsumer from '../elements/abstract-consumer';
+import TestProvider from './test-provider';
 
-export default class extends AbstractIntlConsumerElement<TestIntlProviderElement, string> {
+export default class extends AbstractConsumer<TestProvider, string> {
   protected static override providerElementName = 'intl-foo';
 
   #value: string = '';

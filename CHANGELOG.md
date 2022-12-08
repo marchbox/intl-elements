@@ -9,6 +9,16 @@
   argument passed into an `Intl` is incorrectly typed as a string instead of
   an array
 
+### Added
+
+- [`intl-numberformat`] Added the custom element.
+- [`intl-numberformat-format`] Added the custom element.
+- [`intl-numberformat-formattoparts`] Added the custom element.
+
+### Changed
+
+- All attribute values are case-insensitive now.
+
 ---
 
 ## [0.0.1-alpha.10] - 2022-12-04

@@ -1,15 +1,15 @@
-import TestIntlProviderElement from './test-intl-provider-element';
-import TestIntlConsumerElement from './test-intl-consumer-element';
+import TestProvider from './test-provider';
+import TestConsumer from './test-consumer';
 
 export {FakeIntlApi} from './fake-intl-api';
 export {createTestPage} from './test-page';
 
 export function defineTestIntlElements() {
-  customElements.define('intl-foo', TestIntlProviderElement);
-  customElements.define('intl-foo-bar', TestIntlConsumerElement);
+  customElements.define('intl-foo', TestProvider);
+  customElements.define('intl-foo-bar', TestConsumer);
 }
 
 export {
-  TestIntlProviderElement,
-  TestIntlConsumerElement,
+  TestProvider,
+  TestConsumer,
 }

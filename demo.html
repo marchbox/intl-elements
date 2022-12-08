@@ -65,6 +65,50 @@
     </p>
   </intl-listformat>
 
+  <h2><code>intl-numberformat</code></h2>
+  <intl-numberformat locales="en" option-style="currency" option-currency="usd">
+    <p>
+      <intl-numberformat-format>
+        <data value="1234567.89">USD 1234567.89</data>
+      </intl-numberformat-format>
+    </p>
+    <p>
+      <intl-numberformat-formattoparts>
+        <data value="1234567.89">USD 1234567.89</data>
+      </intl-numberformat-formattoparts>
+    </p>
+    <p>
+      <intl-numberformat-formatrange>
+        from <data value="123.89">USD 123.89</data>
+        to <data value="456.89">USD 456.89</data>
+      </intl-numberformat-formatrange>
+    </p>
+    <p>
+      <intl-numberformat-formatrange>
+        from <data slot="start" value="123.89">USD 123.89</data>
+        to <data slot="end" value="456.89">USD 456.89</data>
+      </intl-numberformat-formatrange>
+    </p>
+    <p>
+      <intl-numberformat-formatrange>
+        from <data value="123.89">USD 123.89</data>
+        to <data slot="end" value="456.89">USD 456.89</data>
+      </intl-numberformat-formatrange>
+    </p>
+    <p>
+      <intl-numberformat-formatrange>
+        from <data slot="start" value="123.89">USD 123.89</data>
+        to <data value="456.89">USD 456.89</data>
+      </intl-numberformat-formatrange>
+    </p>
+    <p>
+      <intl-numberformat-formatrangetoparts>
+        from <data slot="start" value="123.89">USD 123.89</data>
+        to <data slot="end" value="456.89">USD 456.89</data>
+      </intl-numberformat-formatrangetoparts>
+    </p>
+  </intl-numberformat>  
+
   <h2><code>intl-relativetimeformat</code></h2>
   <intl-relativetimeformat locales="en">
     <p>

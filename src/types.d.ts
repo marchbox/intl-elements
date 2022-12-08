@@ -55,3 +55,8 @@ declare namespace Intl {
   // TODO: Remove when this is supported in TypeScript.
   type SegmenterGranularity = 'grapheme' | 'word' | 'sentence' | undefined;
 }
+
+type IntlNumberingSystem = 'arab' | 'arabext' | 'bali' | 'beng' | 'deva' |
+    'fullwide' | 'gujr' | 'guru' | 'hanidec' | 'khmr' | 'knda' | 'laoo' |
+    'latn' | 'limb' | 'mlym' | 'mong' | 'mymr' | 'orya' | 'tamldec' | 'telu' |
+    'thai' | 'tibt';

@@ -13,6 +13,12 @@ import {
   defineIntlListFormatElements,
 } from './elements/listformat';
 import {
+  HTMLIntlNumberFormatElement,
+  HTMLIntlNumberFormatFormatElement,
+  HTMLIntlNumberFormatFormatToPartsElement,
+  defineIntlNumberFormatElements,
+} from './elements/numberformat';
+import {
   HTMLIntlRelativeTimeFormatElement,
   HTMLIntlRelativeTimeFormatFormatElement,
   HTMLIntlRelativeTimeFormatFormatToPartsElement,
@@ -28,6 +34,7 @@ export function defineIntlElements() {
   defineIntlLocaleElements();
   defineIntlDisplayNamesElements();
   defineIntlListFormatElements();
+  defineIntlNumberFormatElements();
   defineIntlRelativeTimeFormatElements();
   defineIntlSegmenterElements();
 }
@@ -38,6 +45,9 @@ export {
   HTMLIntlDisplayNamesOfElement,
   HTMLIntlListFormatElement,
   HTMLIntlListFormatFormatElement,
+  HTMLIntlNumberFormatElement,
+  HTMLIntlNumberFormatFormatElement,
+  HTMLIntlNumberFormatFormatToPartsElement,
   HTMLIntlRelativeTimeFormatElement,
   HTMLIntlRelativeTimeFormatFormatElement,
   HTMLIntlRelativeTimeFormatFormatToPartsElement,
