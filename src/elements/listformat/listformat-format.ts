@@ -1,4 +1,4 @@
-import {html} from 'lit';
+import {html, nothing} from 'lit';
 
 import AbstractListFormatConsumer from './abstract-listformat-consumer';
 
@@ -17,7 +17,10 @@ export default class extends AbstractListFormatConsumer {
     }
 
     return html`
-      <span role="none" part="value">${this.#value}</span>
+      <span role="none" part="value"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >${this.#value}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
       </span>

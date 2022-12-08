@@ -1,4 +1,4 @@
-import {html} from 'lit';
+import {html, nothing} from 'lit';
 
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
 
@@ -17,7 +17,10 @@ export default class extends AbstractNumberFormatConsumer {
     }
 
     return html`
-      <span role="none" part="value">${this.#value}</span>
+      <span role="none" part="value"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >${this.#value}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
       </span>

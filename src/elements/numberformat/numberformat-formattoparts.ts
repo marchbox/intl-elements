@@ -1,4 +1,5 @@
-import {html} from 'lit';
+import {html, nothing} from 'lit';
+import {map} from 'lit/directives/map.js';
 
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
 
@@ -18,8 +19,11 @@ export default class extends AbstractNumberFormatConsumer {
     }
 
     return html`
-      <span role="none" part="value">
-        ${this.#value.map(part =>
+      <span role="none" part="value"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >
+        ${map(this.#value, part =>
             html`<span part="${part.type}" role="none">${part.value}</span>`)}
       </span>
       <span aria-hidden="true" hidden>

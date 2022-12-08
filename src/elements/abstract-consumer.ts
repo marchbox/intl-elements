@@ -1,6 +1,9 @@
 import {LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
 
+import AbstractProvider from './abstract-provider';
+import {isLocaleRtl} from '../utils/locales';
+
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
@@ -43,6 +46,16 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   }
 
   abstract get value(): V;
+
+  protected get currentLang(): string | undefined {
+    return (this.providerElement as AbstractProvider)?.localeList.item(0)
+        ?? undefined;
+  }
+
+  protected get currentDir(): string | undefined {
+    return this.currentLang && isLocaleRtl(this.currentLang) ?
+        'rtl' : undefined;
+  }
 
   override connectedCallback() {
     super.connectedCallback();
