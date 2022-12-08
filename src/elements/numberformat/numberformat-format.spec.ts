@@ -100,4 +100,37 @@ describe('intl-numberformat-format', () => {
     expect(el).not.toHaveShadowPart('decimal');
     expect(el).not.toHaveShadowPart('fraction');
   });
+  
+  it('adds `lang` and `dir` on the value part element', async () => {
+    await createTestPage({
+      elements: ['intl-numberformat', 'intl-numberformat-format'],
+      html: `
+        <intl-numberformat locales="ar" option-style="currency"
+            option-currency="CNY">
+          <intl-numberformat-format>
+            <data value="-10.34"></data>
+          </intl-numberformat-format>
+        </intl-numberformat>
+      `,
+    });
+    const el = document.querySelector('intl-numberformat-format') as HTMLIntlNumberFormatFormatElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveAttribute('lang', 'ar');
+    expect(span).toHaveAttribute('dir', 'rtl');
+
+    el.providerElement!.locales = 'en';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).toHaveAttribute('lang', 'en');
+    expect(span).not.toHaveAttribute('dir');
+
+    el.providerElement!.locales = '$invalid';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).not.toHaveAttribute('lang');
+    expect(span).not.toHaveAttribute('dir');
+  });
 });

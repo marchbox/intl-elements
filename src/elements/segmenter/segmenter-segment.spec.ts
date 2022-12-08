@@ -127,4 +127,36 @@ describe('intl-segmenter-segment', () => {
     expect(el).toHaveShadowPart('segment');
     expect(el).not.toHaveShadowPart('wordlike');
   });
+  
+  it('adds `lang` and `dir` on the value part element', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="ar" option-granularity="sentence">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveAttribute('lang', 'ar');
+    expect(span).toHaveAttribute('dir', 'rtl');
+
+    el.providerElement!.locales = 'en';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).toHaveAttribute('lang', 'en');
+    expect(span).not.toHaveAttribute('dir');
+
+    el.providerElement!.locales = '$invalid';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).not.toHaveAttribute('lang');
+    expect(span).not.toHaveAttribute('dir');
+  });
 });

@@ -76,4 +76,37 @@ describe('intl-listformat-format', () => {
     expect(el).not.toHaveShadowPart('literal');
     expect(el).not.toHaveShadowPart('element');
   });
+
+  it('adds `lang` and `dir` on the value part element', async () => {
+    await createTestPage({
+      elements: ['intl-listformat', 'intl-listformat-format'],
+      html: `
+        <intl-listformat locales="ar">
+          <intl-listformat-format>
+            <data value="foo"></data>
+            <data value="bar"></data>
+          </intl-listformat-format>
+        </intl-listformat>
+      `,
+    });
+    const el = document.querySelector('intl-listformat-format') as HTMLIntlListFormatFormatElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveAttribute('lang', 'ar');
+    expect(span).toHaveAttribute('dir', 'rtl');
+
+    el.providerElement!.locales = 'en';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).toHaveAttribute('lang', 'en');
+    expect(span).not.toHaveAttribute('dir');
+
+    el.providerElement!.locales = '$invalid';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).not.toHaveAttribute('lang');
+    expect(span).not.toHaveAttribute('dir');
+  });
 });

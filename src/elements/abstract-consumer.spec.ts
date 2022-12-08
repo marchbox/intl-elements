@@ -388,4 +388,42 @@ describe('AbstractConsumer', () => {
     // @ts-ignore
     expect(el.getData()).toEqual(['day', 'month']);
   });
+
+  it('gets the correct `currentLang` and `currentDir` values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locales="en">
+          <intl-foo-bar></intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    // @ts-ignore
+    expect(el.currentLang).toBe('en');
+    // @ts-ignore
+    expect(el.currentDir).toBeUndefined();
+
+    el.providerElement!.setAttribute('locales', 'ar');
+    await el.updateComplete;
+    await el.updateComplete;
+    // @ts-ignore
+    expect(el.currentLang).toBe('ar');
+    // @ts-ignore
+    expect(el.currentDir).toBe('rtl');
+  });
+
+  it('gets undefined `currentLang` and `currentDir` if no provider element', async () => {
+    await createTestPage({
+      elements: ['intl-foo-bar'],
+      html: `
+        <intl-foo-bar></intl-foo-bar>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    // @ts-ignore
+    expect(el.currentLang).toBeUndefined();
+    // @ts-ignore
+    expect(el.currentDir).toBeUndefined();
+  });
 });

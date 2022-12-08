@@ -97,4 +97,37 @@ describe('intl-relativetimeformat-formattoparts', () => {
     expect(el).toHaveShadowPartsCount('decimal', 1);
     expect(el).toHaveShadowPartsCount('fraction', 1);
   });
+  
+  it('adds `lang` and `dir` on the value part element', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],
+      html: `
+        <intl-relativetimeformat locales="ar">
+          <intl-relativetimeformat-formattoparts>
+            <data value="10.5"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-formattoparts>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-formattoparts') as HTMLIntlRelativeTimeFormatFormatToPartsElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveAttribute('lang', 'ar');
+    expect(span).toHaveAttribute('dir', 'rtl');
+
+    el.providerElement!.locales = 'en';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).toHaveAttribute('lang', 'en');
+    expect(span).not.toHaveAttribute('dir');
+
+    el.providerElement!.locales = '$invalid';
+    await el.updateComplete;
+    await el.updateComplete;
+
+    expect(span).not.toHaveAttribute('lang');
+    expect(span).not.toHaveAttribute('dir');
+  });
 });
