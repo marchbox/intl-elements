@@ -16,7 +16,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   protected static providerElementName: string;
 
   @property({reflect: true})
-  provider ?:string;
+  provider?:string;
 
   // TODO: Cache this.
   get providerElement(): P | undefined {
