@@ -20,10 +20,10 @@ export default class extends AbstractProvider {
   }
 
   @property({attribute: 'option-style'})
-  optionStyle: Intl.RelativeTimeFormatStyle = 'long';
+  optionStyle: Intl.RelativeTimeFormatOptions['style'] = 'long';
 
   @property({attribute:'option-numeric'})
-  optionNumeric: Intl.RelativeTimeFormatNumeric = 'always';
+  optionNumeric: Intl.RelativeTimeFormatOptions['numeric'] = 'always';
 
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
     return this.#resolvedOptions;

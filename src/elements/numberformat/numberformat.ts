@@ -22,52 +22,52 @@ export default class extends AbstractProvider {
   }
 
   @property({attribute: 'option-style'})
-  optionStyle: 'decimal' | 'currency' | 'percent' | 'unit' = 'decimal';
+  optionStyle: Intl.NumberFormatOptions['style'] = 'decimal';
 
   @property({attribute: 'option-compactdisplay'})
-  optionCompactDisplay: 'short' | 'long' = 'short';
+  optionCompactDisplay: Intl.NumberFormatOptions['compactDisplay'] = 'short';
 
   @property({attribute: 'option-currency'})
-  optionCurrency?: string;
+  optionCurrency?: Intl.NumberFormatOptions['currency'];
 
   @property({attribute: 'option-currencydisplay'})
-  optionCurrencyDisplay: 'symbol' | 'narrowSymbol' | 'code' | 'name' = 'symbol';
+  optionCurrencyDisplay: Intl.NumberFormatOptions['currencyDisplay'] = 'symbol';
 
   @property({attribute: 'option-currencysign'})
-  optionCurrencySign: 'standard' | 'accounting' = 'standard';
+  optionCurrencySign: Intl.NumberFormatOptions['currencySign'] = 'standard';
 
   @property({attribute: 'option-notation'})
-  optionNotation: 'standard' | 'scientific' | 'engineering' | 'compact' = 'standard';
+  optionNotation: Intl.NumberFormatOptions['notation'] = 'standard';
 
-  @property({attribute: 'option-numberingsystem'})
-  optionNumberingSystem?: IntlNumberingSystem;
+  // @property({attribute: 'option-numberingsystem'})
+  // optionNumberingSystem?: Intl.NumberFormatOptions['numberingSystem'];
 
   @property({attribute: 'option-signdisplay'})
-  optionSignDisplay: 'auto' | 'always' | 'exceptZero' | 'never' = 'auto';
+  optionSignDisplay: Intl.NumberFormatOptions['signDisplay'] = 'auto';
 
   @property({attribute: 'option-unit'})
-  optionUnit?: string;
+  optionUnit?: Intl.NumberFormatOptions['unit'];
 
   @property({attribute: 'option-unitdisplay'})
-  optionUnitDisplay: 'short' | 'long' | 'narrow' = 'short';
+  optionUnitDisplay: Intl.NumberFormatOptions['unitDisplay'] = 'short';
 
   @property({attribute: 'option-usegrouping', type: Boolean})
-  optionUseGrouping?: boolean;
+  optionUseGrouping?: Intl.NumberFormatOptions['useGrouping'];
 
   @property({attribute: 'option-minimumintegerdigits', type: Number})
-  optionMinimumIntegerDigits?: number;
+  optionMinimumIntegerDigits?: Intl.NumberFormatOptions['minimumIntegerDigits'];
 
   @property({attribute: 'option-minimumfractiondigits', type: Number})
-  optionMinimumFractionDigits?: number;
+  optionMinimumFractionDigits?: Intl.NumberFormatOptions['minimumFractionDigits'];
 
   @property({attribute: 'option-maximumfractiondigits', type: Number})
-  optionMaximumFractionDigits?: number;
+  optionMaximumFractionDigits?: Intl.NumberFormatOptions['maximumFractionDigits'];
 
   @property({attribute: 'option-minimumsignificantdigits', type: Number})
-  optionMinimumSignificantDigits?: number;
+  optionMinimumSignificantDigits?: Intl.NumberFormatOptions['minimumSignificantDigits'];
 
   @property({attribute: 'option-maximumsignificantdigits', type: Number})
-  optionMaximumSignificantDigits?: number;
+  optionMaximumSignificantDigits?: Intl.NumberFormatOptions['maximumSignificantDigits'];
 
   resolvedOptions(): Intl.ResolvedNumberFormatOptions {
     return this.#resolvedOptions;
@@ -83,8 +83,7 @@ export default class extends AbstractProvider {
         currencyDisplay: this.optionCurrencyDisplay,
         currencySign: this.optionCurrencySign,
         notation: this.optionNotation,
-        // @ts-ignore
-        numberingSystem: this.optionNumberingSystem,
+        // numberingSystem: this.optionNumberingSystem,
         signDisplay: this.optionSignDisplay,
         unit: this.optionUnit,
         unitDisplay: this.optionUnitDisplay,

@@ -26,96 +26,96 @@ export default class extends LitElement {
   displayMinimized = false;
 
   @property({attribute: 'option-basename'})
-  optionBaseName?: string;
+  optionBaseName?: Intl.LocaleOptions['baseName'];
 
-  get baseName(): string | undefined {
+  get baseName(): Intl.Locale['baseName'] | undefined {
     return this.#getLocale()?.baseName ?? undefined;
   }
 
   @property({attribute: 'option-calendar'})
-  optionCalendar?: string;
+  optionCalendar?: Intl.LocaleOptions['calendar'];
 
-  get calendar(): string | undefined {
+  get calendar(): Intl.Locale['calendar'] | undefined {
     return this.#getLocale()?.calendar ?? undefined;
   }
 
-  get calendars(): string[] | undefined {
+  get calendars(): Intl.Locale['calendars'] | undefined {
     return this.#getLocale()?.calendars ?? undefined;
   }
 
   @property({attribute: 'option-casefirst'})
-  optionCaseFirst?: Intl.LocaleCollationCaseFirst;
+  optionCaseFirst?: Intl.LocaleOptions['caseFirst'];
 
-  get caseFirst(): Intl.LocaleCollationCaseFirst | undefined {
+  get caseFirst(): Intl.Locale['caseFirst'] | undefined {
     return this.#getLocale()?.caseFirst ?? undefined;
   }
 
   @property({attribute: 'option-collation'})
-  optionCollation?: string;
+  optionCollation?: Intl.LocaleOptions['collation'];
 
-  get collation(): string | undefined {
+  get collation(): Intl.Locale['collation'] | undefined {
     return this.#getLocale()?.collation ?? undefined;
   }
 
   @property({attribute: 'option-hourcycle'})
-  optionHourCycle?: Intl.LocaleHourCycleKey;
+  optionHourCycle?: Intl.LocaleOptions['hourCycle'];
 
-  get hourCycle(): Intl.LocaleHourCycleKey | undefined {
+  get hourCycle(): Intl.Locale['hourCycle'] | undefined {
     return this.#getLocale()?.hourCycle ?? undefined;
   }
 
-  get hourCycles(): Intl.LocaleHourCycleKey[] | undefined {
+  get hourCycles(): Intl.Locale['hourCycles'] | undefined {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
 
   @property({attribute: 'option-language'})
-  optionLanguage?: string;
+  optionLanguage?: Intl.LocaleOptions['language'];
 
-  get language(): string | undefined {
+  get language(): Intl.Locale['language'] | undefined {
     return this.#getLocale()?.language ?? undefined;
   }
 
   @property({attribute: 'option-numberingsystem'})
-  optionNumberingSystem?: string;
+  optionNumberingSystem?: Intl.LocaleOptions['numberingSystem'];
 
-  get numberingSystem(): string | undefined {
+  get numberingSystem(): Intl.Locale['numberingSystem'] | undefined {
     return this.#getLocale()?.numberingSystem ?? undefined;
   }
 
-  get numberingSystems(): string[] | undefined {
+  get numberingSystems(): Intl.Locale['numberingSystems'] | undefined {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
 
   @property({attribute: 'option-numeric', type: Boolean})
-  optionNumeric?: boolean;
+  optionNumeric?: Intl.LocaleOptions['numeric'];
 
-  get numeric(): boolean | undefined {
+  get numeric(): Intl.Locale['numeric'] | undefined {
     return this.#getLocale()?.numeric ?? undefined;
   }
 
   @property({attribute: 'option-region'})
-  optionRegion?: string;
+  optionRegion?: Intl.LocaleOptions['region'];
 
-  get region(): string | undefined {
+  get region(): Intl.Locale['region'] | undefined {
     return this.#getLocale()?.region ?? undefined;
   }
 
   @property({attribute: 'option-script'})
-  optionScript?: string;
+  optionScript?: Intl.LocaleOptions['script'];
 
-  get script(): string | undefined {
+  get script(): Intl.Locale['script'] | undefined {
     return this.#getLocale()?.script ?? undefined;
   }
 
-  get textInfo(): Intl.LocaleTextInfo | undefined {
+  get textInfo(): Intl.Locale['textInfo'] | undefined {
     return this.#getLocale()?.textInfo ?? undefined;
   }
 
-  get timeZones(): string[] | undefined {
+  get timeZones(): Intl.Locale['timeZones'] | undefined {
     return this.#getLocale()?.timeZones ?? undefined;
   }
 
-  get weekInfo(): Intl.LocaleWeekInfo | undefined {
+  get weekInfo(): Intl.Locale['weekInfo'] | undefined {
     return this.#getLocale()?.weekInfo ?? undefined;
   }
 

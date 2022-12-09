@@ -20,10 +20,10 @@ export default class extends AbstractProvider {
   }
 
   @property({attribute: 'option-style'})
-  optionStyle: Intl.ListFormatStyle = 'long';
+  optionStyle: Intl.ListFormatOptions['style'] = 'long';
   
   @property({attribute: 'option-type'})
-  optionType: Intl.ListFormatType = 'conjunction';
+  optionType: Intl.ListFormatOptions['type'] = 'conjunction';
 
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
