@@ -7,7 +7,7 @@ export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, strin
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {
-    return this.getData()[0] ?? '';
+    return this.getDataValue()[0] ?? '';
   }
 
   #value: string = '';

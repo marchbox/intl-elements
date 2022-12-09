@@ -7,10 +7,10 @@ export default abstract class extends AbstractConsumer<HTMLIntlRelativeTimeForma
   protected static override providerElementName = 'intl-relativetimeformat';
 
   protected get rtime(): number {
-    return Number(this.getData('rtime')[0] ?? this.getData()[0]);
+    return Number(this.getDataValue('rtime')[0] ?? this.getDataValue()[0]);
   }
 
   protected get unit(): string {
-    return this.getData('unit')[0] ?? this.getData()[1] ?? '';
+    return this.getDataValue('unit')[0] ?? this.getDataValue()[1] ?? '';
   }
 }

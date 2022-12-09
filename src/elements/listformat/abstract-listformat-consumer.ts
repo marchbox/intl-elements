@@ -7,6 +7,6 @@ export default abstract class extends AbstractConsumer<HTMLIntlListFormatElement
   protected static override providerElementName = 'intl-listformat';
 
   protected get list(): string[] {
-    return this.getData();
+    return this.getDataValue();
   }
 }

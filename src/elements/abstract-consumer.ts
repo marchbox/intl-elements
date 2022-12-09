@@ -103,8 +103,8 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     });
   }
 
-  protected getData(key?: string): string[] {
-    const query = `data${key ? `[slot="${key}"]` : ':not([slot])'}[value]`;
+  protected getDataValue(slot?: string): string[] {
+    const query = `data${slot ? `[slot="${slot}"]` : ':not([slot])'}[value]`;
     return (Array.from(this.querySelectorAll(query)) as HTMLDataElement[])
         .map(el => el.value.trim())
         .filter(value => value !== '');

@@ -27,6 +27,15 @@ declare namespace Intl {
   // TODO: Remove when this bug is fixed:
   // https://github.com/microsoft/TypeScript/issues/51023
   // Also see: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions
+  interface ResolvedListFormatOptions {
+    locale: Intl.BCP47LanguageTag;
+    style: Intl.ListFormatStyle;
+    type: Intl.ListFormatType;
+  }
+
+  // TODO: Remove when this bug is fixed:
+  // https://github.com/microsoft/TypeScript/issues/51023
+  // Also see: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions
   interface ListFormat {
     resolvedOptions(): ResolvedListFormatOptions;
   }

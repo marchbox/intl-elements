@@ -179,9 +179,9 @@ describe('AbstractConsumer', () => {
     const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     // @ts-ignore
-    expect(els[0]!.getData()).toEqual(['day']);
+    expect(els[0]!.getDataValue()).toEqual(['day']);
     // @ts-ignore
-    expect(els[1]!.getData()).toEqual(['day', 'year', 'month']);
+    expect(els[1]!.getDataValue()).toEqual(['day', 'year', 'month']);
   });
 
   it('gets the correct data from named slots', async () => {
@@ -209,13 +209,13 @@ describe('AbstractConsumer', () => {
     const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     // @ts-ignore
-    expect(els[0]!.getData('foo')).toEqual(['day']);
+    expect(els[0]!.getDataValue('foo')).toEqual(['day']);
     // @ts-ignore
-    expect(els[0]!.getData('bar')).toEqual(['month']);
+    expect(els[0]!.getDataValue('bar')).toEqual(['month']);
     // @ts-ignore
-    expect(els[1]!.getData('foo')).toEqual(['day', 'year', 'month']);
+    expect(els[1]!.getDataValue('foo')).toEqual(['day', 'year', 'month']);
     // @ts-ignore
-    expect(els[1]!.getData('bar')).toEqual(['hour', 'minute', 'second']);
+    expect(els[1]!.getDataValue('bar')).toEqual(['hour', 'minute', 'second']);
   });
 
   it('ignores named slots when getting data from default slots', async () => {
@@ -233,7 +233,7 @@ describe('AbstractConsumer', () => {
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
 
     // @ts-ignore
-    expect(el.getData()).toEqual(['day']);
+    expect(el.getDataValue()).toEqual(['day']);
   });
 
   it('updates when elements are added to the default slot', async () => {
@@ -368,7 +368,7 @@ describe('AbstractConsumer', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
     // @ts-ignore
-    expect(el.getData()).toEqual(['day', 'year', 'month']);
+    expect(el.getDataValue()).toEqual(['day', 'year', 'month']);
   });
 
   it('ignores empty data values', async () => {
@@ -386,7 +386,7 @@ describe('AbstractConsumer', () => {
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
     // @ts-ignore
-    expect(el.getData()).toEqual(['day', 'month']);
+    expect(el.getDataValue()).toEqual(['day', 'month']);
   });
 
   it('gets the correct `currentLang` and `currentDir` values', async () => {

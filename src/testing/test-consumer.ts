@@ -9,7 +9,7 @@ export default class extends AbstractConsumer<TestProvider, string> {
   #value: string = '';
 
   get #data(): string {
-    return this.getData()[0] ?? '';
+    return this.getDataValue()[0] ?? '';
   }
 
   get value(): string {
