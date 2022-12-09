@@ -1,22 +1,25 @@
-import {defineIntlLocaleElements} from './elements/locale';
+import {defineIntlDateTimeFormatElements} from './elements/datetimeformat';
 import {defineIntlDisplayNamesElements} from './elements/displaynames';
 import {defineIntlListFormatElements} from './elements/listformat';
+import {defineIntlLocaleElements} from './elements/locale';
 import {defineIntlNumberFormatElements} from './elements/numberformat';
 import {defineIntlRelativeTimeFormatElements} from './elements/relativetimeformat';
 import {defineIntlSegmenterElements} from './elements/segmenter';
 
 export function defineIntlElements() {
-  defineIntlLocaleElements();
+  defineIntlDateTimeFormatElements();
   defineIntlDisplayNamesElements();
   defineIntlListFormatElements();
+  defineIntlLocaleElements();
   defineIntlNumberFormatElements();
   defineIntlRelativeTimeFormatElements();
   defineIntlSegmenterElements();
 }
 
-export * from './elements/locale';
+export * from './elements/datetimeformat';
 export * from './elements/displaynames';
 export * from './elements/listformat';
+export * from './elements/locale';
 export * from './elements/numberformat';
 export * from './elements/relativetimeformat';
 export * from './elements/segmenter';
