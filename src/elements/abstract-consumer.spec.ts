@@ -137,12 +137,10 @@ describe('AbstractConsumer', () => {
       html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="day"></data></intl-foo-bar>
-        </intl-foo>
-        <intl-foo locale="en">
           <intl-foo-bar><data value="year"></data></intl-foo-bar>
-        </intl-foo>
-        <intl-foo locale="en">
           <intl-foo-bar><data value="month"></data></intl-foo-bar>
+          <intl-foo-bar><time datetime="1923-10-16"></time></intl-foo-bar>
+          <intl-foo-bar><time datetime="invalid date"></time></intl-foo-bar>
         </intl-foo>
       `,
     });
@@ -151,6 +149,8 @@ describe('AbstractConsumer', () => {
     expect(els[0]!.value).toBe('day');
     expect(els[1]!.value).toBe('year');
     expect(els[2]!.value).toBe('');
+    expect(els[3]!.value).toBe(new Date('1923-10-16').toISOString());
+    expect(els[4]!.value).toBe('');
   });
 
   it('gets the correct data from default slots', async () => {
@@ -159,19 +159,14 @@ describe('AbstractConsumer', () => {
       html: `
         <intl-foo locale="en">
           <intl-foo-bar><data value="day"></data></intl-foo-bar>
-        </intl-foo>
-        <intl-foo locale="en">
           <intl-foo-bar>
             <data value="day"></data>
             <data value="year"></data>
             <data value="month"></data>
           </intl-foo-bar>
-        </intl-foo>
-        <intl-foo locale="en">
           <intl-foo-bar>
-            <data value="day"></data>
-            <data value="year"></data>
-            <data value="month"></data>
+            <time datetime="1923-10-16"></time>
+            <time datetime="2023-01-01"></time>
           </intl-foo-bar>
         </intl-foo>
       `,
@@ -182,6 +177,11 @@ describe('AbstractConsumer', () => {
     expect(els[0]!.getDataValue()).toEqual(['day']);
     // @ts-ignore
     expect(els[1]!.getDataValue()).toEqual(['day', 'year', 'month']);
+    // @ts-ignore
+    expect(els[2]!.getDateTime()).toEqual([
+      new Date('1923-10-16'),
+      new Date('2023-01-01'),
+    ]);
   });
 
   it('gets the correct data from named slots', async () => {
@@ -193,8 +193,6 @@ describe('AbstractConsumer', () => {
             <data slot="foo" value="day"></data>
             <data slot="bar" value="month"></data>
           </intl-foo-bar>
-        </intl-foo>
-        <intl-foo locale="en">
           <intl-foo-bar>
             <data slot="foo" value="day"></data>
             <data slot="foo" value="year"></data>
@@ -202,6 +200,12 @@ describe('AbstractConsumer', () => {
             <data slot="bar" value="hour"></data>
             <data slot="bar" value="minute"></data>
             <data slot="bar" value="second"></data>
+          </intl-foo-bar>
+          <intl-foo-bar>
+            <time slot="foo" datetime="1923-10-16"></time>
+            <time slot="foo" datetime="1964-08-27"></time>
+            <time slot="bar" datetime="1989-11-17"></time>
+            <time slot="bar" datetime="2023-01-01"></time>
           </intl-foo-bar>
         </intl-foo>
       `,
@@ -216,6 +220,65 @@ describe('AbstractConsumer', () => {
     expect(els[1]!.getDataValue('foo')).toEqual(['day', 'year', 'month']);
     // @ts-ignore
     expect(els[1]!.getDataValue('bar')).toEqual(['hour', 'minute', 'second']);
+    // @ts-ignore
+    expect(els[2]!.getDateTime('foo')).toEqual([
+      new Date('1923-10-16'),
+      new Date('1964-08-27'),
+    ]);
+    // @ts-ignore
+    expect(els[2]!.getDateTime('bar')).toEqual([
+      new Date('1989-11-17'),
+      new Date('2023-01-01'),
+    ]);
+  });
+
+  it('trims data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value=" day "></data>
+            <data value=" year "></data>
+            <data value=" month "></data>
+            <time datetime=" 1923-10-16  "></time>
+            <time datetime="        1964-08-27  "></time>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    // @ts-ignore
+    expect(el.getDataValue()).toEqual(['day', 'year', 'month']);
+    // @ts-ignore
+    expect(el.getDateTime()).toEqual([
+      new Date('1923-10-16'),
+      new Date('1964-08-27'),
+    ]);
+  });
+
+  it('ignores empty data values', async () => {
+    await createTestPage({
+      elements: ['intl-foo', 'intl-foo-bar'],
+      html: `
+        <intl-foo locale="en">
+          <intl-foo-bar>
+            <data value="day"></data>
+            <data value=""></data>
+            <data value="month"></data>
+            <time datetime="1923-10-16"></time>
+            <time datetime=""></time>
+          </intl-foo-bar>
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    // @ts-ignore
+    expect(el.getDataValue()).toEqual(['day', 'month']);
+    // @ts-ignore
+    expect(el.getDateTime()).toEqual([
+      new Date('1923-10-16'),
+    ]);
   });
 
   it('ignores named slots when getting data from default slots', async () => {
@@ -227,13 +290,19 @@ describe('AbstractConsumer', () => {
             <data value="day"></data>
             <data slot="foo" value="month"></data>
           </intl-foo-bar>
+          <intl-foo-bar>
+            <time datetime="1923-10-16"></time>
+            <time slot="foo" datetime="1964-08-27"></time>
+          </intl-foo-bar>
         </intl-foo>
       `,
     });
-    const el = document.querySelector('intl-foo-bar') as TestConsumer;
+    const els = document.querySelectorAll('intl-foo-bar') as NodeListOf<TestConsumer>;
 
     // @ts-ignore
-    expect(el.getDataValue()).toEqual(['day']);
+    expect(els[0]!.getDataValue()).toEqual(['day']);
+    // @ts-ignore
+    expect(els[1]!.getDateTime()).toEqual([new Date('1923-10-16')]);
   });
 
   it('updates when elements are added to the default slot', async () => {
@@ -250,9 +319,18 @@ describe('AbstractConsumer', () => {
 
     const dataEl = document.createElement('data');
     dataEl.setAttribute('value', 'day');
-    el.appendChild(dataEl);
-
+    el.append(dataEl);
     await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockReset();
+
+    const timeEl = document.createElement('time');
+    timeEl.setAttribute('datetime', '1923-10-16');
+    el.append(timeEl);
+    await el.updateComplete;
+
     expect(spy).toHaveBeenCalledTimes(1);
 
     spy.mockRestore();
@@ -263,7 +341,10 @@ describe('AbstractConsumer', () => {
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
-          <intl-foo-bar><data value="day"></data></intl-foo-bar>
+          <intl-foo-bar>
+            <data value="day"></data>
+            <time datetime="1923-10-16"></time>
+          </intl-foo-bar>
         </intl-foo>
       `,
     });
@@ -272,59 +353,92 @@ describe('AbstractConsumer', () => {
 
     const dataEl = el.querySelector('data');
     dataEl!.remove();
-
     await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockReset();
+
+    const timeEl = el.querySelector('time');
+    timeEl!.remove();
+    await el.updateComplete;
+
     expect(spy).toHaveBeenCalledTimes(1);
 
     spy.mockRestore();
   });
 
-  it('observes slotted `<data>` element’s `value` attribute changes and updates', async () => {
+  it('observes slotted element’s `value` and `datetime` attribute changes and updates', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
             <data value="foo"></data>
+            <time datetime="1923-10-16"></time>
           </intl-foo-bar>
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
 
+    const dataEl = el.querySelector('data');
     dataEl!.setAttribute('value', 'bar');
     await el.updateComplete;
 
     expect(spy).toHaveBeenCalledTimes(1);
 
+    spy.mockReset();
+
+    const timeEl = el.querySelector('time');
+    timeEl!.setAttribute('datetime', '1964-08-27');
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
     spy.mockRestore();
   });
 
-  it('doesn’t update if non-`value` attribute changes on slotted `<data>` element', async () => {
+  it('doesn’t update if non-`value`/`datetime` attribute changes on slotted element', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
             <data value="foo"></data>
+            <time datetime="1923-10-16"></time>
           </intl-foo-bar>
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    const dataEl = el.querySelector('data');
     const spy = jest.spyOn(el, 'requestUpdate');
+    const dataEl = el.querySelector('data');
+    const timeEl = el.querySelector('time');
 
     dataEl!.setAttribute('class', 'foo');
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
+
+    spy.mockReset();
 
     dataEl!.textContent = 'Hello';
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
+
+    spy.mockReset();
+
+    timeEl!.setAttribute('class', 'foo');
+    await el.updateComplete;
+    expect(spy).not.toHaveBeenCalled();
+
+    spy.mockReset();
+
+    timeEl!.textContent = 'Hello';
+    await el.updateComplete;
+    expect(spy).not.toHaveBeenCalled();
+
     spy.mockRestore();
   });
 
@@ -351,42 +465,6 @@ describe('AbstractConsumer', () => {
     expect(spy).toHaveBeenCalledTimes(1);
 
     spy.mockRestore();
-  });
-
-  it('trims data values', async () => {
-    await createTestPage({
-      elements: ['intl-foo', 'intl-foo-bar'],
-      html: `
-        <intl-foo locale="en">
-          <intl-foo-bar>
-            <data value=" day "></data>
-            <data value=" year "></data>
-            <data value=" month "></data>
-          </intl-foo-bar>
-        </intl-foo>
-      `,
-    });
-    const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    // @ts-ignore
-    expect(el.getDataValue()).toEqual(['day', 'year', 'month']);
-  });
-
-  it('ignores empty data values', async () => {
-    await createTestPage({
-      elements: ['intl-foo', 'intl-foo-bar'],
-      html: `
-        <intl-foo locale="en">
-          <intl-foo-bar>
-            <data value="day"></data>
-            <data value=""></data>
-            <data value="month"></data>
-          </intl-foo-bar>
-        </intl-foo>
-      `,
-    });
-    const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    // @ts-ignore
-    expect(el.getDataValue()).toEqual(['day', 'month']);
   });
 
   it('gets the correct `currentLang` and `currentDir` values', async () => {
