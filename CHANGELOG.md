@@ -2,7 +2,13 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- [`intl-datetimeformat`] Added the custom element
+- [`intl-datetimeformat-format`] Added the custom element
+- [`intl-datetimeformat-formattoparts`] Added the custom element
+- [`intl-datetimeformat-formatrange`] Added the custom element
+- [`intl-datetimeformat-formatrangetoparts`] Added the custom element
 
 ---
 
