@@ -187,11 +187,24 @@
     <p>
       <intl-pluralrules-select>
         <data value="1">1 dog</data>
-        <template slot="zero"><ins></ins> dogs</template>
+        <template slot="zero">No dogs</template>
         <template slot="one"><ins></ins> dog</template>
-        <template slot="two"><ins></ins> dogs</template>
-        <template slot="few"><ins></ins> dogs</template>
-        <template slot="many"><ins></ins> dogs</template>
+        <template slot="two">Two (<ins></ins>) dogs</template>
+        <template slot="few">Few (<ins></ins>) dogs</template>
+        <template slot="many">Many (<ins></ins>) dogs</template>
+        <template slot="other"><ins></ins> dogs</template>
+      </intl-pluralrules-select>
+    </p>
+  </intl-pluralrules>
+
+  <intl-pluralrules locales="en" option-type="ordinal">
+    <p>
+      <intl-pluralrules-select>
+        <data value="1">1 dog</data>
+        <template slot="one">the <ins></ins>st dog</template>
+        <template slot="two">the <ins></ins>nd dog</template>
+        <template slot="few">the <ins></ins>rd dog</template>
+        <template slot="other">the <ins></ins>th dog</template>
       </intl-pluralrules-select>
     </p>
   </intl-pluralrules>

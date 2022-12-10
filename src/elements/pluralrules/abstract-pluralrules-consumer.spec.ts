@@ -258,4 +258,10 @@ describe('AbstractPluralRulesConsumer', () => {
     // @ts-ignore
     expect(el.other).toContainTemplateHTML('other');
   });
+
+  it.todo('requires at least 1 `other` slotted template or default slot template');
+
+  it.todo('uses default slot template as `other`');
+
+  it.todo('uses `other`’s template as the fallback for any plural rule templates');
 });

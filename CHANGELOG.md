@@ -5,6 +5,7 @@
 ### Added
 
 - [`intl-pluralrules`] Added the custom element
+- [`intl-pluralrules-select`] Added the custom element
 
 ### Fixed
 

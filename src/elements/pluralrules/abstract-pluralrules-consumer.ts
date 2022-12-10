@@ -38,7 +38,50 @@ export default abstract class extends AbstractConsumer<HTMLIntlPluralRulesElemen
     return this.getTemplateContent('many')[0] ?? undefined;
   }
 
-  protected get other(): DocumentFragment | undefined {
-    return this.getTemplateContent('other')[0] ?? undefined;
+  protected get other(): DocumentFragment {
+    return this.getTemplateContent('other')[0] ?? this.getTemplateContent()[0]!;
+  }
+
+  override connectedCallback() {
+    super.connectedCallback();
+
+    if (!this.querySelector('template[slot="other"]') &&
+        !this.querySelector('template:not([slot])')) {
+      throw new Error('An intl-pluralrules consumer element requires either' +
+          'a template with no slot or a template with a slot of `other`.');
+    }
+  }
+
+  protected getContent(rule: Intl.LDMLPluralRule, data: number): DocumentFragment {
+    let content: DocumentFragment | undefined;
+
+    switch (rule) {
+      case 'zero':
+        content = this.zero ?? this.other;
+        break;
+      case 'one':
+        content = this.one ?? this.other;
+        break;
+      case 'two':
+        content = this.two ?? this.other;
+        break;
+      case 'few':
+        content = this.few ?? this.other;
+        break;
+      case 'many':
+        content = this.many ?? this.other;
+        break;
+      default:
+        content = this.other;
+    }
+
+    const insEls = content.querySelectorAll('ins');
+    insEls.forEach(insEl => content!.replaceChild(
+      document.createTextNode(data.toString()),
+      insEl
+    ));
+    content.normalize();
+
+    return content;
   }
 }
