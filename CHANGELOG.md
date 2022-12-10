@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- [`intl-pluralrules`] Added the custom element
 
 ---
 
