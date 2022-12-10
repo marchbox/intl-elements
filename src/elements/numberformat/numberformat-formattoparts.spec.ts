@@ -23,6 +23,8 @@ describe('intl-numberformat-formattoparts', () => {
     expect(el!.value).toEqual(intlResult);
   });
 
+  it.todo('renders when number is 0');
+
   it('hides slotted contents', async () => {
     await createTestPage({
       elements: ['intl-numberformat', 'intl-numberformat-formattoparts'],

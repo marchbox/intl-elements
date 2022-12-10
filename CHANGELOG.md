@@ -6,6 +6,11 @@
 
 - [`intl-pluralrules`] Added the custom element
 
+### Fixed
+
+- [`intl-numberformat-format`, `intl-numberformat-formattoparts`] Renders when
+  the number is 0.
+
 ---
 
 ## [0.0.1-alpha.12] - 2022-12-09

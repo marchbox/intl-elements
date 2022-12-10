@@ -41,6 +41,8 @@ describe('intl-numberformat-format', () => {
     expect(span).toHaveTextContent(el.value);
   });
 
+  it.todo('renders when number is 0');
+
   it('hides slotted contents', async () => {
     await createTestPage({
       elements: ['intl-numberformat', 'intl-numberformat-format'],
