@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+None.
+
+---
+
+## [0.0.1-alpha.12] - 2022-12-09
+
 ### Added
 
 - [`intl-datetimeformat`] Added the custom element
@@ -9,6 +15,10 @@
 - [`intl-datetimeformat-formattoparts`] Added the custom element
 - [`intl-datetimeformat-formatrange`] Added the custom element
 - [`intl-datetimeformat-formatrangetoparts`] Added the custom element
+
+### Changed
+
+- All `part` names are in kebab case instead of camel case now
 
 ---
 
