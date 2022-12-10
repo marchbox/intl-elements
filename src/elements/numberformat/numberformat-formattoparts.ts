@@ -1,6 +1,7 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
+import {camelToKebab} from '../../utils/strings';
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
 
 export default class extends AbstractNumberFormatConsumer {
@@ -24,7 +25,8 @@ export default class extends AbstractNumberFormatConsumer {
         dir=${this.currentDir ?? nothing}
       >
         ${map(this.#value, part =>
-            html`<span part="${part.type}" role="none">${part.value}</span>`)}
+            html`<span part="${camelToKebab(part.type)}"
+                role="none">${part.value}</span>`)}
       </span>
       <span aria-hidden="true" hidden>
         <slot></slot>

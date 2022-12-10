@@ -1,6 +1,7 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
+import {camelToKebab} from '../../utils/strings';
 import AbstractListFormatConsumer from './abstract-listformat-consumer';
 
 export default class extends AbstractListFormatConsumer {
@@ -23,7 +24,8 @@ export default class extends AbstractListFormatConsumer {
         dir=${this.currentDir ?? nothing}
       >
         ${map(this.#value, part =>
-            html`<span part="${part.type}" role="none">${part.value}</span>`)}
+            html`<span part="${camelToKebab(part.type)}"
+                role="none">${part.value}</span>`)}
       </span>
       <span aria-hidden="true" hidden>
         <slot></slot>
