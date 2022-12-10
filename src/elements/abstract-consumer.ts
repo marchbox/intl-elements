@@ -81,7 +81,8 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
             (this.constructor.observesText &&
                 node.nodeType === Node.TEXT_NODE) ||
             node.nodeName === 'DATA' ||
-            node.nodeName === 'TIME');
+            node.nodeName === 'TIME' ||
+            node.nodeName === 'TEMPLATE');
 
     // Observe slotted element changes.
     this.#slottedElementObserver = new MutationObserver(() => {
@@ -90,11 +91,17 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     for (const node of assignedNodes) {
       const options = node.nodeType === Node.TEXT_NODE ? {
         characterData: true,
+      } : node.nodeName === 'TEMPLATE' ? {
+        childList: true,
+        charaterData: true,
+        subtree: true,
       } : {
         attributes: true,
         attributeFilter: ['value', 'datetime'],
       };
-      this.#slottedElementObserver.observe(node, options);
+      const target = node.nodeName === 'TEMPLATE' ?
+          (node as HTMLTemplateElement).content : node;
+      this.#slottedElementObserver.observe(target, options);
     }
 
     // Listen to slot changes.
@@ -118,5 +125,11 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .map(el => el.dateTime.trim())
         .map(value => new Date(value))
         .filter(value => value.toString() !== 'Invalid Date');
+  }
+
+  protected getTemplateContent(slot?: string): DocumentFragment[] {
+    const query = `template${slot ? `[slot="${slot}"]` : ':not([slot])'}`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLTemplateElement[])
+        .map(el => el.content.cloneNode(true) as DocumentFragment);
   }
 }
