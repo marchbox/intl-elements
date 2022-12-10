@@ -42,4 +42,8 @@ declare namespace Intl {
 
   // TODO: Remove when this is supported in TypeScript.
   type ListFormatPart = {type: 'element' | 'literal', value: string};
+
+  interface DateTimeFormatPart {
+    source: string;
+  }
 }

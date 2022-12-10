@@ -25,7 +25,10 @@ export default class extends AbstractDateTimeFormatConsumer {
         dir=${this.currentDir ?? nothing}
       >
         ${map(this.#value, part =>
-            html`<span part="${camelToKebab(part.type)}"
+            html`<span part=${[
+              camelToKebab(part.type),
+              camelToKebab(part.source),
+            ].join(' ')}
                 role="none">${part.value}</span>`)}
       </span>
       <span aria-hidden="true" hidden>
