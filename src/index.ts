@@ -1,56 +1,25 @@
-import {
-  HTMLIntlLocaleElement,
-  defineIntlLocaleElements,
-} from './elements/locale';
-import {
-  HTMLIntlDisplayNamesElement,
-  HTMLIntlDisplayNamesOfElement,
-  defineIntlDisplayNamesElements,
-} from './elements/displaynames';
-import {
-  HTMLIntlListFormatElement,
-  HTMLIntlListFormatFormatElement,
-  defineIntlListFormatElements,
-} from './elements/listformat';
-import {
-  HTMLIntlNumberFormatElement,
-  HTMLIntlNumberFormatFormatElement,
-  HTMLIntlNumberFormatFormatToPartsElement,
-  defineIntlNumberFormatElements,
-} from './elements/numberformat';
-import {
-  HTMLIntlRelativeTimeFormatElement,
-  HTMLIntlRelativeTimeFormatFormatElement,
-  HTMLIntlRelativeTimeFormatFormatToPartsElement,
-  defineIntlRelativeTimeFormatElements,
-} from './elements/relativetimeformat';
-import {
-  HTMLIntlSegmenterElement,
-  HTMLIntlSegmenterSegmentElement,
-  defineIntlSegmenterElements,
-} from './elements/segmenter';
+import {defineIntlDateTimeFormatElements} from './elements/datetimeformat';
+import {defineIntlDisplayNamesElements} from './elements/displaynames';
+import {defineIntlListFormatElements} from './elements/listformat';
+import {defineIntlLocaleElements} from './elements/locale';
+import {defineIntlNumberFormatElements} from './elements/numberformat';
+import {defineIntlRelativeTimeFormatElements} from './elements/relativetimeformat';
+import {defineIntlSegmenterElements} from './elements/segmenter';
 
 export function defineIntlElements() {
-  defineIntlLocaleElements();
+  defineIntlDateTimeFormatElements();
   defineIntlDisplayNamesElements();
   defineIntlListFormatElements();
+  defineIntlLocaleElements();
   defineIntlNumberFormatElements();
   defineIntlRelativeTimeFormatElements();
   defineIntlSegmenterElements();
 }
 
-export {
-  HTMLIntlLocaleElement,
-  HTMLIntlDisplayNamesElement,
-  HTMLIntlDisplayNamesOfElement,
-  HTMLIntlListFormatElement,
-  HTMLIntlListFormatFormatElement,
-  HTMLIntlNumberFormatElement,
-  HTMLIntlNumberFormatFormatElement,
-  HTMLIntlNumberFormatFormatToPartsElement,
-  HTMLIntlRelativeTimeFormatElement,
-  HTMLIntlRelativeTimeFormatFormatElement,
-  HTMLIntlRelativeTimeFormatFormatToPartsElement,
-  HTMLIntlSegmenterElement,
-  HTMLIntlSegmenterSegmentElement,
-}
+export * from './elements/datetimeformat';
+export * from './elements/displaynames';
+export * from './elements/listformat';
+export * from './elements/locale';
+export * from './elements/numberformat';
+export * from './elements/relativetimeformat';
+export * from './elements/segmenter';

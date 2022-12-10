@@ -19,16 +19,16 @@ export default class extends AbstractProvider {
   }
 
   @property({attribute: 'option-type'})
-  optionType: Intl.DisplayNamesType = 'language';
+  optionType: Intl.DisplayNamesOptions['type'] = 'language';
 
   @property({attribute: 'option-style'})
-  optionStyle: Intl.RelativeTimeFormatStyle = 'long';
+  optionStyle: Intl.DisplayNamesOptions['style'] = 'long';
 
   @property({attribute: 'option-languagedisplay'})
-  optionLanguageDisplay: Intl.DisplayNamesLanguageDisplay = 'dialect';
+  optionLanguageDisplay: Intl.DisplayNamesOptions['languageDisplay'] = 'dialect';
 
   @property({attribute: 'option-fallback'})
-  optionFallback: Intl.DisplayNamesFallback = 'code';
+  optionFallback: Intl.DisplayNamesOptions['fallback'] = 'code';
 
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
     return this.#resolvedOptions;

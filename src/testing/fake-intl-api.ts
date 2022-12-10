@@ -42,8 +42,12 @@ export class FakeIntlApi {
     };
   }
 
-  format(unit: string): string {
-    switch (unit) {
+  format(subject: string | Date): string {
+    if (subject instanceof Date) {
+      return subject.toISOString();
+    }
+
+    switch (subject) {
       case 'day':
         return 'day';
       case 'year':

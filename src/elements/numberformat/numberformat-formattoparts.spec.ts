@@ -99,7 +99,7 @@ describe('intl-numberformat-formattoparts', () => {
     expect(el).toHaveShadowPartsCount('decimal', 1);
     expect(el).toHaveShadowPartsCount('fraction', 1);
     expect(el).toHaveShadowPartsCount('unit', 1);
-    expect(el).toHaveShadowPartsCount('minusSign', 1);
+    expect(el).toHaveShadowPartsCount('minus-sign', 1);
     expect(el).toHaveShadowPartsCount('group', 1);
   });
   

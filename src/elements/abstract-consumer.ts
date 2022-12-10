@@ -7,7 +7,7 @@ import {isLocaleRtl} from '../utils/locales';
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
-    ::slotted(data) {
+    ::slotted(data, time) {
       display: none;
     }
   `;
@@ -78,8 +78,10 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .flat()
         .filter(node =>
             // @ts-ignore
-            (this.constructor.observesText && node.nodeType === Node.TEXT_NODE) ||
-            node.nodeName === 'DATA');
+            (this.constructor.observesText &&
+                node.nodeType === Node.TEXT_NODE) ||
+            node.nodeName === 'DATA' ||
+            node.nodeName === 'TIME');
 
     // Observe slotted element changes.
     this.#slottedElementObserver = new MutationObserver(() => {
@@ -90,7 +92,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         characterData: true,
       } : {
         attributes: true,
-        attributeFilter: ['value'],
+        attributeFilter: ['value', 'datetime'],
       };
       this.#slottedElementObserver.observe(node, options);
     }
@@ -103,10 +105,18 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     });
   }
 
-  protected getData(key?: string): string[] {
-    const query = `data${key ? `[slot="${key}"]` : ':not([slot])'}[value]`;
+  protected getDataValue(slot?: string): string[] {
+    const query = `data${slot ? `[slot="${slot}"]` : ':not([slot])'}[value]`;
     return (Array.from(this.querySelectorAll(query)) as HTMLDataElement[])
         .map(el => el.value.trim())
         .filter(value => value !== '');
+  }
+
+  protected getDateTime(slot?: string): Date[] {
+    const query = `time${slot ? `[slot="${slot}"]` : ':not([slot])'}[datetime]`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLTimeElement[])
+        .map(el => el.dateTime.trim())
+        .map(value => new Date(value))
+        .filter(value => value.toString() !== 'Invalid Date');
   }
 }

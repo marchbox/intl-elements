@@ -150,11 +150,16 @@
 
   <h2><code>intl-datetimeformat</code></h2>
 
-  <inlt-datetimeformat locales="he">
+  <intl-datetimeformat locales="he">
     <p>
       <intl-datetimeformat-format>
         <time datetime="1965-07-12">july 12, 1965</time>
       </intl-datetimeformat-format>
+    </p>
+    <p>
+      <intl-datetimeformat-formattoparts>
+        <time datetime="1965-07-12">july 12, 1965</time>
+      </intl-datetimeformat-formattoparts>
     </p>
     <p>
       <intl-datetimeformat-formatrange>
@@ -168,7 +173,13 @@
         <time slot="end" datetime="2022-11-28">november 28, 2022</time>
       </intl-datetimeformat-formatrange>
     </p>
-  </inlt-datetimeformat>
+    <p>
+      <intl-datetimeformat-formatrangetoparts>
+        <time slot="start" datetime="1965-07-12">july 12, 1965</time> to
+        <time slot="end" datetime="2022-11-28">november 28, 2022</time>
+      </intl-datetimeformat-formatrangetoparts>
+    </p>
+  </intl-datetimeformat>
 
   <h2><code>intl-pluralrules</code></h2>
 

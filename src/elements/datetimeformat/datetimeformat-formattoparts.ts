@@ -2,20 +2,20 @@ import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
 import {camelToKebab} from '../../utils/strings';
-import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
+import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer';
 
-export default class extends AbstractNumberFormatConsumer {
-  #value: Intl.NumberFormatPart[] = [];
+export default class extends AbstractDateTimeFormatConsumer {
+  #value: Intl.DateTimeFormatPart[] = [];
 
-  get value(): Intl.NumberFormatPart[] {
+  get value(): Intl.DateTimeFormatPart[] {
     return this.#value;
   }
 
   override render() {
-    if (this.number && this.providerElement) {
+    if (this.dateTime && this.providerElement) {
       try {
         this.#value =
-            this.providerElement.intlObject.formatToParts(this.number);
+            this.providerElement.intlObject.formatToParts(this.dateTime);
       } catch {}
     }
 

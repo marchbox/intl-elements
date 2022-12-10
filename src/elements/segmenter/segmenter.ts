@@ -15,7 +15,7 @@ export default class extends AbstractProvider {
   #resolvedOptions!: Intl.ResolvedSegmenterOptions;
 
   @property({attribute: 'option-granularity'})
-  optionGranularity: Intl.SegmenterGranularity = 'grapheme';
+  optionGranularity: Intl.SegmenterOptions['granularity'] = 'grapheme';
 
   get intlObject(): Intl.Segmenter {
     return this.#intlObject;

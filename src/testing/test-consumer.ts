@@ -8,8 +8,8 @@ export default class extends AbstractConsumer<TestProvider, string> {
 
   #value: string = '';
 
-  get #data(): string {
-    return this.getData()[0] ?? '';
+  get #data(): string | Date {
+    return this.getDataValue()[0] ?? this.getDateTime()[0] ?? '';
   }
 
   get value(): string {
