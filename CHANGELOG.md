@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+None.
+
+---
+
+## [0.0.1-alpha.13] - 2022-12-10
+
 ### Added
 
 - [`intl-pluralrules`] Added the custom element
@@ -10,7 +16,7 @@
 ### Fixed
 
 - [`intl-numberformat-format`, `intl-numberformat-formattoparts`] Renders when
-  the number is 0.
+  the number is 0
 
 ---
 
