@@ -23,6 +23,27 @@ describe('intl-numberformat-formattoparts', () => {
     expect(el!.value).toEqual(intlResult);
   });
 
+  it('renders when number is 0', async () => {
+    await createTestPage({
+      elements: ['intl-numberformat', 'intl-numberformat-formattoparts'],
+      html: `
+        <intl-numberformat locales="de" option-style="unit"
+            option-unit="year">
+          <intl-numberformat-formattoparts>
+            <data value="0"></data>
+          </intl-numberformat-formattoparts>
+        </intl-numberformat>
+      `,
+    });
+    const el = document.querySelector('intl-numberformat-formattoparts') as HTMLIntlNumberFormatFormatToPartsElement;
+    const intlResult = new Intl.NumberFormat('de', {
+      style: 'unit',
+      unit: 'year',
+    }).formatToParts(0);
+
+    expect(el!.value).toEqual(intlResult);
+  });
+
   it('hides slotted contents', async () => {
     await createTestPage({
       elements: ['intl-numberformat', 'intl-numberformat-formattoparts'],

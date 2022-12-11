@@ -61,25 +61,6 @@ describe('AbstractProvider', () => {
     expect(el).toHaveAttribute('role', 'option');
   });
 
-  // TODO: Think about how to better test this. Invalid values are treated as
-  // empty strings now.
-  it.skip('rejects invalid atttibute values', async () => {
-    await createTestPage({
-      elements: ['intl-foo'],
-      html: `
-        <intl-foo locales="en" option-unit="year"></intl-foo>
-      `,
-    });
-    const el = document.querySelector('intl-foo') as TestProvider;
-
-    // @ts-ignore
-    const spy = jest.spyOn(el, 'update');
-    el.setAttribute('option-unit', 'invalid');
-    await el.updateComplete;
-    expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
-  });
-
   // TODO: Add test for `option-timezone`.
   it('handles option values as case-insensitive', async () => {
     await createTestPage({
@@ -606,8 +587,7 @@ describe('AbstractProvider', () => {
     });
   });
 
-  // TODO
-  it.skip('throws if the `consumerElementNames` static property isn’t defined', async () => {
+  it('gets an empty array if the `consumerElementNames` static property isn’t defined', async () => {
     class BadProvider extends AbstractProvider {
       // @ts-ignore
       intlObject = new FakeIntlApi();
@@ -625,9 +605,10 @@ describe('AbstractProvider', () => {
         <bad-provider></bad-provider>
       `,
     });
+    // @ts-ignore
     const el = document.querySelector('bad-provider')! as BadProvider;
 
-    expect(() => el.consumerElements).toThrow();
+    expect(el.consumerElements).toEqual([]);
   });
 
   it('gets consumer elements from both the descendants and referenced', async () => {

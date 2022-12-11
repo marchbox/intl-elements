@@ -4,7 +4,6 @@ import {
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
-import AbstractConsumer from './abstract-consumer';
 
 defineTestIntlElements();
 
@@ -85,26 +84,6 @@ describe('AbstractConsumer', () => {
     expect(el.providerElement).toBe(providerEl);
   });
 
-  it('throws if parent element name isn’t defined', async () => {
-    class BadConsumer extends AbstractConsumer<TestProvider, string> {
-      value = '';
-    }
-    customElements.define('bad-consumer', BadConsumer);
-
-    await createTestPage({
-      elements: ['intl-foo', 'bad-consumer'],
-      html: `
-        <intl-foo locale="en">
-          <bad-consumer></bad-consumer>
-        </intl-foo>
-      `,
-    });
-    const el = document.querySelector('bad-consumer') as BadConsumer;
-
-    expect(() => {el.providerElement;})
-        .toThrow('providerElementName is not defined');
-  });
-
   it('returns `undefined` if no provider as parent', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
@@ -168,6 +147,10 @@ describe('AbstractConsumer', () => {
             <time datetime="1923-10-16"></time>
             <time datetime="2023-01-01"></time>
           </intl-foo-bar>
+          <intl-foo-bar>
+            <template><ins></ins>Content</template>
+            <template>Content</template>
+          </intl-foo-bar>
         </intl-foo>
       `,
     });
@@ -182,6 +165,10 @@ describe('AbstractConsumer', () => {
       new Date('1923-10-16'),
       new Date('2023-01-01'),
     ]);
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent()[0]).toContainDocumentFragmentHtml('<ins></ins>Content');
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent()[1]).toContainDocumentFragmentHtml('Content');
   });
 
   it('gets the correct data from named slots', async () => {
@@ -207,6 +194,12 @@ describe('AbstractConsumer', () => {
             <time slot="bar" datetime="1989-11-17"></time>
             <time slot="bar" datetime="2023-01-01"></time>
           </intl-foo-bar>
+          <intl-foo-bar>
+            <template slot="foo"><ins></ins>Content 1</template>
+            <template slot="foo">Content 1</template>
+            <template slot="bar"><ins></ins>Content 2</template>
+            <template slot="bar">Content 2</template>
+          </intl-foo-bar>
         </intl-foo>
       `,
     });
@@ -230,6 +223,14 @@ describe('AbstractConsumer', () => {
       new Date('1989-11-17'),
       new Date('2023-01-01'),
     ]);
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent('foo')[0]).toContainDocumentFragmentHtml('<ins></ins>Content 1');
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent('foo')[1]).toContainDocumentFragmentHtml('Content 1');
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent('bar')[0]).toContainDocumentFragmentHtml('<ins></ins>Content 2');
+    // @ts-ignore
+    expect(els[3]!.getTemplateContent('bar')[1]).toContainDocumentFragmentHtml('Content 2');
   });
 
   it('trims data values', async () => {
@@ -287,12 +288,16 @@ describe('AbstractConsumer', () => {
       html: `
         <intl-foo locale="en">
           <intl-foo-bar>
-            <data value="day"></data>
             <data slot="foo" value="month"></data>
+            <data value="day"></data>
           </intl-foo-bar>
           <intl-foo-bar>
-            <time datetime="1923-10-16"></time>
             <time slot="foo" datetime="1964-08-27"></time>
+            <time datetime="1923-10-16"></time>
+          </intl-foo-bar>
+          <intl-foo-bar>
+            <template slot="foo">Content 2</template>
+            <template>Content 1</template>
           </intl-foo-bar>
         </intl-foo>
       `,
@@ -303,6 +308,8 @@ describe('AbstractConsumer', () => {
     expect(els[0]!.getDataValue()).toEqual(['day']);
     // @ts-ignore
     expect(els[1]!.getDateTime()).toEqual([new Date('1923-10-16')]);
+    // @ts-ignore
+    expect(els[2]!.getTemplateContent()).toContainDocumentFragmentHtml('Content 1');
   });
 
   it('updates when elements are added to the default slot', async () => {
@@ -333,6 +340,15 @@ describe('AbstractConsumer', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
 
+    spy.mockReset();
+
+    const templateEl = document.createElement('template');
+    templateEl.innerHTML = 'Content 1';
+    el.append(templateEl);
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
     spy.mockRestore();
   });
 
@@ -344,6 +360,7 @@ describe('AbstractConsumer', () => {
           <intl-foo-bar>
             <data value="day"></data>
             <time datetime="1923-10-16"></time>
+            <template>Content 1</template>
           </intl-foo-bar>
         </intl-foo>
       `,
@@ -365,10 +382,18 @@ describe('AbstractConsumer', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
 
+    spy.mockReset();
+
+    const templateEl = el.querySelector('template');
+    templateEl!.remove();
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
     spy.mockRestore();
   });
 
-  it('observes slotted element’s `value` and `datetime` attribute changes and updates', async () => {
+  it('observes slotted data’s `value`, time’s `datetime`, and template’s content attribute changes and updates', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
@@ -376,6 +401,7 @@ describe('AbstractConsumer', () => {
           <intl-foo-bar>
             <data value="foo"></data>
             <time datetime="1923-10-16"></time>
+            <template>Content 1</template>
           </intl-foo-bar>
         </intl-foo>
       `,
@@ -397,10 +423,25 @@ describe('AbstractConsumer', () => {
 
     expect(spy).toHaveBeenCalledTimes(1);
 
+    spy.mockReset();
+
+    const templateEl = el.querySelector('template');
+    templateEl!.innerHTML = 'Content 2';
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    spy.mockReset();
+
+    templateEl!.content.append(document.createElement('span'));
+    await el.updateComplete;
+
+    expect(spy).toHaveBeenCalledTimes(1);
+
     spy.mockRestore();
   });
 
-  it('doesn’t update if non-`value`/`datetime` attribute changes on slotted element', async () => {
+  it('doesn’t update if non-`value`/`datetime` attribute or template content changes on slotted element', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
       html: `
@@ -408,14 +449,17 @@ describe('AbstractConsumer', () => {
           <intl-foo-bar>
             <data value="foo"></data>
             <time datetime="1923-10-16"></time>
+            <template>Content 1</template>
           </intl-foo-bar>
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    const spy = jest.spyOn(el, 'requestUpdate');
     const dataEl = el.querySelector('data');
     const timeEl = el.querySelector('time');
+    const templateEl = el.querySelector('template');
+    // @ts-ignore
+    const spy = jest.spyOn(el, 'requestUpdate');
 
     dataEl!.setAttribute('class', 'foo');
     await el.updateComplete;
@@ -436,6 +480,12 @@ describe('AbstractConsumer', () => {
     spy.mockReset();
 
     timeEl!.textContent = 'Hello';
+    await el.updateComplete;
+    expect(spy).not.toHaveBeenCalled();
+
+    spy.mockReset();
+
+    templateEl!.setAttribute('class', 'foo');
     await el.updateComplete;
     expect(spy).not.toHaveBeenCalled();
 

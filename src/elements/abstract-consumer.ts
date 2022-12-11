@@ -12,11 +12,13 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     }
   `;
 
-  #slottedElementObserver!: MutationObserver;
+  #slottedElementObserver?: MutationObserver;
 
   protected static observesText = false;
 
   protected static providerElementName: string;
+
+  protected isValid = true;
 
   @property({reflect: true})
   provider?:string;
@@ -24,21 +26,20 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   // TODO: Cache this.
   get providerElement(): P | undefined {
     // @ts-ignore
-    if (!this.constructor.providerElementName) {
-      throw new Error('providerElementName is not defined');
-    }
-    // @ts-ignore
-    const providerAncestor = this.closest(this.constructor.providerElementName);
-    if (providerAncestor) {
-      return providerAncestor as P;
-    }
+    const name = this.constructor.providerElementName;
+    if (name) {
+      const providerAncestor = this.closest(name);
+      if (providerAncestor) {
+        return providerAncestor as P;
+      }
 
-    if (this.provider !== undefined && this.provider !== '') {
-      // @ts-ignore
-      const query = `${this.constructor.providerElementName}#${this.provider}`;
-      const providerEl = document.querySelector(query);
-      if (providerEl) {
-        return providerEl as P;
+      if (this.provider !== undefined && this.provider !== '') {
+        // @ts-ignore
+        const query = `${this.constructor.providerElementName}#${this.provider}`;
+        const providerEl = document.querySelector(query);
+        if (providerEl) {
+          return providerEl as P;
+        }
       }
     }
 
@@ -63,12 +64,20 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'none');
     }
+
+    if (!this.providerElement) {
+      this.isValid = false;
+    }
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.#slottedElementObserver.disconnect();
+    this.#slottedElementObserver?.disconnect();
+  }
+
+  protected override shouldUpdate(): boolean {
+    return this.isValid;
   }
 
   protected override firstUpdated() {
@@ -81,7 +90,8 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
             (this.constructor.observesText &&
                 node.nodeType === Node.TEXT_NODE) ||
             node.nodeName === 'DATA' ||
-            node.nodeName === 'TIME');
+            node.nodeName === 'TIME' ||
+            node.nodeName === 'TEMPLATE');
 
     // Observe slotted element changes.
     this.#slottedElementObserver = new MutationObserver(() => {
@@ -90,11 +100,17 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     for (const node of assignedNodes) {
       const options = node.nodeType === Node.TEXT_NODE ? {
         characterData: true,
+      } : node.nodeName === 'TEMPLATE' ? {
+        childList: true,
+        charaterData: true,
+        subtree: true,
       } : {
         attributes: true,
         attributeFilter: ['value', 'datetime'],
       };
-      this.#slottedElementObserver.observe(node, options);
+      const target = node.nodeName === 'TEMPLATE' ?
+          (node as HTMLTemplateElement).content : node;
+      this.#slottedElementObserver.observe(target, options);
     }
 
     // Listen to slot changes.
@@ -118,5 +134,11 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .map(el => el.dateTime.trim())
         .map(value => new Date(value))
         .filter(value => value.toString() !== 'Invalid Date');
+  }
+
+  protected getTemplateContent(slot?: string): DocumentFragment[] {
+    const query = `template${slot ? `[slot="${slot}"]` : ':not([slot])'}`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLTemplateElement[])
+        .map(el => el.content.cloneNode(true) as DocumentFragment);
   }
 }

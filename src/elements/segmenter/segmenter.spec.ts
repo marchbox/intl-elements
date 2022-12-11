@@ -15,6 +15,4 @@ describe('intl-segmenter', () => {
 
     expect(el.resolvedOptions()).toEqual(intlResult);
   });
-
-  it.todo('throws an error if any child node is neither a template element nor a text node');
 });
