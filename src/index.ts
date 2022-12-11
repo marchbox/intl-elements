@@ -1,3 +1,4 @@
+import {defineIntlCollatorElements} from './elements/collator';
 import {defineIntlDateTimeFormatElements} from './elements/datetimeformat';
 import {defineIntlDisplayNamesElements} from './elements/displaynames';
 import {defineIntlListFormatElements} from './elements/listformat';
@@ -8,6 +9,7 @@ import {defineIntlRelativeTimeFormatElements} from './elements/relativetimeforma
 import {defineIntlSegmenterElements} from './elements/segmenter';
 
 export function defineIntlElements() {
+  defineIntlCollatorElements();
   defineIntlDateTimeFormatElements();
   defineIntlDisplayNamesElements();
   defineIntlListFormatElements();
@@ -18,6 +20,7 @@ export function defineIntlElements() {
   defineIntlSegmenterElements();
 }
 
+export * from './elements/collator';
 export * from './elements/datetimeformat';
 export * from './elements/displaynames';
 export * from './elements/listformat';

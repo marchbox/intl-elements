@@ -210,33 +210,71 @@
   </intl-pluralrules>
 
   <h2><code>intl-collator</code></h2>
-  <intl-collator>
-    <intl-collator-sort>
+  <intl-collator locales="de-u-co-phonebk">
+    <intl-collator-compare>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li slot="item">Offenbach</li>
+        <li slot="item">Österreich</li>
+        <li slot="item">Odenwald</li>
       </ul>
-    </intl-collator-sort>
+    </intl-collator-compare>
 
-    <intl-collator-sort>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </intl-collator-sort>
+    <hr>
 
-    <intl-collator-sort>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </intl-collator-sort>
+    <intl-collator-compare>
+      <div slot="item">Offenbach</div>
+      <div slot="item">Österreich</div>
+      <div slot="item">Odenwald</div>
+    </intl-collator-compare>
 
-    <intl-collator-match>
-      <data slot="target" value="foo"></data>
-    </intl-collator-match>
+    <hr>
+
+    <intl-collator-compare locales="en">
+      <ul>
+        <li slot="item">
+          <intl-displaynames locales="en">
+            <intl-displaynames-of>
+              <data value="en">English</data>
+            </intl-displaynames-of>
+          </intl-displaynames>
+        </li>
+        <li slot="item">
+          <intl-displaynames locales="de">
+            <intl-displaynames-of>
+              <data value="de">German</data>
+            </intl-displaynames-of>
+          </intl-displaynames>
+        </li>
+        <li slot="item">
+          <intl-displaynames locales="ar">
+            <intl-displaynames-of>
+              <data value="ar">Arabic</data>
+            </intl-displaynames-of>
+          </intl-displaynames>
+        </li>
+        <li slot="item">
+          <intl-displaynames locales="zh">
+            <intl-displaynames-of>
+              <data value="zh">Chinese</data>
+            </intl-displaynames-of>
+          </intl-displaynames>
+        </intl-collator-compare>
+      </li>
+    </ul>
+  </intl-collator>
+
+  <hr>
+
+  <intl-collator locales="fr" option-usage="search" option-sensitivity="base">
+    <intl-collator-compare>
+      <data slot="target" value="congres"></data>
+      <ol>
+        <li slot="item">Congrès</li>
+        <li slot="item">congres</li>
+        <li slot="item">Assemblée</li>
+        <li slot="item">poisson</li>
+      </ol>
+    </intl-collator-compare>
   </intl-collator>
 
   <script type="module">

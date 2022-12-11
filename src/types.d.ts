@@ -46,4 +46,8 @@ declare namespace Intl {
   interface DateTimeFormatPart {
     source: string;
   }
+
+  interface CollatorOptions {
+    collation?: string;
+  }
 }

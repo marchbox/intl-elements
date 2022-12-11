@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- [`intl-collator`] Added the custom element
 
 ---
 
