@@ -1,6 +1,8 @@
 /// <reference types="jest" />
 // @ts-nocheck
 
+import {toContainHTML} from '@testing-library/jest-dom/matchers';
+
 const createToHaveShadowPartsMatcher = (
   name: string,
   anyCount: boolean = false
@@ -34,10 +36,26 @@ const createToHaveShadowPartsMatcher = (
   };
 };
 
+function toContainDocumentFragmentHtml(node: Node, html: string) {
+  switch (node.nodeType) {
+    case Node.ELEMENT_NODE:
+      return toContainHTML.call(this, node, html);
+    case Node.DOCUMENT_FRAGMENT_NODE:
+      const container = document.createElement('div');
+      container.appendChild(node);
+      return toContainHTML.call(this, container, html);
+    default:
+      return {
+        pass: true,
+      };
+  }
+}
+
 export default {
   toHaveShadowPartsCount:
       createToHaveShadowPartsMatcher('toHaveShadowPartsCount'),
   toHaveShadowPart: createToHaveShadowPartsMatcher('toHaveShadowPart', true),
+  toContainDocumentFragmentHtml,
 };
 
 declare global {
@@ -45,6 +63,7 @@ declare global {
     interface Matchers<R> {
       toHaveShadowPart(part: string): R;
       toHaveShadowPartsCount(part: string, amount?: number): R;
+      toContainDocumentFragmentHtml(html: string): R;
     }
   }
 }

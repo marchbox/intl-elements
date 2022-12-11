@@ -12,7 +12,7 @@ export default class extends AbstractNumberFormatConsumer {
   }
 
   override render() {
-    if (this.number && this.providerElement) {
+    if (!isNaN(this.number) && this.providerElement) {
       try {
         this.#value =
             this.providerElement.intlObject.formatToParts(this.number);

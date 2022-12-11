@@ -2,7 +2,15 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- [`intl-pluralrules`] Added the custom element
+- [`intl-pluralrules-select`] Added the custom element
+
+### Fixed
+
+- [`intl-numberformat-format`, `intl-numberformat-formattoparts`] Renders when
+  the number is 0.
 
 ---
 
