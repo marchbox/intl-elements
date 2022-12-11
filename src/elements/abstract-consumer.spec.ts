@@ -4,7 +4,6 @@ import {
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
-import AbstractConsumer from './abstract-consumer';
 
 defineTestIntlElements();
 
@@ -83,26 +82,6 @@ describe('AbstractConsumer', () => {
     const providerEl = document.querySelector('intl-foo') as TestProvider;
 
     expect(el.providerElement).toBe(providerEl);
-  });
-
-  it('throws if parent element name isn’t defined', async () => {
-    class BadConsumer extends AbstractConsumer<TestProvider, string> {
-      value = '';
-    }
-    customElements.define('bad-consumer', BadConsumer);
-
-    await createTestPage({
-      elements: ['intl-foo', 'bad-consumer'],
-      html: `
-        <intl-foo locale="en">
-          <bad-consumer></bad-consumer>
-        </intl-foo>
-      `,
-    });
-    const el = document.querySelector('bad-consumer') as BadConsumer;
-
-    expect(() => {el.providerElement;})
-        .toThrow('providerElementName is not defined');
   });
 
   it('returns `undefined` if no provider as parent', async () => {
@@ -187,9 +166,9 @@ describe('AbstractConsumer', () => {
       new Date('2023-01-01'),
     ]);
     // @ts-ignore
-    expect(els[3]!.getTemplateContent()[0]).toContainTemplateHTML('<ins></ins>Content');
+    expect(els[3]!.getTemplateContent()[0]).toContainDocumentFragmentHtml('<ins></ins>Content');
     // @ts-ignore
-    expect(els[3]!.getTemplateContent()[1]).toContainTemplateHTML('Content');
+    expect(els[3]!.getTemplateContent()[1]).toContainDocumentFragmentHtml('Content');
   });
 
   it('gets the correct data from named slots', async () => {
@@ -245,13 +224,13 @@ describe('AbstractConsumer', () => {
       new Date('2023-01-01'),
     ]);
     // @ts-ignore
-    expect(els[3]!.getTemplateContent('foo')[0]).toContainTemplateHTML('<ins></ins>Content 1');
+    expect(els[3]!.getTemplateContent('foo')[0]).toContainDocumentFragmentHtml('<ins></ins>Content 1');
     // @ts-ignore
-    expect(els[3]!.getTemplateContent('foo')[1]).toContainTemplateHTML('Content 1');
+    expect(els[3]!.getTemplateContent('foo')[1]).toContainDocumentFragmentHtml('Content 1');
     // @ts-ignore
-    expect(els[3]!.getTemplateContent('bar')[0]).toContainTemplateHTML('<ins></ins>Content 2');
+    expect(els[3]!.getTemplateContent('bar')[0]).toContainDocumentFragmentHtml('<ins></ins>Content 2');
     // @ts-ignore
-    expect(els[3]!.getTemplateContent('bar')[1]).toContainTemplateHTML('Content 2');
+    expect(els[3]!.getTemplateContent('bar')[1]).toContainDocumentFragmentHtml('Content 2');
   });
 
   it('trims data values', async () => {
@@ -330,7 +309,7 @@ describe('AbstractConsumer', () => {
     // @ts-ignore
     expect(els[1]!.getDateTime()).toEqual([new Date('1923-10-16')]);
     // @ts-ignore
-    expect(els[2]!.getTemplateContent()).toContainTemplateHTML('Content 1');
+    expect(els[2]!.getTemplateContent()).toContainDocumentFragmentHtml('Content 1');
   });
 
   it('updates when elements are added to the default slot', async () => {
@@ -476,10 +455,11 @@ describe('AbstractConsumer', () => {
       `,
     });
     const el = document.querySelector('intl-foo-bar') as TestConsumer;
-    const spy = jest.spyOn(el, 'requestUpdate');
     const dataEl = el.querySelector('data');
     const timeEl = el.querySelector('time');
     const templateEl = el.querySelector('template');
+    // @ts-ignore
+    const spy = jest.spyOn(el, 'requestUpdate');
 
     dataEl!.setAttribute('class', 'foo');
     await el.updateComplete;

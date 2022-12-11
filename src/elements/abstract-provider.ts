@@ -69,7 +69,7 @@ export default abstract class AbstractProvider extends LitElement {
     // @ts-ignore
     const names = this.constructor.consumerElementNames;
     if (!names) {
-      throw new Error('Missing static property `consumerElementNames`.');
+      return [];
     }
 
     const descendantQuery = Array.from(names.values()).join(',');
@@ -108,9 +108,9 @@ export default abstract class AbstractProvider extends LitElement {
   override disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    this.#attrObserver?.disconnect();
-    this.#localesFromElementsObserver?.disconnect();
-    this.#ancestorObserver?.disconnect();
+    this.#attrObserver.disconnect();
+    this.#localesFromElementsObserver.disconnect();
+    this.#ancestorObserver.disconnect();
   }
 
   protected override shouldUpdate(changes: Map<string, unknown>): boolean {
@@ -118,11 +118,12 @@ export default abstract class AbstractProvider extends LitElement {
     // TODO: Creates a custom decorator that extends lit’s `@property`
     // decorator and custom the `converter()` and `hasChanged()` functions with
     // canonical value conversion and evaluation.
-    return Array.from(changes.entries()).every(([key, oldValue]) => {
-      // @ts-ignore
-      const canonicalValue = getCanonicalOptionValue(key, this[key]);
-      return canonicalValue !== oldValue;
-    });
+    return Array.from(changes.entries())
+        .every(([key, oldValue]) => {
+          // @ts-ignore
+          const canonicalValue = getCanonicalOptionValue(key, this[key]);
+          return canonicalValue !== oldValue;
+        });
   }
 
   protected override willUpdate(changes: Map<string, unknown>) {
@@ -146,7 +147,7 @@ export default abstract class AbstractProvider extends LitElement {
   }
 
   override updated() {
-    this.consumerElements.forEach(el => el.requestUpdate?.());
+    this.consumerElements.forEach(el => el.requestUpdate());
   }
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;

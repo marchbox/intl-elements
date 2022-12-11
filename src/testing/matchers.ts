@@ -36,7 +36,7 @@ const createToHaveShadowPartsMatcher = (
   };
 };
 
-function toContainTemplateHTML(node: Node, html: string) {
+function toContainDocumentFragmentHtml(node: Node, html: string) {
   switch (node.nodeType) {
     case Node.ELEMENT_NODE:
       return toContainHTML.call(this, node, html);
@@ -55,7 +55,7 @@ export default {
   toHaveShadowPartsCount:
       createToHaveShadowPartsMatcher('toHaveShadowPartsCount'),
   toHaveShadowPart: createToHaveShadowPartsMatcher('toHaveShadowPart', true),
-  toContainTemplateHTML,
+  toContainDocumentFragmentHtml,
 };
 
 declare global {
@@ -63,7 +63,7 @@ declare global {
     interface Matchers<R> {
       toHaveShadowPart(part: string): R;
       toHaveShadowPartsCount(part: string, amount?: number): R;
-      toContainTemplateHTML(html: string): R;
+      toContainDocumentFragmentHtml(html: string): R;
     }
   }
 }

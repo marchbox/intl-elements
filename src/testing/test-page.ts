@@ -11,10 +11,8 @@ export async function createTestPage(option: CreateTestPageOption): Promise<void
   try {
     document.body.innerHTML = option.html;
 
-    if (Array.isArray(option.elements)) {
-      await Promise.all(
-          option.elements.map(el => customElements.whenDefined(el)));
-    }
+    await Promise.all(
+        option.elements.map(el => customElements.whenDefined(el)));
   } catch (e) {
     throw e;
   }

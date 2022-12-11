@@ -15,6 +15,4 @@ describe('intl-pluralrules', () => {
 
     expect(el.resolvedOptions()).toEqual(intlResult);
   });
-
-  it.todo('throws an error if any child node is neither a template nor a data element');
 });

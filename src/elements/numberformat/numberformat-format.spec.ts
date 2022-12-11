@@ -41,7 +41,26 @@ describe('intl-numberformat-format', () => {
     expect(span).toHaveTextContent(el.value);
   });
 
-  it.todo('renders when number is 0');
+  it('renders when number is 0', async () => {
+    await createTestPage({
+      elements: ['intl-numberformat', 'intl-numberformat-format'],
+      html: `
+        <intl-numberformat locales="zh" option-style="currency"
+            option-currency="cny">
+          <intl-numberformat-format>
+            <data value="0"></data>
+          </intl-numberformat-format>
+        </intl-numberformat>
+      `,
+    });
+    const el = document.querySelector('intl-numberformat-format') as HTMLIntlNumberFormatFormatElement;
+    const intlResult = new Intl.NumberFormat('zh', {
+      style: 'currency',
+      currency: 'cny',
+    }).format(0);
+
+    expect(el.value).toBe(intlResult);
+  });
 
   it('hides slotted contents', async () => {
     await createTestPage({

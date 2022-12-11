@@ -12,12 +12,9 @@ export default class extends AbstractPluralRulesConsumer {
   }
 
   override render() {
-    let content: DocumentFragment | '' = '';
-
     if (this.providerElement && !isNaN(this.data)) {
       try {
         this.#value = this.providerElement.intlObject.select(this.data);
-        content= this.getContent(this.#value, this.data);
       } catch {}
     }
 
@@ -25,7 +22,7 @@ export default class extends AbstractPluralRulesConsumer {
       <span role="none" part="value"
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
-      >${content}</span>
+      >${this.content}</span>
       <span aria-hidden="true" hidden>
         <slot></slot>
         <slot name="zero"></slot>

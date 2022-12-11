@@ -12,11 +12,13 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     }
   `;
 
-  #slottedElementObserver!: MutationObserver;
+  #slottedElementObserver?: MutationObserver;
 
   protected static observesText = false;
 
   protected static providerElementName: string;
+
+  protected isValid = true;
 
   @property({reflect: true})
   provider?:string;
@@ -24,21 +26,20 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   // TODO: Cache this.
   get providerElement(): P | undefined {
     // @ts-ignore
-    if (!this.constructor.providerElementName) {
-      throw new Error('providerElementName is not defined');
-    }
-    // @ts-ignore
-    const providerAncestor = this.closest(this.constructor.providerElementName);
-    if (providerAncestor) {
-      return providerAncestor as P;
-    }
+    const name = this.constructor.providerElementName;
+    if (name) {
+      const providerAncestor = this.closest(name);
+      if (providerAncestor) {
+        return providerAncestor as P;
+      }
 
-    if (this.provider !== undefined && this.provider !== '') {
-      // @ts-ignore
-      const query = `${this.constructor.providerElementName}#${this.provider}`;
-      const providerEl = document.querySelector(query);
-      if (providerEl) {
-        return providerEl as P;
+      if (this.provider !== undefined && this.provider !== '') {
+        // @ts-ignore
+        const query = `${this.constructor.providerElementName}#${this.provider}`;
+        const providerEl = document.querySelector(query);
+        if (providerEl) {
+          return providerEl as P;
+        }
       }
     }
 
@@ -63,12 +64,20 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'none');
     }
+
+    if (!this.providerElement) {
+      this.isValid = false;
+    }
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.#slottedElementObserver.disconnect();
+    this.#slottedElementObserver?.disconnect();
+  }
+
+  protected override shouldUpdate(): boolean {
+    return this.isValid;
   }
 
   protected override firstUpdated() {
