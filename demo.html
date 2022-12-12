@@ -210,57 +210,64 @@
   </intl-pluralrules>
 
   <h2><code>intl-collator</code></h2>
+
+  <intl-collator locales="zh-CN" option-collator="stroke">
+    <intl-collator-compare>
+      <p>铁拐李</p>
+      <p>张果老</p>
+      <p>何仙姑</p>
+      <p>蓝采和</p>
+      <p>汉钟离</p>
+      <p>曹国舅</p>
+      <p>吕洞宾</p>
+      <p>韩湘子</p>
+    </intl-collator-compare>
+  </intl-collator>
+
+  <hr>
+
   <intl-collator locales="de-u-co-phonebk">
     <intl-collator-compare>
       <ul>
-        <li slot="item">Offenbach</li>
-        <li slot="item">Österreich</li>
-        <li slot="item">Odenwald</li>
+        <li>Offenbach</li>
+        <li>Österreich</li>
+        <li>Odenwald</li>
       </ul>
     </intl-collator-compare>
 
     <hr>
 
     <intl-collator-compare>
-      <div slot="item">Offenbach</div>
-      <div slot="item">Österreich</div>
-      <div slot="item">Odenwald</div>
+      <div>Hello</div>
+      <div>Offenbach</div>
+      <div>Österreich</div>
+      <div>Odenwald</div>
     </intl-collator-compare>
 
     <hr>
 
     <intl-collator-compare locales="en">
-      <ul>
-        <li slot="item">
-          <intl-displaynames locales="en">
-            <intl-displaynames-of>
-              <data value="en">English</data>
-            </intl-displaynames-of>
-          </intl-displaynames>
-        </li>
-        <li slot="item">
-          <intl-displaynames locales="de">
-            <intl-displaynames-of>
-              <data value="de">German</data>
-            </intl-displaynames-of>
-          </intl-displaynames>
-        </li>
-        <li slot="item">
-          <intl-displaynames locales="ar">
-            <intl-displaynames-of>
-              <data value="ar">Arabic</data>
-            </intl-displaynames-of>
-          </intl-displaynames>
-        </li>
-        <li slot="item">
-          <intl-displaynames locales="zh">
-            <intl-displaynames-of>
-              <data value="zh">Chinese</data>
-            </intl-displaynames-of>
-          </intl-displaynames>
-        </intl-collator-compare>
-      </li>
-    </ul>
+      <intl-displaynames locales="en">
+        <intl-displaynames-of>
+          <data value="en">English</data>
+        </intl-displaynames-of>
+      </intl-displaynames>
+      <intl-displaynames locales="de">
+        <intl-displaynames-of>
+          <data value="de">German</data>
+        </intl-displaynames-of>
+      </intl-displaynames>
+      <intl-displaynames locales="ar">
+        <intl-displaynames-of>
+          <data value="ar">Arabic</data>
+        </intl-displaynames-of>
+      </intl-displaynames>
+      <intl-displaynames locales="zh">
+        <intl-displaynames-of>
+          <data value="zh">Chinese</data>
+        </intl-displaynames-of>
+      </intl-displaynames>
+    </intl-collator-compare>
   </intl-collator>
 
   <hr>
@@ -269,10 +276,10 @@
     <intl-collator-compare>
       <data slot="target" value="congres"></data>
       <ol>
-        <li slot="item">Congrès</li>
-        <li slot="item">congres</li>
-        <li slot="item">Assemblée</li>
-        <li slot="item">poisson</li>
+        <li>Congrès</li>
+        <li>congres</li>
+        <li>Assemblée</li>
+        <li>poisson</li>
       </ol>
     </intl-collator-compare>
   </intl-collator>

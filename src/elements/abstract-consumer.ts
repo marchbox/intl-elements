@@ -81,6 +81,31 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   }
 
   protected override firstUpdated() {
+    this.#observeSlottedElements();
+  }
+
+  protected getDataValue(slot?: string): string[] {
+    const query = `data${slot ? `[slot="${slot}"]` : ':not([slot])'}[value]`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLDataElement[])
+        .map(el => el.value.trim())
+        .filter(value => value !== '');
+  }
+
+  protected getDateTime(slot?: string): Date[] {
+    const query = `time${slot ? `[slot="${slot}"]` : ':not([slot])'}[datetime]`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLTimeElement[])
+        .map(el => el.dateTime.trim())
+        .map(value => new Date(value))
+        .filter(value => value.toString() !== 'Invalid Date');
+  }
+
+  protected getTemplateContent(slot?: string): DocumentFragment[] {
+    const query = `template${slot ? `[slot="${slot}"]` : ':not([slot])'}`;
+    return (Array.from(this.querySelectorAll(query)) as HTMLTemplateElement[])
+        .map(el => el.content.cloneNode(true) as DocumentFragment);
+  }
+
+  #observeSlottedElements() {
     const slotEls = this.renderRoot.querySelectorAll('slot');
     const assignedNodes = Array.from(slotEls)
         .map(slot => slot.assignedNodes({flatten: true}))
@@ -119,26 +144,5 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         this.requestUpdate();
       })
     });
-  }
-
-  protected getDataValue(slot?: string): string[] {
-    const query = `data${slot ? `[slot="${slot}"]` : ':not([slot])'}[value]`;
-    return (Array.from(this.querySelectorAll(query)) as HTMLDataElement[])
-        .map(el => el.value.trim())
-        .filter(value => value !== '');
-  }
-
-  protected getDateTime(slot?: string): Date[] {
-    const query = `time${slot ? `[slot="${slot}"]` : ':not([slot])'}[datetime]`;
-    return (Array.from(this.querySelectorAll(query)) as HTMLTimeElement[])
-        .map(el => el.dateTime.trim())
-        .map(value => new Date(value))
-        .filter(value => value.toString() !== 'Invalid Date');
-  }
-
-  protected getTemplateContent(slot?: string): DocumentFragment[] {
-    const query = `template${slot ? `[slot="${slot}"]` : ':not([slot])'}`;
-    return (Array.from(this.querySelectorAll(query)) as HTMLTemplateElement[])
-        .map(el => el.content.cloneNode(true) as DocumentFragment);
   }
 }
