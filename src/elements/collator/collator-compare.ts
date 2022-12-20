@@ -25,19 +25,21 @@ export default class extends AbstractConsumer<HTMLIntlCollator, string[]> {
   }
 
   #getTarget(el: Element): string {
-    return el.textContent?.trim() || '';
+    return el.textContent!.trim();
   }
 
   override render() {
     let result: typeof nothing | Element = nothing;
-    const listEl = (this.querySelector('[slot="list"]') as HTMLSlotElement);
+    let sorted: Element[] = [];
+    const listEl = this.querySelector('[slot="list"]');
 
     if (this.providerElement && listEl) {
+      result = listEl.cloneNode() as Element;
+      result.removeAttribute('slot');
+
       const {usage} = this.providerElement.intlObject.resolvedOptions();
       const {compare} = this.providerElement.intlObject;
       const target = this.getDataValue('target')[0];
-
-      let sorted: Element[] = [];
 
       switch (usage) {
         case 'search':
@@ -54,15 +56,17 @@ export default class extends AbstractConsumer<HTMLIntlCollator, string[]> {
           break;
       }
 
-      this.#value = sorted.map(el => this.#getTarget(el));
-      result = listEl.cloneNode() as Element;
-      for (const el of sorted) {
-        result.append(el.cloneNode(true));
-      }
+      sorted = sorted.map(el => el.cloneNode(true) as Element);
+      result.append(...sorted);
     }
 
+    this.#value = sorted.map(el => this.#getTarget(el));
+
     return html`
-      <div role="none">${result}</div>
+      <div role="none"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >${result}</div>
       <span aria-hidden="true" hidden>
         <slot name="target"></slot>
         <slot name="list"></slot>
