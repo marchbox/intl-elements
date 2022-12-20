@@ -159,4 +159,23 @@ describe('intl-segmenter-segment', () => {
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
   });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter', 'intl-segmenter-segment'],
+      html: `
+        <intl-segmenter locales="en">
+          <intl-segmenter-segment>
+            Hello, world!
+          </intl-segmenter-segment>
+        </intl-segmenter>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    expect(srEl).toHaveTextContent('Hello, world!');
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
+  });
 });

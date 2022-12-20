@@ -1,4 +1,4 @@
-import {LitElement, css} from 'lit';
+import {CSSResultGroup, LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractProvider from './abstract-provider';
@@ -7,12 +7,18 @@ import {isLocaleRtl} from '../utils/locales';
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
-    ::slotted(data, time) {
+    [hidden] {
       display: none;
     }
-  `;
+    .sr {
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+    }
+  ` as CSSResultGroup;
 
-  #slottedElementObserver?: MutationObserver;
+  protected slottedElementObserver?: MutationObserver;
 
   protected static observesText = false;
 
@@ -73,7 +79,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.#slottedElementObserver?.disconnect();
+    this.slottedElementObserver?.disconnect();
   }
 
   protected override shouldUpdate(): boolean {
@@ -81,44 +87,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   }
 
   protected override firstUpdated() {
-    const slotEls = this.renderRoot.querySelectorAll('slot');
-    const assignedNodes = Array.from(slotEls)
-        .map(slot => slot.assignedNodes({flatten: true}))
-        .flat()
-        .filter(node =>
-            // @ts-ignore
-            (this.constructor.observesText &&
-                node.nodeType === Node.TEXT_NODE) ||
-            node.nodeName === 'DATA' ||
-            node.nodeName === 'TIME' ||
-            node.nodeName === 'TEMPLATE');
-
-    // Observe slotted element changes.
-    this.#slottedElementObserver = new MutationObserver(() => {
-      this.requestUpdate();
-    });
-    for (const node of assignedNodes) {
-      const options = node.nodeType === Node.TEXT_NODE ? {
-        characterData: true,
-      } : node.nodeName === 'TEMPLATE' ? {
-        childList: true,
-        charaterData: true,
-        subtree: true,
-      } : {
-        attributes: true,
-        attributeFilter: ['value', 'datetime'],
-      };
-      const target = node.nodeName === 'TEMPLATE' ?
-          (node as HTMLTemplateElement).content : node;
-      this.#slottedElementObserver.observe(target, options);
-    }
-
-    // Listen to slot changes.
-    slotEls.forEach(slot => {
-      slot.addEventListener('slotchange', () => {
-        this.requestUpdate();
-      })
-    });
+    this.observeSlottedElements();
   }
 
   protected getDataValue(slot?: string): string[] {
@@ -140,5 +109,46 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     const query = `template${slot ? `[slot="${slot}"]` : ':not([slot])'}`;
     return (Array.from(this.querySelectorAll(query)) as HTMLTemplateElement[])
         .map(el => el.content.cloneNode(true) as DocumentFragment);
+  }
+
+  protected observeSlottedElements() {
+    const slotEls = this.renderRoot.querySelectorAll('slot');
+    const assignedNodes = Array.from(slotEls)
+        .map(slot => slot.assignedNodes({flatten: true}))
+        .flat()
+        .filter(node =>
+            // @ts-ignore
+            (this.constructor.observesText &&
+                node.nodeType === Node.TEXT_NODE) ||
+            node.nodeName === 'DATA' ||
+            node.nodeName === 'TIME' ||
+            node.nodeName === 'TEMPLATE');
+
+    // Observe slotted element changes.
+    this.slottedElementObserver = new MutationObserver(() => {
+      this.requestUpdate();
+    });
+    for (const node of assignedNodes) {
+      const options = node.nodeType === Node.TEXT_NODE ? {
+        characterData: true,
+      } : node.nodeName === 'TEMPLATE' ? {
+        childList: true,
+        charaterData: true,
+        subtree: true,
+      } : {
+        attributes: true,
+        attributeFilter: ['value', 'datetime'],
+      };
+      const target = node.nodeName === 'TEMPLATE' ?
+          (node as HTMLTemplateElement).content : node;
+      this.slottedElementObserver.observe(target, options);
+    }
+
+    // Listen to slot changes.
+    slotEls.forEach(slot => {
+      slot.addEventListener('slotchange', () => {
+        this.requestUpdate();
+      })
+    });
   }
 }

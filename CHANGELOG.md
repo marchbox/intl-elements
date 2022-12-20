@@ -2,7 +2,10 @@
 
 ## [Unreleased]
 
-None.
+### Added
+
+- [`intl-collator`] Added the custom element
+- [`intl-collator-compare`] Added the custom element
 
 ---
 

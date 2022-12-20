@@ -16,10 +16,6 @@ export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, strin
     return this.#value;
   }
 
-  override connectedCallback() {
-    super.connectedCallback();
-  }
-
   override render() {
     if (this.#data && this.providerElement) {
       // Chrome doesn’t recoganize lowercase region subtags.

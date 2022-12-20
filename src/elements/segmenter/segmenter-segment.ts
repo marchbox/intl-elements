@@ -43,14 +43,21 @@ export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Seg
           ${map(Array.from(this.#value), segment =>
             when(isGranularityWord && !segment.isWordLike,
               () => segment.segment,
-              () => html`<span part=${this.#getParts(segment)}
-                  role="none">${segment.segment}</span>`))}
+              () => html`<span
+                  part=${this.#getParts(segment)}>${segment.segment}</span>`))}
         `;
       } catch {}
     }
 
+    // Use a `<span>` element to host text for screen readers instead of
+    // `aria-label` attribute so the text reads better, especially for
+    // multiingual text.
     return html`
-      <span role="none" part="value"
+      <span class="sr"
+        lang=${this.currentLang ?? nothing}
+        dir=${this.currentDir ?? nothing}
+      >${this.input}</span>
+      <span part="value" aria-hidden="true"
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${segmentHtml}</span>
