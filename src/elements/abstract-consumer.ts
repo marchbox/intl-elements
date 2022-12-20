@@ -1,4 +1,4 @@
-import {LitElement, css} from 'lit';
+import {CSSResultGroup, LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import AbstractProvider from './abstract-provider';
@@ -10,7 +10,13 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
     [hidden] {
       display: none;
     }
-  `;
+    .sr {
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+    }
+  ` as CSSResultGroup;
 
   protected slottedElementObserver?: MutationObserver;
 
