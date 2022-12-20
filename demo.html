@@ -41,7 +41,12 @@
       <intl-displaynames-of><data value="minute">minute</data></intl-displaynames-of>
     </intl-displaynames>
   </p>
-  <p><intl-displaynames-of provider="language"><data value="hi"></data></intl-displaynames-of></p>
+  <intl-displaynames id="zh-langs" locales="zh" option-type="language"></intl-displaynames>
+  <ul>
+    <li><intl-displaynames-of provider="zh-langs"><data value="ug-Arab"></data></intl-displaynames-of></li>
+    <li><intl-displaynames-of provider="zh-langs"><data value="de-AT"></data></intl-displaynames-of></li>
+    <li><intl-displaynames-of provider="zh-langs"><data value="sw"></data></intl-displaynames-of></li>
+  </ul>
 
   <h2><code>intl-listformat</code></h2>
   <intl-listformat locales="en">
@@ -211,16 +216,18 @@
 
   <h2><code>intl-collator</code></h2>
 
-  <intl-collator locales="zh-CN" option-collator="stroke">
+  <intl-collator locales="zh-u-co-pinyin">
     <intl-collator-compare>
-      <p>铁拐李</p>
-      <p>张果老</p>
-      <p>何仙姑</p>
-      <p>蓝采和</p>
-      <p>汉钟离</p>
-      <p>曹国舅</p>
-      <p>吕洞宾</p>
-      <p>韩湘子</p>
+      <div slot="list">
+        <div>铁拐李</div>
+        <div>张果老</div>
+        <div>何仙姑</div>
+        <div>蓝采和</div>
+        <div>汉钟离</div>
+        <div>曹国舅</div>
+        <div>吕洞宾</div>
+        <div>韩湘子</div>
+      </div>
     </intl-collator-compare>
   </intl-collator>
 
@@ -228,7 +235,7 @@
 
   <intl-collator locales="de-u-co-phonebk">
     <intl-collator-compare>
-      <ul>
+      <ul slot="list">
         <li>Offenbach</li>
         <li>Österreich</li>
         <li>Odenwald</li>
@@ -238,44 +245,20 @@
     <hr>
 
     <intl-collator-compare>
-      <div>Hello</div>
-      <div>Offenbach</div>
-      <div>Österreich</div>
-      <div>Odenwald</div>
+      <div slot="list">
+        <div>Hello</div>
+        <div>Offenbach</div>
+        <div>Österreich</div>
+        <div>Odenwald</div>
+      </div>
     </intl-collator-compare>
-
-    <hr>
-
-    <intl-collator-compare locales="en">
-      <intl-displaynames locales="en">
-        <intl-displaynames-of>
-          <data value="en">English</data>
-        </intl-displaynames-of>
-      </intl-displaynames>
-      <intl-displaynames locales="de">
-        <intl-displaynames-of>
-          <data value="de">German</data>
-        </intl-displaynames-of>
-      </intl-displaynames>
-      <intl-displaynames locales="ar">
-        <intl-displaynames-of>
-          <data value="ar">Arabic</data>
-        </intl-displaynames-of>
-      </intl-displaynames>
-      <intl-displaynames locales="zh">
-        <intl-displaynames-of>
-          <data value="zh">Chinese</data>
-        </intl-displaynames-of>
-      </intl-displaynames>
-    </intl-collator-compare>
-  </intl-collator>
 
   <hr>
 
   <intl-collator locales="fr" option-usage="search" option-sensitivity="base">
     <intl-collator-compare>
       <data slot="target" value="congres"></data>
-      <ol>
+      <ol slot="list">
         <li>Congrès</li>
         <li>congres</li>
         <li>Assemblée</li>

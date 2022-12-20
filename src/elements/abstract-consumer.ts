@@ -7,12 +7,12 @@ import {isLocaleRtl} from '../utils/locales';
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),
-    ::slotted(data, time) {
+    [hidden] {
       display: none;
     }
   `;
 
-  #slottedElementObserver?: MutationObserver;
+  protected slottedElementObserver?: MutationObserver;
 
   protected static observesText = false;
 
@@ -73,7 +73,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
 
-    this.#slottedElementObserver?.disconnect();
+    this.slottedElementObserver?.disconnect();
   }
 
   protected override shouldUpdate(): boolean {
@@ -81,7 +81,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   }
 
   protected override firstUpdated() {
-    this.#observeSlottedElements();
+    this.observeSlottedElements();
   }
 
   protected getDataValue(slot?: string): string[] {
@@ -105,7 +105,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .map(el => el.content.cloneNode(true) as DocumentFragment);
   }
 
-  #observeSlottedElements() {
+  protected observeSlottedElements() {
     const slotEls = this.renderRoot.querySelectorAll('slot');
     const assignedNodes = Array.from(slotEls)
         .map(slot => slot.assignedNodes({flatten: true}))
@@ -119,7 +119,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
             node.nodeName === 'TEMPLATE');
 
     // Observe slotted element changes.
-    this.#slottedElementObserver = new MutationObserver(() => {
+    this.slottedElementObserver = new MutationObserver(() => {
       this.requestUpdate();
     });
     for (const node of assignedNodes) {
@@ -135,7 +135,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
       };
       const target = node.nodeName === 'TEMPLATE' ?
           (node as HTMLTemplateElement).content : node;
-      this.#slottedElementObserver.observe(target, options);
+      this.slottedElementObserver.observe(target, options);
     }
 
     // Listen to slot changes.
