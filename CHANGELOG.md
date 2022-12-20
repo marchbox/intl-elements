@@ -2,10 +2,21 @@
 
 ## [Unreleased]
 
+None
+
+---
+
+## [0.0.1-alpha.14] - 2022-12-19
+
 ### Added
 
 - [`intl-collator`] Added the custom element
 - [`intl-collator-compare`] Added the custom element
+
+### Fixed
+
+- [`intl-segmenter-segment`] Screen readers read the full text input now,
+  instead of every the segmented text in span elements
 
 ---
 
