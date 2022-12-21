@@ -1,6 +1,6 @@
 import {html, nothing} from 'lit';
 
-import AbstractPluralRulesConsumer from './abstract-pluralrules-consumer';
+import AbstractPluralRulesConsumer from './abstract-pluralrules-consumer.js';
 
 export default class extends AbstractPluralRulesConsumer {
   protected static override providerElementName = 'intl-pluralrules';

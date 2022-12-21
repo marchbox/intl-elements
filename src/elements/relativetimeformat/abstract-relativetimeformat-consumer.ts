@@ -1,5 +1,5 @@
-import AbstractConsumer from '../abstract-consumer';
-import HTMLIntlRelativeTimeFormatElement from './relativetimeformat';
+import AbstractConsumer from '../abstract-consumer.js';
+import HTMLIntlRelativeTimeFormatElement from './relativetimeformat.js';
 
 type ValueType = string | Intl.RelativeTimeFormatPart[];
 

@@ -1,12 +1,22 @@
-import {defineIntlCollatorElements} from './elements/collator';
-import {defineIntlDateTimeFormatElements} from './elements/datetimeformat';
-import {defineIntlDisplayNamesElements} from './elements/displaynames';
-import {defineIntlListFormatElements} from './elements/listformat';
-import {defineIntlLocaleElements} from './elements/locale';
-import {defineIntlNumberFormatElements} from './elements/numberformat';
-import {defineIntlPluralRulesElements} from './elements/pluralrules';
-import {defineIntlRelativeTimeFormatElements} from './elements/relativetimeformat';
-import {defineIntlSegmenterElements} from './elements/segmenter';
+import {defineIntlCollatorElements} from './elements/collator/index.js';
+import {defineIntlDateTimeFormatElements} from './elements/datetimeformat/index.js';
+import {defineIntlDisplayNamesElements} from './elements/displaynames/index.js';
+import {defineIntlListFormatElements} from './elements/listformat/index.js';
+import {defineIntlLocaleElements} from './elements/locale/index.js';
+import {defineIntlNumberFormatElements} from './elements/numberformat/index.js';
+import {defineIntlPluralRulesElements} from './elements/pluralrules/index.js';
+import {defineIntlRelativeTimeFormatElements} from './elements/relativetimeformat/index.js';
+import {defineIntlSegmenterElements} from './elements/segmenter/index.js';
+
+export * from './elements/collator/index.js';
+export * from './elements/datetimeformat/index.js';
+export * from './elements/displaynames/index.js';
+export * from './elements/listformat/index.js';
+export * from './elements/locale/index.js';
+export * from './elements/numberformat/index.js';
+export * from './elements/pluralrules/index.js';
+export * from './elements/relativetimeformat/index.js';
+export * from './elements/segmenter/index.js';
 
 export function defineIntlElements() {
   defineIntlCollatorElements();
@@ -19,13 +29,3 @@ export function defineIntlElements() {
   defineIntlRelativeTimeFormatElements();
   defineIntlSegmenterElements();
 }
-
-export * from './elements/collator';
-export * from './elements/datetimeformat';
-export * from './elements/displaynames';
-export * from './elements/listformat';
-export * from './elements/locale';
-export * from './elements/numberformat';
-export * from './elements/pluralrules';
-export * from './elements/relativetimeformat';
-export * from './elements/segmenter';

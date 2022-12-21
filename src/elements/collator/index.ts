@@ -1,5 +1,5 @@
-import HTMLIntlCollatorElement from './collator';
-import HTMLIntlCollatorCompareElement from './collator-compare';
+import HTMLIntlCollatorElement from './collator.js';
+import HTMLIntlCollatorCompareElement from './collator-compare.js';
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,5 +1,5 @@
-import HTMLIntlDisplayNamesElement from './displaynames';
-import HTMLIntlDisplayNamesOfElement from './displaynames-of';
+import HTMLIntlDisplayNamesElement from './displaynames.js';
+import HTMLIntlDisplayNamesOfElement from './displaynames-of.js';
 
 declare global {
   interface HTMLElementTagNameMap {

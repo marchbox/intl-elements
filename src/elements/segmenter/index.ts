@@ -1,5 +1,5 @@
-import HTMLIntlSegmenterElement from './segmenter';
-import HTMLIntlSegmenterSegmentElement from './segmenter-segment';
+import HTMLIntlSegmenterElement from './segmenter.js';
+import HTMLIntlSegmenterSegmentElement from './segmenter-segment.js';
 
 declare global {
   interface HTMLElementTagNameMap {

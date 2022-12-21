@@ -1,5 +1,5 @@
-import AbstractConsumer from '../abstract-consumer';
-import HTMLIntlPluralRulesElement from './pluralrules';
+import AbstractConsumer from '../abstract-consumer.js';
+import HTMLIntlPluralRulesElement from './pluralrules.js';
 
 type ValueType = Intl.LDMLPluralRule | '';
 

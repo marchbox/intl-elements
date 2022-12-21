@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import AbstractProvider from '../abstract-provider';
+import AbstractProvider from '../abstract-provider.js';
 
 export default class extends AbstractProvider {
   protected static override intlApi = Intl.PluralRules;

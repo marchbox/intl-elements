@@ -1,8 +1,8 @@
-import HTMLIntlNumberFormatElement from './numberformat';
-import HTMLIntlNumberFormatFormatElement from './numberformat-format';
-import HTMLIntlNumberFormatFormatToPartsElement from './numberformat-formattoparts';
-// import HTMLIntlNumberFormatFormatRangeElement from './numberformat-formatrange';
-// import HTMLIntlNumberFormatFormatRangeToPartsElement from './numberformat-formatrangetoparts';
+import HTMLIntlNumberFormatElement from './numberformat.js';
+import HTMLIntlNumberFormatFormatElement from './numberformat-format.js';
+import HTMLIntlNumberFormatFormatToPartsElement from './numberformat-formattoparts.js';
+// import HTMLIntlNumberFormatFormatRangeElement from './numberformat-formatrange.js';
+// import HTMLIntlNumberFormatFormatRangeToPartsElement from './numberformat-formatrangetoparts.js';
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,4 +1,4 @@
-import HTMLIntlLocaleElement from './locale';
+import HTMLIntlLocaleElement from './locale.js';
 
 declare global {
   interface HTMLElementTagNameMap {

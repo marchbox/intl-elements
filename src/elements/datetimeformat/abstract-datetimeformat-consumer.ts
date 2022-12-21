@@ -1,6 +1,6 @@
 // @ts-nocheck
-import AbstractConsumer from '../abstract-consumer';
-import DateTimeFormat from './datetimeformat';
+import AbstractConsumer from '../abstract-consumer.js';
+import DateTimeFormat from './datetimeformat.js';
 
 type ValueType = string | Intl.DateTimeFormatPart[];
 

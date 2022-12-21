@@ -1,6 +1,6 @@
 import {html, nothing} from 'lit';
 
-import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
+import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 
 export default class extends AbstractNumberFormatConsumer {
   #value: string = '';

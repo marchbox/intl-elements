@@ -1,5 +1,5 @@
-import AbstractConsumer from '../abstract-consumer';
-import HTMLIntlListFormatElement from './listformat';
+import AbstractConsumer from '../abstract-consumer.js';
+import HTMLIntlListFormatElement from './listformat.js';
 
 type ValueType = string | Intl.ListFormatPart[];
 

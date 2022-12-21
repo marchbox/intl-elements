@@ -6,6 +6,7 @@ export default {
     'src/{elements,utils}/**/*.ts',
   ],
   testEnvironment: 'jsdom',
+  resolver: 'jest-ts-webcompat-resolver',
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     'jest-extended/all',

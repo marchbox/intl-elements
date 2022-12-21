@@ -1,8 +1,8 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
-import {camelToKebab} from '../../utils/strings';
-import AbstractListFormatConsumer from './abstract-listformat-consumer';
+import {camelToKebab} from '../../utils/strings.js';
+import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 export default class extends AbstractListFormatConsumer {
   #value: Intl.ListFormatPart[] = [];

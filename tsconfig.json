@@ -4,6 +4,7 @@
     "target": "es2019",
     "module": "es2015",
     "declaration": true,
+    "declarationMap": true,
     "outDir": "./dist",
     "noEmit": false,
     "strict": true,

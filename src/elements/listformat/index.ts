@@ -1,6 +1,6 @@
-import HTMLIntlListFormatElement from './listformat';
-import HTMLIntlListFormatFormatElement from './listformat-format';
-import HTMLIntlListFormatFormatToPartsElement from './listformat-formattoparts';
+import HTMLIntlListFormatElement from './listformat.js';
+import HTMLIntlListFormatFormatElement from './listformat-format.js';
+import HTMLIntlListFormatFormatToPartsElement from './listformat-formattoparts.js';
 
 declare global {
   interface HTMLElementTagNameMap {

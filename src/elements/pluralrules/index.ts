@@ -1,5 +1,5 @@
-import HTMLIntlPluralRulesElement from './pluralrules';
-import HTMLIntlPluralRulesSelectElement from './pluralrules-select';
+import HTMLIntlPluralRulesElement from './pluralrules.js';
+import HTMLIntlPluralRulesSelectElement from './pluralrules-select.js';
 // import HTMLIntlPluralRulesSelectRangeElement from './pluralrules-selectrange';
 
 declare global {

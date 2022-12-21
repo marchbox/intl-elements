@@ -1,6 +1,6 @@
 import {html, nothing} from 'lit';
 
-import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer';
+import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer.js';
 
 export default class extends AbstractRelativeTimeFormatConsumer {
   #value: string = '';

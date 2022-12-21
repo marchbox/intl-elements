@@ -1,8 +1,8 @@
-import HTMLIntlDateTimeFormatElement from './datetimeformat';
-import HTMLIntlDateTimeFormatFormatElement from './datetimeformat-format';
-import HTMLIntlDateTimeFormatFormatToPartsElement from './datetimeformat-formattoparts';
-import HTMLIntlDateTimeFormatFormatRangeElement from './datetimeformat-formatrange';
-import HTMLIntlDateTimeFormatFormatRangeToPartsElement from './datetimeformat-formatrangetoparts';
+import HTMLIntlDateTimeFormatElement from './datetimeformat.js';
+import HTMLIntlDateTimeFormatFormatElement from './datetimeformat-format.js';
+import HTMLIntlDateTimeFormatFormatToPartsElement from './datetimeformat-formattoparts.js';
+import HTMLIntlDateTimeFormatFormatRangeElement from './datetimeformat-formatrange.js';
+import HTMLIntlDateTimeFormatFormatRangeToPartsElement from './datetimeformat-formatrangetoparts.js';
 
 declare global {
   interface HTMLElementTagNameMap {
