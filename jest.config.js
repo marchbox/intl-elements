@@ -5,7 +5,6 @@ export default {
   collectCoverageFrom: [
     'src/{elements,utils}/**/*.ts',
   ],
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
