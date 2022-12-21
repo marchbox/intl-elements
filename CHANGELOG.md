@@ -2,9 +2,7 @@
 
 ## [Unreleased]
 
-### Fixed
-
-- Module resolution
+None
 
 ---
 
