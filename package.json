@@ -16,9 +16,10 @@
   ],
   "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
+    "dist/",
     "LICENSE",
     "CHANGELOG.md",
     "package.json"
@@ -28,9 +29,9 @@
     "prepare": "husky install",
     "dev": "run-p -r build:watch dev:server",
     "dev:server": "run-s dev:server:wait dev:server:serve",
-    "dev:server:wait": "wait-on dist/src/index.js",
+    "dev:server:wait": "wait-on dist/index.js",
     "dev:server:serve": "web-dev-server",
-    "build": "rm -rf dist && tsc && rm dist/jest-setup.* && rm -rf dist/src/testing",
+    "build": "rm -rf dist && tsc --project tsconfig.prod.json",
     "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch --no-coverage"

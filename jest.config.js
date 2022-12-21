@@ -10,7 +10,7 @@ export default {
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     'jest-extended/all',
-    './jest-setup.ts',
+    './src/testing/jest-setup.ts',
   ],
   transform: {
     // transform files with ts-jest

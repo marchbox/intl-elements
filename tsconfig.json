@@ -1,14 +1,7 @@
 {
-  "include": [
-    "jest-setup.ts",
-    "src/"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts",
-    "src/testing/**/*"
-  ],
+  "include": ["src/"],
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2019",
     "module": "es2015",
     "declaration": true,
     "outDir": "./dist",
