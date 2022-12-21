@@ -1,6 +1,6 @@
 import {html, nothing} from 'lit';
 
-import AbstractListFormatConsumer from './abstract-listformat-consumer';
+import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 export default class extends AbstractListFormatConsumer {
   #value: string = '';

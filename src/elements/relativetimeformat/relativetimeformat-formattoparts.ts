@@ -1,8 +1,8 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
-import {camelToKebab} from '../../utils/strings';
-import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer';
+import {camelToKebab} from '../../utils/strings.js';
+import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer.js';
 
 export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
   #value: Intl.RelativeTimeFormatPart[] = [];

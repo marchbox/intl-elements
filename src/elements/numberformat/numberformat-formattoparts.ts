@@ -1,8 +1,8 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
-import {camelToKebab} from '../../utils/strings';
-import AbstractNumberFormatConsumer from './abstract-numberformat-consumer';
+import {camelToKebab} from '../../utils/strings.js';
+import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 
 export default class extends AbstractNumberFormatConsumer {
   #value: Intl.NumberFormatPart[] = [];

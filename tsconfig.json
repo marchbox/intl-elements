@@ -1,16 +1,10 @@
 {
-  "include": [
-    "jest-setup.ts",
-    "src/"
-  ],
-  "exclude": [
-    "src/**/*.spec.ts",
-    "src/testing/**/*"
-  ],
+  "include": ["src"],
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2019",
     "module": "es2015",
     "declaration": true,
+    "declarationMap": true,
     "outDir": "./dist",
     "noEmit": false,
     "strict": true,
@@ -22,10 +16,6 @@
       "ES2021.Intl",
       "ES2022.Intl",
       "ESNext.Intl"
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "./src/types.d.ts"
     ],
     "noImplicitAny": true,
     "strictNullChecks": true,

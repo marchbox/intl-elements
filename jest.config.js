@@ -5,12 +5,12 @@ export default {
   collectCoverageFrom: [
     'src/{elements,utils}/**/*.ts',
   ],
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  resolver: 'jest-ts-webcompat-resolver',
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     'jest-extended/all',
-    './jest-setup.ts',
+    './src/testing/jest-setup.ts',
   ],
   transform: {
     // transform files with ts-jest

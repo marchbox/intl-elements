@@ -1,8 +1,8 @@
 import {CSSResultGroup, LitElement, css} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import AbstractProvider from './abstract-provider';
-import {isLocaleRtl} from '../utils/locales';
+import AbstractProvider from './abstract-provider.js';
+import {isLocaleRtl} from '../utils/locales.js';
 
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`

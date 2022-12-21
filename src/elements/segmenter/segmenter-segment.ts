@@ -2,8 +2,8 @@ import {TemplateResult, html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
 
-import AbstractConsumer from '../abstract-consumer';
-import HTMLIntlSegmenterElement from './segmenter';
+import AbstractConsumer from '../abstract-consumer.js';
+import HTMLIntlSegmenterElement from './segmenter.js';
 
 export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
   protected static override observesText = true;

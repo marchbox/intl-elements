@@ -1,7 +1,7 @@
 import {html, nothing} from 'lit';
 
-import AbstractConsumer from '../abstract-consumer';
-import HTMLIntlDisplayNamesElement from './displaynames';
+import AbstractConsumer from '../abstract-consumer.js';
+import HTMLIntlDisplayNamesElement from './displaynames.js';
 
 export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
   protected static override providerElementName = 'intl-displaynames';

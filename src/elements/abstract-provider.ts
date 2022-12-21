@@ -1,10 +1,10 @@
 import {LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import {default as LocaleList, IntlApiType} from '../utils/locale-list';
-import {SPECIAL_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties';
-import AbstractConsumer from './abstract-consumer';
-import HTMLIntlLocaleElement from './locale/locale';
+import {default as LocaleList, IntlApiType} from '../utils/locale-list.js';
+import {SPECIAL_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties.js';
+import AbstractConsumer from './abstract-consumer.js';
+import HTMLIntlLocaleElement from './locale/locale.js';
 
 export type IntlObjectType = Intl.Collator |
     Intl.DateTimeFormat |

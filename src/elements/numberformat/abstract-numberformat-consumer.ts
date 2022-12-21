@@ -1,5 +1,5 @@
-import AbstractConsumer from '../abstract-consumer';
-import NumberFormat from './numberformat';
+import AbstractConsumer from '../abstract-consumer.js';
+import NumberFormat from './numberformat.js';
 
 type ValueType = string | Intl.NumberFormatPart[];
 

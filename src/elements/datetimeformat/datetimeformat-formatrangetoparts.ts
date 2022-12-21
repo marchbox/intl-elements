@@ -1,8 +1,8 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
-import {camelToKebab} from '../../utils/strings';
-import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer';
+import {camelToKebab} from '../../utils/strings.js';
+import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 export default class extends AbstractDateTimeFormatConsumer {
   #value: Intl.DateTimeFormatPart[] = [];
