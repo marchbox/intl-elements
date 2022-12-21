@@ -2,9 +2,16 @@
 
 ## [Unreleased]
 
+None
+
+---
+
+## [0.0.1-alpha.15] - 2022-12-21
+
 ### Fixed
 
-- Module resolution
+- `intl-elements` resolves properly now
+- Custom elements are added to `JSX.IntrinsicElements` now
 
 ---
 
