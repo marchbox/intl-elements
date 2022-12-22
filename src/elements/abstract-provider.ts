@@ -262,7 +262,7 @@ export default abstract class AbstractProvider extends LitElement {
 
     // Observing parent nodes because the `<intl-locale>` elements can be
     // removed from the DOM.
-    const parents: Set<ParentNode> = new Set();
+    const parents = new Set<ParentNode>();
     for (const el of this.localesFromElements) {
       if (el.parentNode) {
         parents.add(el.parentNode);
