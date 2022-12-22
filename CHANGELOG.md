@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-None
+### Fixed
+
+- Providers now observe `<html>`’s `lang` attribute changes
 
 ---
 

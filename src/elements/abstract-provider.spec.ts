@@ -587,8 +587,105 @@ describe('AbstractProvider', () => {
     });
   });
 
-  it('gets an empty array if the `consumerElementNames` static property isn’t defined', async () => {
+  describe('`html[lang]` as ultimate fallback for locale list determination', () => {
+    it('uses `html[lang]` if no other locale list is available', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <intl-foo></intl-foo>
+        `,
+        lang: 'ja',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+
+      expect(el.localeList.value).toBe('ja');
+    });
+
+    it('uses html[lang] if the `locales` attribute is removed', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <intl-foo locales="en"></intl-foo>
+        `,
+        lang: 'es',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+
+      expect(el.localeList.value).toBe('en');
+
+      el.removeAttribute('locales');
+      await el.updateComplete;
+
+      expect(el.localeList.value).toBe('es');
+    });
+
+    it('uses `html[lang]` if the original locale list ancestor is removed', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <div lang="es">
+            <intl-foo></intl-foo>
+          </div>
+        `,
+        lang: 'ar',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+
+      expect(el.localeList.value).toBe('es');
+
+      document.querySelector('div')!.removeAttribute('lang');
+      await el.updateComplete;
+      await el.updateComplete;
+
+      expect(el.localeList.value).toBe('ar');
+    });
+
+    it('uses `html[lang]` if its DOM position moved', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <div lang="es">
+            <intl-foo></intl-foo>
+          </div>
+        `,
+        lang: 'ar',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+      const div = document.querySelector('div')!;
+
+      expect(el.localeList.value).toBe('es');
+
+      div.before(el);
+      await el.updateComplete;
+      await el.updateComplete;
+
+      expect(el.localeList.value).toBe('ar');
+    });
+
+    it('observes `html[lang]` changes', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <intl-foo></intl-foo>
+        `,
+        lang: 'ja',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+
+      expect(el.localeList.value).toBe('ja');
+
+      document.documentElement.lang = 'fr';
+      await el.updateComplete;
+      await el.updateComplete;
+
+      expect(el.localeList.value).toBe('fr');
+    });
+  });
+
+  it('gets an empty array as locale list if the `consumerElementNames` static property isn’t defined', async () => {
     class BadProvider extends AbstractProvider {
+      static override intlApi = FakeIntlApi;
+
       // @ts-ignore
       intlObject = new FakeIntlApi();
 

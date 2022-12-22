@@ -115,7 +115,7 @@ export default abstract class AbstractProvider extends LitElement {
 
   protected override shouldUpdate(changes: Map<string, unknown>): boolean {
     // Makes sure the canonical new value is not the same as the old value.
-    // TODO: Creates a custom decorator that extends lit’s `@property`
+    // TODO(#42): Creates a custom decorator that extends lit’s `@property`
     // decorator and custom the `converter()` and `hasChanged()` functions with
     // canonical value conversion and evaluation.
     return Array.from(changes.entries())
@@ -133,7 +133,7 @@ export default abstract class AbstractProvider extends LitElement {
     }
 
     // Canonicalizes the new values.
-    // TODO: After creating a custom property decorator, this can be removed.
+    // TODO(#42): After creating a custom property decorator, this can be removed.
     Array.from(changes.keys())
       .filter(key => SPECIAL_OPTION_KEYS.includes(key))
       .forEach(key => {
@@ -184,8 +184,6 @@ export default abstract class AbstractProvider extends LitElement {
   //    multiple locales, only the closest `lang` attribute or `<intl-locale>`
   //    element is used, so you can only associate ONE locale in this way.
   #getAdditionalLocales(): string {
-    let locales = '';
-
     const funcs = [
       this.#getLocalesFromLocalesAttr,
       this.#getLocalesFromLangAttr,
@@ -194,13 +192,13 @@ export default abstract class AbstractProvider extends LitElement {
     ];
 
     for (const func of funcs) {
-      locales = new LocaleList(this.#getIntlApi(), func.call(this)).value;
+      const locales = new LocaleList(this.#getIntlApi(), func.call(this)).value;
       if (locales) {
-        break;
+        return locales;
       }
     }
 
-    return locales;
+    return '';
   }
 
   #getLocalesFromLocalesAttr(): string {
@@ -234,7 +232,7 @@ export default abstract class AbstractProvider extends LitElement {
       return '';
     }
 
-    if (el.tagName === 'INTL-LOCALE') {
+    if (el.matches('intl-locale')) {
       return (el as HTMLIntlLocaleElement).valueAsString;
     } else {
       return el.getAttribute('lang')!;
@@ -264,35 +262,33 @@ export default abstract class AbstractProvider extends LitElement {
 
     // Observing parent nodes because the `<intl-locale>` elements can be
     // removed from the DOM.
-    const parents: ParentNode[] = [];
-    for (const el of this.#localesFromElements) {
-      if (!el.parentNode || parents.includes(el.parentNode)) {
-        continue;
+    const parents = new Set<ParentNode>();
+    for (const el of this.localesFromElements) {
+      if (el.parentNode) {
+        parents.add(el.parentNode);
       }
-
-      parents.push(el.parentNode);
-      this.#localesFromElementsObserver.observe(el.parentNode, {
+    }
+    parents.forEach(parent => {
+      this.#localesFromElementsObserver.observe(parent, {
         attributes: true,
         childList: true,
         subtree: true,
       });
-    }
+    });
   }
 
   #observeAncestor() {
     this.#ancestorObserver = new MutationObserver(async (entries) => {
-      const relevantAncestor = entries.find(entry => {
-        return entry.target !== this &&
-            entry.target === this.closest(RELEVANT_ANCESTOR_QUERY);
-      })?.target as HTMLElement | undefined;
-
-      if (!relevantAncestor) {
+      // If all the targets are the element itself or its descendants, ignore
+      if (entries.every(entry => entry.target === this ||
+          this.contains(entry.target as Node))) {
         return;
       }
 
-      if (relevantAncestor.tagName === 'INTL-LOCALE') {
-        await (relevantAncestor as HTMLIntlLocaleElement).updateComplete;
-      }
+      // If one of the targets is a relevant `<intl-locale>` element, wait for
+      // it to update before updating the locale list
+      await (entries.find(entry => entry.target === this.closest('intl-locale'))
+          ?.target as HTMLIntlLocaleElement)?.updateComplete;
 
       this.#localeList.value = this.#getAdditionalLocales();
     });
@@ -300,6 +296,10 @@ export default abstract class AbstractProvider extends LitElement {
       attributes: true,
       childList: true,
       subtree: true,
+    });
+    this.#ancestorObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang'],
     });
   }
 }
