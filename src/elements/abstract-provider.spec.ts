@@ -601,6 +601,24 @@ describe('AbstractProvider', () => {
       expect(el.localeList.value).toBe('ja');
     });
 
+    it('uses html[lang] if the `locales` attribute is removed', async () => {
+      await createTestPage({
+        elements: ['intl-foo'],
+        html: `
+          <intl-foo locales="en"></intl-foo>
+        `,
+        lang: 'es',
+      });
+      const el = document.querySelector('intl-foo')! as TestProvider;
+
+      expect(el.localeList.value).toBe('en');
+
+      el.removeAttribute('locales');
+      await el.updateComplete;
+
+      expect(el.localeList.value).toBe('es');
+    });
+
     it('uses `html[lang]` if the original locale list ancestor is removed', async () => {
       await createTestPage({
         elements: ['intl-foo'],
