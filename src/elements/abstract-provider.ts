@@ -264,10 +264,9 @@ export default abstract class AbstractProvider extends LitElement {
     // removed from the DOM.
     const parents: Set<ParentNode> = new Set();
     for (const el of this.localesFromElements) {
-      if (!el.parentNode) {
-        continue;
+      if (el.parentNode) {
+        parents.add(el.parentNode);
       }
-      parents.add(el.parentNode);
     }
     parents.forEach(parent => {
       this.#localesFromElementsObserver.observe(parent, {
@@ -280,18 +279,16 @@ export default abstract class AbstractProvider extends LitElement {
 
   #observeAncestor() {
     this.#ancestorObserver = new MutationObserver(async (entries) => {
-      const relevantAncestor = entries.find(entry => {
-        return entry.target !== this &&
-            entry.target === this.closest(RELEVANT_ANCESTOR_QUERY);
-      })?.target as HTMLElement | undefined;
-
-      if (!relevantAncestor) {
+      // If all the targets are the element itself or its descendants, ignore
+      if (entries.every(entry => entry.target === this ||
+          this.contains(entry.target as Node))) {
         return;
       }
 
-      if (relevantAncestor.tagName === 'INTL-LOCALE') {
-        await (relevantAncestor as HTMLIntlLocaleElement).updateComplete;
-      }
+      // If one of the targets is a relevant `<intl-locale>` element, wait for
+      // it to update before updating the locale list
+      await (entries.find(entry => entry.target === this.closest('intl-locale'))
+          ?.target as HTMLIntlLocaleElement)?.updateComplete;
 
       this.#localeList.value = this.#getAdditionalLocales();
     });
@@ -299,6 +296,10 @@ export default abstract class AbstractProvider extends LitElement {
       attributes: true,
       childList: true,
       subtree: true,
+    });
+    this.#ancestorObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['lang'],
     });
   }
 }

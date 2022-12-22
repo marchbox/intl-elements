@@ -627,7 +627,7 @@ describe('AbstractProvider', () => {
             <intl-foo></intl-foo>
           </div>
         `,
-        lang: 'el',
+        lang: 'ar',
       });
       const el = document.querySelector('intl-foo')! as TestProvider;
 
@@ -637,7 +637,7 @@ describe('AbstractProvider', () => {
       await el.updateComplete;
       await el.updateComplete;
 
-      expect(el.localeList.value).toBe('el');
+      expect(el.localeList.value).toBe('ar');
     });
 
     it('uses `html[lang]` if its DOM position moved', async () => {
@@ -648,7 +648,7 @@ describe('AbstractProvider', () => {
             <intl-foo></intl-foo>
           </div>
         `,
-        lang: 'el',
+        lang: 'ar',
       });
       const el = document.querySelector('intl-foo')! as TestProvider;
       const div = document.querySelector('div')!;
@@ -659,7 +659,7 @@ describe('AbstractProvider', () => {
       await el.updateComplete;
       await el.updateComplete;
 
-      expect(el.localeList.value).toBe('el');
+      expect(el.localeList.value).toBe('ar');
     });
 
     it('observes `html[lang]` changes', async () => {
@@ -675,6 +675,7 @@ describe('AbstractProvider', () => {
       expect(el.localeList.value).toBe('ja');
 
       document.documentElement.lang = 'fr';
+      await el.updateComplete;
       await el.updateComplete;
 
       expect(el.localeList.value).toBe('fr');
