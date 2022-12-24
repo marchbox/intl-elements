@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override consumerElementNames = new Set([
@@ -21,52 +21,52 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-style'})
+  @optionProperty()
   optionStyle: Intl.NumberFormatOptions['style'] = 'decimal';
 
-  @property({attribute: 'option-compactdisplay'})
+  @optionProperty()
   optionCompactDisplay: Intl.NumberFormatOptions['compactDisplay'] = 'short';
 
-  @property({attribute: 'option-currency'})
+  @optionProperty()
   optionCurrency?: Intl.NumberFormatOptions['currency'];
 
-  @property({attribute: 'option-currencydisplay'})
+  @optionProperty()
   optionCurrencyDisplay: Intl.NumberFormatOptions['currencyDisplay'] = 'symbol';
 
-  @property({attribute: 'option-currencysign'})
+  @optionProperty()
   optionCurrencySign: Intl.NumberFormatOptions['currencySign'] = 'standard';
 
-  @property({attribute: 'option-notation'})
+  @optionProperty()
   optionNotation: Intl.NumberFormatOptions['notation'] = 'standard';
 
-  // @property({attribute: 'option-numberingsystem'})
+  // @optionProperty()
   // optionNumberingSystem?: Intl.NumberFormatOptions['numberingSystem'];
 
-  @property({attribute: 'option-signdisplay'})
+  @optionProperty()
   optionSignDisplay: Intl.NumberFormatOptions['signDisplay'] = 'auto';
 
-  @property({attribute: 'option-unit'})
+  @optionProperty()
   optionUnit?: Intl.NumberFormatOptions['unit'];
 
-  @property({attribute: 'option-unitdisplay'})
+  @optionProperty()
   optionUnitDisplay: Intl.NumberFormatOptions['unitDisplay'] = 'short';
 
-  @property({attribute: 'option-usegrouping', type: Boolean})
+  @optionProperty({type: Boolean})
   optionUseGrouping?: Intl.NumberFormatOptions['useGrouping'];
 
-  @property({attribute: 'option-minimumintegerdigits', type: Number})
+  @optionProperty({type: Number})
   optionMinimumIntegerDigits?: Intl.NumberFormatOptions['minimumIntegerDigits'];
 
-  @property({attribute: 'option-minimumfractiondigits', type: Number})
+  @optionProperty({ type: Number})
   optionMinimumFractionDigits?: Intl.NumberFormatOptions['minimumFractionDigits'];
 
-  @property({attribute: 'option-maximumfractiondigits', type: Number})
+  @optionProperty({type: Number})
   optionMaximumFractionDigits?: Intl.NumberFormatOptions['maximumFractionDigits'];
 
-  @property({attribute: 'option-minimumsignificantdigits', type: Number})
+  @optionProperty({type: Number})
   optionMinimumSignificantDigits?: Intl.NumberFormatOptions['minimumSignificantDigits'];
 
-  @property({attribute: 'option-maximumsignificantdigits', type: Number})
+  @optionProperty({type: Number})
   optionMaximumSignificantDigits?: Intl.NumberFormatOptions['maximumSignificantDigits'];
 
   resolvedOptions(): Intl.ResolvedNumberFormatOptions {

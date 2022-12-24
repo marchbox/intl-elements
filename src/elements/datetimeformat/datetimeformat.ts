@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override consumerElementNames = new Set([
@@ -21,61 +21,61 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-datestyle'})
+  @optionProperty()
   optionDateStyle?: Intl.DateTimeFormatOptions['dateStyle'];
 
-  @property({attribute: 'option-timestyle'})
+  @optionProperty()
   optionTimeStyle?: Intl.DateTimeFormatOptions['timeStyle'];
 
-  @property({attribute: 'option-calendar'})
+  @optionProperty()
   optionCalendar?: Intl.DateTimeFormatOptions['calendar'];
 
-  @property({attribute: 'option-dayperiod'})
+  @optionProperty()
   optionDayPeriod?: Intl.DateTimeFormatOptions['dayPeriod'];
 
-  @property({attribute: 'option-numberingsystem'})
+  @optionProperty()
   optionNumberingSystem?: Intl.DateTimeFormatOptions['numberingSystem'];
 
-  @property({attribute: 'option-timezone'})
+  @optionProperty()
   optionTimeZone?: Intl.DateTimeFormatOptions['timeZone'];
 
-  @property({attribute: 'option-hour12', type: Boolean})
+  @optionProperty({type: Boolean})
   optionHour12?: Intl.DateTimeFormatOptions['hour12'];
 
-  @property({attribute: 'option-hourcycle'})
+  @optionProperty()
   optionHourCycle?: Intl.DateTimeFormatOptions['hourCycle'];
 
-  @property({attribute: 'option-formatmatcher'})
+  @optionProperty()
   optionFormatMatcher: Intl.DateTimeFormatOptions['formatMatcher'] = 'best fit';
 
-  @property({attribute: 'option-weekday'})
+  @optionProperty()
   optionWeekday?: Intl.DateTimeFormatOptions['weekday'];
 
-  @property({attribute: 'option-era'})
+  @optionProperty()
   optionEra?: Intl.DateTimeFormatOptions['era'];
 
-  @property({attribute: 'option-year'})
+  @optionProperty()
   optionYear?: Intl.DateTimeFormatOptions['year'];
 
-  @property({attribute: 'option-month'})
+  @optionProperty()
   optionMonth?: Intl.DateTimeFormatOptions['month'];
 
-  @property({attribute: 'option-day'})
+  @optionProperty()
   optionDay?: Intl.DateTimeFormatOptions['day'];
 
-  @property({attribute: 'option-hour'})
+  @optionProperty()
   optionHour?: Intl.DateTimeFormatOptions['hour'];
 
-  @property({attribute: 'option-minute'})
+  @optionProperty()
   optionMinute?: Intl.DateTimeFormatOptions['minute'];
 
-  @property({attribute: 'option-second'})
+  @optionProperty()
   optionSecond?: Intl.DateTimeFormatOptions['second'];
 
-  @property({attribute: 'option-fractionalseconddigits', type: Number})
+  @optionProperty({type: Number})
   optionFractionalSecondDigits?: Intl.DateTimeFormatOptions['fractionalSecondDigits'];
 
-  @property({attribute: 'option-timezonename'})
+  @optionProperty()
   optionTimeZoneName?: Intl.DateTimeFormatOptions['timeZoneName'];
 
   resolvedOptions(): Intl.ResolvedDateTimeFormatOptions {

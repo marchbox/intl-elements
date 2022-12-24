@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override intlApi = Intl.Segmenter;
@@ -14,7 +14,7 @@ export default class extends AbstractProvider {
 
   #resolvedOptions!: Intl.ResolvedSegmenterOptions;
 
-  @property({attribute: 'option-granularity'})
+  @optionProperty()
   optionGranularity: Intl.SegmenterOptions['granularity'] = 'grapheme';
 
   get intlObject(): Intl.Segmenter {

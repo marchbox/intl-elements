@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override consumerElementNames = new Set([
@@ -18,24 +18,23 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-usage'})
+  @optionProperty()
   optionUsage?: Intl.CollatorOptions['usage'];
 
-  @property({attribute: 'option-sensitivity'})
+  @optionProperty()
   optionSensitivity?: Intl.CollatorOptions['sensitivity'];
 
-  @property({attribute: 'option-ignorepunctuation', type: Boolean})
+  @optionProperty({type: Boolean})
   optionIgnorePunctuation?: Intl.CollatorOptions['ignorePunctuation'];
 
-  @property({attribute: 'option-numeric', type: Boolean})
+  @optionProperty({type: Boolean})
   optionNumeric?: Intl.CollatorOptions['numeric'];
 
-  @property({attribute: 'option-casefirst'})
+  @optionProperty()
   optionCaseFirst?: Intl.CollatorOptions['caseFirst'];
 
-  @property({attribute: 'option-collation'})
+  @optionProperty()
   optionCollation?: Intl.CollatorOptions['collation'];
-
 
   resolvedOptions(): Intl.ResolvedCollatorOptions {
     return this.#resolvedOptions;
