@@ -87,7 +87,7 @@ export default class extends LitElement {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
 
-  @optionProperty({attribute: 'option-numeric', type: Boolean})
+  @optionProperty({type: Boolean})
   optionNumeric?: Intl.LocaleOptions['numeric'];
 
   get numeric(): Intl.Locale['numeric'] | undefined {

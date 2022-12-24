@@ -39,7 +39,7 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionTimeZone?: Intl.DateTimeFormatOptions['timeZone'];
 
-  @optionProperty({attribute: 'option-hour12', type: Boolean})
+  @optionProperty({type: Boolean})
   optionHour12?: Intl.DateTimeFormatOptions['hour12'];
 
   @optionProperty()
@@ -72,7 +72,7 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionSecond?: Intl.DateTimeFormatOptions['second'];
 
-  @optionProperty({attribute: 'option-fractionalseconddigits', type: Number})
+  @optionProperty({type: Number})
   optionFractionalSecondDigits?: Intl.DateTimeFormatOptions['fractionalSecondDigits'];
 
   @optionProperty()

@@ -22,7 +22,7 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionStyle: Intl.RelativeTimeFormatOptions['style'] = 'long';
 
-  @optionProperty({attribute:'option-numeric'})
+  @optionProperty()
   optionNumeric: Intl.RelativeTimeFormatOptions['numeric'] = 'always';
 
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {

@@ -24,10 +24,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionSensitivity?: Intl.CollatorOptions['sensitivity'];
 
-  @optionProperty({attribute: 'option-ignorepunctuation', type: Boolean})
+  @optionProperty({type: Boolean})
   optionIgnorePunctuation?: Intl.CollatorOptions['ignorePunctuation'];
 
-  @optionProperty({attribute: 'option-numeric', type: Boolean})
+  @optionProperty({type: Boolean})
   optionNumeric?: Intl.CollatorOptions['numeric'];
 
   @optionProperty()

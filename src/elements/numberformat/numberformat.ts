@@ -51,22 +51,22 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionUnitDisplay: Intl.NumberFormatOptions['unitDisplay'] = 'short';
 
-  @optionProperty({attribute: 'option-usegrouping', type: Boolean})
+  @optionProperty({type: Boolean})
   optionUseGrouping?: Intl.NumberFormatOptions['useGrouping'];
 
-  @optionProperty({attribute: 'option-minimumintegerdigits', type: Number})
+  @optionProperty({type: Number})
   optionMinimumIntegerDigits?: Intl.NumberFormatOptions['minimumIntegerDigits'];
 
-  @optionProperty({attribute: 'option-minimumfractiondigits', type: Number})
+  @optionProperty({ type: Number})
   optionMinimumFractionDigits?: Intl.NumberFormatOptions['minimumFractionDigits'];
 
-  @optionProperty({attribute: 'option-maximumfractiondigits', type: Number})
+  @optionProperty({type: Number})
   optionMaximumFractionDigits?: Intl.NumberFormatOptions['maximumFractionDigits'];
 
-  @optionProperty({attribute: 'option-minimumsignificantdigits', type: Number})
+  @optionProperty({type: Number})
   optionMinimumSignificantDigits?: Intl.NumberFormatOptions['minimumSignificantDigits'];
 
-  @optionProperty({attribute: 'option-maximumsignificantdigits', type: Number})
+  @optionProperty({type: Number})
   optionMaximumSignificantDigits?: Intl.NumberFormatOptions['maximumSignificantDigits'];
 
   resolvedOptions(): Intl.ResolvedNumberFormatOptions {
