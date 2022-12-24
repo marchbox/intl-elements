@@ -15,7 +15,7 @@ describe('AbstractProvider', () => {
     await createTestPage({
       elements: ['intl-foo'],
       html: `
-        <intl-foo locales="he ja veryveryveryinvalid">
+        <intl-foo locales="he ja $invalid">
         </intl-foo>
       `,
     });
@@ -97,7 +97,7 @@ describe('AbstractProvider', () => {
 
     it('keeps locale list based on `locales` attribute when ancestor changed', async () => {
       await createTestPage({
-        elements: ['intl-foo', 'intl-locale'],
+        elements: ['intl-foo'],
         html: `
           <div lang="es">
             <intl-foo locales="en">

@@ -51,6 +51,8 @@ describe('intl-locale', () => {
 
     expect(el.value).toBeNull();
     expect(el.valueAsString).toBe('');
+    expect(el.maximize()).toBeNull();
+    expect(el.minimize()).toBeNull();
 
     expect(el.baseName).toBeUndefined();
     expect(el.optionBaseName).toBeUndefined();
@@ -84,7 +86,10 @@ describe('intl-locale', () => {
     await createTestPage({
       elements: ['intl-locale'],
       html: `
-        <intl-locale tag="ja" option-calendar="japanese" option-numeric></intl-locale>
+        <intl-locale tag="ja"
+            option-calendar="japanese"
+            option-numeric
+        ></intl-locale>
       `,
     });
     const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
@@ -128,110 +133,21 @@ describe('intl-locale', () => {
     expect(el.minimize()).toEqual(intlResult);
   });
 
-  it('prints out correct string value', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="ko" option-script="kore" option-region="kr"
-            option-hourcycle="h24" display-string>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    const intlResult = new Intl.Locale('ko', {
-      script: 'kore',
-      region: 'kr',
-      hourCycle: 'h24',
-    }).toString();
-    expect(el).toHaveTextContent(intlResult);
-  });
-
-  it('prints out empty string if locale is invalid', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="veryveryinvalid" display-string>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    expect(el).toHaveTextContent('');
-  });
-
-  it('prints out correct maximized string value', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="ko" option-script="kore" option-region="kr"
-            option-hourcycle="h24" display-maximized>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    const intlResult = new Intl.Locale('ko', {
-      script: 'kore',
-      region: 'kr',
-      hourCycle: 'h24',
-    }).maximize().toString();
-    expect(el).toHaveTextContent(intlResult);
-  });
-
-  it('prints out empty maximized string if locale is invalid', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="veryveryinvalid" display-maximized>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    expect(el).toHaveTextContent('');
-  });
-
-  it('prints out correct minimized string value', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="ko" option-script="kore" option-region="kr"
-            option-hourcycle="h24" display-minimized>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    const intlResult = new Intl.Locale('ko', {
-      script: 'kore',
-      region: 'kr',
-      hourCycle: 'h24',
-    }).minimize().toString();
-    expect(el).toHaveTextContent(intlResult);
-  });
-
-  it('prints out empty minimized string if locale is invalid', async () => {
-    await createTestPage({
-      elements: ['intl-locale'],
-      html: `
-        <intl-locale tag="veryveryinvalid" display-minimized>
-        </intl-locale>
-      `,
-    });
-    const el = document.querySelector('intl-locale') as HTMLIntlLocaleElement;
-
-    expect(el).toHaveTextContent('');
-  });
-
   it('has both option properties and exposed built-in properties', async () => {
     await createTestPage({
       elements: ['intl-locale'],
       html: `
-        <intl-locale tag="en" option-basename="zh" option-language="en"
-            option-script="latn" option-region="us" option-numeric
-            option-hourcycle="H24" option-calendar="greGOry" option-casefirst="upPer"
-            option-collation="phoNEbk" option-numberingsystem="arAb"
+        <intl-locale tag="en"
+            option-basename="zh"
+            option-language="en"
+            option-script="latn"
+            option-region="us"
+            option-numeric
+            option-hourcycle="H24"
+            option-calendar="greGOry"
+            option-casefirst="upPer"
+            option-collation="phoNEbk"
+            option-numberingsystem="arAb"
         ></intl-locale>
       `,
     });

@@ -192,10 +192,8 @@ export default abstract class AbstractProvider extends LitElement {
     }
 
     this.#localesFromElements = this.localesFrom.split(' ')
-        .map(id => {
-          return document
-              .querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement;
-        })
+        .map(id => document
+            .querySelector(`intl-locale#${id}`) as HTMLIntlLocaleElement)
         .filter(Boolean)
         .filter(el => el.valueAsString !== '');
 

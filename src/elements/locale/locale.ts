@@ -17,15 +17,6 @@ export default class extends LitElement {
   @property({reflect: true})
   tag!: string;
 
-  @property({attribute: 'display-string', reflect: true, type: Boolean})
-  displayString = false;
-
-  @property({attribute: 'display-maximized', reflect: true, type: Boolean})
-  displayMaximized = false;
-
-  @property({attribute: 'display-minimized', reflect: true, type: Boolean})
-  displayMinimized = false;
-
   @optionProperty()
   optionBaseName?: Intl.LocaleOptions['baseName'];
 
@@ -153,14 +144,6 @@ export default class extends LitElement {
   }
 
   override render() {
-    if (this.displayString) {
-      return this.valueAsString;
-    } else if (this.displayMinimized) {
-      return this.minimize()?.toString() ?? '';
-    } else if (this.displayMaximized) {
-      return this.maximize()?.toString() ?? '';
-    } else {
-      return nothing;
-    }
+    return nothing;
   }
 }

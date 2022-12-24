@@ -5,6 +5,7 @@ export default {
   collectCoverageFrom: [
     'src/{elements,utils}/**/*.ts',
   ],
+  testRegex: 'src/.*\\.spec\\.ts',
   testEnvironment: 'jsdom',
   resolver: 'jest-ts-webcompat-resolver',
   setupFilesAfterEnv: [

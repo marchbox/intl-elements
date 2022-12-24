@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+
+- Removed `display-*` attributes from `<intl-locale>` element
+
 ### Fixed
 
 - Providers now observe `<html>`’s `lang` attribute changes
