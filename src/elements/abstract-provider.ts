@@ -66,8 +66,8 @@ export default abstract class AbstractProvider extends LitElement {
 
   // TODO: Cache the list.
   get consumerElements(): ConsumerElement[] {
-    // @ts-ignore
-    const names = this.constructor.consumerElementNames;
+    const names = (this.constructor as typeof AbstractProvider)
+        .consumerElementNames;
     if (!names) {
       return [];
     }
@@ -153,8 +153,7 @@ export default abstract class AbstractProvider extends LitElement {
   abstract resolvedOptions(): ResolvedOptionsReturnType;
 
   #getIntlApi(): IntlApiType {
-    // @ts-ignore
-    return this.constructor.intlApi;
+    return (this.constructor as typeof AbstractProvider).intlApi;
   }
 
   #handleLocaleListChange() {

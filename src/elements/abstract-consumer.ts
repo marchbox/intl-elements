@@ -31,8 +31,8 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
 
   // TODO: Cache this.
   get providerElement(): P | undefined {
-    // @ts-ignore
-    const name = this.constructor.providerElementName;
+    const name = (this.constructor as typeof AbstractConsumer)
+        .providerElementName;
     if (name) {
       const providerAncestor = this.closest(name);
       if (providerAncestor) {
@@ -40,8 +40,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
       }
 
       if (this.provider !== undefined && this.provider !== '') {
-        // @ts-ignore
-        const query = `${this.constructor.providerElementName}#${this.provider}`;
+        const query = `${name}#${this.provider}`;
         const providerEl = document.querySelector(query);
         if (providerEl) {
           return providerEl as P;
@@ -117,8 +116,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
         .map(slot => slot.assignedNodes({flatten: true}))
         .flat()
         .filter(node =>
-            // @ts-ignore
-            (this.constructor.observesText &&
+            ((this.constructor as typeof AbstractConsumer).observesText &&
                 node.nodeType === Node.TEXT_NODE) ||
             node.nodeName === 'DATA' ||
             node.nodeName === 'TIME' ||
