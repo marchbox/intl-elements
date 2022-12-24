@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../elements/abstract-provider';
+import {optionProperty} from '../utils/properties';
 import {FakeIntlApi} from './fake-intl-api';
 
 export default class extends AbstractProvider {
@@ -17,16 +17,13 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-unit'})
-  // @ts-ignore
+  @optionProperty()
   optionUnit = 'day';
 
-  @property({attribute: 'option-currency'})
-  // @ts-ignore
+  @optionProperty()
   optionCurrency?: string;
 
-  @property({attribute: 'option-timezone'})
-  // @ts-ignore
+  @optionProperty()
   optionTimeZone?: string;
 
   resolvedOptions(): any {

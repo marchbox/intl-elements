@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override consumerElementNames = new Set([
@@ -18,16 +18,16 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-type'})
+  @optionProperty()
   optionType: Intl.DisplayNamesOptions['type'] = 'language';
 
-  @property({attribute: 'option-style'})
+  @optionProperty()
   optionStyle: Intl.DisplayNamesOptions['style'] = 'long';
 
-  @property({attribute: 'option-languagedisplay'})
+  @optionProperty()
   optionLanguageDisplay: Intl.DisplayNamesOptions['languageDisplay'] = 'dialect';
 
-  @property({attribute: 'option-fallback'})
+  @optionProperty()
   optionFallback: Intl.DisplayNamesOptions['fallback'] = 'code';
 
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {

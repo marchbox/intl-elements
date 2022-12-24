@@ -3,6 +3,7 @@ import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list.js';
 import {SPECIAL_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties.js';
+import {optionProperty} from '../utils/properties.js';
 import AbstractConsumer from './abstract-consumer.js';
 import HTMLIntlLocaleElement from './locale/locale.js';
 
@@ -61,7 +62,7 @@ export default abstract class AbstractProvider extends LitElement {
     return this.#localesFromElements;
   }
 
-  @property({attribute: 'option-localematcher'})
+  @optionProperty()
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   // TODO: Cache the list.

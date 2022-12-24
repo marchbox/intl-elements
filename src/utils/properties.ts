@@ -1,3 +1,6 @@
+import type {PropertyDeclaration} from 'lit';
+import {property} from 'lit/decorators.js';
+
 interface MapValue {
   // Use `Intl.supportedValuesOf` to check if the given value is supported.
   intl?: boolean;
@@ -68,4 +71,16 @@ export function getCanonicalOptionValue(key: string, value: unknown): unknown {
       .replace(/^option([A-Z])/, (_, letter) => letter.toLowerCase());
 
   return getCanonicalIntlOptionValue(_key, value);
+}
+
+// TODO: Update this when the compiler supports stage 3 decorators.
+// See: https://github.com/microsoft/TypeScript/issues/48885
+export function optionProperty(option: PropertyDeclaration = {}) {
+  return function(target: any, name: string) {
+    if (!option.attribute && name.startsWith('option')) {
+      const attribute = `option-${name.replace(/^option/, '').toLowerCase()}`;
+      Object.assign(option, {attribute});
+    }
+    return property(option)(target, name);
+  }
 }

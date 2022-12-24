@@ -1,7 +1,7 @@
 import {nothing} from 'lit';
-import {property} from 'lit/decorators.js';
 
 import AbstractProvider from '../abstract-provider.js';
+import {optionProperty} from '../../utils/properties.js';
 
 export default class extends AbstractProvider {
   protected static override intlApi = Intl.PluralRules;
@@ -19,24 +19,23 @@ export default class extends AbstractProvider {
     return this.#intlObject;
   }
 
-  @property({attribute: 'option-type'})
+  @optionProperty()
   optionType: Intl.PluralRulesOptions['type'] = 'cardinal';
 
-  @property({attribute: 'option-minimumintegerdigits'})
+  @optionProperty()
   optionMinimumIntegerDigits?: Intl.PluralRulesOptions['minimumIntegerDigits'];
 
-  @property({attribute: 'option-minimumfractiondigits'})
+  @optionProperty()
   optionMinimumFractionDigits?: Intl.PluralRulesOptions['minimumFractionDigits'];
 
-  @property({attribute: 'option-maximumfractiondigits'})
+  @optionProperty()
   optionMaximumFractionDigits?: Intl.PluralRulesOptions['maximumFractionDigits'];
 
-  @property({attribute: 'option-minimumsignificantdigits'})
+  @optionProperty()
   optionMinimumSignificantDigits?: Intl.PluralRulesOptions['minimumSignificantDigits'];
 
-  @property({attribute: 'option-maximumsignificantdigits'})
+  @optionProperty()
   optionMaximumSignificantDigits?: Intl.PluralRulesOptions['maximumSignificantDigits'];
-
 
   resolvedOptions(): Intl.ResolvedPluralRulesOptions {
     return this.#resolvedOptions;

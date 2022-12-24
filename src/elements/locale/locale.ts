@@ -1,6 +1,7 @@
 import {LitElement, nothing} from 'lit';
-
 import {property} from 'lit/decorators.js';
+
+import {optionProperty} from '../../utils/properties';
 
 type LocaleValue = Intl.Locale | null;
 
@@ -25,14 +26,14 @@ export default class extends LitElement {
   @property({attribute: 'display-minimized', reflect: true, type: Boolean})
   displayMinimized = false;
 
-  @property({attribute: 'option-basename'})
+  @optionProperty()
   optionBaseName?: Intl.LocaleOptions['baseName'];
 
   get baseName(): Intl.Locale['baseName'] | undefined {
     return this.#getLocale()?.baseName ?? undefined;
   }
 
-  @property({attribute: 'option-calendar'})
+  @optionProperty()
   optionCalendar?: Intl.LocaleOptions['calendar'];
 
   get calendar(): Intl.Locale['calendar'] | undefined {
@@ -43,21 +44,21 @@ export default class extends LitElement {
     return this.#getLocale()?.calendars ?? undefined;
   }
 
-  @property({attribute: 'option-casefirst'})
+  @optionProperty()
   optionCaseFirst?: Intl.LocaleOptions['caseFirst'];
 
   get caseFirst(): Intl.Locale['caseFirst'] | undefined {
     return this.#getLocale()?.caseFirst ?? undefined;
   }
 
-  @property({attribute: 'option-collation'})
+  @optionProperty()
   optionCollation?: Intl.LocaleOptions['collation'];
 
   get collation(): Intl.Locale['collation'] | undefined {
     return this.#getLocale()?.collation ?? undefined;
   }
 
-  @property({attribute: 'option-hourcycle'})
+  @optionProperty()
   optionHourCycle?: Intl.LocaleOptions['hourCycle'];
 
   get hourCycle(): Intl.Locale['hourCycle'] | undefined {
@@ -68,14 +69,14 @@ export default class extends LitElement {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
 
-  @property({attribute: 'option-language'})
+  @optionProperty()
   optionLanguage?: Intl.LocaleOptions['language'];
 
   get language(): Intl.Locale['language'] | undefined {
     return this.#getLocale()?.language ?? undefined;
   }
 
-  @property({attribute: 'option-numberingsystem'})
+  @optionProperty()
   optionNumberingSystem?: Intl.LocaleOptions['numberingSystem'];
 
   get numberingSystem(): Intl.Locale['numberingSystem'] | undefined {
@@ -86,21 +87,21 @@ export default class extends LitElement {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
 
-  @property({attribute: 'option-numeric', type: Boolean})
+  @optionProperty({attribute: 'option-numeric', type: Boolean})
   optionNumeric?: Intl.LocaleOptions['numeric'];
 
   get numeric(): Intl.Locale['numeric'] | undefined {
     return this.#getLocale()?.numeric ?? undefined;
   }
 
-  @property({attribute: 'option-region'})
+  @optionProperty()
   optionRegion?: Intl.LocaleOptions['region'];
 
   get region(): Intl.Locale['region'] | undefined {
     return this.#getLocale()?.region ?? undefined;
   }
 
-  @property({attribute: 'option-script'})
+  @optionProperty()
   optionScript?: Intl.LocaleOptions['script'];
 
   get script(): Intl.Locale['script'] | undefined {
