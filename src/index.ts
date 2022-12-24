@@ -119,6 +119,9 @@ export function defineIntlElements() {
   defineIntlSegmenterElements();
 }
 
+// TODO: Remove `& any`.
+type JSXIntlElement<T> = T & any;
+
 declare global {
   interface HTMLElementTagNameMap {
     'intl-collator': HTMLIntlCollatorElement;
@@ -150,34 +153,33 @@ declare global {
   }
 
   namespace JSX {
-    // TODO: Remove `& any`.
     interface IntrinsicElements {
-      'intl-collator': HTMLIntlCollatorElement & any;
-      'intl-collator-compare': HTMLIntlCollatorCompareElement & any;
-      'intl-datetimeformat': HTMLIntlDateTimeFormatElement & any;
-      'intl-datetimeformat-format': HTMLIntlDateTimeFormatFormatElement & any;
-      'intl-datetimeformat-formattoparts': HTMLIntlDateTimeFormatFormatToPartsElement & any;
-      'intl-datetimeformat-formatrange': HTMLIntlDateTimeFormatFormatRangeElement & any;
-      'intl-datetimeformat-formatrangetoparts': HTMLIntlDateTimeFormatFormatRangeToPartsElement & any;
-      'intl-displaynames': HTMLIntlDisplayNamesElement & any;
-      'intl-displaynames-of': HTMLIntlDisplayNamesOfElement & any;
-      'intl-listformat': HTMLIntlListFormatElement & any;
-      'intl-listformat-format': HTMLIntlListFormatFormatElement & any;
-      'intl-listformat-formattoparts': HTMLIntlListFormatFormatToPartsElement & any;
-      'intl-locale': HTMLIntlLocaleElement & any;
-      'intl-numberformat': HTMLIntlNumberFormatElement & any;
-      'intl-numberformat-format': HTMLIntlNumberFormatFormatElement & any;
-      'intl-numberformat-formattoparts': HTMLIntlNumberFormatFormatToPartsElement & any;
-      // 'intl-numberformat-formatrange': HTMLIntlNumberFormatFormatRangeElement & any;
-      // 'intl-numberformat-formatrangetoparts': HTMLIntlNumberFormatFormatRangeToPartsElement & any;
-      'intl-pluralrules': HTMLIntlPluralRulesElement & any;
-      'intl-pluralrules-select': HTMLIntlPluralRulesSelectElement & any;
-      // 'intl-pluralrules-selectrange': HTMLIntlPluralRulesSelectRangeElement & any;
-      'intl-relativetimeformat': HTMLIntlRelativeTimeFormatElement & any;
-      'intl-relativetimeformat-format': HTMLIntlRelativeTimeFormatFormatElement & any;
-      'intl-relativetimeformat-formattoparts': HTMLIntlRelativeTimeFormatFormatToPartsElement & any;
-      'intl-segmenter': HTMLIntlSegmenterElement & any;
-      'intl-segmenter-segment': HTMLIntlSegmenterSegmentElement & any;
+      'intl-collator': JSXIntlElement<HTMLIntlCollatorElement>;
+      'intl-collator-compare': JSXIntlElement<HTMLIntlCollatorCompareElement>;
+      'intl-datetimeformat': JSXIntlElement<HTMLIntlDateTimeFormatElement>;
+      'intl-datetimeformat-format': JSXIntlElement<HTMLIntlDateTimeFormatFormatElement>;
+      'intl-datetimeformat-formattoparts': JSXIntlElement<HTMLIntlDateTimeFormatFormatToPartsElement>;
+      'intl-datetimeformat-formatrange': JSXIntlElement<HTMLIntlDateTimeFormatFormatRangeElement>;
+      'intl-datetimeformat-formatrangetoparts': JSXIntlElement<HTMLIntlDateTimeFormatFormatRangeToPartsElement>;
+      'intl-displaynames': JSXIntlElement<HTMLIntlDisplayNamesElement>;
+      'intl-displaynames-of': JSXIntlElement<HTMLIntlDisplayNamesOfElement>;
+      'intl-listformat': JSXIntlElement<HTMLIntlListFormatElement>;
+      'intl-listformat-format': JSXIntlElement<HTMLIntlListFormatFormatElement>;
+      'intl-listformat-formattoparts': JSXIntlElement<HTMLIntlListFormatFormatToPartsElement>;
+      'intl-locale': JSXIntlElement<HTMLIntlLocaleElement>;
+      'intl-numberformat': JSXIntlElement<HTMLIntlNumberFormatElement>;
+      'intl-numberformat-format': JSXIntlElement<HTMLIntlNumberFormatFormatElement>;
+      'intl-numberformat-formattoparts': JSXIntlElement<HTMLIntlNumberFormatFormatToPartsElement>;
+      // 'intl-numberformat-formatrange': JSXIntlElement<HTMLIntlNumberFormatFormatRangeElement>;
+      // 'intl-numberformat-formatrangetoparts': JSXIntlElement<HTMLIntlNumberFormatFormatRangeToPartsElement>;
+      'intl-pluralrules': JSXIntlElement<HTMLIntlPluralRulesElement>;
+      'intl-pluralrules-select': JSXIntlElement<HTMLIntlPluralRulesSelectElement>;
+      // 'intl-pluralrules-selectrange': JSXIntlElement<HTMLIntlPluralRulesSelectRangeElement>;
+      'intl-relativetimeformat': JSXIntlElement<HTMLIntlRelativeTimeFormatElement>;
+      'intl-relativetimeformat-format': JSXIntlElement<HTMLIntlRelativeTimeFormatFormatElement>;
+      'intl-relativetimeformat-formattoparts': JSXIntlElement<HTMLIntlRelativeTimeFormatFormatToPartsElement>;
+      'intl-segmenter': JSXIntlElement<HTMLIntlSegmenterElement>;
+      'intl-segmenter-segment': JSXIntlElement<HTMLIntlSegmenterSegmentElement>;
     }
   }
 
