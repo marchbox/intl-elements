@@ -1,7 +1,7 @@
 import {LitElement, nothing} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import {optionProperty} from '../../utils/properties';
+import {optionProperty} from '../../utils/properties.js';
 
 type LocaleValue = Intl.Locale | null;
 
