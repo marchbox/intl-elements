@@ -230,8 +230,8 @@ describe('intl-locale', () => {
       html: `
         <intl-locale tag="en" option-basename="zh" option-language="en"
             option-script="latn" option-region="us" option-numeric
-            option-hourcycle="h24" option-calendar="gregory" option-casefirst="upper"
-            option-collation="phonebk" option-numberingsystem="arab"
+            option-hourcycle="H24" option-calendar="greGOry" option-casefirst="upPer"
+            option-collation="phoNEbk" option-numberingsystem="arAb"
         ></intl-locale>
       `,
     });
@@ -255,9 +255,9 @@ describe('intl-locale', () => {
     expect(el.optionBaseName).toBe('zh');
     expect(el.language).toBe(el.optionLanguage);
     expect(el.script).toBe('Latn');
-    expect(el.optionScript).toBe('latn');
+    expect(el.optionScript).toBe('Latn');
     expect(el.region).toBe('US');
-    expect(el.optionRegion).toBe('us');
+    expect(el.optionRegion).toBe('US');
     expect(el.numeric).toBe(true);
     expect(el.optionNumeric).toBe(true);
     expect(el.hourCycle).toBe('h24');

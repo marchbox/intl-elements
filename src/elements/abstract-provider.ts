@@ -2,7 +2,6 @@ import {LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
 import {default as LocaleList, IntlApiType} from '../utils/locale-list.js';
-import {SPECIAL_OPTION_KEYS, getCanonicalOptionValue} from '../utils/properties.js';
 import {optionProperty} from '../utils/properties.js';
 import AbstractConsumer from './abstract-consumer.js';
 import HTMLIntlLocaleElement from './locale/locale.js';
@@ -114,33 +113,11 @@ export default abstract class AbstractProvider extends LitElement {
     this.#ancestorObserver.disconnect();
   }
 
-  protected override shouldUpdate(changes: Map<string, unknown>): boolean {
-    // Makes sure the canonical new value is not the same as the old value.
-    // TODO(#42): Creates a custom decorator that extends lit’s `@property`
-    // decorator and custom the `converter()` and `hasChanged()` functions with
-    // canonical value conversion and evaluation.
-    return Array.from(changes.entries())
-        .every(([key, oldValue]) => {
-          // @ts-ignore
-          const canonicalValue = getCanonicalOptionValue(key, this[key]);
-          return canonicalValue !== oldValue;
-        });
-  }
-
   protected override willUpdate(changes: Map<string, unknown>) {
     if (changes.has('locales')) {
       this.#isUpdatingLocales = true;
       this.#localeList.value = this.locales ?? this.#getAdditionalLocales();
     }
-
-    // Canonicalizes the new values.
-    // TODO(#42): After creating a custom property decorator, this can be removed.
-    Array.from(changes.keys())
-      .filter(key => SPECIAL_OPTION_KEYS.includes(key))
-      .forEach(key => {
-        // @ts-ignore
-        this[key] = getCanonicalOptionValue(key, this[key]);
-      });
   }
 
   protected override firstUpdated() {
