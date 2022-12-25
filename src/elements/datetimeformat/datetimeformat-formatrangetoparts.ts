@@ -4,7 +4,8 @@ import {map} from 'lit/directives/map.js';
 import {camelToKebab} from '../../utils/strings.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
-export default class extends AbstractDateTimeFormatConsumer {
+export default class HTMLIntlDateTimeFormatFormatRangeToPartsElement
+    extends AbstractDateTimeFormatConsumer {
   #value: Intl.DateTimeFormatPart[] = [];
 
   get value(): Intl.DateTimeFormatPart[] {

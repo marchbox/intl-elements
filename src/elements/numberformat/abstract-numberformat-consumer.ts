@@ -3,7 +3,8 @@ import NumberFormat from './numberformat.js';
 
 type ValueType = string | Intl.NumberFormatPart[];
 
-export default abstract class extends AbstractConsumer<NumberFormat, ValueType> {
+export default abstract class AbstractNumberFormatConsumer
+    extends AbstractConsumer<NumberFormat, ValueType> {
   protected static override providerElementName = 'intl-numberformat';
 
   protected get number(): number {

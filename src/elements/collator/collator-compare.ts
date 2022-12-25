@@ -3,7 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlCollator from './collator.js';
 
-export default class extends AbstractConsumer<HTMLIntlCollator, string[]> {
+export default class HTMLIntlCollatorCompareElement
+    extends AbstractConsumer<HTMLIntlCollator, string[]> {
   protected static override providerElementName = 'intl-collator';
 
   #value: string[] = [];

@@ -4,7 +4,8 @@ import {map} from 'lit/directives/map.js';
 import {camelToKebab} from '../../utils/strings.js';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
-export default class extends AbstractListFormatConsumer {
+export default class HTMLIntlListFormatFormatToPartsElement
+    extends AbstractListFormatConsumer {
   #value: Intl.ListFormatPart[] = [];
 
   override get value(): Intl.ListFormatPart[] {

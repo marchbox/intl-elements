@@ -5,7 +5,7 @@ import {optionProperty} from '../../utils/properties.js';
 
 type LocaleValue = Intl.Locale | null;
 
-export default class extends LitElement {
+export default class HTMLIntlLocaleElement extends LitElement {
   get value(): LocaleValue {
     return this.#getLocale();
   }

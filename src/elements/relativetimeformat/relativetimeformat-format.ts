@@ -2,7 +2,8 @@ import {html, nothing} from 'lit';
 
 import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer.js';
 
-export default class extends AbstractRelativeTimeFormatConsumer {
+export default class HTMLIntlRelativeTimeFormatFormatElement
+    extends AbstractRelativeTimeFormatConsumer {
   #value: string = '';
 
   override get value(): string {

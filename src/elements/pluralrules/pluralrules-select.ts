@@ -2,7 +2,8 @@ import {html, nothing} from 'lit';
 
 import AbstractPluralRulesConsumer from './abstract-pluralrules-consumer.js';
 
-export default class extends AbstractPluralRulesConsumer {
+export default class HTMLIntlPluralRulesSelectElement
+    extends AbstractPluralRulesConsumer {
   protected static override providerElementName = 'intl-pluralrules';
 
   #value: Intl.LDMLPluralRule | '' = '';

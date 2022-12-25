@@ -4,7 +4,8 @@ import {map} from 'lit/directives/map.js';
 import {camelToKebab} from '../../utils/strings.js';
 import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer.js';
 
-export default class extends HTMLIntlRelativeTimeFormatConsumerElement {
+export default class HTMLIntlRelativeTimeFormatFormatToPartsElement
+    extends HTMLIntlRelativeTimeFormatConsumerElement {
   #value: Intl.RelativeTimeFormatPart[] = [];
 
   override get value(): Intl.RelativeTimeFormatPart[] {

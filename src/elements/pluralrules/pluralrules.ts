@@ -3,7 +3,7 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+export default class HTMLIntlPluralRulesElement extends AbstractProvider {
   protected static override intlApi = Intl.PluralRules;
 
   protected static override consumerElementNames = new Set([

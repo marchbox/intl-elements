@@ -2,7 +2,8 @@ import {html, nothing} from 'lit';
 
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
-export default class extends AbstractListFormatConsumer {
+export default class HTMLIntlListFormatFormatElement
+    extends AbstractListFormatConsumer {
   #value: string = '';
 
   override get value(): string {

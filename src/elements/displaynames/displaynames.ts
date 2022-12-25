@@ -3,7 +3,7 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-displaynames-of',
   ]);

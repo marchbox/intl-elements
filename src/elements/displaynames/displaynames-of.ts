@@ -3,7 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlDisplayNamesElement from './displaynames.js';
 
-export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
+export default class HTMLIntlDisplayNamesOfElement
+    extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {

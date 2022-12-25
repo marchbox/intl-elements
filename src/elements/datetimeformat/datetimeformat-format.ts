@@ -2,7 +2,8 @@ import {html, nothing} from 'lit';
 
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
-export default class extends AbstractDateTimeFormatConsumer {
+export default class HTMLIntlDateTimeFormatFormatElement
+    extends AbstractDateTimeFormatConsumer {
   #value: string = '';
 
   get value(): string {

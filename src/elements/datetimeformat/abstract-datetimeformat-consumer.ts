@@ -4,7 +4,8 @@ import DateTimeFormat from './datetimeformat.js';
 
 type ValueType = string | Intl.DateTimeFormatPart[];
 
-export default abstract class extends AbstractConsumer<DateTimeFormat, ValueType> {
+export default abstract class AbstractDateTimeFormatConsumer
+    extends AbstractConsumer<DateTimeFormat, ValueType> {
   protected static override providerElementName = 'intl-datetimeformat';
 
   protected get dateTime(): Date {

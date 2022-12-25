@@ -5,14 +5,17 @@ import {when} from 'lit/directives/when.js';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlSegmenterElement from './segmenter.js';
 
-export default class extends AbstractConsumer<HTMLIntlSegmenterElement, Intl.Segments | undefined> {
+type ValueType = Intl.Segments | undefined;
+
+export default class HTMLIntlSegmenterSegmentElement
+    extends AbstractConsumer<HTMLIntlSegmenterElement, ValueType> {
   protected static override observesText = true;
 
   protected static override providerElementName = 'intl-segmenter';
 
-  #value?: Intl.Segments;
+  #value: ValueType;
 
-  get value(): Intl.Segments | undefined {
+  get value(): ValueType {
     return this.#value;
   }
 

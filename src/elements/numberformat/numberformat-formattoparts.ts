@@ -4,7 +4,8 @@ import {map} from 'lit/directives/map.js';
 import {camelToKebab} from '../../utils/strings.js';
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 
-export default class extends AbstractNumberFormatConsumer {
+export default class HTMLIntlNumberFormatFormatToPartsElement
+    extends AbstractNumberFormatConsumer {
   #value: Intl.NumberFormatPart[] = [];
 
   get value(): Intl.NumberFormatPart[] {
