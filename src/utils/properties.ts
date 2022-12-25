@@ -38,7 +38,10 @@ const SPECIAL_OPTION_MAP: Map<string, MapValue> = new Map([
 const SPECIAL_OPTION_KEYS = Array.from(SPECIAL_OPTION_MAP.keys())
     .map(key => `option${key[0]!.toUpperCase()}${key.slice(1)}`);
 
-export function getCanonicalIntlOptionValue(key: string, value: unknown): unknown {
+export function getCanonicalIntlOptionValue(
+  key: string,
+  value: unknown
+): unknown {
   if (SPECIAL_OPTION_MAP.has(key) && value && typeof value === 'string') {
     const spec = SPECIAL_OPTION_MAP.get(key)!;
 
