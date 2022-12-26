@@ -19,7 +19,10 @@ export default {
 
   analyzePhase: ({ts, node}) => {
     if (node.kind === ts.SyntaxKind.TypeAliasDeclaration) {
-      typeAliases.set(node.name.getText(), node.type.getText());
+      typeAliases.set(node.parent.fileName, {
+        name: node.name.getText(),
+        type: node.type.getText(),
+      });
     }
   },
 
@@ -46,8 +49,9 @@ export default {
             member.type = Object.assign({}, member.originalType);
             delete member.originalType;
           }
-          if (typeAliases.has(member.type?.text)) {
-            member.type.text = typeAliases.get(member.type.text);
+          if (typeAliases.has(module.path) &&
+              member.type?.text === typeAliases.get(module.path).name) {
+            member.type.text = typeAliases.get(module.path).type;
           }
         });
       });

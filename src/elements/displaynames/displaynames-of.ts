@@ -14,7 +14,7 @@ export default class HTMLIntlDisplayNamesOfElement
   #value: string = '';
 
   /** @readonly */
-  override get value() {
+  override get value(): string {
     return this.#value;
   }
 

@@ -347,7 +347,9 @@
             {
               "kind": "field",
               "name": "value",
-              "type": {},
+              "type": {
+                "text": "string"
+              },
               "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
