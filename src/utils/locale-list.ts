@@ -11,6 +11,24 @@ export type IntlApiType = typeof Intl.Collator |
 
 export type LocaleListOnChangeCallback = (list: LocaleList) => void;
 
+function clearIndexAccessors(list: string[], localeList: LocaleList) {
+  list.forEach((_, i) => {
+    Object.defineProperty(localeList, i, {
+      get: () => undefined,
+    });
+  });
+}
+
+function addIndexAccessors(list: string[], localeList: LocaleList) {
+  list.forEach((el, i) => {
+    Object.defineProperty(localeList, i, {
+      configurable: true,
+      get: () => el,
+      set: () => {},
+    });
+  });
+}
+
 export default class LocaleList implements DOMTokenList {
   #list: Intl.BCP47LanguageTag[] = [];
   #intlApi: IntlApiType;
@@ -25,8 +43,11 @@ export default class LocaleList implements DOMTokenList {
   }
 
   set value(val: string) {
+    clearIndexAccessors(this.#list, this);
     this.#list = val.toString().trim().split(' ')
         .filter(locale => this.supports(locale));
+    addIndexAccessors(this.#list, this);
+
     this.#triggerOnChange();
   }
 
@@ -60,15 +81,18 @@ export default class LocaleList implements DOMTokenList {
   }
 
   add(...vals: string[]): void {
+    clearIndexAccessors(this.#list, this);
     for (const val of vals) {
       if (!this.contains(val) && this.supports(val)) {
         this.#list.push(val.toString());
         this.#triggerOnChange();
       }
     }
+    addIndexAccessors(this.#list, this);
   }
 
   remove(...vals: string[]): void {
+    clearIndexAccessors(this.#list, this);
     for (const val of vals) {
       const index = this.#list.indexOf(val.toString());
       if (index !== -1) {
@@ -76,6 +100,7 @@ export default class LocaleList implements DOMTokenList {
         this.#triggerOnChange();
       }
     }
+    addIndexAccessors(this.#list, this);
   }
 
   toggle(val: string, force?: boolean): boolean {
@@ -100,6 +125,9 @@ export default class LocaleList implements DOMTokenList {
     const index = this.#list.indexOf(oldVal.toString());
     if (index !== -1 && this.supports(newVal)) {
       this.#list.splice(index, 1, newVal.toString());
+      Object.defineProperty(this, index, {
+        get: () => newVal.toString(),
+      });
       this.#triggerOnChange();
       return true;
     } else {

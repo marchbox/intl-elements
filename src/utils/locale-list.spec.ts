@@ -2,7 +2,8 @@ import LocaleList from './locale-list';
 
 class FakeIntlObj {
   static supportedLocalesOf(list: string | string[]) {
-    const supportedLocales = ['en-US', 'en-GB', 'en-AU', 'en-CA', 'zh'];
+    const supportedLocales = ['en-US', 'en-GB', 'en-AU', 'en-CA', 'en-IN',
+        'zh-CN', 'zh-TW', 'zh-HK'];
     if (list.includes('veryveryinvalid')) {
       throw new RangeError();
     }
@@ -211,7 +212,7 @@ describe('LocaleList', () => {
     // @ts-ignore
     const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
 
-    expect(list.supports('zh')).toBe(true);
+    expect(list.supports('zh-CN')).toBe(true);
     expect(list.supports('invalid')).toBe(false);
     expect(list.supports('veryveryinvalid')).toBe(false);
   });
@@ -227,13 +228,47 @@ describe('LocaleList', () => {
   });
 
   // TODO: Figure out how to access members via bracket notation (if possible)
-  it.skip('returns correct member with given index via bracket notion', async () => {
+  it('returns correct member with given index via bracket notion', async () => {
     // @ts-ignore
     const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list[0]).toBe('en-US');
     expect(list[1]).toBe('en-GB');
-    expect(list[2]).toBe(undefined);
+    expect(list[2]).toBeUndefined();
+
+    list.add('en-AU', 'en-CA');
+    expect(list[2]).toBe('en-AU');
+    expect(list[3]).toBe('en-CA');
+    expect(list[4]).toBeUndefined();
+
+    list.remove('en-GB');
+    expect(list[1]).toBe('en-AU');
+    expect(list[3]).toBeUndefined();
+
+    list.toggle('en-US');
+    expect(list[0]).toBe('en-AU');
+    expect(list[1]).toBe('en-CA');
+    expect(list[2]).toBeUndefined();
+
+    list.replace('en-CA', 'en-IN');
+    expect(list[1]).toBe('en-IN');
+
+    list.replace('en-IN', 'ar');
+    expect(list[1]).toBe('en-IN');
+
+    list.value = 'zh-CN zh-TW zh-HK';
+    expect(list[0]).toBe('zh-CN');
+    expect(list[1]).toBe('zh-TW');
+    expect(list[2]).toBe('zh-HK');
+    expect(list[3]).toBeUndefined();
+  });
+
+  it('ignores setting values via index accessor', async () => {
+    // @ts-ignore
+    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+
+    list[1] = 'en-AU';
+    expect(list[1]).toBe('en-GB');
   });
 
   it('removes invalid locales', async () => {
