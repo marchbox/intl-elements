@@ -331,6 +331,647 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/displaynames/displaynames-of.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlDisplayNamesOfElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {},
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractConsumer",
+            "module": "/src/elements/abstract-consumer.js"
+          },
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlDisplayNamesOfElement",
+            "module": "src/elements/displaynames/displaynames-of.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/displaynames/displaynames.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlDisplayNamesElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.DisplayNames"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionType",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['type']"
+              },
+              "default": "'language'",
+              "attribute": "option-type"
+            },
+            {
+              "kind": "field",
+              "name": "optionStyle",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['style']"
+              },
+              "default": "'long'",
+              "attribute": "option-style"
+            },
+            {
+              "kind": "field",
+              "name": "optionLanguageDisplay",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+              },
+              "default": "'dialect'",
+              "attribute": "option-languagedisplay"
+            },
+            {
+              "kind": "field",
+              "name": "optionFallback",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['fallback']"
+              },
+              "default": "'code'",
+              "attribute": "option-fallback"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedDisplayNamesOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-type",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['type']"
+              },
+              "default": "'language'",
+              "fieldName": "optionType"
+            },
+            {
+              "name": "option-style",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['style']"
+              },
+              "default": "'long'",
+              "fieldName": "optionStyle"
+            },
+            {
+              "name": "option-languagedisplay",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+              },
+              "default": "'dialect'",
+              "fieldName": "optionLanguageDisplay"
+            },
+            {
+              "name": "option-fallback",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['fallback']"
+              },
+              "default": "'code'",
+              "fieldName": "optionFallback"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlDisplayNamesElement",
+            "module": "src/elements/displaynames/displaynames.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat-format.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatFormatElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractListFormatConsumer",
+            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
+          },
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatFormatElement",
+            "module": "src/elements/listformat/listformat-format.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat-formattoparts.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatFormatToPartsElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "Intl.ListFormatPart[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractListFormatConsumer",
+            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
+          },
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatFormatToPartsElement",
+            "module": "src/elements/listformat/listformat-formattoparts.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.ListFormat"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionStyle",
+              "type": {
+                "text": "Intl.ListFormatOptions['style']"
+              },
+              "default": "'long'",
+              "attribute": "option-style"
+            },
+            {
+              "kind": "field",
+              "name": "optionType",
+              "type": {
+                "text": "Intl.ListFormatOptions['type']"
+              },
+              "default": "'conjunction'",
+              "attribute": "option-type"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedListFormatOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-style",
+              "type": {
+                "text": "Intl.ListFormatOptions['style']"
+              },
+              "default": "'long'",
+              "fieldName": "optionStyle"
+            },
+            {
+              "name": "option-type",
+              "type": {
+                "text": "Intl.ListFormatOptions['type']"
+              },
+              "default": "'conjunction'",
+              "fieldName": "optionType"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatElement",
+            "module": "src/elements/listformat/listformat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/datetimeformat/datetimeformat-format.ts",
       "declarations": [
         {
@@ -1076,346 +1717,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/locale/locale.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlLocaleElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "LocaleValue"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "valueAsString",
-              "type": {
-                "text": "Intl.BCP47LanguageTag | ''"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "tag",
-              "type": {
-                "text": "string"
-              },
-              "attribute": "tag",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "optionBaseName",
-              "type": {
-                "text": "Intl.LocaleOptions['baseName'] | undefined"
-              },
-              "attribute": "option-basename"
-            },
-            {
-              "kind": "field",
-              "name": "baseName",
-              "type": {
-                "text": "Intl.Locale['baseName'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionCalendar",
-              "type": {
-                "text": "Intl.LocaleOptions['calendar'] | undefined"
-              },
-              "attribute": "option-calendar"
-            },
-            {
-              "kind": "field",
-              "name": "calendar",
-              "type": {
-                "text": "Intl.Locale['calendar'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "calendars",
-              "type": {
-                "text": "Intl.Locale['calendars'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionCaseFirst",
-              "type": {
-                "text": "Intl.LocaleOptions['caseFirst'] | undefined"
-              },
-              "attribute": "option-casefirst"
-            },
-            {
-              "kind": "field",
-              "name": "caseFirst",
-              "type": {
-                "text": "Intl.Locale['caseFirst'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionCollation",
-              "type": {
-                "text": "Intl.LocaleOptions['collation'] | undefined"
-              },
-              "attribute": "option-collation"
-            },
-            {
-              "kind": "field",
-              "name": "collation",
-              "type": {
-                "text": "Intl.Locale['collation'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionHourCycle",
-              "type": {
-                "text": "Intl.LocaleOptions['hourCycle'] | undefined"
-              },
-              "attribute": "option-hourcycle"
-            },
-            {
-              "kind": "field",
-              "name": "hourCycle",
-              "type": {
-                "text": "Intl.Locale['hourCycle'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "hourCycles",
-              "type": {
-                "text": "Intl.Locale['hourCycles'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLanguage",
-              "type": {
-                "text": "Intl.LocaleOptions['language'] | undefined"
-              },
-              "attribute": "option-language"
-            },
-            {
-              "kind": "field",
-              "name": "language",
-              "type": {
-                "text": "Intl.Locale['language'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionNumberingSystem",
-              "type": {
-                "text": "Intl.LocaleOptions['numberingSystem'] | undefined"
-              },
-              "attribute": "option-numberingsystem"
-            },
-            {
-              "kind": "field",
-              "name": "numberingSystem",
-              "type": {
-                "text": "Intl.Locale['numberingSystem'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "numberingSystems",
-              "type": {
-                "text": "Intl.Locale['numberingSystems'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionNumeric",
-              "type": {
-                "text": "Intl.LocaleOptions['numeric'] | undefined"
-              },
-              "attribute": "option-numeric"
-            },
-            {
-              "kind": "field",
-              "name": "numeric",
-              "type": {
-                "text": "Intl.Locale['numeric'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionRegion",
-              "type": {
-                "text": "Intl.LocaleOptions['region'] | undefined"
-              },
-              "attribute": "option-region"
-            },
-            {
-              "kind": "field",
-              "name": "region",
-              "type": {
-                "text": "Intl.Locale['region'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionScript",
-              "type": {
-                "text": "Intl.LocaleOptions['script'] | undefined"
-              },
-              "attribute": "option-script"
-            },
-            {
-              "kind": "field",
-              "name": "script",
-              "type": {
-                "text": "Intl.Locale['script'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "textInfo",
-              "type": {
-                "text": "Intl.Locale['textInfo'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "timeZones",
-              "type": {
-                "text": "Intl.Locale['timeZones'] | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "weekInfo",
-              "type": {
-                "text": "Intl.Locale['weekInfo'] | undefined"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "maximize",
-              "return": {
-                "type": {
-                  "text": "LocaleValue"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "minimize",
-              "return": {
-                "type": {
-                  "text": "LocaleValue"
-                }
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "tag",
-              "type": {
-                "text": "string"
-              },
-              "fieldName": "tag"
-            },
-            {
-              "name": "option-basename",
-              "type": {
-                "text": "Intl.LocaleOptions['baseName'] | undefined"
-              },
-              "fieldName": "optionBaseName"
-            },
-            {
-              "name": "option-calendar",
-              "type": {
-                "text": "Intl.LocaleOptions['calendar'] | undefined"
-              },
-              "fieldName": "optionCalendar"
-            },
-            {
-              "name": "option-casefirst",
-              "type": {
-                "text": "Intl.LocaleOptions['caseFirst'] | undefined"
-              },
-              "fieldName": "optionCaseFirst"
-            },
-            {
-              "name": "option-collation",
-              "type": {
-                "text": "Intl.LocaleOptions['collation'] | undefined"
-              },
-              "fieldName": "optionCollation"
-            },
-            {
-              "name": "option-hourcycle",
-              "type": {
-                "text": "Intl.LocaleOptions['hourCycle'] | undefined"
-              },
-              "fieldName": "optionHourCycle"
-            },
-            {
-              "name": "option-language",
-              "type": {
-                "text": "Intl.LocaleOptions['language'] | undefined"
-              },
-              "fieldName": "optionLanguage"
-            },
-            {
-              "name": "option-numberingsystem",
-              "type": {
-                "text": "Intl.LocaleOptions['numberingSystem'] | undefined"
-              },
-              "fieldName": "optionNumberingSystem"
-            },
-            {
-              "name": "option-numeric",
-              "type": {
-                "text": "Intl.LocaleOptions['numeric'] | undefined"
-              },
-              "fieldName": "optionNumeric"
-            },
-            {
-              "name": "option-region",
-              "type": {
-                "text": "Intl.LocaleOptions['region'] | undefined"
-              },
-              "fieldName": "optionRegion"
-            },
-            {
-              "name": "option-script",
-              "type": {
-                "text": "Intl.LocaleOptions['script'] | undefined"
-              },
-              "fieldName": "optionScript"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlLocaleElement",
-            "module": "src/elements/locale/locale.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/numberformat/numberformat-format.ts",
       "declarations": [
         {
@@ -1963,632 +2264,331 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/displaynames/displaynames-of.ts",
+      "path": "src/elements/locale/locale.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "HTMLIntlDisplayNamesOfElement",
+          "name": "HTMLIntlLocaleElement",
           "members": [
             {
               "kind": "field",
               "name": "value",
-              "type": {},
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+              "type": {
+                "text": "Intl.Locale | null"
               }
             },
             {
               "kind": "field",
-              "name": "provider",
+              "name": "valueAsString",
               "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+                "text": "Intl.BCP47LanguageTag | ''"
               }
             },
             {
               "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractConsumer",
-            "module": "/src/elements/abstract-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlDisplayNamesOfElement",
-            "module": "src/elements/displaynames/displaynames-of.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/displaynames/displaynames.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlDisplayNamesElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.DisplayNames"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionType",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['type']"
-              },
-              "default": "'language'",
-              "attribute": "option-type"
-            },
-            {
-              "kind": "field",
-              "name": "optionStyle",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
-              },
-              "default": "'long'",
-              "attribute": "option-style"
-            },
-            {
-              "kind": "field",
-              "name": "optionLanguageDisplay",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
-              },
-              "default": "'dialect'",
-              "attribute": "option-languagedisplay"
-            },
-            {
-              "kind": "field",
-              "name": "optionFallback",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
-              },
-              "default": "'code'",
-              "attribute": "option-fallback"
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedDisplayNamesOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-type",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['type']"
-              },
-              "default": "'language'",
-              "fieldName": "optionType"
-            },
-            {
-              "name": "option-style",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
-              },
-              "default": "'long'",
-              "fieldName": "optionStyle"
-            },
-            {
-              "name": "option-languagedisplay",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
-              },
-              "default": "'dialect'",
-              "fieldName": "optionLanguageDisplay"
-            },
-            {
-              "name": "option-fallback",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
-              },
-              "default": "'code'",
-              "fieldName": "optionFallback"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlDisplayNamesElement",
-            "module": "src/elements/displaynames/displaynames.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat-format.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatFormatElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
+              "name": "tag",
               "type": {
                 "text": "string"
               },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+              "attribute": "tag",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "optionBaseName",
+              "type": {
+                "text": "Intl.LocaleOptions['baseName'] | undefined"
+              },
+              "attribute": "option-basename"
+            },
+            {
+              "kind": "field",
+              "name": "baseName",
+              "type": {
+                "text": "Intl.Locale['baseName'] | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "provider",
+              "name": "optionCalendar",
               "type": {
-                "text": "string | undefined"
+                "text": "Intl.LocaleOptions['calendar'] | undefined"
               },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+              "attribute": "option-calendar"
+            },
+            {
+              "kind": "field",
+              "name": "calendar",
+              "type": {
+                "text": "Intl.Locale['calendar'] | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "providerElement",
+              "name": "calendars",
               "type": {
-                "text": "P | undefined"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractListFormatConsumer",
-            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlListFormatFormatElement",
-            "module": "src/elements/listformat/listformat-format.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat-formattoparts.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatFormatToPartsElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "Intl.ListFormatPart[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+                "text": "Intl.Locale['calendars'] | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "provider",
+              "name": "optionCaseFirst",
               "type": {
-                "text": "string | undefined"
+                "text": "Intl.LocaleOptions['caseFirst'] | undefined"
               },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
+              "attribute": "option-casefirst"
+            },
+            {
+              "kind": "field",
+              "name": "caseFirst",
+              "type": {
+                "text": "Intl.Locale['caseFirst'] | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "providerElement",
+              "name": "optionCollation",
               "type": {
-                "text": "P | undefined"
+                "text": "Intl.LocaleOptions['collation'] | undefined"
               },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractListFormatConsumer",
-            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlListFormatFormatToPartsElement",
-            "module": "src/elements/listformat/listformat-formattoparts.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatElement",
-          "members": [
+              "attribute": "option-collation"
+            },
             {
               "kind": "field",
-              "name": "intlObject",
+              "name": "collation",
               "type": {
-                "text": "Intl.ListFormat"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
+                "text": "Intl.Locale['collation'] | undefined"
               }
             },
             {
               "kind": "field",
-              "name": "optionStyle",
+              "name": "optionHourCycle",
               "type": {
-                "text": "Intl.ListFormatOptions['style']"
+                "text": "Intl.LocaleOptions['hourCycle'] | undefined"
               },
-              "default": "'long'",
-              "attribute": "option-style"
+              "attribute": "option-hourcycle"
             },
             {
               "kind": "field",
-              "name": "optionType",
+              "name": "hourCycle",
               "type": {
-                "text": "Intl.ListFormatOptions['type']"
+                "text": "Intl.Locale['hourCycle'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hourCycles",
+              "type": {
+                "text": "Intl.Locale['hourCycles'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLanguage",
+              "type": {
+                "text": "Intl.LocaleOptions['language'] | undefined"
               },
-              "default": "'conjunction'",
-              "attribute": "option-type"
+              "attribute": "option-language"
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "type": {
+                "text": "Intl.Locale['language'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionNumberingSystem",
+              "type": {
+                "text": "Intl.LocaleOptions['numberingSystem'] | undefined"
+              },
+              "attribute": "option-numberingsystem"
+            },
+            {
+              "kind": "field",
+              "name": "numberingSystem",
+              "type": {
+                "text": "Intl.Locale['numberingSystem'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "numberingSystems",
+              "type": {
+                "text": "Intl.Locale['numberingSystems'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionNumeric",
+              "type": {
+                "text": "Intl.LocaleOptions['numeric'] | undefined"
+              },
+              "attribute": "option-numeric"
+            },
+            {
+              "kind": "field",
+              "name": "numeric",
+              "type": {
+                "text": "Intl.Locale['numeric'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionRegion",
+              "type": {
+                "text": "Intl.LocaleOptions['region'] | undefined"
+              },
+              "attribute": "option-region"
+            },
+            {
+              "kind": "field",
+              "name": "region",
+              "type": {
+                "text": "Intl.Locale['region'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionScript",
+              "type": {
+                "text": "Intl.LocaleOptions['script'] | undefined"
+              },
+              "attribute": "option-script"
+            },
+            {
+              "kind": "field",
+              "name": "script",
+              "type": {
+                "text": "Intl.Locale['script'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "textInfo",
+              "type": {
+                "text": "Intl.Locale['textInfo'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "timeZones",
+              "type": {
+                "text": "Intl.Locale['timeZones'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "weekInfo",
+              "type": {
+                "text": "Intl.Locale['weekInfo'] | undefined"
+              }
             },
             {
               "kind": "method",
-              "name": "resolvedOptions",
+              "name": "maximize",
               "return": {
                 "type": {
-                  "text": "Intl.ResolvedListFormatOptions"
+                  "text": "LocaleValue"
                 }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
               }
             },
             {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
+              "kind": "method",
+              "name": "minimize",
+              "return": {
+                "type": {
+                  "text": "LocaleValue"
+                }
               }
             }
           ],
           "attributes": [
             {
-              "name": "option-style",
+              "name": "tag",
               "type": {
-                "text": "Intl.ListFormatOptions['style']"
+                "text": "string"
               },
-              "default": "'long'",
-              "fieldName": "optionStyle"
+              "fieldName": "tag"
             },
             {
-              "name": "option-type",
+              "name": "option-basename",
               "type": {
-                "text": "Intl.ListFormatOptions['type']"
+                "text": "Intl.LocaleOptions['baseName'] | undefined"
               },
-              "default": "'conjunction'",
-              "fieldName": "optionType"
+              "fieldName": "optionBaseName"
             },
             {
-              "name": "locales",
+              "name": "option-calendar",
               "type": {
-                "text": "string | undefined"
+                "text": "Intl.LocaleOptions['calendar'] | undefined"
               },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
+              "fieldName": "optionCalendar"
             },
             {
-              "name": "locales-from",
+              "name": "option-casefirst",
               "type": {
-                "text": "string | undefined"
+                "text": "Intl.LocaleOptions['caseFirst'] | undefined"
               },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
+              "fieldName": "optionCaseFirst"
             },
             {
-              "name": "option-localematcher",
+              "name": "option-collation",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.LocaleOptions['collation'] | undefined"
               },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
+              "fieldName": "optionCollation"
+            },
+            {
+              "name": "option-hourcycle",
+              "type": {
+                "text": "Intl.LocaleOptions['hourCycle'] | undefined"
+              },
+              "fieldName": "optionHourCycle"
+            },
+            {
+              "name": "option-language",
+              "type": {
+                "text": "Intl.LocaleOptions['language'] | undefined"
+              },
+              "fieldName": "optionLanguage"
+            },
+            {
+              "name": "option-numberingsystem",
+              "type": {
+                "text": "Intl.LocaleOptions['numberingSystem'] | undefined"
+              },
+              "fieldName": "optionNumberingSystem"
+            },
+            {
+              "name": "option-numeric",
+              "type": {
+                "text": "Intl.LocaleOptions['numeric'] | undefined"
+              },
+              "fieldName": "optionNumeric"
+            },
+            {
+              "name": "option-region",
+              "type": {
+                "text": "Intl.LocaleOptions['region'] | undefined"
+              },
+              "fieldName": "optionRegion"
+            },
+            {
+              "name": "option-script",
+              "type": {
+                "text": "Intl.LocaleOptions['script'] | undefined"
+              },
+              "fieldName": "optionScript"
             }
           ],
           "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
         }
       ],
       "exports": [
@@ -2596,8 +2596,8 @@
           "kind": "js",
           "name": "default",
           "declaration": {
-            "name": "HTMLIntlListFormatElement",
-            "module": "src/elements/listformat/listformat.ts"
+            "name": "HTMLIntlLocaleElement",
+            "module": "src/elements/locale/locale.ts"
           }
         }
       ]
@@ -3241,7 +3241,7 @@
               "kind": "field",
               "name": "value",
               "type": {
-                "text": "ValueType"
+                "text": "Intl.Segments | undefined"
               },
               "inheritedFrom": {
                 "name": "AbstractConsumer",
