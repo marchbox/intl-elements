@@ -227,7 +227,6 @@ describe('LocaleList', () => {
     expect(iterator.next().done).toBe(true);
   });
 
-  // TODO: Figure out how to access members via bracket notation (if possible)
   it('returns correct member with given index via bracket notion', async () => {
     // @ts-ignore
     const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
