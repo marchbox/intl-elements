@@ -3,6 +3,7 @@ import HTMLIntlRelativeTimeFormatElement from './relativetimeformat.js';
 
 type ValueType = string | Intl.RelativeTimeFormatPart[];
 
+/** @internal */
 export default abstract class AbstractRelativeTimeFormatConsumer
     extends AbstractConsumer<HTMLIntlRelativeTimeFormatElement, ValueType> {
   protected static override providerElementName = 'intl-relativetimeformat';

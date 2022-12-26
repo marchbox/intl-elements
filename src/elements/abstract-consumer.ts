@@ -4,6 +4,7 @@ import {property} from 'lit/decorators.js';
 import AbstractProvider from './abstract-provider.js';
 import {isLocaleRtl} from '../utils/locales.js';
 
+/** @internal */
 export default abstract class AbstractConsumer<P, V> extends LitElement {
   static override styles = css`
     :host([hidden]),

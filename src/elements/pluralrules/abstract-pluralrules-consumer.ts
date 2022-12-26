@@ -3,6 +3,7 @@ import HTMLIntlPluralRulesElement from './pluralrules.js';
 
 type ValueType = Intl.LDMLPluralRule | '';
 
+/** @internal */
 export default abstract class AbstractPluralRulesConsumer
     extends AbstractConsumer<HTMLIntlPluralRulesElement, ValueType> {
   protected static override providerElementName = 'intl-pluralrules';
