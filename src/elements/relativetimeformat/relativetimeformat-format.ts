@@ -6,6 +6,7 @@ export default class HTMLIntlRelativeTimeFormatFormatElement
     extends AbstractRelativeTimeFormatConsumer {
   #value: string = '';
 
+  /** @readonly */
   override get value(): string {
     return this.#value;
   }

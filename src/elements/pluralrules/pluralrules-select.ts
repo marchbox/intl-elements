@@ -8,6 +8,7 @@ export default class HTMLIntlPluralRulesSelectElement
 
   #value: Intl.LDMLPluralRule | '' = '';
 
+  /** @readonly */
   get value(): Intl.LDMLPluralRule | '' {
     return this.#value;
   }

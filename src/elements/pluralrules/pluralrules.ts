@@ -15,6 +15,7 @@ export default class HTMLIntlPluralRulesElement extends AbstractProvider {
 
   #intlObject!: Intl.PluralRules;
 
+  /** @readonly */
   get intlObject(): Intl.PluralRules {
     return this.#intlObject;
   }

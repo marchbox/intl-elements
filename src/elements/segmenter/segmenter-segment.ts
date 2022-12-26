@@ -15,10 +15,12 @@ export default class HTMLIntlSegmenterSegmentElement
 
   #value: ValueType;
 
+  /** @readonly */
   get value(): ValueType {
     return this.#value;
   }
 
+  /** @readonly */
   get input(): string {
     return this.textContent!.trim() || '';
   }

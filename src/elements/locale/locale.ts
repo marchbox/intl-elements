@@ -6,10 +6,12 @@ import {optionProperty} from '../../utils/properties.js';
 type LocaleValue = Intl.Locale | null;
 
 export default class HTMLIntlLocaleElement extends LitElement {
+  /** @readonly */
   get value(): LocaleValue {
     return this.#getLocale();
   }
 
+  /** @readonly */
   get valueAsString(): Intl.BCP47LanguageTag | '' {
     return this.#getLocale()?.toString() ?? '';
   }
@@ -20,6 +22,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionBaseName?: Intl.LocaleOptions['baseName'];
 
+  /** @readonly */
   get baseName(): Intl.Locale['baseName'] | undefined {
     return this.#getLocale()?.baseName ?? undefined;
   }
@@ -27,10 +30,12 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCalendar?: Intl.LocaleOptions['calendar'];
 
+  /** @readonly */
   get calendar(): Intl.Locale['calendar'] | undefined {
     return this.#getLocale()?.calendar ?? undefined;
   }
 
+  /** @readonly */
   get calendars(): Intl.Locale['calendars'] | undefined {
     return this.#getLocale()?.calendars ?? undefined;
   }
@@ -38,6 +43,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCaseFirst?: Intl.LocaleOptions['caseFirst'];
 
+  /** @readonly */
   get caseFirst(): Intl.Locale['caseFirst'] | undefined {
     return this.#getLocale()?.caseFirst ?? undefined;
   }
@@ -45,6 +51,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCollation?: Intl.LocaleOptions['collation'];
 
+  /** @readonly */
   get collation(): Intl.Locale['collation'] | undefined {
     return this.#getLocale()?.collation ?? undefined;
   }
@@ -52,10 +59,12 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionHourCycle?: Intl.LocaleOptions['hourCycle'];
 
+  /** @readonly */
   get hourCycle(): Intl.Locale['hourCycle'] | undefined {
     return this.#getLocale()?.hourCycle ?? undefined;
   }
 
+  /** @readonly */
   get hourCycles(): Intl.Locale['hourCycles'] | undefined {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
@@ -63,6 +72,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionLanguage?: Intl.LocaleOptions['language'];
 
+  /** @readonly */
   get language(): Intl.Locale['language'] | undefined {
     return this.#getLocale()?.language ?? undefined;
   }
@@ -70,10 +80,12 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionNumberingSystem?: Intl.LocaleOptions['numberingSystem'];
 
+  /** @readonly */
   get numberingSystem(): Intl.Locale['numberingSystem'] | undefined {
     return this.#getLocale()?.numberingSystem ?? undefined;
   }
 
+  /** @readonly */
   get numberingSystems(): Intl.Locale['numberingSystems'] | undefined {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
@@ -81,6 +93,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty({type: Boolean})
   optionNumeric?: Intl.LocaleOptions['numeric'];
 
+  /** @readonly */
   get numeric(): Intl.Locale['numeric'] | undefined {
     return this.#getLocale()?.numeric ?? undefined;
   }
@@ -88,6 +101,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionRegion?: Intl.LocaleOptions['region'];
 
+  /** @readonly */
   get region(): Intl.Locale['region'] | undefined {
     return this.#getLocale()?.region ?? undefined;
   }
@@ -95,18 +109,22 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionScript?: Intl.LocaleOptions['script'];
 
+  /** @readonly */
   get script(): Intl.Locale['script'] | undefined {
     return this.#getLocale()?.script ?? undefined;
   }
 
+  /** @readonly */
   get textInfo(): Intl.Locale['textInfo'] | undefined {
     return this.#getLocale()?.textInfo ?? undefined;
   }
 
+  /** @readonly */
   get timeZones(): Intl.Locale['timeZones'] | undefined {
     return this.#getLocale()?.timeZones ?? undefined;
   }
 
+  /** @readonly */
   get weekInfo(): Intl.Locale['weekInfo'] | undefined {
     return this.#getLocale()?.weekInfo ?? undefined;
   }

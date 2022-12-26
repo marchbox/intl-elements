@@ -13,6 +13,7 @@ export default class HTMLIntlDisplayNamesOfElement
 
   #value: string = '';
 
+  /** @readonly */
   override get value() {
     return this.#value;
   }

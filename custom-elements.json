@@ -17,6 +17,7 @@
               "type": {
                 "text": "string[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -41,6 +42,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -92,6 +94,7 @@
               "type": {
                 "text": "Intl.Collator"
               },
+              "readonly": true,
               "mdn": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -165,6 +168,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -201,6 +205,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -225,6 +230,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -342,6 +348,7 @@
               "kind": "field",
               "name": "value",
               "type": {},
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -366,6 +373,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -417,6 +425,7 @@
               "type": {
                 "text": "Intl.DisplayNames"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -477,6 +486,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -513,6 +523,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -537,6 +548,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -646,7 +658,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -667,6 +680,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -721,7 +735,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -742,6 +757,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -793,6 +809,7 @@
               "type": {
                 "text": "Intl.ListFormat"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -835,6 +852,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -871,6 +889,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -895,6 +914,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -988,7 +1008,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1009,6 +1030,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1063,7 +1085,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1084,6 +1107,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1138,7 +1162,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1159,6 +1184,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1213,7 +1239,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1234,6 +1261,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1285,6 +1313,7 @@
               "type": {
                 "text": "Intl.DateTimeFormat"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -1462,6 +1491,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -1498,6 +1528,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -1522,6 +1553,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -1733,7 +1765,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1754,6 +1787,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1808,7 +1842,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1829,6 +1864,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -1880,6 +1916,7 @@
               "type": {
                 "text": "Intl.NumberFormat"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2031,6 +2068,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2067,6 +2105,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2091,6 +2130,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2276,14 +2316,16 @@
               "name": "value",
               "type": {
                 "text": "Intl.Locale | null"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "valueAsString",
               "type": {
                 "text": "Intl.BCP47LanguageTag | ''"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2307,7 +2349,8 @@
               "name": "baseName",
               "type": {
                 "text": "Intl.Locale['baseName'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2322,14 +2365,16 @@
               "name": "calendar",
               "type": {
                 "text": "Intl.Locale['calendar'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "calendars",
               "type": {
                 "text": "Intl.Locale['calendars'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2344,7 +2389,8 @@
               "name": "caseFirst",
               "type": {
                 "text": "Intl.Locale['caseFirst'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2359,7 +2405,8 @@
               "name": "collation",
               "type": {
                 "text": "Intl.Locale['collation'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2374,14 +2421,16 @@
               "name": "hourCycle",
               "type": {
                 "text": "Intl.Locale['hourCycle'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "hourCycles",
               "type": {
                 "text": "Intl.Locale['hourCycles'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2396,7 +2445,8 @@
               "name": "language",
               "type": {
                 "text": "Intl.Locale['language'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2411,14 +2461,16 @@
               "name": "numberingSystem",
               "type": {
                 "text": "Intl.Locale['numberingSystem'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "numberingSystems",
               "type": {
                 "text": "Intl.Locale['numberingSystems'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2433,7 +2485,8 @@
               "name": "numeric",
               "type": {
                 "text": "Intl.Locale['numeric'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2448,7 +2501,8 @@
               "name": "region",
               "type": {
                 "text": "Intl.Locale['region'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2463,28 +2517,32 @@
               "name": "script",
               "type": {
                 "text": "Intl.Locale['script'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "textInfo",
               "type": {
                 "text": "Intl.Locale['textInfo'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "timeZones",
               "type": {
                 "text": "Intl.Locale['timeZones'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
               "name": "weekInfo",
               "type": {
                 "text": "Intl.Locale['weekInfo'] | undefined"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "method",
@@ -2620,7 +2678,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2641,6 +2700,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -2692,6 +2752,7 @@
               "type": {
                 "text": "Intl.PluralRules"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2765,6 +2826,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2801,6 +2863,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2825,6 +2888,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -2945,7 +3009,8 @@
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -2966,6 +3031,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -3016,7 +3082,8 @@
               "name": "value",
               "type": {
                 "text": "Intl.RelativeTimeFormatPart[]"
-              }
+              },
+              "readonly": true
             }
           ],
           "superclass": {
@@ -3051,6 +3118,7 @@
               "type": {
                 "text": "Intl.RelativeTimeFormat"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3093,6 +3161,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3129,6 +3198,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3153,6 +3223,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3243,6 +3314,7 @@
               "type": {
                 "text": "Intl.Segments | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -3253,7 +3325,8 @@
               "name": "input",
               "type": {
                 "text": "string"
-              }
+              },
+              "readonly": true
             },
             {
               "kind": "field",
@@ -3274,6 +3347,7 @@
               "type": {
                 "text": "P | undefined"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractConsumer",
                 "module": "src/elements/abstract-consumer.ts"
@@ -3334,6 +3408,7 @@
               "type": {
                 "text": "Intl.Segmenter"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3358,6 +3433,7 @@
               "type": {
                 "text": "LocaleList"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3394,6 +3470,7 @@
               "type": {
                 "text": "HTMLIntlLocaleElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -3418,6 +3495,7 @@
               "type": {
                 "text": "ConsumerElement[]"
               },
+              "readonly": true,
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"

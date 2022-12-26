@@ -6,6 +6,7 @@ export default class HTMLIntlDateTimeFormatFormatElement
     extends AbstractDateTimeFormatConsumer {
   #value: string = '';
 
+  /** @readonly */
   get value(): string {
     return this.#value;
   }

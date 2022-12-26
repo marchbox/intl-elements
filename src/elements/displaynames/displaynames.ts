@@ -14,6 +14,7 @@ export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
 
   #intlObject!: Intl.DisplayNames;
 
+  /** @readonly */
   get intlObject(): Intl.DisplayNames {
     return this.#intlObject;
   }

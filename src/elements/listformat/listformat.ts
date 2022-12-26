@@ -15,6 +15,7 @@ export default class HTMLIntlListFormatElement extends AbstractProvider {
 
   #intlObject!: Intl.ListFormat;
 
+  /** @readonly */
   get intlObject(): Intl.ListFormat {
     return this.#intlObject;
   }

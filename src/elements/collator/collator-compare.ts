@@ -9,6 +9,7 @@ export default class HTMLIntlCollatorCompareElement
 
   #value: string[] = [];
 
+  /** @readonly */
   get value(): string[] {
     return this.#value;
   }

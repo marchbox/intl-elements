@@ -6,6 +6,7 @@ export default class HTMLIntlNumberFormatFormatElement
     extends AbstractNumberFormatConsumer {
   #value: string = '';
 
+  /** @readonly */
   get value(): string {
     return this.#value;
   }

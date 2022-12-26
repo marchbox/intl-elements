@@ -6,6 +6,7 @@ export default class HTMLIntlListFormatFormatElement
     extends AbstractListFormatConsumer {
   #value: string = '';
 
+  /** @readonly */
   override get value(): string {
     return this.#value;
   }

@@ -47,6 +47,7 @@ export default abstract class AbstractProvider extends LitElement {
 
   abstract get intlObject(): IntlObjectType;
 
+  /** @readonly */
   @property({attribute: false})
   get localeList(): LocaleList {
     return this.#localeList;
@@ -58,6 +59,7 @@ export default abstract class AbstractProvider extends LitElement {
   @property({attribute: 'locales-from'})
   localesFrom?: string;
 
+  /** @readonly */
   get localesFromElements(): HTMLIntlLocaleElement[] {
     return this.#localesFromElements;
   }
@@ -66,6 +68,7 @@ export default abstract class AbstractProvider extends LitElement {
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   // TODO: Cache the list.
+  /** @readonly */
   get consumerElements(): ConsumerElement[] {
     const names = (this.constructor as typeof AbstractProvider)
         .consumerElementNames;

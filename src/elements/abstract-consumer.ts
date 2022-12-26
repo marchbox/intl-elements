@@ -31,6 +31,7 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   provider?:string;
 
   // TODO: Cache this.
+  /** @readonly */
   get providerElement(): P | undefined {
     const name = (this.constructor as typeof AbstractConsumer)
         .providerElementName;

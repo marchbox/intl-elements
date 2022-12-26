@@ -51,10 +51,12 @@ export default class LocaleList implements DOMTokenList {
     this.#triggerOnChange();
   }
 
+  /** @readonly */
   get valueAsArray(): string[] {
     return this.#list;
   }
 
+  /** @readonly */
   get length(): number {
     return this.#list.length;
   }

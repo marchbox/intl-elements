@@ -17,6 +17,7 @@ export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
 
   #intlObject!: Intl.DateTimeFormat;
 
+  /** @readonly */
   get intlObject(): Intl.DateTimeFormat {
     return this.#intlObject;
   }

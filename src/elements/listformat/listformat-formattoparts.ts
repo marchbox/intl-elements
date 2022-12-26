@@ -8,6 +8,7 @@ export default class HTMLIntlListFormatFormatToPartsElement
     extends AbstractListFormatConsumer {
   #value: Intl.ListFormatPart[] = [];
 
+  /** @readonly */
   override get value(): Intl.ListFormatPart[] {
     return this.#value;
   }

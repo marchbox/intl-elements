@@ -17,6 +17,7 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
 
   #intlObject!: Intl.NumberFormat;
 
+  /** @readonly */
   get intlObject(): Intl.NumberFormat {
     return this.#intlObject;
   }

@@ -16,6 +16,7 @@ export default class HTMLIntlRelativeTimeFormatElement
 
   #intlObject!: Intl.RelativeTimeFormat;
 
+  /** @readonly */
   get intlObject(): Intl.RelativeTimeFormat {
     return this.#intlObject;
   }

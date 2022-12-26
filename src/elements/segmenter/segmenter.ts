@@ -17,6 +17,7 @@ export default class HTMLIntlSegmenterElement extends AbstractProvider {
   @optionProperty()
   optionGranularity: Intl.SegmenterOptions['granularity'] = 'grapheme';
 
+  /** @readonly */
   get intlObject(): Intl.Segmenter {
     return this.#intlObject;
   }

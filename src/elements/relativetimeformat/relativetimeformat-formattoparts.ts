@@ -8,6 +8,7 @@ export default class HTMLIntlRelativeTimeFormatFormatToPartsElement
     extends HTMLIntlRelativeTimeFormatConsumerElement {
   #value: Intl.RelativeTimeFormatPart[] = [];
 
+  /** @readonly */
   override get value(): Intl.RelativeTimeFormatPart[] {
     return this.#value;
   }

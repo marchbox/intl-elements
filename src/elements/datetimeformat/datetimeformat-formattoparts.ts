@@ -8,6 +8,7 @@ export default class HTMLIntlDateTimeFormatFormatToPartsElement
     extends AbstractDateTimeFormatConsumer {
   #value: Intl.DateTimeFormatPart[] = [];
 
+  /** @readonly */
   get value(): Intl.DateTimeFormatPart[] {
     return this.#value;
   }

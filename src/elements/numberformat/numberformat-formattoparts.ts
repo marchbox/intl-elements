@@ -8,6 +8,7 @@ export default class HTMLIntlNumberFormatFormatToPartsElement
     extends AbstractNumberFormatConsumer {
   #value: Intl.NumberFormatPart[] = [];
 
+  /** @readonly */
   get value(): Intl.NumberFormatPart[] {
     return this.#value;
   }

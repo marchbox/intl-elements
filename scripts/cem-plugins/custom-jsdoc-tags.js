@@ -1,5 +1,6 @@
 const CUSTOM_MEMBER_JS_DOC_TAGS = [
   'mdn',
+  'readonly',
 ];
 
 export default {
@@ -26,7 +27,7 @@ export default {
           if (CUSTOM_MEMBER_JS_DOC_TAGS.includes(tagName)) {
             const description = tag.comment;
 
-            messageField[tagName] = description;
+            messageField[tagName] = description ?? true;
           }
         });
       });
