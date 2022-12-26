@@ -1,5 +1,6 @@
 export default {
-  name: 'INTL-ELEMENT: Handle @optionProperty() decorator',
+  name: 'INTL-ELEMENTS: Handle @optionProperty() decorator',
+
   analyzePhase: ({ts, node, moduleDoc}) => {
     if (node.kind === ts.SyntaxKind.ClassDeclaration) {
       const className = node.name.getText();

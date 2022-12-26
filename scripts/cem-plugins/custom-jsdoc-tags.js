@@ -1,5 +1,4 @@
 const CUSTOM_MEMBER_JS_DOC_TAGS = [
-  'foo',
   'mdn',
 ];
 
