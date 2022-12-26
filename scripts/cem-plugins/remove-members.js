@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   name: 'INTL-ELEMENTS: Remove non-public members',
 
   packageLinkPhase: ({customElementsManifest: manifest}) => {
@@ -17,4 +17,4 @@ export default {
       });
     });
   },
-}
+});

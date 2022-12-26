@@ -3,7 +3,7 @@ const CUSTOM_MEMBER_JS_DOC_TAGS = [
   'readonly',
 ];
 
-export default {
+export default () => ({
   name: 'INTL-ELEMENTS: Custom JsDoc tags',
 
   analyzePhase: ({ts, node, moduleDoc}) => {
@@ -33,4 +33,4 @@ export default {
       });
     });
   }
-}
+});

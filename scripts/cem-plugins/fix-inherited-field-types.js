@@ -6,15 +6,12 @@
 
 const INHERITED_FIELDS = [
   'value',
-  'providerElement',
-  'consumerElements',
   'intlObject',
 ];
 
 const typeAliases = new Map();
 
-let foo = false;
-export default {
+export default () => ({
   name: 'INTL-ELEMENTS: Fix inherited field types',
 
   analyzePhase: ({ts, node}) => {
@@ -37,7 +34,6 @@ export default {
   },
 
   packageLinkPhase: ({customElementsManifest: manifest}) => {
-    // Remove private and protected members from the docs.
     manifest.modules.forEach(module => {
       module.declarations.forEach(declaration => {
         if (!declaration.members) {
@@ -57,4 +53,4 @@ export default {
       });
     });
   },
-}
+});

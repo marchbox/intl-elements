@@ -5,9 +5,9 @@ import removeMembers from './remove-members.js';
 import removeInternalClasses from './remove-internal-classes.js'
 
 export default [
-  customJsDocTags,
-  optionPropertyDecorator,
-  fixInheritedFieldTypes,
-  removeMembers,
-  removeInternalClasses,
+  customJsDocTags(),
+  optionPropertyDecorator(),
+  fixInheritedFieldTypes(),
+  removeMembers(),
+  removeInternalClasses(),
 ];

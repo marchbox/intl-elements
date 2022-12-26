@@ -337,313 +337,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/elements/displaynames/displaynames-of.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlDisplayNamesOfElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractConsumer",
-            "module": "/src/elements/abstract-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlDisplayNamesOfElement",
-            "module": "src/elements/displaynames/displaynames-of.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/displaynames/displaynames.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlDisplayNamesElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.DisplayNames"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionType",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['type']"
-              },
-              "default": "'language'",
-              "attribute": "option-type"
-            },
-            {
-              "kind": "field",
-              "name": "optionStyle",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
-              },
-              "default": "'long'",
-              "attribute": "option-style"
-            },
-            {
-              "kind": "field",
-              "name": "optionLanguageDisplay",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
-              },
-              "default": "'dialect'",
-              "attribute": "option-languagedisplay"
-            },
-            {
-              "kind": "field",
-              "name": "optionFallback",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
-              },
-              "default": "'code'",
-              "attribute": "option-fallback"
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedDisplayNamesOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-type",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['type']"
-              },
-              "default": "'language'",
-              "fieldName": "optionType"
-            },
-            {
-              "name": "option-style",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
-              },
-              "default": "'long'",
-              "fieldName": "optionStyle"
-            },
-            {
-              "name": "option-languagedisplay",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
-              },
-              "default": "'dialect'",
-              "fieldName": "optionLanguageDisplay"
-            },
-            {
-              "name": "option-fallback",
-              "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
-              },
-              "default": "'code'",
-              "fieldName": "optionFallback"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlDisplayNamesElement",
-            "module": "src/elements/displaynames/displaynames.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/listformat/listformat-format.ts",
       "declarations": [
         {
@@ -988,6 +681,313 @@
           "declaration": {
             "name": "HTMLIntlListFormatElement",
             "module": "src/elements/listformat/listformat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/displaynames/displaynames-of.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlDisplayNamesOfElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractConsumer",
+            "module": "/src/elements/abstract-consumer.js"
+          },
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlDisplayNamesOfElement",
+            "module": "src/elements/displaynames/displaynames-of.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/displaynames/displaynames.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlDisplayNamesElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.DisplayNames"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionType",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['type']"
+              },
+              "default": "'language'",
+              "attribute": "option-type"
+            },
+            {
+              "kind": "field",
+              "name": "optionStyle",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['style']"
+              },
+              "default": "'long'",
+              "attribute": "option-style"
+            },
+            {
+              "kind": "field",
+              "name": "optionLanguageDisplay",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+              },
+              "default": "'dialect'",
+              "attribute": "option-languagedisplay"
+            },
+            {
+              "kind": "field",
+              "name": "optionFallback",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['fallback']"
+              },
+              "default": "'code'",
+              "attribute": "option-fallback"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedDisplayNamesOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-type",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['type']"
+              },
+              "default": "'language'",
+              "fieldName": "optionType"
+            },
+            {
+              "name": "option-style",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['style']"
+              },
+              "default": "'long'",
+              "fieldName": "optionStyle"
+            },
+            {
+              "name": "option-languagedisplay",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+              },
+              "default": "'dialect'",
+              "fieldName": "optionLanguageDisplay"
+            },
+            {
+              "name": "option-fallback",
+              "type": {
+                "text": "Intl.DisplayNamesOptions['fallback']"
+              },
+              "default": "'code'",
+              "fieldName": "optionFallback"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlDisplayNamesElement",
+            "module": "src/elements/displaynames/displaynames.ts"
           }
         }
       ]

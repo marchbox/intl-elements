@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   name: 'INTL-ELEMENTS: Handle @optionProperty() decorator',
 
   analyzePhase: ({ts, node, moduleDoc}) => {
@@ -44,4 +44,4 @@ export default {
       });
     }
   },
-}
+});
