@@ -68,42 +68,48 @@
               "name": "optionUsage",
               "type": {
                 "text": "Intl.CollatorOptions['usage'] | undefined"
-              }
+              },
+              "attribute": "option-usage"
             },
             {
               "kind": "field",
               "name": "optionSensitivity",
               "type": {
                 "text": "Intl.CollatorOptions['sensitivity'] | undefined"
-              }
+              },
+              "attribute": "option-sensitivity"
             },
             {
               "kind": "field",
               "name": "optionIgnorePunctuation",
               "type": {
                 "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
-              }
+              },
+              "attribute": "option-ignorepunctuation"
             },
             {
               "kind": "field",
               "name": "optionNumeric",
               "type": {
                 "text": "Intl.CollatorOptions['numeric'] | undefined"
-              }
+              },
+              "attribute": "option-numeric"
             },
             {
               "kind": "field",
               "name": "optionCaseFirst",
               "type": {
                 "text": "Intl.CollatorOptions['caseFirst'] | undefined"
-              }
+              },
+              "attribute": "option-casefirst"
             },
             {
               "kind": "field",
               "name": "optionCollation",
               "type": {
                 "text": "Intl.CollatorOptions['collation'] | undefined"
-              }
+              },
+              "attribute": "option-collation"
             },
             {
               "kind": "method",
@@ -172,6 +178,7 @@
                 "text": "Intl.RelativeTimeFormatLocaleMatcher"
               },
               "default": "'best fit'",
+              "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
@@ -189,14 +196,49 @@
               }
             }
           ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          },
-          "tagName": "intl-collator",
-          "summary": "Hello world",
-          "customElement": true,
           "attributes": [
+            {
+              "name": "option-usage",
+              "type": {
+                "text": "Intl.CollatorOptions['usage'] | undefined"
+              },
+              "fieldName": "optionUsage"
+            },
+            {
+              "name": "option-sensitivity",
+              "type": {
+                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
+              },
+              "fieldName": "optionSensitivity"
+            },
+            {
+              "name": "option-ignorepunctuation",
+              "type": {
+                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
+              },
+              "fieldName": "optionIgnorePunctuation"
+            },
+            {
+              "name": "option-numeric",
+              "type": {
+                "text": "Intl.CollatorOptions['numeric'] | undefined"
+              },
+              "fieldName": "optionNumeric"
+            },
+            {
+              "name": "option-casefirst",
+              "type": {
+                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
+              },
+              "fieldName": "optionCaseFirst"
+            },
+            {
+              "name": "option-collation",
+              "type": {
+                "text": "Intl.CollatorOptions['collation'] | undefined"
+              },
+              "fieldName": "optionCollation"
+            },
             {
               "name": "locales",
               "type": {
@@ -218,8 +260,27 @@
                 "name": "AbstractProvider",
                 "module": "src/elements/abstract-provider.ts"
               }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
             }
-          ]
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-collator",
+          "summary": "Hello world",
+          "customElement": true
         }
       ],
       "exports": [
