@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/abstract-provider.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/collator/collator-compare.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlCollatorCompareElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string[]"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractConsumer",
+            "module": "/src/elements/abstract-consumer.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlCollatorCompareElement",
+            "module": "src/elements/collator/collator-compare.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/collator/collator.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Hello hello helloo",
+          "name": "HTMLIntlCollatorElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.Collator"
+              },
+              "mdn": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionUsage",
+              "type": {
+                "text": "Intl.CollatorOptions['usage'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionSensitivity",
+              "type": {
+                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionIgnorePunctuation",
+              "type": {
+                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionNumeric",
+              "type": {
+                "text": "Intl.CollatorOptions['numeric'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionCaseFirst",
+              "type": {
+                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionCollation",
+              "type": {
+                "text": "Intl.CollatorOptions['collation'] | undefined"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedCollatorOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-collator",
+          "summary": "Hello world",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlCollatorElement",
+            "module": "src/elements/collator/collator.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

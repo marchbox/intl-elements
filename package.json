@@ -18,10 +18,12 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "customElements": "./custom-elements.json",
   "files": [
     "dist/",
     "LICENSE",
     "CHANGELOG.md",
+    "custom-elements.json",
     "package.json"
   ],
   "scripts": {
@@ -33,10 +35,12 @@
     "dev:server:serve": "web-dev-server",
     "build": "rm -rf dist && tsc --project tsconfig.prod.json",
     "build:watch": "tsc --watch",
+    "build:docs": "cem analyze",
     "test": "jest",
     "test:watch": "jest --watch --no-coverage"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.6.6",
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^29.2.2",

@@ -22,7 +22,7 @@ export default class HTMLIntlCollatorElement extends AbstractProvider {
   #intlObject!: Intl.Collator;
 
   /** @mdn https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator */
-  get intlObject(): Intl.Collator {
+  override get intlObject(): Intl.Collator {
     return this.#intlObject;
   }
 
