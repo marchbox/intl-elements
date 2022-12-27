@@ -83,6 +83,7 @@ function getTable(section, data) {
           value = value ? 'Yes' : '';
           break;
         case 'description':
+          value = value?.replace(/\n/g, ' ');
           if (item.intl && item.intlsee) {
             value = [
               value,

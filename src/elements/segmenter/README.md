@@ -48,8 +48,7 @@
 
 | Name              | Type                         | Default     | Read only? | Description                                                                      | Attribute  |
 | ----------------- | ---------------------------- | ----------- | ---------- | -------------------------------------------------------------------------------- | ---------- |
-| `input`           | `string`                     | `undefined` | Yes        | A read only reference to the `input` argument of `Intl.Segmenter`’s
-`segment()`. |            |
+| `input`           | `string`                     | `undefined` | Yes        | A read only reference to the `input` argument of `Intl.Segmenter`’s `segment()`. |            |
 | `provider`        | `string \| undefined`        | `undefined` |            |                                                                                  | `provider` |
 | `providerElement` | `P \| undefined`             | `undefined` | Yes        |                                                                                  |            |
 | `value`           | `Intl.Segments \| undefined` | `undefined` | Yes        |                                                                                  |            |
