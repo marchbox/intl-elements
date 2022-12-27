@@ -54,7 +54,7 @@
 
 ### Methods
 
-| Name       | Return        | Description                                                                                                                                                 |
-| ---------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `maximize` | `LocaleValue` | [Learn more about `Intl.Locale.prototype.maximize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) |
-| `minimize` | `LocaleValue` | [Learn more about `Intl.Locale.prototype.minimize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize) |
+| Name       | Return                | Description                                                                                                                                                 |
+| ---------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maximize` | `Intl.Locale \| null` | [Learn more about `Intl.Locale.prototype.maximize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) |
+| `minimize` | `Intl.Locale \| null` | [Learn more about `Intl.Locale.prototype.minimize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize) |

@@ -2155,7 +2155,7 @@
               "name": "maximize",
               "return": {
                 "type": {
-                  "text": "LocaleValue"
+                  "text": "Intl.Locale | null"
                 }
               },
               "intl": "Intl.Locale.prototype.maximize()",
@@ -2166,7 +2166,7 @@
               "name": "minimize",
               "return": {
                 "type": {
-                  "text": "LocaleValue"
+                  "text": "Intl.Locale | null"
                 }
               },
               "intl": "Intl.Locale.prototype.minimize()",

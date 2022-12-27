@@ -9,17 +9,23 @@ const INHERITED_FIELDS = [
   'intlObject',
 ];
 
-const typeAliases = new Map();
+const types = new Map();
 
 export default () => ({
-  name: 'INTL-ELEMENTS: Fix inherited field types',
+  name: 'INTL-ELEMENTS: Fix inherited field types and aliased types',
 
   analyzePhase: ({ts, node}) => {
     if (node.kind === ts.SyntaxKind.TypeAliasDeclaration) {
-      typeAliases.set(node.parent.fileName, {
+      const {fileName} = node.parent;
+      const ref = {
         name: node.name.getText(),
         type: node.type.getText(),
-      });
+      };
+      if (types.has(fileName)) {
+        types.get(fileName).push(ref);
+      } else {
+        types.set(fileName, [ref]);
+      }
     }
   },
 
@@ -45,9 +51,24 @@ export default () => ({
             member.type = Object.assign({}, member.originalType);
             delete member.originalType;
           }
-          if (typeAliases.has(module.path) &&
-              member.type?.text === typeAliases.get(module.path).name) {
-            member.type.text = typeAliases.get(module.path).type;
+          if (types.has(module.path)) {
+            let ref;
+            switch (member.kind) {
+              case 'method':
+                ref = types.get(module.path)
+                    .find(type => type.name === member.return?.type?.text);
+                if (ref) {
+                  member.return.type.text = ref.type;
+                }
+                break;
+              case 'field':
+                ref = types.get(module.path)
+                    .find(type => type.name === member.type?.text);
+                if (ref) {
+                  member.type.text = ref.type;
+                }
+                break;
+            }
           }
         });
       });
