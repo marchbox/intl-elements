@@ -6,6 +6,7 @@ import {optionProperty} from '../../utils/properties.js';
 /**
  * @intl Intl.Collator
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
+ * @intlprovider
  *
  * @element intl-collator
  */

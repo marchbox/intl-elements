@@ -5,6 +5,7 @@ import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 /**
  * @intl Intl.NumberFormat.prototype.format
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format
+ * @intlconsumer
  *
  * @element intl-numberformat-format
  *

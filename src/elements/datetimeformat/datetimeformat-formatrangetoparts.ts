@@ -7,6 +7,7 @@ import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.j
 /**
  * @intl Intl.DateTimeFormat.prototype.formatRangeToParts
  * @intlsee https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatRangeToParts
+ * @intlconsumer
  *
  * @element intl-datetimeformat-formatrangetoparts
  *

@@ -6,6 +6,7 @@ import {optionProperty} from '../../utils/properties.js';
 /**
  * @intl Intl.DisplayNames
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames
+ * @intlprovider
  *
  * @element intl-displaynames
  */

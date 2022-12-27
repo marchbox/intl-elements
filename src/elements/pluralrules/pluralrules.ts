@@ -6,6 +6,7 @@ import {optionProperty} from '../../utils/properties.js';
 /**
  * @intl Intl.PluralRules
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
+ * @intlprovider
  *
  * @element intl-pluralrules
  */

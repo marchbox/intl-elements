@@ -5,6 +5,7 @@ import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.j
 /**
  * @intl Intl.DateTimeFormat.prototype.format
  * @intlsee https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/format
+ * @intlconsumer
  *
  * @element intl-datetimeformat-format
  *

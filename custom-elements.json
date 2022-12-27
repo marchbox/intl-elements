@@ -246,6 +246,7 @@
           "tagName": "intl-collator",
           "intl": "Intl.Collator",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -330,6 +331,7 @@
           "tagName": "intl-collator-compare",
           "intl": "Intl.Collator.prototype.compare",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -798,6 +800,7 @@
           "tagName": "intl-datetimeformat",
           "intl": "Intl.DateTimeFormat",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -878,6 +881,7 @@
           "tagName": "intl-datetimeformat-format",
           "intl": "Intl.DateTimeFormat.prototype.format",
           "intlsee": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/format",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -979,6 +983,7 @@
           "tagName": "intl-datetimeformat-formatrange",
           "intl": "Intl.DateTimeFormat.prototype.formatRange",
           "intlsee": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatRange",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -1148,6 +1153,7 @@
           "tagName": "intl-datetimeformat-formatrangetoparts",
           "intl": "Intl.DateTimeFormat.prototype.formatRangeToParts",
           "intlsee": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatRangeToParts",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -1297,6 +1303,7 @@
           "tagName": "intl-datetimeformat-formattoparts",
           "intl": "Intl.DateTimeFormat.prototype.formatToParts",
           "intlsee": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -1546,6 +1553,7 @@
           "tagName": "intl-displaynames",
           "intl": "Intl.DisplayNames",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -1626,6 +1634,7 @@
           "tagName": "intl-displaynames-of",
           "intl": "Intl.DisplayNames.prototype.of",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/of",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -1841,6 +1850,7 @@
           "tagName": "intl-listformat",
           "intl": "Intl.ListFormat",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -1921,6 +1931,7 @@
           "tagName": "intl-listformat-format",
           "intl": "Intl.ListFormat.prototype.format",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/format",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -2022,6 +2033,7 @@
           "tagName": "intl-listformat-formattoparts",
           "intl": "Intl.ListFormat.prototype.formatToParts",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/formatToParts",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -2803,6 +2815,7 @@
           "tagName": "intl-numberformat",
           "intl": "Intl.NumberFormat",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -2883,6 +2896,7 @@
           "tagName": "intl-numberformat-format",
           "intl": "Intl.NumberFormat.prototype.format",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -3044,6 +3058,7 @@
           "tagName": "intl-numberformat-formattoparts",
           "intl": "Intl.NumberFormat.prototype.formatToParts",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -3317,6 +3332,7 @@
           "tagName": "intl-pluralrules",
           "intl": "Intl.PluralRules",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -3421,6 +3437,7 @@
           "tagName": "intl-pluralrules-select",
           "intl": "Intl.PluralRules.prototype.select",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -3636,6 +3653,7 @@
           "tagName": "intl-relativetimeformat",
           "intl": "Intl.RelativeTimeFormat",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -3724,6 +3742,7 @@
           "tagName": "intl-relativetimeformat-format",
           "intl": "Intl.RelativeTimeFormat.prototype.format",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {
@@ -3804,6 +3823,7 @@
           "tagName": "intl-relativetimeformat-formattoparts",
           "intl": "Intl.RelativeTimeFormat.prototype.formatToParts",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts",
+          "intlconsumer": true,
           "customElement": true
         }
       ],
@@ -3989,6 +4009,7 @@
           "tagName": "intl-segmenter",
           "intl": "Intl.Segmenter",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter",
+          "intlprovider": true,
           "customElement": true
         }
       ],
@@ -4086,6 +4107,7 @@
           "tagName": "intl-segmenter-segment",
           "intl": "Intl.Segmenter.prototype.segment",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/segment",
+          "intlconsumer": true,
           "customElement": true,
           "attributes": [
             {

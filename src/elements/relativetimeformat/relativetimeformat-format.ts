@@ -5,6 +5,7 @@ import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-co
 /**
  * @intl Intl.RelativeTimeFormat.prototype.format
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format
+ * @intlconsumer
  *
  * @element intl-relativetimeformat-format
  *

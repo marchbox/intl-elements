@@ -6,6 +6,7 @@ import {optionProperty} from '../../utils/properties.js';
 /**
  * @intl Intl.ListFormat
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
+ * @intlprovider
  *
  * @element intl-listformat
  */

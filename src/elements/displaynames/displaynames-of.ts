@@ -6,6 +6,7 @@ import HTMLIntlDisplayNamesElement from './displaynames.js';
 /**
  * @intl Intl.DisplayNames.prototype.of
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/of
+ * @intlconsumer
  *
  * @element intl-displaynames-of
  *

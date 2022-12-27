@@ -6,6 +6,7 @@ import HTMLIntlCollatorElement from './collator.js';
 /**
  * @intl Intl.Collator.prototype.compare
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare
+ * @intlconsumer
  *
  * @element intl-collator-compare
  *
