@@ -30,8 +30,8 @@
 
 ### Methods
 
-| Name              | Return                           | Description                                                                      |
-| ----------------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                           | Description                                                                                                                                                                     |
+| ----------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedListFormatOptions` | [Learn more about `Intl.ListFormat.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions) |
 
 ***
@@ -56,8 +56,8 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                                  |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | One or multiple `<data>` elements with `value` attributes. An array is created based on the values and used as the `list` argument of `Intl.ListFormat`’s `format()` method. |
 
 ### CSS Parts
@@ -88,14 +88,14 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                                         |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | One or multiple `<data>` elements with `value` attributes. An array is created based on the values and used as the `list` argument of `Intl.ListFormat`’s `formatToParts()` method. |
 
 ### CSS Parts
 
-| Name      | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
-| `element` | A `<span>` element that contains the string of the formatted part which `type` is `element`. |
-| `literal` | A `<span>` element that contains the string of the formatted part which `type` is `literal`. |
+| Name      | Description                                                                                     |
+| --------- | ----------------------------------------------------------------------------------------------- |
+| `element` | A `<span>` element that contains the string of the formatted part which `type` is `element`.    |
+| `literal` | A `<span>` element that contains the string of the formatted part which `type` is `literal`.    |
 | `value`   | The `<span>` element that contains the elements that contain formatted parts of the given list. |

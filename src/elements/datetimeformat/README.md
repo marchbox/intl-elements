@@ -64,8 +64,8 @@
 
 ### Methods
 
-| Name              | Return                               | Description                                                                      |
-| ----------------- | ------------------------------------ | -------------------------------------------------------------------------------- |
+| Name              | Return                               | Description                                                                                                                                                                             |
+| ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedDateTimeFormatOptions` | [Learn more about `Intl.DateTimeFormat.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) |
 
 ***
@@ -90,8 +90,8 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | The slotted element must be a `<time>` element with a valid `datetime` attribute, and the attribute value must represent a date and optionally a time. Hence, it can only be a date string (`YYYY-MM-DD`) or a local or global date time string (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). |
 
 ### CSS Parts
@@ -122,16 +122,16 @@
 
 ### Slots
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |         | The slotted elements must be `<time>` elements with valid `datetime` attributes, and the attribute values must represent dates and optionally times. Hence, they can only be date strings (`YYYY-MM-DD`) or local or global date time strings (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). The first slotted `<time>` element would be used as the start date and the second slotted `<time>` element would be used as the end date. Alternatively, use the `start` and `end` slots, which take higher precedence over the default slotted elements. |
-| `end`   | The end date and time. See the default slot for more details.                    |
-| `start` | The start date and time. See the default slot for more details.                  |
+| `end`   | The end date and time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `start` | The start date and time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
 ### CSS Parts
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                         |
+| ------- | ----------------------------------------------------------------------------------- |
 | `value` | The `<span>` element that contains the string of the formatted date and time range. |
 
 ***
@@ -156,34 +156,34 @@
 
 ### Slots
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |         | The slotted elements must be `<time>` elements with valid `datetime` attributes, and the attribute values must represent dates and optionally times. Hence, they can only be date strings (`YYYY-MM-DD`) or local or global date time strings (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). The first slotted `<time>` element is used as the start date and the second slotted `<time>` element is used as the end date. Alternatively, use the `start` and `end` slots, which take higher precedence over the default slotted elements. |
-| `end`   | The end date and time. See the default slot for more details.                    |
-| `start` | The start date and time. See the default slot for more details.                  |
+| `end`   | The end date and time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| `start` | The start date and time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ### CSS Parts
 
-| Name                | Description                                                                      |
-| ------------------- | -------------------------------------------------------------------------------- |
-| `day`               | A `<span>` element that contains the string of a formatted part which `type` is `day`. |
-| `day-period`        | A `<span>` element that contains the string of a formatted part which `type` is `dayPeriod`. |
-| `end-range`         | A `<span>` element that contains the string of a formatted part which `source` is `endRange`. |
-| `era`               | A `<span>` element that contains the string of a formatted part which `type` is `era`. |
-| `fractional-second` | A `<span>` element that contains the string of a formatted part which `type` is `fractionalSecond`. |
-| `hour`              | A `<span>` element that contains the string of a formatted part which `type` is `hour`. |
-| `literal`           | A `<span>` element that contains the string of a formatted part which `type` is `literal`. |
-| `minute`            | A `<span>` element that contains the string of a formatted part which `type` is `minute`. |
-| `month`             | A `<span>` element that contains the string of a formatted part which `type` is `month`. |
-| `related-year`      | A `<span>` element that contains the string of a formatted part which `type` is `relatedYear`. |
-| `second`            | A `<span>` element that contains the string of a formatted part which `type` is `second`. |
-| `shared`            | A `<span>` elements that contains the strings of a formatted part which `source` are `shared`. |
-| `start-range`       | A `<span>` element that contains the string of a formatted part which `source` is `startRange`. |
-| `time-zone-name`    | A `<span>` element that contains the string of a formatted part which `type` is `timeZoneName`. |
+| Name                | Description                                                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `day`               | A `<span>` element that contains the string of a formatted part which `type` is `day`.                         |
+| `day-period`        | A `<span>` element that contains the string of a formatted part which `type` is `dayPeriod`.                   |
+| `end-range`         | A `<span>` element that contains the string of a formatted part which `source` is `endRange`.                  |
+| `era`               | A `<span>` element that contains the string of a formatted part which `type` is `era`.                         |
+| `fractional-second` | A `<span>` element that contains the string of a formatted part which `type` is `fractionalSecond`.            |
+| `hour`              | A `<span>` element that contains the string of a formatted part which `type` is `hour`.                        |
+| `literal`           | A `<span>` element that contains the string of a formatted part which `type` is `literal`.                     |
+| `minute`            | A `<span>` element that contains the string of a formatted part which `type` is `minute`.                      |
+| `month`             | A `<span>` element that contains the string of a formatted part which `type` is `month`.                       |
+| `related-year`      | A `<span>` element that contains the string of a formatted part which `type` is `relatedYear`.                 |
+| `second`            | A `<span>` element that contains the string of a formatted part which `type` is `second`.                      |
+| `shared`            | A `<span>` elements that contains the strings of a formatted part which `source` are `shared`.                 |
+| `start-range`       | A `<span>` element that contains the string of a formatted part which `source` is `startRange`.                |
+| `time-zone-name`    | A `<span>` element that contains the string of a formatted part which `type` is `timeZoneName`.                |
 | `value`             | The `<span>` element that contains the elements that contain formatted parts of the given date and time range. |
-| `weekday`           | A `<span>` element that contains the string of a formatted part which `type` is `weekday`. |
-| `year`              | A `<span>` element that contains the string of a formatted part which `type` is `year`. |
-| `year-name`         | A `<span>` element that contains the string of a formatted part which `type` is `yearName`. |
+| `weekday`           | A `<span>` element that contains the string of a formatted part which `type` is `weekday`.                     |
+| `year`              | A `<span>` element that contains the string of a formatted part which `type` is `year`.                        |
+| `year-name`         | A `<span>` element that contains the string of a formatted part which `type` is `yearName`.                    |
 
 ***
 
@@ -207,26 +207,26 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | The slotted element must be a `<time>` element with a valid `datetime` attribute, and the attribute value must represent a date and optionally a time. Hence, it can only be a date string (`YYYY-MM-DD`) or a local or global date time string (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). |
 
 ### CSS Parts
 
-| Name                | Description                                                                      |
-| ------------------- | -------------------------------------------------------------------------------- |
-| `day`               | The `<span>` element that contains the string of the formatted part which `type` is `day`. |
-| `day-period`        | The `<span>` element that contains the string of the formatted part which `type` is `dayPeriod`. |
-| `era`               | The `<span>` element that contains the string of the formatted part which `type` is `era`. |
-| `fractional-second` | The `<span>` element that contains the string of the formatted part which `type` is `fractionalSecond`. |
-| `hour`              | The `<span>` element that contains the string of the formatted part which `type` is `hour`. |
-| `literal`           | A `<span>` element that contains the string of the formatted part which `type` is `literal`. |
-| `minute`            | The `<span>` element that contains the string of the formatted part which `type` is `minute`. |
-| `month`             | The `<span>` element that contains the string of the formatted part which `type` is `month`. |
-| `related-year`      | The `<span>` element that contains the string of the formatted part which `type` is `relatedYear`. |
-| `second`            | The `<span>` element that contains the string of the formatted part which `type` is `second`. |
-| `time-zone-name`    | The `<span>` element that contains the string of the formatted part which `type` is `timeZoneName`. |
+| Name                | Description                                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------------------------- |
+| `day`               | The `<span>` element that contains the string of the formatted part which `type` is `day`.               |
+| `day-period`        | The `<span>` element that contains the string of the formatted part which `type` is `dayPeriod`.         |
+| `era`               | The `<span>` element that contains the string of the formatted part which `type` is `era`.               |
+| `fractional-second` | The `<span>` element that contains the string of the formatted part which `type` is `fractionalSecond`.  |
+| `hour`              | The `<span>` element that contains the string of the formatted part which `type` is `hour`.              |
+| `literal`           | A `<span>` element that contains the string of the formatted part which `type` is `literal`.             |
+| `minute`            | The `<span>` element that contains the string of the formatted part which `type` is `minute`.            |
+| `month`             | The `<span>` element that contains the string of the formatted part which `type` is `month`.             |
+| `related-year`      | The `<span>` element that contains the string of the formatted part which `type` is `relatedYear`.       |
+| `second`            | The `<span>` element that contains the string of the formatted part which `type` is `second`.            |
+| `time-zone-name`    | The `<span>` element that contains the string of the formatted part which `type` is `timeZoneName`.      |
 | `value`             | The `<span>` element that contains the elements that contain formatted parts of the given date and time. |
-| `weekday`           | The `<span>` element that contains the string of the formatted part which `type` is `weekday`. |
-| `year`              | The `<span>` element that contains the string of the formatted part which `type` is `year`. |
-| `year-name`         | The `<span>` element that contains the string of the formatted part which `type` is `yearName`. |
+| `weekday`           | The `<span>` element that contains the string of the formatted part which `type` is `weekday`.           |
+| `year`              | The `<span>` element that contains the string of the formatted part which `type` is `year`.              |
+| `year-name`         | The `<span>` element that contains the string of the formatted part which `type` is `yearName`.          |

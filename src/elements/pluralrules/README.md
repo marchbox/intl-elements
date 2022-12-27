@@ -38,8 +38,8 @@
 
 ### Methods
 
-| Name              | Return                            | Description                                                                      |
-| ----------------- | --------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                            | Description                                                                                                                                                                       |
+| ----------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedPluralRulesOptions` | [Learn more about `Intl.PluralRules.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions) |
 
 ***
@@ -64,15 +64,15 @@
 
 ### Slots
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
-|         | The slotted element must be a `<data>` element with a `value` attribute. The value should be a number, it’s used as the `number` argument of `Intl.PluralRules`’s `select()` method. |
-| `few`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `few`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
-| `many`  | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `many`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
-| `one`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `one`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
+| Name    | Description                                                                                                                                                                                                                                                    |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|         | The slotted element must be a `<data>` element with a `value` attribute. The value should be a number, it’s used as the `number` argument of `Intl.PluralRules`’s `select()` method.                                                                           |
+| `few`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `few`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.                          |
+| `many`  | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `many`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.                         |
+| `one`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `one`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.                          |
 | `other` | This slot is required. The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `other`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
-| `two`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `two`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
-| `zero`  | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `zero`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number. |
+| `two`   | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `two`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.                          |
+| `zero`  | The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `zero`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.                         |
 
 ### CSS Parts
 

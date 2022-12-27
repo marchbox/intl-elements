@@ -30,8 +30,8 @@
 
 ### Methods
 
-| Name              | Return                                   | Description                                                                      |
-| ----------------- | ---------------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                                   | Description                                                                                                                                                                                     |
+| ----------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedRelativeTimeFormatOptions` | [Learn more about `Intl.RelativeTimeFormat.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions) |
 
 ***
@@ -56,11 +56,11 @@
 
 ### Slots
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |         | The slotted elements must be `<data>` elements with `value` attributes, the first slotted `<data>` element’s `value` must be a string of number that represents the relative time, the second slotted `<data>` element’s `value` must be a string that represents the unit, and it must be one of the supported unit. See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format). Alternatively, use the `rtime` and `unit` slots, which take higher precedence over the default slotted elements. |
-| `rtime` | The relative time. See the default slot for more details.                        |
-| `unit`  | The unit. See the default slot for more details.                                 |
+| `rtime` | The relative time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `unit`  | The unit. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ### CSS Parts
 
@@ -82,16 +82,16 @@
 
 ### Slots
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |         | The slotted elements must be `<data>` elements with `value` attributes, the first slotted `<data>` element’s `value` must be a number that represents the relative time, the second slotted `<data>` element’s `value` must be a string that represents the unit, and it must be one of the supported unit. See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format). Alternatively, use the `rtime` and `unit` slots, which take higher precedence over the default slotted elements. |
-| `rtime` | The relative time. See the default slot for more details.                        |
-| `unit`  | The unit. See the default slot for more details.                                 |
+| `rtime` | The relative time. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `unit`  | The unit. See the default slot for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ### CSS Parts
 
-| Name      | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
-| `integer` | The `<span>` element that contains the string of the formatted part which `type` is `integer`. |
-| `literal` | A `<span>` element that contains the string of a formatted part which `type` is `literal`. |
+| Name      | Description                                                                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------------------- |
+| `integer` | The `<span>` element that contains the string of the formatted part which `type` is `integer`.                    |
+| `literal` | A `<span>` element that contains the string of a formatted part which `type` is `literal`.                        |
 | `value`   | The `<span>` element that contains the elements that contain formatted parts of the given relative time and unit. |

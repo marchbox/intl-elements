@@ -119,9 +119,7 @@ export default function generateMarkdown(module) {
 
     md.push(
       `### ${section.heading}`,
-      markdownTable(getTable(section, data[section.key]), {
-        stringLength: s => s.length > 80 ? 80 : s.length,
-      })
+      markdownTable(getTable(section, data[section.key]))
     );
   });
 

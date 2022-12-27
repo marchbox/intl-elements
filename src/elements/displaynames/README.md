@@ -34,8 +34,8 @@
 
 ### Methods
 
-| Name              | Return                             | Description                                                                      |
-| ----------------- | ---------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                             | Description                                                                                                                                                                         |
+| ----------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedDisplayNamesOptions` | [Learn more about `Intl.DisplayNames.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/resolvedOptions) |
 
 ***
@@ -60,12 +60,12 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                               |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `code` argument of `Intl.DisplayNames`’s `of()` method. |
 
 ### CSS Parts
 
-| Name    | Description                                                                      |
-| ------- | -------------------------------------------------------------------------------- |
+| Name    | Description                                                                          |
+| ------- | ------------------------------------------------------------------------------------ |
 | `value` | The `<span>` element that contains the string of the display name of the given code. |

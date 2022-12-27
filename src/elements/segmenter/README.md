@@ -28,8 +28,8 @@
 
 ### Methods
 
-| Name              | Return                          | Description                                                                      |
-| ----------------- | ------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                          | Description                                                                                                                                                                   |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedSegmenterOptions` | [Learn more about `Intl.Segmenter.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/resolvedOptions) |
 
 ***
@@ -55,14 +55,14 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                              |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 |      | The slot should only contain plain text, its `textContent` is used as the `input` argument of `Intl.Segmenter`’s `segment()`. Any HTML elements in the slot are ignored. |
 
 ### CSS Parts
 
-| Name       | Description                                                                      |
-| ---------- | -------------------------------------------------------------------------------- |
+| Name       | Description                                                                                                                                                                                                                                                                                                                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `segment`  | The `<span>` element that contains the text of a segment. Not that if the provider element’s `option-granularity` is `word`, for a none-word-like segment, the text is not wrapped in a `<span>` element. This is to avoid characters like punctuation marks being inappropriately wrapped to the next line, e.g. a comma at the beginning of a line, or a opening quotation mark at the end of a line. |
-| `value`    | The `<span>` element that contains the segmented HTML result.                    |
-| `wordlike` | The `<span>` element that contains the text of a segment which `isWordLike` is `true`. |
+| `value`    | The `<span>` element that contains the segmented HTML result.                                                                                                                                                                                                                                                                                                                                           |
+| `wordlike` | The `<span>` element that contains the text of a segment which `isWordLike` is `true`.                                                                                                                                                                                                                                                                                                                  |

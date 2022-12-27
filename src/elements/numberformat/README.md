@@ -56,8 +56,8 @@
 
 ### Methods
 
-| Name              | Return                             | Description                                                                      |
-| ----------------- | ---------------------------------- | -------------------------------------------------------------------------------- |
+| Name              | Return                             | Description                                                                                                                                                                |
+| ----------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedNumberFormatOptions` | [Learn more about `Intl.NumberFormat.prototype.format`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/resolvedOptions) |
 
 ***
@@ -82,8 +82,8 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `number` argument of `Intl.NumberFormat`’s `format()` method. |
 
 ### CSS Parts
@@ -114,29 +114,29 @@
 
 ### Slots
 
-| Name | Description                                                                      |
-| ---- | -------------------------------------------------------------------------------- |
+| Name | Description                                                                                                                                                            |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |      | The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `number` argument of `Intl.NumberFormat`’s `formatToParts()` method. |
 
 ### CSS Parts
 
-| Name                 | Description                                                                      |
-| -------------------- | -------------------------------------------------------------------------------- |
-| `compact`            | A `<span>` element that contains the string of the formatted part which `type` is `compact`. |
-| `currency`           | A `<span>` element that contains the string of the formatted part which `type` is `currency`. |
-| `decimal`            | A `<span>` element that contains the string of the formatted part which `type` is `decimal`. |
-| `exponent-integer`   | A `<span>` element that contains the string of the formatted part which `type` is `exponentInteger`. |
+| Name                 | Description                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| `compact`            | A `<span>` element that contains the string of the formatted part which `type` is `compact`.           |
+| `currency`           | A `<span>` element that contains the string of the formatted part which `type` is `currency`.          |
+| `decimal`            | A `<span>` element that contains the string of the formatted part which `type` is `decimal`.           |
+| `exponent-integer`   | A `<span>` element that contains the string of the formatted part which `type` is `exponentInteger`.   |
 | `exponent-minusSign` | A `<span>` element that contains the string of the formatted part which `type` is `exponentMinusSign`. |
 | `exponent-separator` | A `<span>` element that contains the string of the formatted part which `type` is `exponentSeparator`. |
-| `fraction`           | A `<span>` element that contains the string of the formatted part which `type` is `fraction`. |
-| `group`              | A `<span>` element that contains the string of a formatted part which `type` is `group`. |
-| `infinity`           | A `<span>` element that contains the string of the formatted part which `type` is `infinity`. |
-| `integer`            | A `<span>` element that contains the string of a formatted part which `type` is `integer`. |
-| `literal`            | A `<span>` element that contains the string of a formatted part which `type` is `literal`. |
-| `minus-sign`         | A `<span>` element that contains the string of the formatted part which `type` is `minusSign`. |
-| `nan`                | A `<span>` element that contains the string of the formatted part which `type` is `nan`. |
-| `percent-sign`       | A `<span>` element that contains the string of the formatted part which `type` is `percentSign`. |
-| `plus-sign`          | A `<span>` element that contains the string of the formatted part which `type` is `plusSign`. |
-| `unit`               | A `<span>` element that contains the string of the formatted part which `type` is `unit`. |
-| `unknown`            | A `<span>` element that contains the string of a formatted part which `type` is `unknown`. |
-| `value`              | The `<span>` element that contains the elements that contain formatted parts of the given number. |
+| `fraction`           | A `<span>` element that contains the string of the formatted part which `type` is `fraction`.          |
+| `group`              | A `<span>` element that contains the string of a formatted part which `type` is `group`.               |
+| `infinity`           | A `<span>` element that contains the string of the formatted part which `type` is `infinity`.          |
+| `integer`            | A `<span>` element that contains the string of a formatted part which `type` is `integer`.             |
+| `literal`            | A `<span>` element that contains the string of a formatted part which `type` is `literal`.             |
+| `minus-sign`         | A `<span>` element that contains the string of the formatted part which `type` is `minusSign`.         |
+| `nan`                | A `<span>` element that contains the string of the formatted part which `type` is `nan`.               |
+| `percent-sign`       | A `<span>` element that contains the string of the formatted part which `type` is `percentSign`.       |
+| `plus-sign`          | A `<span>` element that contains the string of the formatted part which `type` is `plusSign`.          |
+| `unit`               | A `<span>` element that contains the string of the formatted part which `type` is `unit`.              |
+| `unknown`            | A `<span>` element that contains the string of a formatted part which `type` is `unknown`.             |
+| `value`              | The `<span>` element that contains the elements that contain formatted parts of the given number.      |

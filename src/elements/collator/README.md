@@ -38,8 +38,8 @@
 
 ### Methods
 
-| Name              | Return                         | Description                                                                      |
-| ----------------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| Name              | Return                         | Description                                                                                                                                                                 |
+| ----------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resolvedOptions` | `Intl.ResolvedCollatorOptions` | [Learn more about `Intl.Collator.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions) |
 
 ***
@@ -64,9 +64,9 @@
 
 ### Slots
 
-| Name     | Description                                                                      |
-| -------- | -------------------------------------------------------------------------------- |
-| `list`   | The list conotainer element. Depending on the value of the `option-usage` attribute, the list items are either sorted (default or `sort`) or filtered (`search`). |
+| Name     | Description                                                                                                                                                                              |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list`   | The list conotainer element. Depending on the value of the `option-usage` attribute, the list items are either sorted (default or `sort`) or filtered (`search`).                        |
 | `target` | The slotted element must be a `<data>` element with a `value` attribute. When `option-usage` is set to `search`, the list items are filtered based on the value of the `target` element. |
 
 ### CSS Parts
