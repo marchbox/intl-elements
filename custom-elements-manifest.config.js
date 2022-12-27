@@ -1,4 +1,4 @@
-import intlElementsDocsPlugin from './scripts/cem-plugins/index.js';
+import intlElementsDocsPlugin from './scripts/build-manifest/index.js';
 
 export default {
   globs: [
