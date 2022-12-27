@@ -4,695 +4,24 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/elements/collator/collator-compare.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlCollatorCompareElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractConsumer",
-            "module": "/src/elements/abstract-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlCollatorCompareElement",
-            "module": "src/elements/collator/collator-compare.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/collator/collator.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Hello hello helloo",
-          "name": "HTMLIntlCollatorElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.Collator"
-              },
-              "readonly": true,
-              "mdn": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionUsage",
-              "type": {
-                "text": "Intl.CollatorOptions['usage'] | undefined"
-              },
-              "attribute": "option-usage"
-            },
-            {
-              "kind": "field",
-              "name": "optionSensitivity",
-              "type": {
-                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
-              },
-              "attribute": "option-sensitivity"
-            },
-            {
-              "kind": "field",
-              "name": "optionIgnorePunctuation",
-              "type": {
-                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
-              },
-              "attribute": "option-ignorepunctuation"
-            },
-            {
-              "kind": "field",
-              "name": "optionNumeric",
-              "type": {
-                "text": "Intl.CollatorOptions['numeric'] | undefined"
-              },
-              "attribute": "option-numeric"
-            },
-            {
-              "kind": "field",
-              "name": "optionCaseFirst",
-              "type": {
-                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
-              },
-              "attribute": "option-casefirst"
-            },
-            {
-              "kind": "field",
-              "name": "optionCollation",
-              "type": {
-                "text": "Intl.CollatorOptions['collation'] | undefined"
-              },
-              "attribute": "option-collation"
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedCollatorOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-usage",
-              "type": {
-                "text": "Intl.CollatorOptions['usage'] | undefined"
-              },
-              "fieldName": "optionUsage"
-            },
-            {
-              "name": "option-sensitivity",
-              "type": {
-                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
-              },
-              "fieldName": "optionSensitivity"
-            },
-            {
-              "name": "option-ignorepunctuation",
-              "type": {
-                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
-              },
-              "fieldName": "optionIgnorePunctuation"
-            },
-            {
-              "name": "option-numeric",
-              "type": {
-                "text": "Intl.CollatorOptions['numeric'] | undefined"
-              },
-              "fieldName": "optionNumeric"
-            },
-            {
-              "name": "option-casefirst",
-              "type": {
-                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
-              },
-              "fieldName": "optionCaseFirst"
-            },
-            {
-              "name": "option-collation",
-              "type": {
-                "text": "Intl.CollatorOptions['collation'] | undefined"
-              },
-              "fieldName": "optionCollation"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          },
-          "tagName": "intl-collator",
-          "summary": "Hello world",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlCollatorElement",
-            "module": "src/elements/collator/collator.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat-format.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatFormatElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractListFormatConsumer",
-            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlListFormatFormatElement",
-            "module": "src/elements/listformat/listformat-format.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat-formattoparts.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatFormatToPartsElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "Intl.ListFormatPart[]"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractListFormatConsumer",
-            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlListFormatFormatToPartsElement",
-            "module": "src/elements/listformat/listformat-formattoparts.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/listformat/listformat.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlListFormatElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.ListFormat"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionStyle",
-              "type": {
-                "text": "Intl.ListFormatOptions['style']"
-              },
-              "default": "'long'",
-              "attribute": "option-style"
-            },
-            {
-              "kind": "field",
-              "name": "optionType",
-              "type": {
-                "text": "Intl.ListFormatOptions['type']"
-              },
-              "default": "'conjunction'",
-              "attribute": "option-type"
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedListFormatOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-style",
-              "type": {
-                "text": "Intl.ListFormatOptions['style']"
-              },
-              "default": "'long'",
-              "fieldName": "optionStyle"
-            },
-            {
-              "name": "option-type",
-              "type": {
-                "text": "Intl.ListFormatOptions['type']"
-              },
-              "default": "'conjunction'",
-              "fieldName": "optionType"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlListFormatElement",
-            "module": "src/elements/listformat/listformat.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/elements/displaynames/displaynames-of.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "HTMLIntlDisplayNamesOfElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the display name.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `code` argument of `Intl.DisplayNames`’s `of()` method.",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -736,6 +65,8 @@
             "name": "AbstractConsumer",
             "module": "/src/elements/abstract-consumer.js"
           },
+          "tagName": "intl-displaynames-of",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -978,7 +309,9 @@
           "superclass": {
             "name": "AbstractProvider",
             "module": "/src/elements/abstract-provider.js"
-          }
+          },
+          "tagName": "intl-displaynames",
+          "customElement": true
         }
       ],
       "exports": [
@@ -1000,6 +333,18 @@
           "kind": "class",
           "description": "",
           "name": "HTMLIntlDateTimeFormatFormatElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the formatted date and time.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<time>` element with a valid `datetime` attribute, and the attribute value must represent a date and optionally a time. Hence, it can only be a date string (`YYYY-MM-DD`) or a local or global date time string (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime).",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1043,6 +388,8 @@
             "name": "AbstractDateTimeFormatConsumer",
             "module": "/src/elements/datetimeformat/abstract-datetimeformat-consumer.js"
           },
+          "tagName": "intl-datetimeformat-format",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -1077,6 +424,26 @@
           "kind": "class",
           "description": "",
           "name": "HTMLIntlDateTimeFormatFormatRangeElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the formatted date and time.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted elements must be `<time>` elements with valid `datetime` attributes, and the attribute values must represent dates and optionally times. Hence, they can only be date strings (`YYYY-MM-DD`) or local or global date time strings (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). The first slotted `<time>` element would be used as the start date and the second slotted `<time>` element would be used as the end date. Alternatively, use the `start` and `end` slots, which take higher precedence over the default slotted elements.",
+              "name": ""
+            },
+            {
+              "description": "The start date and time. See the default slot for more details.",
+              "name": "start"
+            },
+            {
+              "description": "The end date and time. See the default slot for more details.",
+              "name": "end"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1120,6 +487,8 @@
             "name": "AbstractDateTimeFormatConsumer",
             "module": "/src/elements/datetimeformat/abstract-datetimeformat-consumer.js"
           },
+          "tagName": "intl-datetimeformat-formatrange",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -1154,6 +523,94 @@
           "kind": "class",
           "description": "",
           "name": "HTMLIntlDateTimeFormatFormatRangeToPartsElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the elements that contain formatted parts of the given date and time.",
+              "name": "value"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `source` is `startRange`.",
+              "name": "start-range"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `source` is `endRange`.",
+              "name": "end-range"
+            },
+            {
+              "description": "A `<span>` elements that contains the strings of a formatted part which `source` are `shared`.",
+              "name": "shared"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `literal`.",
+              "name": "literal"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `era`.",
+              "name": "era"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `year`.",
+              "name": "year"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `yearName`.",
+              "name": "year-name"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `relatedYear`.",
+              "name": "related-year"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `month`.",
+              "name": "month"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `day`.",
+              "name": "day"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `weekday`.",
+              "name": "weekday"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `hour`.",
+              "name": "hour"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `minute`.",
+              "name": "minute"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `second`.",
+              "name": "second"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `fractionalSecond`.",
+              "name": "fractional-second"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `dayPeriod`.",
+              "name": "day-period"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `timeZoneName`.",
+              "name": "time-zone-name"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted elements must be `<time>` elements with valid `datetime` attributes, and the attribute values must represent dates and optionally times. Hence, they can only be date strings (`YYYY-MM-DD`) or local or global date time strings (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime). The first slotted `<time>` element would be used as the start date and the second slotted `<time>` element would be used as the end date. Alternatively, use the `start` and `end` slots, which take higher precedence over the default slotted elements.",
+              "name": ""
+            },
+            {
+              "description": "The start date and time. See the default slot for more details.",
+              "name": "start"
+            },
+            {
+              "description": "The end date and time. See the default slot for more details.",
+              "name": "end"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1197,6 +654,8 @@
             "name": "AbstractDateTimeFormatConsumer",
             "module": "/src/elements/datetimeformat/abstract-datetimeformat-consumer.js"
           },
+          "tagName": "intl-datetimeformat-formatrangetoparts",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -1231,6 +690,74 @@
           "kind": "class",
           "description": "",
           "name": "HTMLIntlDateTimeFormatFormatToPartsElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the elements that contain formatted parts of the given date and time.",
+              "name": "value"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `literal`.",
+              "name": "literal"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `era`.",
+              "name": "era"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `year`.",
+              "name": "year"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `yearName`.",
+              "name": "year-name"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `relatedYear`.",
+              "name": "related-year"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `month`.",
+              "name": "month"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `day`.",
+              "name": "day"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `weekday`.",
+              "name": "weekday"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `hour`.",
+              "name": "hour"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `minute`.",
+              "name": "minute"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `second`.",
+              "name": "second"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `fractionalSecond`.",
+              "name": "fractional-second"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `dayPeriod`.",
+              "name": "day-period"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `timeZoneName`.",
+              "name": "time-zone-name"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<time>` element with a valid `datetime` attribute, and the attribute value must represent a date and optionally a time. Hence, it can only be a date string (`YYYY-MM-DD`) or a local or global date time string (`YYYY-MM-DDTHH:mm:ss.sssZ`). See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime).",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1274,6 +801,8 @@
             "name": "AbstractDateTimeFormatConsumer",
             "module": "/src/elements/datetimeformat/abstract-datetimeformat-consumer.js"
           },
+          "tagName": "intl-datetimeformat-formattoparts",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -1735,7 +1264,9 @@
           "superclass": {
             "name": "AbstractProvider",
             "module": "/src/elements/abstract-provider.js"
-          }
+          },
+          "tagName": "intl-datetimeformat",
+          "customElement": true
         }
       ],
       "exports": [
@@ -1751,12 +1282,412 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat-format.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatFormatElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the formatted list.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "One or multiple `<data>` elements with `value` attributes. An array is created based on the values and used as the `list` argument of `Intl.ListFormat`’s `format()` method.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractListFormatConsumer",
+            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
+          },
+          "tagName": "intl-listformat-format",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatFormatElement",
+            "module": "src/elements/listformat/listformat-format.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat-formattoparts.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatFormatToPartsElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the elements that contain formatted parts of the given list.",
+              "name": "value"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `literal`.",
+              "name": "literal"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `element`.",
+              "name": "element"
+            }
+          ],
+          "slots": [
+            {
+              "description": "One or multiple `<data>` elements with `value` attributes. An array is created based on the values and used as the `list` argument of `Intl.ListFormat`’s `formatToParts()` method.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "Intl.ListFormatPart[]"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractListFormatConsumer",
+            "module": "/src/elements/listformat/abstract-listformat-consumer.js"
+          },
+          "tagName": "intl-listformat-formattoparts",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatFormatToPartsElement",
+            "module": "src/elements/listformat/listformat-formattoparts.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/listformat/listformat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlListFormatElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.ListFormat"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionStyle",
+              "type": {
+                "text": "Intl.ListFormatOptions['style']"
+              },
+              "default": "'long'",
+              "attribute": "option-style"
+            },
+            {
+              "kind": "field",
+              "name": "optionType",
+              "type": {
+                "text": "Intl.ListFormatOptions['type']"
+              },
+              "default": "'conjunction'",
+              "attribute": "option-type"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedListFormatOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-style",
+              "type": {
+                "text": "Intl.ListFormatOptions['style']"
+              },
+              "default": "'long'",
+              "fieldName": "optionStyle"
+            },
+            {
+              "name": "option-type",
+              "type": {
+                "text": "Intl.ListFormatOptions['type']"
+              },
+              "default": "'conjunction'",
+              "fieldName": "optionType"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-listformat",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlListFormatElement",
+            "module": "src/elements/listformat/listformat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/numberformat/numberformat-format.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "HTMLIntlNumberFormatFormatElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the formatted number.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `number` argument of `Intl.NumberFormat`’s `format()` method.",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1800,6 +1731,8 @@
             "name": "AbstractNumberFormatConsumer",
             "module": "/src/elements/numberformat/abstract-numberformat-consumer.js"
           },
+          "tagName": "intl-numberformat-format",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -1834,6 +1767,86 @@
           "kind": "class",
           "description": "",
           "name": "HTMLIntlNumberFormatFormatToPartsElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the elements that contain formatted parts of the given number.",
+              "name": "value"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `literal`.",
+              "name": "literal"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `compact`.",
+              "name": "compact"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `currency`.",
+              "name": "currency"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `decimal`.",
+              "name": "decimal"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `exponentInteger`.",
+              "name": "exponent-integer"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `exponentMinusSign`.",
+              "name": "exponent-minusSign"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `exponentSeparator`.",
+              "name": "exponent-separator"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `fraction`.",
+              "name": "fraction"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `group`.",
+              "name": "group"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `infinity`.",
+              "name": "infinity"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `integer`.",
+              "name": "integer"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `minusSign`.",
+              "name": "minus-sign"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `nan`.",
+              "name": "nan"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `plusSign`.",
+              "name": "plus-sign"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `percentSign`.",
+              "name": "percent-sign"
+            },
+            {
+              "description": "A `<span>` element that contains the string of the formatted part which `type` is `unit`.",
+              "name": "unit"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `unknown`.",
+              "name": "unknown"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<data>` element with a `value` attribute. The value is used as the `number` argument of `Intl.NumberFormat`’s `formatToParts()` method.",
+              "name": ""
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -1877,6 +1890,8 @@
             "name": "AbstractNumberFormatConsumer",
             "module": "/src/elements/numberformat/abstract-numberformat-consumer.js"
           },
+          "tagName": "intl-numberformat-formattoparts",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -2290,7 +2305,9 @@
           "superclass": {
             "name": "AbstractProvider",
             "module": "/src/elements/abstract-provider.js"
-          }
+          },
+          "tagName": "intl-numberformat",
+          "customElement": true
         }
       ],
       "exports": [
@@ -2648,6 +2665,7 @@
             "name": "LitElement",
             "package": "lit"
           },
+          "tagName": "intl-locale",
           "customElement": true
         }
       ],
@@ -2664,12 +2682,1049 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/elements/relativetimeformat/relativetimeformat-format.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlRelativeTimeFormatFormatElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the string of the formatted relative time.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted elements must be `<data>` elements with `value` attributes, the first slotted `<data>` element’s `value` must be a number that represents the relative time, the second slotted `<data>` element’s `value` must be a string that represents the unit, and it must be one of the supported unit. See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format). Alternatively, use the `rtime` and `unit` slots, which take higher precedence over the default slotted elements.",
+              "name": ""
+            },
+            {
+              "description": "The relative time. See the default slot for more details.",
+              "name": "rtime"
+            },
+            {
+              "description": "The unit. See the default slot for more details.",
+              "name": "unit"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractRelativeTimeFormatConsumer",
+            "module": "/src/elements/relativetimeformat/abstract-relativetimeformat-consumer.js"
+          },
+          "tagName": "intl-relativetimeformat-format",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlRelativeTimeFormatFormatElement",
+            "module": "src/elements/relativetimeformat/relativetimeformat-format.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/relativetimeformat/relativetimeformat-formattoparts.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlRelativeTimeFormatFormatToPartsElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the elements that contain formatted parts of the given relative time and unit.",
+              "name": "value"
+            },
+            {
+              "description": "A `<span>` element that contains the string of a formatted part which `type` is `literal`.",
+              "name": "literal"
+            },
+            {
+              "description": "The `<span>` element that contains the string of the formatted part which `type` is `integer`.",
+              "name": "integer"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted elements must be `<data>` elements with `value` attributes, the first slotted `<data>` element’s `value` must be a number that represents the relative time, the second slotted `<data>` element’s `value` must be a string that represents the unit, and it must be one of the supported unit. See more details in the [MDN documentation](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format). Alternatively, use the `rtime` and `unit` slots, which take higher precedence over the default slotted elements.",
+              "name": ""
+            },
+            {
+              "description": "The relative time. See the default slot for more details.",
+              "name": "rtime"
+            },
+            {
+              "description": "The unit. See the default slot for more details.",
+              "name": "unit"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "Intl.RelativeTimeFormatPart[]"
+              },
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "HTMLIntlRelativeTimeFormatConsumerElement",
+            "module": "/src/elements/relativetimeformat/abstract-relativetimeformat-consumer.js"
+          },
+          "tagName": "intl-relativetimeformat-formattoparts",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlRelativeTimeFormatFormatToPartsElement",
+            "module": "src/elements/relativetimeformat/relativetimeformat-formattoparts.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/relativetimeformat/relativetimeformat.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlRelativeTimeFormatElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.RelativeTimeFormat"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionStyle",
+              "type": {
+                "text": "Intl.RelativeTimeFormatOptions['style']"
+              },
+              "default": "'long'",
+              "attribute": "option-style"
+            },
+            {
+              "kind": "field",
+              "name": "optionNumeric",
+              "type": {
+                "text": "Intl.RelativeTimeFormatOptions['numeric']"
+              },
+              "default": "'always'",
+              "attribute": "option-numeric"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedRelativeTimeFormatOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-style",
+              "type": {
+                "text": "Intl.RelativeTimeFormatOptions['style']"
+              },
+              "default": "'long'",
+              "fieldName": "optionStyle"
+            },
+            {
+              "name": "option-numeric",
+              "type": {
+                "text": "Intl.RelativeTimeFormatOptions['numeric']"
+              },
+              "default": "'always'",
+              "fieldName": "optionNumeric"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-relativetimeformat",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlRelativeTimeFormatElement",
+            "module": "src/elements/relativetimeformat/relativetimeformat.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/segmenter/segmenter-segment.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlSegmenterSegmentElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the segmented HTML result.",
+              "name": "value"
+            },
+            {
+              "description": "The `<span>` element that contains the text of a segment. Not that if the provider element’s `option-granularity` is `word`, for a none-word-like segment, the text is not wrapped in a `<span>` element. This is to avoid characters like punctuation marks being inappropriately wrapped to the next line, e.g. a comma at the beginning of a line, or a opening quotation mark at the end of a line.",
+              "name": "segment"
+            },
+            {
+              "description": "The `<span>` element that contains the text of a segment which `isWordLike` is `true`.",
+              "name": "wordlike"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slot should only contain plain text, its `textContent` is used as the `input` argument of `Intl.Segmenter`’s `segment()`. Any HTML elements in the slot are ignored.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "Intl.Segments | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "type": {
+                "text": "string"
+              },
+              "description": "A read only reference to the `input` argument of `Intl.Segmenter`’s\n`segment()`.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractConsumer",
+            "module": "/src/elements/abstract-consumer.js"
+          },
+          "tagName": "intl-segmenter-segment",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlSegmenterSegmentElement",
+            "module": "src/elements/segmenter/segmenter-segment.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/segmenter/segmenter.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlSegmenterElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "optionGranularity",
+              "type": {
+                "text": "Intl.SegmenterOptions['granularity']"
+              },
+              "default": "'grapheme'",
+              "attribute": "option-granularity"
+            },
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.Segmenter"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedSegmenterOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-granularity",
+              "type": {
+                "text": "Intl.SegmenterOptions['granularity']"
+              },
+              "default": "'grapheme'",
+              "fieldName": "optionGranularity"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-segmenter",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlSegmenterElement",
+            "module": "src/elements/segmenter/segmenter.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/collator/collator-compare.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlCollatorCompareElement",
+          "cssParts": [
+            {
+              "description": "The container element that hosts the result of the comparison.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The list conotainer element. Depending on the value of the `option-usage` attribute, the list items are either sorted (default or `sort`) or filtered (`search`).",
+              "name": "list"
+            },
+            {
+              "description": "The slotted element must be a `<data>` element with a `value` attribute. When `option-usage` is set to `search`, the list items are filtered based on the value of the `target` element.",
+              "name": "target"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "provider",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "providerElement",
+              "type": {
+                "text": "P | undefined"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractConsumer",
+            "module": "/src/elements/abstract-consumer.js"
+          },
+          "tagName": "intl-collator-compare",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "provider",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "provider",
+              "inheritedFrom": {
+                "name": "AbstractConsumer",
+                "module": "src/elements/abstract-consumer.ts"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlCollatorCompareElement",
+            "module": "src/elements/collator/collator-compare.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/elements/collator/collator.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "HTMLIntlCollatorElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "intlObject",
+              "type": {
+                "text": "Intl.Collator"
+              },
+              "readonly": true,
+              "mdn": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionUsage",
+              "type": {
+                "text": "Intl.CollatorOptions['usage'] | undefined"
+              },
+              "attribute": "option-usage"
+            },
+            {
+              "kind": "field",
+              "name": "optionSensitivity",
+              "type": {
+                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
+              },
+              "attribute": "option-sensitivity"
+            },
+            {
+              "kind": "field",
+              "name": "optionIgnorePunctuation",
+              "type": {
+                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
+              },
+              "attribute": "option-ignorepunctuation"
+            },
+            {
+              "kind": "field",
+              "name": "optionNumeric",
+              "type": {
+                "text": "Intl.CollatorOptions['numeric'] | undefined"
+              },
+              "attribute": "option-numeric"
+            },
+            {
+              "kind": "field",
+              "name": "optionCaseFirst",
+              "type": {
+                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
+              },
+              "attribute": "option-casefirst"
+            },
+            {
+              "kind": "field",
+              "name": "optionCollation",
+              "type": {
+                "text": "Intl.CollatorOptions['collation'] | undefined"
+              },
+              "attribute": "option-collation"
+            },
+            {
+              "kind": "method",
+              "name": "resolvedOptions",
+              "return": {
+                "type": {
+                  "text": "Intl.ResolvedCollatorOptions"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localeList",
+              "type": {
+                "text": "LocaleList"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFrom",
+              "type": {
+                "text": "string | undefined"
+              },
+              "attribute": "locales-from",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localesFromElements",
+              "type": {
+                "text": "HTMLIntlLocaleElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "optionLocaleMatcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "attribute": "option-localematcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "consumerElements",
+              "type": {
+                "text": "ConsumerElement[]"
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "option-usage",
+              "type": {
+                "text": "Intl.CollatorOptions['usage'] | undefined"
+              },
+              "fieldName": "optionUsage"
+            },
+            {
+              "name": "option-sensitivity",
+              "type": {
+                "text": "Intl.CollatorOptions['sensitivity'] | undefined"
+              },
+              "fieldName": "optionSensitivity"
+            },
+            {
+              "name": "option-ignorepunctuation",
+              "type": {
+                "text": "Intl.CollatorOptions['ignorePunctuation'] | undefined"
+              },
+              "fieldName": "optionIgnorePunctuation"
+            },
+            {
+              "name": "option-numeric",
+              "type": {
+                "text": "Intl.CollatorOptions['numeric'] | undefined"
+              },
+              "fieldName": "optionNumeric"
+            },
+            {
+              "name": "option-casefirst",
+              "type": {
+                "text": "Intl.CollatorOptions['caseFirst'] | undefined"
+              },
+              "fieldName": "optionCaseFirst"
+            },
+            {
+              "name": "option-collation",
+              "type": {
+                "text": "Intl.CollatorOptions['collation'] | undefined"
+              },
+              "fieldName": "optionCollation"
+            },
+            {
+              "name": "locales",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "locales",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "locales-from",
+              "type": {
+                "text": "string | undefined"
+              },
+              "fieldName": "localesFrom",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            },
+            {
+              "name": "option-localematcher",
+              "type": {
+                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+              },
+              "default": "'best fit'",
+              "fieldName": "optionLocaleMatcher",
+              "inheritedFrom": {
+                "name": "AbstractProvider",
+                "module": "src/elements/abstract-provider.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "AbstractProvider",
+            "module": "/src/elements/abstract-provider.js"
+          },
+          "tagName": "intl-collator",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "HTMLIntlCollatorElement",
+            "module": "src/elements/collator/collator.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/elements/pluralrules/pluralrules-select.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
           "name": "HTMLIntlPluralRulesSelectElement",
+          "cssParts": [
+            {
+              "description": "The `<span>` element that contains the selected template’s HTML.",
+              "name": "value"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The slotted element must be a `<data>` element with a `value` attribute. The value should be a number, it’s used as the `number` argument of `Intl.PluralRules`’s `select()` method.",
+              "name": ""
+            },
+            {
+              "description": "The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `zero`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "zero"
+            },
+            {
+              "description": "The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `one`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "one"
+            },
+            {
+              "description": "The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `two`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "two"
+            },
+            {
+              "description": "The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `few`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "few"
+            },
+            {
+              "description": "The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `many`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "many"
+            },
+            {
+              "description": "This slot is required. The slotted element must be a `<template>` element. The template’s content is displayed when the `select()` method returns `other`. The `<template>` can contain an `<ins>` element with empty content as a placeholder for the number.",
+              "name": "other"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -2713,6 +3768,8 @@
             "name": "AbstractPluralRulesConsumer",
             "module": "/src/elements/pluralrules/abstract-pluralrules-consumer.js"
           },
+          "tagName": "intl-pluralrules-select",
+          "customElement": true,
           "attributes": [
             {
               "name": "provider",
@@ -2979,7 +4036,9 @@
           "superclass": {
             "name": "AbstractProvider",
             "module": "/src/elements/abstract-provider.js"
-          }
+          },
+          "tagName": "intl-pluralrules",
+          "customElement": true
         }
       ],
       "exports": [
@@ -2989,578 +4048,6 @@
           "declaration": {
             "name": "HTMLIntlPluralRulesElement",
             "module": "src/elements/pluralrules/pluralrules.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/relativetimeformat/relativetimeformat-format.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlRelativeTimeFormatFormatElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractRelativeTimeFormatConsumer",
-            "module": "/src/elements/relativetimeformat/abstract-relativetimeformat-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlRelativeTimeFormatFormatElement",
-            "module": "src/elements/relativetimeformat/relativetimeformat-format.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/relativetimeformat/relativetimeformat-formattoparts.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlRelativeTimeFormatFormatToPartsElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "Intl.RelativeTimeFormatPart[]"
-              },
-              "readonly": true
-            }
-          ],
-          "superclass": {
-            "name": "HTMLIntlRelativeTimeFormatConsumerElement",
-            "module": "/src/elements/relativetimeformat/abstract-relativetimeformat-consumer.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlRelativeTimeFormatFormatToPartsElement",
-            "module": "src/elements/relativetimeformat/relativetimeformat-formattoparts.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/relativetimeformat/relativetimeformat.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlRelativeTimeFormatElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.RelativeTimeFormat"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionStyle",
-              "type": {
-                "text": "Intl.RelativeTimeFormatOptions['style']"
-              },
-              "default": "'long'",
-              "attribute": "option-style"
-            },
-            {
-              "kind": "field",
-              "name": "optionNumeric",
-              "type": {
-                "text": "Intl.RelativeTimeFormatOptions['numeric']"
-              },
-              "default": "'always'",
-              "attribute": "option-numeric"
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedRelativeTimeFormatOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-style",
-              "type": {
-                "text": "Intl.RelativeTimeFormatOptions['style']"
-              },
-              "default": "'long'",
-              "fieldName": "optionStyle"
-            },
-            {
-              "name": "option-numeric",
-              "type": {
-                "text": "Intl.RelativeTimeFormatOptions['numeric']"
-              },
-              "default": "'always'",
-              "fieldName": "optionNumeric"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlRelativeTimeFormatElement",
-            "module": "src/elements/relativetimeformat/relativetimeformat.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/segmenter/segmenter-segment.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlSegmenterSegmentElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "Intl.Segments | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "input",
-              "type": {
-                "text": "string"
-              },
-              "readonly": true
-            },
-            {
-              "kind": "field",
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "provider",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "providerElement",
-              "type": {
-                "text": "P | undefined"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractConsumer",
-            "module": "/src/elements/abstract-consumer.js"
-          },
-          "attributes": [
-            {
-              "name": "provider",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "provider",
-              "inheritedFrom": {
-                "name": "AbstractConsumer",
-                "module": "src/elements/abstract-consumer.ts"
-              }
-            }
-          ]
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlSegmenterSegmentElement",
-            "module": "src/elements/segmenter/segmenter-segment.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/elements/segmenter/segmenter.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "HTMLIntlSegmenterElement",
-          "members": [
-            {
-              "kind": "field",
-              "name": "optionGranularity",
-              "type": {
-                "text": "Intl.SegmenterOptions['granularity']"
-              },
-              "default": "'grapheme'",
-              "attribute": "option-granularity"
-            },
-            {
-              "kind": "field",
-              "name": "intlObject",
-              "type": {
-                "text": "Intl.Segmenter"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "resolvedOptions",
-              "return": {
-                "type": {
-                  "text": "Intl.ResolvedSegmenterOptions"
-                }
-              },
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localeList",
-              "type": {
-                "text": "LocaleList"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFrom",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "locales-from",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localesFromElements",
-              "type": {
-                "text": "HTMLIntlLocaleElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "optionLocaleMatcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "attribute": "option-localematcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "option-granularity",
-              "type": {
-                "text": "Intl.SegmenterOptions['granularity']"
-              },
-              "default": "'grapheme'",
-              "fieldName": "optionGranularity"
-            },
-            {
-              "name": "locales",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "locales",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "locales-from",
-              "type": {
-                "text": "string | undefined"
-              },
-              "fieldName": "localesFrom",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "name": "option-localematcher",
-              "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
-              },
-              "default": "'best fit'",
-              "fieldName": "optionLocaleMatcher",
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "AbstractProvider",
-            "module": "/src/elements/abstract-provider.js"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "HTMLIntlSegmenterElement",
-            "module": "src/elements/segmenter/segmenter.ts"
           }
         }
       ]

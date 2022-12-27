@@ -3,6 +3,12 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
+/**
+ * @intl `Intl.PluralRules`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
+ *
+ * @element intl-pluralrules
+ */
 export default class HTMLIntlPluralRulesElement extends AbstractProvider {
   protected static override intlApi = Intl.PluralRules;
 

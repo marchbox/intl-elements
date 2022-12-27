@@ -3,6 +3,12 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
+/**
+ * @intl `Intl.ListFormat`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
+ *
+ * @element intl-listformat
+ */
 export default class HTMLIntlListFormatElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-listformat-format',

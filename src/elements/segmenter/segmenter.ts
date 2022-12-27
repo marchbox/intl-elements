@@ -3,6 +3,12 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
+/**
+ * @intl `Intl.Segmenter`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter
+ *
+ * @element intl-segmenter
+ */
 export default class HTMLIntlSegmenterElement extends AbstractProvider {
   protected static override intlApi = Intl.Segmenter;
 

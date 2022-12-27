@@ -3,6 +3,22 @@ import {html, nothing} from 'lit';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlCollatorElement from './collator.js';
 
+/**
+ * @intl `Intl.Collator#compare`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare
+ *
+ * @element intl-collator-compare
+ *
+ * @slot list - The list conotainer element. Depending on the value of
+ *     the `option-usage` attribute, the list items are either sorted (default
+ *     or `sort`) or filtered (`search`).
+ * @slot target - The slotted element must be a `<data>` element with a `value`
+ *     attribute. When `option-usage` is set to `search`, the list items are
+ *     filtered based on the value of the `target` element.
+ *
+ * @csspart value - The container element that hosts the result of the
+ *     comparison.
+ */
 export default class HTMLIntlCollatorCompareElement
     extends AbstractConsumer<HTMLIntlCollatorElement, string[]> {
   protected static override providerElementName = 'intl-collator';
@@ -65,7 +81,7 @@ export default class HTMLIntlCollatorCompareElement
     this.#value = sorted.map(el => this.#getTarget(el));
 
     return html`
-      <div role="none"
+      <div role="none" part="value"
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${result}</div>

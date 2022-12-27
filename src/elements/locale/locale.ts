@@ -5,6 +5,12 @@ import {optionProperty} from '../../utils/properties.js';
 
 type LocaleValue = Intl.Locale | null;
 
+/**
+ * @intl `Intl.Locale`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale
+ *
+ * @element intl-locale
+ */
 export default class HTMLIntlLocaleElement extends LitElement {
   /** @readonly */
   get value(): LocaleValue {

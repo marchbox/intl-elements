@@ -4,6 +4,23 @@ import {map} from 'lit/directives/map.js';
 import {camelToKebab} from '../../utils/strings.js';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
+/**
+ * @intl `Intl.ListFormat#formatToParts`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/formatToParts
+ *
+ * @element intl-listformat-formattoparts
+ *
+ * @slot - One or multiple `<data>` elements with `value` attributes. An array
+ *     is created based on the values and used as the `list` argument of
+ *    `Intl.ListFormat`’s `formatToParts()` method.
+ *
+ * @csspart value - The `<span>` element that contains the elements that contain
+ *     formatted parts of the given list.
+ * @csspart literal - A `<span>` element that contains the string of the
+ *     formatted part which `type` is `literal`.
+ * @csspart element - A `<span>` element that contains the string of the
+ *     formatted part which `type` is `element`.
+ */
 export default class HTMLIntlListFormatFormatToPartsElement
     extends AbstractListFormatConsumer {
   #value: Intl.ListFormatPart[] = [];

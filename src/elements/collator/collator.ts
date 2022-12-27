@@ -4,27 +4,23 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * Hello hello helloo
+ * @intl `Intl.Collator`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
  *
- * @summary Hello world
- * @tagname intl-collator - Hello
+ * @element intl-collator
  */
 export default class HTMLIntlCollatorElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-collator-compare',
   ]);
 
-  /** @mdn https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator */
   protected static override intlApi = Intl.Collator;
 
   #resolvedOptions!: Intl.ResolvedCollatorOptions;
 
   #intlObject!: Intl.Collator;
 
-  /**
-   * @readonly
-   * @mdn https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
-   */
+  /** @readonly */
   override get intlObject(): Intl.Collator {
     return this.#intlObject;
   }

@@ -3,6 +3,12 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
+/**
+ * @intl `Intl.DisplayNames`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames
+ *
+ * @element intl-displaynames
+ */
 export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-displaynames-of',

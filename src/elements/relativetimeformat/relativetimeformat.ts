@@ -3,6 +3,12 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
+/**
+ * @intl `Intl.RelativeTimeFormat`
+ * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat
+ *
+ * @element intl-relativetimeformat
+ */
 export default class HTMLIntlRelativeTimeFormatElement
     extends AbstractProvider {
   protected static override consumerElementNames = new Set([
