@@ -2,7 +2,7 @@
 
 ## `<intl-pluralrules>` (`HTMLIntlPluralRulesElement`)
 
-[Learn more about `Intl.PluralRules`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)
+[Learn more about `Intl.PluralRules()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules)
 
 ### Attributes
 
@@ -38,9 +38,9 @@
 
 ### Methods
 
-| Name              | Return                            | Description                                                                                                                                                                       |
-| ----------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedPluralRulesOptions` | [Learn more about `Intl.PluralRules.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions) |
+| Name              | Return                            | Description                                                                                                                                                                         |
+| ----------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions` | `Intl.ResolvedPluralRulesOptions` | [Learn more about `Intl.PluralRules.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions) |
 
 ***
 

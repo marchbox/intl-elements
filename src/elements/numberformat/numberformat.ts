@@ -4,7 +4,7 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl Intl.NumberFormat
+ * @intl Intl.NumberFormat()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
  * @intlprovider
  *
@@ -78,7 +78,7 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
   optionMaximumSignificantDigits?: Intl.NumberFormatOptions['maximumSignificantDigits'];
 
   /**
-   * @intl Intl.NumberFormat.prototype.format
+   * @intl Intl.NumberFormat.prototype.resolvedOptions()
    * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/resolvedOptions
    */
   resolvedOptions(): Intl.ResolvedNumberFormatOptions {

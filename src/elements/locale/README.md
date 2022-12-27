@@ -1,6 +1,6 @@
 ## `<intl-locale>` (`HTMLIntlLocaleElement`)
 
-[Learn more about `Intl.Locale`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)
+[Learn more about `Intl.Locale()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)
 
 ### Attributes
 
@@ -54,7 +54,7 @@
 
 ### Methods
 
-| Name       | Return        | Description |
-| ---------- | ------------- | ----------- |
-| `maximize` | `LocaleValue` |             |
-| `minimize` | `LocaleValue` |             |
+| Name       | Return        | Description                                                                                                                                                 |
+| ---------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maximize` | `LocaleValue` | [Learn more about `Intl.Locale.prototype.maximize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) |
+| `minimize` | `LocaleValue` | [Learn more about `Intl.Locale.prototype.minimize()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize) |

@@ -2,7 +2,7 @@
 
 ## `<intl-listformat>` (`HTMLIntlListFormatElement`)
 
-[Learn more about `Intl.ListFormat`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat)
+[Learn more about `Intl.ListFormat()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat)
 
 ### Attributes
 
@@ -30,9 +30,9 @@
 
 ### Methods
 
-| Name              | Return                           | Description                                                                                                                                                                     |
-| ----------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedListFormatOptions` | [Learn more about `Intl.ListFormat.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions) |
+| Name              | Return                           | Description                                                                                                                                                                       |
+| ----------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions` | `Intl.ResolvedListFormatOptions` | [Learn more about `Intl.ListFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions) |
 
 ***
 

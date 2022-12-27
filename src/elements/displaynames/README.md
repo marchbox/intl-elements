@@ -2,7 +2,7 @@
 
 ## `<intl-displaynames>` (`HTMLIntlDisplayNamesElement`)
 
-[Learn more about `Intl.DisplayNames`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames)
+[Learn more about `Intl.DisplayNames()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames)
 
 ### Attributes
 
@@ -34,9 +34,9 @@
 
 ### Methods
 
-| Name              | Return                             | Description                                                                                                                                                                         |
-| ----------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedDisplayNamesOptions` | [Learn more about `Intl.DisplayNames.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/resolvedOptions) |
+| Name              | Return                             | Description                                                                                                                                                                           |
+| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions` | `Intl.ResolvedDisplayNamesOptions` | [Learn more about `Intl.DisplayNames.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/resolvedOptions) |
 
 ***
 

@@ -6,7 +6,7 @@ import {optionProperty} from '../../utils/properties.js';
 type LocaleValue = Intl.Locale | null;
 
 /**
- * @intl Intl.Locale
+ * @intl Intl.Locale()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale
  *
  * @element intl-locale
@@ -204,10 +204,18 @@ export default class HTMLIntlLocaleElement extends LitElement {
     return this;
   }
 
+  /**
+   * @intl Intl.Locale.prototype.maximize()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize
+   */
   maximize(): LocaleValue {
     return this.#getLocale()?.maximize() ?? null;
   }
 
+  /**
+   * @intl Intl.Locale.prototype.minimize()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/minimize
+   */
   minimize(): LocaleValue {
     return this.#getLocale()?.minimize() ?? null;
   }

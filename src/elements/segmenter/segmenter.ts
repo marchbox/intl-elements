@@ -4,7 +4,7 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl Intl.Segmenter
+ * @intl Intl.Segmenter()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter
  * @intlprovider
  *
@@ -30,7 +30,7 @@ export default class HTMLIntlSegmenterElement extends AbstractProvider {
   }
 
   /**
-   * @intl Intl.Segmenter.prototype.resolvedOptions
+   * @intl Intl.Segmenter.prototype.resolvedOptions()
    * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/resolvedOptions
    */
   resolvedOptions(): Intl.ResolvedSegmenterOptions {

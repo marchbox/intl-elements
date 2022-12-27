@@ -2,7 +2,7 @@
 
 ## `<intl-collator>` (`HTMLIntlCollatorElement`)
 
-[Learn more about `Intl.Collator`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator)
+[Learn more about `Intl.Collator()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator)
 
 ### Attributes
 
@@ -38,9 +38,9 @@
 
 ### Methods
 
-| Name              | Return                         | Description                                                                                                                                                                 |
-| ----------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedCollatorOptions` | [Learn more about `Intl.Collator.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions) |
+| Name              | Return                         | Description                                                                                                                                                                   |
+| ----------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions` | `Intl.ResolvedCollatorOptions` | [Learn more about `Intl.Collator.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions) |
 
 ***
 

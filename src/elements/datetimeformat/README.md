@@ -2,7 +2,7 @@
 
 ## `<intl-datetimeformat>` (`HTMLIntlDateTimeFormatElement`)
 
-[Learn more about `Intl.DateTimeFormat`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
+[Learn more about `Intl.DateTimeFormat()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat)
 
 ### Attributes
 
@@ -64,9 +64,9 @@
 
 ### Methods
 
-| Name              | Return                               | Description                                                                                                                                                                             |
-| ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedDateTimeFormatOptions` | [Learn more about `Intl.DateTimeFormat.prototype.resolvedOptions`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) |
+| Name              | Return                               | Description                                                                                                                                                                               |
+| ----------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions` | `Intl.ResolvedDateTimeFormatOptions` | [Learn more about `Intl.DateTimeFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions) |
 
 ***
 

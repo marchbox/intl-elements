@@ -4,7 +4,7 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl Intl.DisplayNames
+ * @intl Intl.DisplayNames()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames
  * @intlprovider
  *
@@ -39,7 +39,7 @@ export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   optionFallback: Intl.DisplayNamesOptions['fallback'] = 'code';
 
   /**
-   * @intl Intl.DisplayNames.prototype.resolvedOptions
+   * @intl Intl.DisplayNames.prototype.resolvedOptions()
    * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/resolvedOptions
    */
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
