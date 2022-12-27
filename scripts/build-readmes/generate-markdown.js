@@ -67,6 +67,9 @@ function getTable(section, data) {
       let value = item[key];
 
       switch (key) {
+        case 'name':
+          value = section.key === 'methods' ? `${value}()` : value;
+          break;
         case 'type':
           value = item[key].text;
           break;

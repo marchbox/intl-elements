@@ -30,9 +30,9 @@
 
 ### Methods
 
-| Name              | Return                                   | Description                                                                                                                                                                                       |
-| ----------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedRelativeTimeFormatOptions` | [Learn more about `Intl.RelativeTimeFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions) |
+| Name                | Return                                   | Description                                                                                                                                                                                       |
+| ------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions()` | `Intl.ResolvedRelativeTimeFormatOptions` | [Learn more about `Intl.RelativeTimeFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions) |
 
 ***
 

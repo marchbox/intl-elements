@@ -56,9 +56,9 @@
 
 ### Methods
 
-| Name              | Return                             | Description                                                                                                                                                                           |
-| ----------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedNumberFormatOptions` | [Learn more about `Intl.NumberFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/resolvedOptions) |
+| Name                | Return                             | Description                                                                                                                                                                           |
+| ------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions()` | `Intl.ResolvedNumberFormatOptions` | [Learn more about `Intl.NumberFormat.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/resolvedOptions) |
 
 ***
 

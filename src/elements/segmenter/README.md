@@ -28,9 +28,9 @@
 
 ### Methods
 
-| Name              | Return                          | Description                                                                                                                                                                     |
-| ----------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resolvedOptions` | `Intl.ResolvedSegmenterOptions` | [Learn more about `Intl.Segmenter.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/resolvedOptions) |
+| Name                | Return                          | Description                                                                                                                                                                     |
+| ------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resolvedOptions()` | `Intl.ResolvedSegmenterOptions` | [Learn more about `Intl.Segmenter.prototype.resolvedOptions()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/resolvedOptions) |
 
 ***
 
