@@ -3,8 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer.js';
 
 /**
- * @intl `Intl.RelativeTimeFormat#format`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format
+ * @intl Intl.RelativeTimeFormat.prototype.format
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/format
  *
  * @element intl-relativetimeformat-format
  *

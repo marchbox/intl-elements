@@ -3,8 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 /**
- * @intl `Intl.DateTimeFormat#formatRange`
- * @mdn https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatRange
+ * @intl Intl.DateTimeFormat.prototype.formatRange
+ * @intlsee https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatRange
  *
  * @element intl-datetimeformat-formatrange
  *

@@ -3,8 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 
 /**
- * @intl `Intl.NumberFormat#format`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format
+ * @intl Intl.NumberFormat.prototype.format
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/format
  *
  * @element intl-numberformat-format
  *

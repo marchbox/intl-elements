@@ -1,5 +1,6 @@
 const CUSTOM_MEMBER_JS_DOC_TAGS = [
-  'mdn',
+  'intl',
+  'intlsee',
   'readonly',
 ];
 
@@ -7,30 +8,35 @@ export default () => ({
   name: 'INTL-ELEMENTS: Custom JsDoc tags',
 
   analyzePhase: ({ts, node, moduleDoc}) => {
-    if (node.kind !== ts.SyntaxKind.ClassDeclaration) {
-      return;
+    let field;
+
+    switch (node.kind) {
+      case ts.SyntaxKind.ClassDeclaration:
+        field = moduleDoc.declarations?.find(d =>
+            d.name === node.name.getText());
+        break;
+      case ts.SyntaxKind.PropertyDeclaration:
+      case ts.SyntaxKind.MethodDeclaration:
+      case ts.SyntaxKind.GetAccessor:
+        field = moduleDoc.declarations
+            // Find the class declaration
+            ?.find(d => d.name === node.parent.name.getText())
+            // Find the member in the class declaration
+            ?.members?.find(m => m.name === node.name.getText());
+        break;
+      default:
+        return;
     }
 
-    const className = node.name.getText();
-    const classDeclaration = moduleDoc.declarations.find(declaration =>
-        declaration.name === className);
-
-    node.members?.forEach(member => {
-      const memberName = member.name.getText();
-      const messageField = classDeclaration.members.find(member =>
-          member.name === memberName);
-
-      member?.jsDoc?.forEach(jsDoc => {
-        jsDoc?.tags?.forEach(tag => {
-          const tagName = tag.tagName.getText();
-
+    if (field) {
+      node.jsDoc?.forEach(j => {
+        j.tags?.forEach(t => {
+          const tagName = t.tagName.getText();
           if (CUSTOM_MEMBER_JS_DOC_TAGS.includes(tagName)) {
-            const description = tag.comment;
-
-            messageField[tagName] = description ?? true;
+            field[tagName] = t.comment ?? true;
           }
         });
       });
-    });
+    }
   }
 });

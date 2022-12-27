@@ -4,8 +4,8 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl `Intl.DateTimeFormat`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+ * @intl Intl.DateTimeFormat
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
  *
  * @element intl-datetimeformat
  */
@@ -85,6 +85,10 @@ export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
   @optionProperty()
   optionTimeZoneName?: Intl.DateTimeFormatOptions['timeZoneName'];
 
+  /**
+   * @intl Intl.DateTimeFormat.prototype.resolvedOptions
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedDateTimeFormatOptions {
     return this.#resolvedOptions;
   }

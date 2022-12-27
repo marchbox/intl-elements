@@ -3,8 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractPluralRulesConsumer from './abstract-pluralrules-consumer.js';
 
 /**
- * @intl `Intl.PluralRules#select`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select
+ * @intl Intl.PluralRules.prototype.select
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select
  *
  * @element intl-pluralrules-select
  *

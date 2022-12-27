@@ -4,8 +4,8 @@ import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlCollatorElement from './collator.js';
 
 /**
- * @intl `Intl.Collator#compare`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare
+ * @intl Intl.Collator.prototype.compare
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare
  *
  * @element intl-collator-compare
  *

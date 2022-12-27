@@ -5,8 +5,8 @@ import {camelToKebab} from '../../utils/strings.js';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 /**
- * @intl `Intl.ListFormat#formatToParts`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/formatToParts
+ * @intl Intl.ListFormat.prototype.formatToParts
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/formatToParts
  *
  * @element intl-listformat-formattoparts
  *

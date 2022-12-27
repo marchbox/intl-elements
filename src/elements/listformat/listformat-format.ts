@@ -3,8 +3,8 @@ import {html, nothing} from 'lit';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 /**
- * @intl `Intl.ListFormat#format`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/format
+ * @intl Intl.ListFormat.prototype.format
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/format
  *
  * @element intl-listformat-format
  *

@@ -8,8 +8,8 @@ import HTMLIntlSegmenterElement from './segmenter.js';
 type ValueType = Intl.Segments | undefined;
 
 /**
- * @intl `Intl.Segmenter#segment`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/segment
+ * @intl Intl.Segmenter.prototype.segment
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/segment
  *
  * @element intl-segmenter-segment
  *

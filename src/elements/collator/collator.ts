@@ -4,8 +4,8 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl `Intl.Collator`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
+ * @intl Intl.Collator
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
  *
  * @element intl-collator
  */
@@ -43,6 +43,10 @@ export default class HTMLIntlCollatorElement extends AbstractProvider {
   @optionProperty()
   optionCollation?: Intl.CollatorOptions['collation'];
 
+  /**
+   * @intl Intl.Collator.prototype.resolvedOptions
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedCollatorOptions {
     return this.#resolvedOptions;
   }

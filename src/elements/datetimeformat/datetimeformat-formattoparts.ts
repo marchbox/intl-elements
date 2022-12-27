@@ -5,8 +5,8 @@ import {camelToKebab} from '../../utils/strings.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 /**
- * @intl `Intl.DateTimeFormat#formatToParts`
- * @mdn https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts
+ * @intl Intl.DateTimeFormat.prototype.formatToParts
+ * @intlsee https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat/formatToParts
  *
  * @element intl-datetimeformat-formattoparts
  * 

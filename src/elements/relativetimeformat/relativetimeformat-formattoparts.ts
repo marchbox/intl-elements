@@ -5,8 +5,8 @@ import {camelToKebab} from '../../utils/strings.js';
 import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer.js';
 
 /**
- * @intl `Intl.RelativeTimeFormat#formatToParts`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts
+ * @intl Intl.RelativeTimeFormat.prototype.formatToParts
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/formatToParts
  *
  * @element intl-relativetimeformat-formattoparts
  *

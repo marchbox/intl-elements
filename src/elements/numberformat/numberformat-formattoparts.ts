@@ -5,8 +5,8 @@ import {camelToKebab} from '../../utils/strings.js';
 import AbstractNumberFormatConsumer from './abstract-numberformat-consumer.js';
 
 /**
- * @intl `Intl.NumberFormat#formatToParts`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts
+ * @intl Intl.NumberFormat.prototype.formatToParts
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/formatToParts
  *
  * @element intl-numberformat-formattoparts
  *

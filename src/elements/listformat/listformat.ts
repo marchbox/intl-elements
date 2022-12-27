@@ -4,8 +4,8 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
- * @intl `Intl.ListFormat`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
+ * @intl Intl.ListFormat
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
  *
  * @element intl-listformat
  */
@@ -32,6 +32,10 @@ export default class HTMLIntlListFormatElement extends AbstractProvider {
   @optionProperty()
   optionType: Intl.ListFormatOptions['type'] = 'conjunction';
 
+  /**
+   * @intl Intl.ListFormat.prototype.resolvedOptions
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }

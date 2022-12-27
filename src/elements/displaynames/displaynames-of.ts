@@ -4,8 +4,8 @@ import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlDisplayNamesElement from './displaynames.js';
 
 /**
- * @intl `Intl.DisplayNames#of`
- * @mdn http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/of
+ * @intl Intl.DisplayNames.prototype.of
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/of
  *
  * @element intl-displaynames-of
  *
