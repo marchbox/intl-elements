@@ -22,7 +22,7 @@ type ValueType = Intl.Segments | undefined;
  *     result.
  * @csspart segment - The `<span>` element that contains the text of a segment.
  *     Not that if the provider element’s `option-granularity` is `word`, for
- *     a none-word-like segment, the text is not wrapped in a `<span>` element.
+ *     a non-word-like segment, the text is not wrapped in a `<span>` element.
  *     This is to avoid characters like punctuation marks being inappropriately
  *     wrapped to the next line, e.g. a comma at the beginning of a line, or a
  *     opening quotation mark at the end of a line.
