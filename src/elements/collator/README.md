@@ -6,35 +6,35 @@
 
 ### Attributes
 
-| Name                       | Type                                                     | Default      | Property                  |
-| -------------------------- | -------------------------------------------------------- | ------------ | ------------------------- |
-| `locales`                  | `string \| undefined`                                    | `undefined`  | `locales`                 |
-| `locales-from`             | `string \| undefined`                                    | `undefined`  | `localesFrom`             |
-| `option-casefirst`         | `Intl.CollatorOptions['caseFirst'] \| undefined`         | `undefined`  | `optionCaseFirst`         |
-| `option-collation`         | `Intl.CollatorOptions['collation'] \| undefined`         | `undefined`  | `optionCollation`         |
-| `option-ignorepunctuation` | `Intl.CollatorOptions['ignorePunctuation'] \| undefined` | `undefined`  | `optionIgnorePunctuation` |
-| `option-localematcher`     | `Intl.RelativeTimeFormatLocaleMatcher`                   | `'best fit'` | `optionLocaleMatcher`     |
-| `option-numeric`           | `Intl.CollatorOptions['numeric'] \| undefined`           | `undefined`  | `optionNumeric`           |
-| `option-sensitivity`       | `Intl.CollatorOptions['sensitivity'] \| undefined`       | `undefined`  | `optionSensitivity`       |
-| `option-usage`             | `Intl.CollatorOptions['usage'] \| undefined`             | `undefined`  | `optionUsage`             |
+| Name                       | Type                                                     | Default      | Description | Property                  |
+| -------------------------- | -------------------------------------------------------- | ------------ | ----------- | ------------------------- |
+| `locales`                  | `string \| undefined`                                    | `undefined`  |             | `locales`                 |
+| `locales-from`             | `string \| undefined`                                    | `undefined`  |             | `localesFrom`             |
+| `option-casefirst`         | `Intl.CollatorOptions['caseFirst'] \| undefined`         | `undefined`  |             | `optionCaseFirst`         |
+| `option-collation`         | `Intl.CollatorOptions['collation'] \| undefined`         | `undefined`  |             | `optionCollation`         |
+| `option-ignorepunctuation` | `Intl.CollatorOptions['ignorePunctuation'] \| undefined` | `undefined`  |             | `optionIgnorePunctuation` |
+| `option-localematcher`     | `Intl.RelativeTimeFormatLocaleMatcher`                   | `'best fit'` |             | `optionLocaleMatcher`     |
+| `option-numeric`           | `Intl.CollatorOptions['numeric'] \| undefined`           | `undefined`  |             | `optionNumeric`           |
+| `option-sensitivity`       | `Intl.CollatorOptions['sensitivity'] \| undefined`       | `undefined`  |             | `optionSensitivity`       |
+| `option-usage`             | `Intl.CollatorOptions['usage'] \| undefined`             | `undefined`  |             | `optionUsage`             |
 
 ### Properties
 
-| Name                      | Type                                                     | Default      | Read only? | Attribute                  |
-| ------------------------- | -------------------------------------------------------- | ------------ | ---------- | -------------------------- |
-| `consumerElements`        | `ConsumerElement[]`                                      | `undefined`  | Yes        |                            |
-| `intlObject`              | `Intl.Collator`                                          | `undefined`  | Yes        |                            |
-| `localeList`              | `LocaleList`                                             | `undefined`  | Yes        |                            |
-| `locales`                 | `string \| undefined`                                    | `undefined`  |            | `locales`                  |
-| `localesFrom`             | `string \| undefined`                                    | `undefined`  |            | `locales-from`             |
-| `localesFromElements`     | `HTMLIntlLocaleElement[]`                                | `undefined`  | Yes        |                            |
-| `optionCaseFirst`         | `Intl.CollatorOptions['caseFirst'] \| undefined`         | `undefined`  |            | `option-casefirst`         |
-| `optionCollation`         | `Intl.CollatorOptions['collation'] \| undefined`         | `undefined`  |            | `option-collation`         |
-| `optionIgnorePunctuation` | `Intl.CollatorOptions['ignorePunctuation'] \| undefined` | `undefined`  |            | `option-ignorepunctuation` |
-| `optionLocaleMatcher`     | `Intl.RelativeTimeFormatLocaleMatcher`                   | `'best fit'` |            | `option-localematcher`     |
-| `optionNumeric`           | `Intl.CollatorOptions['numeric'] \| undefined`           | `undefined`  |            | `option-numeric`           |
-| `optionSensitivity`       | `Intl.CollatorOptions['sensitivity'] \| undefined`       | `undefined`  |            | `option-sensitivity`       |
-| `optionUsage`             | `Intl.CollatorOptions['usage'] \| undefined`             | `undefined`  |            | `option-usage`             |
+| Name                      | Type                                                     | Default      | Read only? | Description | Attribute                  |
+| ------------------------- | -------------------------------------------------------- | ------------ | ---------- | ----------- | -------------------------- |
+| `consumerElements`        | `ConsumerElement[]`                                      | `undefined`  | Yes        |             |                            |
+| `intlObject`              | `Intl.Collator`                                          | `undefined`  | Yes        |             |                            |
+| `localeList`              | `LocaleList`                                             | `undefined`  | Yes        |             |                            |
+| `locales`                 | `string \| undefined`                                    | `undefined`  |            |             | `locales`                  |
+| `localesFrom`             | `string \| undefined`                                    | `undefined`  |            |             | `locales-from`             |
+| `localesFromElements`     | `HTMLIntlLocaleElement[]`                                | `undefined`  | Yes        |             |                            |
+| `optionCaseFirst`         | `Intl.CollatorOptions['caseFirst'] \| undefined`         | `undefined`  |            |             | `option-casefirst`         |
+| `optionCollation`         | `Intl.CollatorOptions['collation'] \| undefined`         | `undefined`  |            |             | `option-collation`         |
+| `optionIgnorePunctuation` | `Intl.CollatorOptions['ignorePunctuation'] \| undefined` | `undefined`  |            |             | `option-ignorepunctuation` |
+| `optionLocaleMatcher`     | `Intl.RelativeTimeFormatLocaleMatcher`                   | `'best fit'` |            |             | `option-localematcher`     |
+| `optionNumeric`           | `Intl.CollatorOptions['numeric'] \| undefined`           | `undefined`  |            |             | `option-numeric`           |
+| `optionSensitivity`       | `Intl.CollatorOptions['sensitivity'] \| undefined`       | `undefined`  |            |             | `option-sensitivity`       |
+| `optionUsage`             | `Intl.CollatorOptions['usage'] \| undefined`             | `undefined`  |            |             | `option-usage`             |
 
 ### Methods
 
@@ -50,17 +50,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |            |
-| `value`           | `string[]`            | `undefined` | Yes        |            |
+| Name              | Type                  | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
+| `value`           | `string[]`            | `undefined` | Yes        |             |            |
 
 ### Slots
 

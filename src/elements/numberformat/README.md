@@ -6,53 +6,53 @@
 
 ### Attributes
 
-| Name                              | Type                                                                | Default      | Property                         |
-| --------------------------------- | ------------------------------------------------------------------- | ------------ | -------------------------------- |
-| `locales`                         | `string \| undefined`                                               | `undefined`  | `locales`                        |
-| `locales-from`                    | `string \| undefined`                                               | `undefined`  | `localesFrom`                    |
-| `option-compactdisplay`           | `Intl.NumberFormatOptions['compactDisplay']`                        | `'short'`    | `optionCompactDisplay`           |
-| `option-currency`                 | `Intl.NumberFormatOptions['currency'] \| undefined`                 | `undefined`  | `optionCurrency`                 |
-| `option-currencydisplay`          | `Intl.NumberFormatOptions['currencyDisplay']`                       | `'symbol'`   | `optionCurrencyDisplay`          |
-| `option-currencysign`             | `Intl.NumberFormatOptions['currencySign']`                          | `'standard'` | `optionCurrencySign`             |
-| `option-localematcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` | `optionLocaleMatcher`            |
-| `option-maximumfractiondigits`    | `Intl.NumberFormatOptions['maximumFractionDigits'] \| undefined`    | `undefined`  | `optionMaximumFractionDigits`    |
-| `option-maximumsignificantdigits` | `Intl.NumberFormatOptions['maximumSignificantDigits'] \| undefined` | `undefined`  | `optionMaximumSignificantDigits` |
-| `option-minimumfractiondigits`    | `Intl.NumberFormatOptions['minimumFractionDigits'] \| undefined`    | `undefined`  | `optionMinimumFractionDigits`    |
-| `option-minimumintegerdigits`     | `Intl.NumberFormatOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  | `optionMinimumIntegerDigits`     |
-| `option-minimumsignificantdigits` | `Intl.NumberFormatOptions['minimumSignificantDigits'] \| undefined` | `undefined`  | `optionMinimumSignificantDigits` |
-| `option-notation`                 | `Intl.NumberFormatOptions['notation']`                              | `'standard'` | `optionNotation`                 |
-| `option-signdisplay`              | `Intl.NumberFormatOptions['signDisplay']`                           | `'auto'`     | `optionSignDisplay`              |
-| `option-style`                    | `Intl.NumberFormatOptions['style']`                                 | `'decimal'`  | `optionStyle`                    |
-| `option-unit`                     | `Intl.NumberFormatOptions['unit'] \| undefined`                     | `undefined`  | `optionUnit`                     |
-| `option-unitdisplay`              | `Intl.NumberFormatOptions['unitDisplay']`                           | `'short'`    | `optionUnitDisplay`              |
-| `option-usegrouping`              | `Intl.NumberFormatOptions['useGrouping'] \| undefined`              | `undefined`  | `optionUseGrouping`              |
+| Name                              | Type                                                                | Default      | Description | Property                         |
+| --------------------------------- | ------------------------------------------------------------------- | ------------ | ----------- | -------------------------------- |
+| `locales`                         | `string \| undefined`                                               | `undefined`  |             | `locales`                        |
+| `locales-from`                    | `string \| undefined`                                               | `undefined`  |             | `localesFrom`                    |
+| `option-compactdisplay`           | `Intl.NumberFormatOptions['compactDisplay']`                        | `'short'`    |             | `optionCompactDisplay`           |
+| `option-currency`                 | `Intl.NumberFormatOptions['currency'] \| undefined`                 | `undefined`  |             | `optionCurrency`                 |
+| `option-currencydisplay`          | `Intl.NumberFormatOptions['currencyDisplay']`                       | `'symbol'`   |             | `optionCurrencyDisplay`          |
+| `option-currencysign`             | `Intl.NumberFormatOptions['currencySign']`                          | `'standard'` |             | `optionCurrencySign`             |
+| `option-localematcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |             | `optionLocaleMatcher`            |
+| `option-maximumfractiondigits`    | `Intl.NumberFormatOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |             | `optionMaximumFractionDigits`    |
+| `option-maximumsignificantdigits` | `Intl.NumberFormatOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |             | `optionMaximumSignificantDigits` |
+| `option-minimumfractiondigits`    | `Intl.NumberFormatOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |             | `optionMinimumFractionDigits`    |
+| `option-minimumintegerdigits`     | `Intl.NumberFormatOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |             | `optionMinimumIntegerDigits`     |
+| `option-minimumsignificantdigits` | `Intl.NumberFormatOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |             | `optionMinimumSignificantDigits` |
+| `option-notation`                 | `Intl.NumberFormatOptions['notation']`                              | `'standard'` |             | `optionNotation`                 |
+| `option-signdisplay`              | `Intl.NumberFormatOptions['signDisplay']`                           | `'auto'`     |             | `optionSignDisplay`              |
+| `option-style`                    | `Intl.NumberFormatOptions['style']`                                 | `'decimal'`  |             | `optionStyle`                    |
+| `option-unit`                     | `Intl.NumberFormatOptions['unit'] \| undefined`                     | `undefined`  |             | `optionUnit`                     |
+| `option-unitdisplay`              | `Intl.NumberFormatOptions['unitDisplay']`                           | `'short'`    |             | `optionUnitDisplay`              |
+| `option-usegrouping`              | `Intl.NumberFormatOptions['useGrouping'] \| undefined`              | `undefined`  |             | `optionUseGrouping`              |
 
 ### Properties
 
-| Name                             | Type                                                                | Default      | Read only? | Attribute                         |
-| -------------------------------- | ------------------------------------------------------------------- | ------------ | ---------- | --------------------------------- |
-| `consumerElements`               | `ConsumerElement[]`                                                 | `undefined`  | Yes        |                                   |
-| `intlObject`                     | `Intl.NumberFormat`                                                 | `undefined`  | Yes        |                                   |
-| `localeList`                     | `LocaleList`                                                        | `undefined`  | Yes        |                                   |
-| `locales`                        | `string \| undefined`                                               | `undefined`  |            | `locales`                         |
-| `localesFrom`                    | `string \| undefined`                                               | `undefined`  |            | `locales-from`                    |
-| `localesFromElements`            | `HTMLIntlLocaleElement[]`                                           | `undefined`  | Yes        |                                   |
-| `optionCompactDisplay`           | `Intl.NumberFormatOptions['compactDisplay']`                        | `'short'`    |            | `option-compactdisplay`           |
-| `optionCurrency`                 | `Intl.NumberFormatOptions['currency'] \| undefined`                 | `undefined`  |            | `option-currency`                 |
-| `optionCurrencyDisplay`          | `Intl.NumberFormatOptions['currencyDisplay']`                       | `'symbol'`   |            | `option-currencydisplay`          |
-| `optionCurrencySign`             | `Intl.NumberFormatOptions['currencySign']`                          | `'standard'` |            | `option-currencysign`             |
-| `optionLocaleMatcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |            | `option-localematcher`            |
-| `optionMaximumFractionDigits`    | `Intl.NumberFormatOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |            | `option-maximumfractiondigits`    |
-| `optionMaximumSignificantDigits` | `Intl.NumberFormatOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |            | `option-maximumsignificantdigits` |
-| `optionMinimumFractionDigits`    | `Intl.NumberFormatOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |            | `option-minimumfractiondigits`    |
-| `optionMinimumIntegerDigits`     | `Intl.NumberFormatOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |            | `option-minimumintegerdigits`     |
-| `optionMinimumSignificantDigits` | `Intl.NumberFormatOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |            | `option-minimumsignificantdigits` |
-| `optionNotation`                 | `Intl.NumberFormatOptions['notation']`                              | `'standard'` |            | `option-notation`                 |
-| `optionSignDisplay`              | `Intl.NumberFormatOptions['signDisplay']`                           | `'auto'`     |            | `option-signdisplay`              |
-| `optionStyle`                    | `Intl.NumberFormatOptions['style']`                                 | `'decimal'`  |            | `option-style`                    |
-| `optionUnit`                     | `Intl.NumberFormatOptions['unit'] \| undefined`                     | `undefined`  |            | `option-unit`                     |
-| `optionUnitDisplay`              | `Intl.NumberFormatOptions['unitDisplay']`                           | `'short'`    |            | `option-unitdisplay`              |
-| `optionUseGrouping`              | `Intl.NumberFormatOptions['useGrouping'] \| undefined`              | `undefined`  |            | `option-usegrouping`              |
+| Name                             | Type                                                                | Default      | Read only? | Description | Attribute                         |
+| -------------------------------- | ------------------------------------------------------------------- | ------------ | ---------- | ----------- | --------------------------------- |
+| `consumerElements`               | `ConsumerElement[]`                                                 | `undefined`  | Yes        |             |                                   |
+| `intlObject`                     | `Intl.NumberFormat`                                                 | `undefined`  | Yes        |             |                                   |
+| `localeList`                     | `LocaleList`                                                        | `undefined`  | Yes        |             |                                   |
+| `locales`                        | `string \| undefined`                                               | `undefined`  |            |             | `locales`                         |
+| `localesFrom`                    | `string \| undefined`                                               | `undefined`  |            |             | `locales-from`                    |
+| `localesFromElements`            | `HTMLIntlLocaleElement[]`                                           | `undefined`  | Yes        |             |                                   |
+| `optionCompactDisplay`           | `Intl.NumberFormatOptions['compactDisplay']`                        | `'short'`    |            |             | `option-compactdisplay`           |
+| `optionCurrency`                 | `Intl.NumberFormatOptions['currency'] \| undefined`                 | `undefined`  |            |             | `option-currency`                 |
+| `optionCurrencyDisplay`          | `Intl.NumberFormatOptions['currencyDisplay']`                       | `'symbol'`   |            |             | `option-currencydisplay`          |
+| `optionCurrencySign`             | `Intl.NumberFormatOptions['currencySign']`                          | `'standard'` |            |             | `option-currencysign`             |
+| `optionLocaleMatcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |            |             | `option-localematcher`            |
+| `optionMaximumFractionDigits`    | `Intl.NumberFormatOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |            |             | `option-maximumfractiondigits`    |
+| `optionMaximumSignificantDigits` | `Intl.NumberFormatOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |            |             | `option-maximumsignificantdigits` |
+| `optionMinimumFractionDigits`    | `Intl.NumberFormatOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |            |             | `option-minimumfractiondigits`    |
+| `optionMinimumIntegerDigits`     | `Intl.NumberFormatOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |            |             | `option-minimumintegerdigits`     |
+| `optionMinimumSignificantDigits` | `Intl.NumberFormatOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |            |             | `option-minimumsignificantdigits` |
+| `optionNotation`                 | `Intl.NumberFormatOptions['notation']`                              | `'standard'` |            |             | `option-notation`                 |
+| `optionSignDisplay`              | `Intl.NumberFormatOptions['signDisplay']`                           | `'auto'`     |            |             | `option-signdisplay`              |
+| `optionStyle`                    | `Intl.NumberFormatOptions['style']`                                 | `'decimal'`  |            |             | `option-style`                    |
+| `optionUnit`                     | `Intl.NumberFormatOptions['unit'] \| undefined`                     | `undefined`  |            |             | `option-unit`                     |
+| `optionUnitDisplay`              | `Intl.NumberFormatOptions['unitDisplay']`                           | `'short'`    |            |             | `option-unitdisplay`              |
+| `optionUseGrouping`              | `Intl.NumberFormatOptions['useGrouping'] \| undefined`              | `undefined`  |            |             | `option-usegrouping`              |
 
 ### Methods
 
@@ -68,17 +68,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |            |
-| `value`           | `string`              | `undefined` | Yes        |            |
+| Name              | Type                  | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
+| `value`           | `string`              | `undefined` | Yes        |             |            |
 
 ### Slots
 
@@ -100,17 +100,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                      | Default     | Read only? | Attribute  |
-| ----------------- | ------------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined`     | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`          | `undefined` | Yes        |            |
-| `value`           | `Intl.NumberFormatPart[]` | `undefined` | Yes        |            |
+| Name              | Type                      | Default     | Read only? | Description | Attribute  |
+| ----------------- | ------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`     | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`          | `undefined` | Yes        |             |            |
+| `value`           | `Intl.NumberFormatPart[]` | `undefined` | Yes        |             |            |
 
 ### Slots
 

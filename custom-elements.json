@@ -2076,6 +2076,8 @@
               "type": {
                 "text": "Intl.Locale['baseName'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.baseName",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/baseName",
               "readonly": true
             },
             {
@@ -2084,6 +2086,8 @@
               "type": {
                 "text": "Intl.Locale['calendar'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.calendar",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar",
               "readonly": true
             },
             {
@@ -2092,6 +2096,8 @@
               "type": {
                 "text": "Intl.Locale['calendars'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.calendars",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendars",
               "readonly": true
             },
             {
@@ -2100,6 +2106,8 @@
               "type": {
                 "text": "Intl.Locale['caseFirst'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.caseFirst",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/caseFirst",
               "readonly": true
             },
             {
@@ -2108,6 +2116,8 @@
               "type": {
                 "text": "Intl.Locale['collation'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.collation",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/collation",
               "readonly": true
             },
             {
@@ -2116,6 +2126,8 @@
               "type": {
                 "text": "Intl.Locale['hourCycle'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.hourCycle",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycle",
               "readonly": true
             },
             {
@@ -2124,6 +2136,8 @@
               "type": {
                 "text": "Intl.Locale['hourCycles'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.hourCycles",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycles",
               "readonly": true
             },
             {
@@ -2132,6 +2146,8 @@
               "type": {
                 "text": "Intl.Locale['language'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.language",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/language",
               "readonly": true
             },
             {
@@ -2158,6 +2174,8 @@
               "type": {
                 "text": "Intl.Locale['numberingSystem'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.numberingSystem",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numberingSystem",
               "readonly": true
             },
             {
@@ -2166,6 +2184,8 @@
               "type": {
                 "text": "Intl.Locale['numberingSystems'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.numberingSystems",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numberingSystems",
               "readonly": true
             },
             {
@@ -2174,6 +2194,8 @@
               "type": {
                 "text": "Intl.Locale['numeric'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.numeric",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numeric",
               "readonly": true
             },
             {
@@ -2262,6 +2284,8 @@
               "type": {
                 "text": "Intl.Locale['region'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.region",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/region",
               "readonly": true
             },
             {
@@ -2270,6 +2294,8 @@
               "type": {
                 "text": "Intl.Locale['script'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.script",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/script",
               "readonly": true
             },
             {
@@ -2287,6 +2313,8 @@
               "type": {
                 "text": "Intl.Locale['textInfo'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.textInfo",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/textInfo",
               "readonly": true
             },
             {
@@ -2295,6 +2323,8 @@
               "type": {
                 "text": "Intl.Locale['timeZones'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.timeZones",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/timeZones",
               "readonly": true
             },
             {
@@ -2319,6 +2349,8 @@
               "type": {
                 "text": "Intl.Locale['weekInfo'] | undefined"
               },
+              "intl": "Intl.Locale.prototype.weekInfo",
+              "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/weekInfo",
               "readonly": true
             }
           ],

@@ -6,25 +6,25 @@
 
 ### Attributes
 
-| Name                   | Type                                   | Default      | Property              |
-| ---------------------- | -------------------------------------- | ------------ | --------------------- |
-| `locales`              | `string \| undefined`                  | `undefined`  | `locales`             |
-| `locales-from`         | `string \| undefined`                  | `undefined`  | `localesFrom`         |
-| `option-granularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` | `optionGranularity`   |
-| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` | `optionLocaleMatcher` |
+| Name                   | Type                                   | Default      | Description | Property              |
+| ---------------------- | -------------------------------------- | ------------ | ----------- | --------------------- |
+| `locales`              | `string \| undefined`                  | `undefined`  |             | `locales`             |
+| `locales-from`         | `string \| undefined`                  | `undefined`  |             | `localesFrom`         |
+| `option-granularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` |             | `optionGranularity`   |
+| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` |             | `optionLocaleMatcher` |
 
 ### Properties
 
-| Name                  | Type                                   | Default      | Read only? | Attribute              |
-| --------------------- | -------------------------------------- | ------------ | ---------- | ---------------------- |
-| `consumerElements`    | `ConsumerElement[]`                    | `undefined`  | Yes        |                        |
-| `intlObject`          | `Intl.Segmenter`                       | `undefined`  | Yes        |                        |
-| `localeList`          | `LocaleList`                           | `undefined`  | Yes        |                        |
-| `locales`             | `string \| undefined`                  | `undefined`  |            | `locales`              |
-| `localesFrom`         | `string \| undefined`                  | `undefined`  |            | `locales-from`         |
-| `localesFromElements` | `HTMLIntlLocaleElement[]`              | `undefined`  | Yes        |                        |
-| `optionGranularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` |            | `option-granularity`   |
-| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` |            | `option-localematcher` |
+| Name                  | Type                                   | Default      | Read only? | Description | Attribute              |
+| --------------------- | -------------------------------------- | ------------ | ---------- | ----------- | ---------------------- |
+| `consumerElements`    | `ConsumerElement[]`                    | `undefined`  | Yes        |             |                        |
+| `intlObject`          | `Intl.Segmenter`                       | `undefined`  | Yes        |             |                        |
+| `localeList`          | `LocaleList`                           | `undefined`  | Yes        |             |                        |
+| `locales`             | `string \| undefined`                  | `undefined`  |            |             | `locales`              |
+| `localesFrom`         | `string \| undefined`                  | `undefined`  |            |             | `locales-from`         |
+| `localesFromElements` | `HTMLIntlLocaleElement[]`              | `undefined`  | Yes        |             |                        |
+| `optionGranularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` |            |             | `option-granularity`   |
+| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` |            |             | `option-localematcher` |
 
 ### Methods
 
@@ -40,18 +40,19 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                         | Default     | Read only? | Attribute  |
-| ----------------- | ---------------------------- | ----------- | ---------- | ---------- |
-| `input`           | `string`                     | `undefined` | Yes        |            |
-| `provider`        | `string \| undefined`        | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`             | `undefined` | Yes        |            |
-| `value`           | `Intl.Segments \| undefined` | `undefined` | Yes        |            |
+| Name              | Type                         | Default     | Read only? | Description                                                                      | Attribute  |
+| ----------------- | ---------------------------- | ----------- | ---------- | -------------------------------------------------------------------------------- | ---------- |
+| `input`           | `string`                     | `undefined` | Yes        | A read only reference to the `input` argument of `Intl.Segmenter`’s
+`segment()`. |            |
+| `provider`        | `string \| undefined`        | `undefined` |            |                                                                                  | `provider` |
+| `providerElement` | `P \| undefined`             | `undefined` | Yes        |                                                                                  |            |
+| `value`           | `Intl.Segments \| undefined` | `undefined` | Yes        |                                                                                  |            |
 
 ### Slots
 

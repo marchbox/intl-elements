@@ -6,35 +6,35 @@
 
 ### Attributes
 
-| Name                              | Type                                                               | Default      | Property                         |
-| --------------------------------- | ------------------------------------------------------------------ | ------------ | -------------------------------- |
-| `locales`                         | `string \| undefined`                                              | `undefined`  | `locales`                        |
-| `locales-from`                    | `string \| undefined`                                              | `undefined`  | `localesFrom`                    |
-| `option-localematcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                             | `'best fit'` | `optionLocaleMatcher`            |
-| `option-maximumfractiondigits`    | `Intl.PluralRulesOptions['maximumFractionDigits'] \| undefined`    | `undefined`  | `optionMaximumFractionDigits`    |
-| `option-maximumsignificantdigits` | `Intl.PluralRulesOptions['maximumSignificantDigits'] \| undefined` | `undefined`  | `optionMaximumSignificantDigits` |
-| `option-minimumfractiondigits`    | `Intl.PluralRulesOptions['minimumFractionDigits'] \| undefined`    | `undefined`  | `optionMinimumFractionDigits`    |
-| `option-minimumintegerdigits`     | `Intl.PluralRulesOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  | `optionMinimumIntegerDigits`     |
-| `option-minimumsignificantdigits` | `Intl.PluralRulesOptions['minimumSignificantDigits'] \| undefined` | `undefined`  | `optionMinimumSignificantDigits` |
-| `option-type`                     | `Intl.PluralRulesOptions['type']`                                  | `'cardinal'` | `optionType`                     |
+| Name                              | Type                                                               | Default      | Description | Property                         |
+| --------------------------------- | ------------------------------------------------------------------ | ------------ | ----------- | -------------------------------- |
+| `locales`                         | `string \| undefined`                                              | `undefined`  |             | `locales`                        |
+| `locales-from`                    | `string \| undefined`                                              | `undefined`  |             | `localesFrom`                    |
+| `option-localematcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                             | `'best fit'` |             | `optionLocaleMatcher`            |
+| `option-maximumfractiondigits`    | `Intl.PluralRulesOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |             | `optionMaximumFractionDigits`    |
+| `option-maximumsignificantdigits` | `Intl.PluralRulesOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |             | `optionMaximumSignificantDigits` |
+| `option-minimumfractiondigits`    | `Intl.PluralRulesOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |             | `optionMinimumFractionDigits`    |
+| `option-minimumintegerdigits`     | `Intl.PluralRulesOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |             | `optionMinimumIntegerDigits`     |
+| `option-minimumsignificantdigits` | `Intl.PluralRulesOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |             | `optionMinimumSignificantDigits` |
+| `option-type`                     | `Intl.PluralRulesOptions['type']`                                  | `'cardinal'` |             | `optionType`                     |
 
 ### Properties
 
-| Name                             | Type                                                               | Default      | Read only? | Attribute                         |
-| -------------------------------- | ------------------------------------------------------------------ | ------------ | ---------- | --------------------------------- |
-| `consumerElements`               | `ConsumerElement[]`                                                | `undefined`  | Yes        |                                   |
-| `intlObject`                     | `Intl.PluralRules`                                                 | `undefined`  | Yes        |                                   |
-| `localeList`                     | `LocaleList`                                                       | `undefined`  | Yes        |                                   |
-| `locales`                        | `string \| undefined`                                              | `undefined`  |            | `locales`                         |
-| `localesFrom`                    | `string \| undefined`                                              | `undefined`  |            | `locales-from`                    |
-| `localesFromElements`            | `HTMLIntlLocaleElement[]`                                          | `undefined`  | Yes        |                                   |
-| `optionLocaleMatcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                             | `'best fit'` |            | `option-localematcher`            |
-| `optionMaximumFractionDigits`    | `Intl.PluralRulesOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |            | `option-maximumfractiondigits`    |
-| `optionMaximumSignificantDigits` | `Intl.PluralRulesOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |            | `option-maximumsignificantdigits` |
-| `optionMinimumFractionDigits`    | `Intl.PluralRulesOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |            | `option-minimumfractiondigits`    |
-| `optionMinimumIntegerDigits`     | `Intl.PluralRulesOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |            | `option-minimumintegerdigits`     |
-| `optionMinimumSignificantDigits` | `Intl.PluralRulesOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |            | `option-minimumsignificantdigits` |
-| `optionType`                     | `Intl.PluralRulesOptions['type']`                                  | `'cardinal'` |            | `option-type`                     |
+| Name                             | Type                                                               | Default      | Read only? | Description | Attribute                         |
+| -------------------------------- | ------------------------------------------------------------------ | ------------ | ---------- | ----------- | --------------------------------- |
+| `consumerElements`               | `ConsumerElement[]`                                                | `undefined`  | Yes        |             |                                   |
+| `intlObject`                     | `Intl.PluralRules`                                                 | `undefined`  | Yes        |             |                                   |
+| `localeList`                     | `LocaleList`                                                       | `undefined`  | Yes        |             |                                   |
+| `locales`                        | `string \| undefined`                                              | `undefined`  |            |             | `locales`                         |
+| `localesFrom`                    | `string \| undefined`                                              | `undefined`  |            |             | `locales-from`                    |
+| `localesFromElements`            | `HTMLIntlLocaleElement[]`                                          | `undefined`  | Yes        |             |                                   |
+| `optionLocaleMatcher`            | `Intl.RelativeTimeFormatLocaleMatcher`                             | `'best fit'` |            |             | `option-localematcher`            |
+| `optionMaximumFractionDigits`    | `Intl.PluralRulesOptions['maximumFractionDigits'] \| undefined`    | `undefined`  |            |             | `option-maximumfractiondigits`    |
+| `optionMaximumSignificantDigits` | `Intl.PluralRulesOptions['maximumSignificantDigits'] \| undefined` | `undefined`  |            |             | `option-maximumsignificantdigits` |
+| `optionMinimumFractionDigits`    | `Intl.PluralRulesOptions['minimumFractionDigits'] \| undefined`    | `undefined`  |            |             | `option-minimumfractiondigits`    |
+| `optionMinimumIntegerDigits`     | `Intl.PluralRulesOptions['minimumIntegerDigits'] \| undefined`     | `undefined`  |            |             | `option-minimumintegerdigits`     |
+| `optionMinimumSignificantDigits` | `Intl.PluralRulesOptions['minimumSignificantDigits'] \| undefined` | `undefined`  |            |             | `option-minimumsignificantdigits` |
+| `optionType`                     | `Intl.PluralRulesOptions['type']`                                  | `'cardinal'` |            |             | `option-type`                     |
 
 ### Methods
 
@@ -50,17 +50,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                        | Default     | Read only? | Attribute  |
-| ----------------- | --------------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined`       | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`            | `undefined` | Yes        |            |
-| `value`           | `Intl.LDMLPluralRule \| ''` | `undefined` | Yes        |            |
+| Name              | Type                        | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`       | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`            | `undefined` | Yes        |             |            |
+| `value`           | `Intl.LDMLPluralRule \| ''` | `undefined` | Yes        |             |            |
 
 ### Slots
 

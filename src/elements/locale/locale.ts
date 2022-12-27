@@ -28,7 +28,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionBaseName?: Intl.LocaleOptions['baseName'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.baseName
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/baseName
+   * @readonly
+   */
   get baseName(): Intl.Locale['baseName'] | undefined {
     return this.#getLocale()?.baseName ?? undefined;
   }
@@ -36,12 +40,20 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCalendar?: Intl.LocaleOptions['calendar'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.calendar
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendar
+   * @readonly
+   */
   get calendar(): Intl.Locale['calendar'] | undefined {
     return this.#getLocale()?.calendar ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.calendars
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/calendars
+   * @readonly
+   */
   get calendars(): Intl.Locale['calendars'] | undefined {
     return this.#getLocale()?.calendars ?? undefined;
   }
@@ -49,7 +61,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCaseFirst?: Intl.LocaleOptions['caseFirst'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.caseFirst
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/caseFirst
+   * @readonly
+   */
   get caseFirst(): Intl.Locale['caseFirst'] | undefined {
     return this.#getLocale()?.caseFirst ?? undefined;
   }
@@ -57,7 +73,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionCollation?: Intl.LocaleOptions['collation'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.collation
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/collation
+   * @readonly
+   */
   get collation(): Intl.Locale['collation'] | undefined {
     return this.#getLocale()?.collation ?? undefined;
   }
@@ -65,12 +85,20 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionHourCycle?: Intl.LocaleOptions['hourCycle'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.hourCycle
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycle
+   * @readonly
+   */
   get hourCycle(): Intl.Locale['hourCycle'] | undefined {
     return this.#getLocale()?.hourCycle ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.hourCycles
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/hourCycles
+   * @readonly
+   */
   get hourCycles(): Intl.Locale['hourCycles'] | undefined {
     return this.#getLocale()?.hourCycles ?? undefined;
   }
@@ -78,7 +106,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionLanguage?: Intl.LocaleOptions['language'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.language
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/language
+   * @readonly
+   */
   get language(): Intl.Locale['language'] | undefined {
     return this.#getLocale()?.language ?? undefined;
   }
@@ -86,12 +118,20 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionNumberingSystem?: Intl.LocaleOptions['numberingSystem'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.numberingSystem
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numberingSystem
+   * @readonly
+   */
   get numberingSystem(): Intl.Locale['numberingSystem'] | undefined {
     return this.#getLocale()?.numberingSystem ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.numberingSystems
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numberingSystems
+   * @readonly
+   */
   get numberingSystems(): Intl.Locale['numberingSystems'] | undefined {
     return this.#getLocale()?.numberingSystems ?? undefined;
   }
@@ -99,7 +139,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty({type: Boolean})
   optionNumeric?: Intl.LocaleOptions['numeric'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.numeric
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/numeric
+   * @readonly
+   */
   get numeric(): Intl.Locale['numeric'] | undefined {
     return this.#getLocale()?.numeric ?? undefined;
   }
@@ -107,7 +151,11 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionRegion?: Intl.LocaleOptions['region'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.region
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/region
+   * @readonly
+   */
   get region(): Intl.Locale['region'] | undefined {
     return this.#getLocale()?.region ?? undefined;
   }
@@ -115,22 +163,38 @@ export default class HTMLIntlLocaleElement extends LitElement {
   @optionProperty()
   optionScript?: Intl.LocaleOptions['script'];
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.script
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/script
+   * @readonly
+   */
   get script(): Intl.Locale['script'] | undefined {
     return this.#getLocale()?.script ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.textInfo
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/textInfo
+   * @readonly
+   */
   get textInfo(): Intl.Locale['textInfo'] | undefined {
     return this.#getLocale()?.textInfo ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.timeZones
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/timeZones
+   * @readonly
+   */
   get timeZones(): Intl.Locale['timeZones'] | undefined {
     return this.#getLocale()?.timeZones ?? undefined;
   }
 
-  /** @readonly */
+  /**
+   * @intl Intl.Locale.prototype.weekInfo
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/weekInfo
+   * @readonly
+   */
   get weekInfo(): Intl.Locale['weekInfo'] | undefined {
     return this.#getLocale()?.weekInfo ?? undefined;
   }

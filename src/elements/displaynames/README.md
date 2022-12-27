@@ -6,31 +6,31 @@
 
 ### Attributes
 
-| Name                     | Type                                          | Default      | Property                |
-| ------------------------ | --------------------------------------------- | ------------ | ----------------------- |
-| `locales`                | `string \| undefined`                         | `undefined`  | `locales`               |
-| `locales-from`           | `string \| undefined`                         | `undefined`  | `localesFrom`           |
-| `option-fallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     | `optionFallback`        |
-| `option-languagedisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  | `optionLanguageDisplay` |
-| `option-localematcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` | `optionLocaleMatcher`   |
-| `option-style`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     | `optionStyle`           |
-| `option-type`            | `Intl.DisplayNamesOptions['type']`            | `'language'` | `optionType`            |
+| Name                     | Type                                          | Default      | Description | Property                |
+| ------------------------ | --------------------------------------------- | ------------ | ----------- | ----------------------- |
+| `locales`                | `string \| undefined`                         | `undefined`  |             | `locales`               |
+| `locales-from`           | `string \| undefined`                         | `undefined`  |             | `localesFrom`           |
+| `option-fallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     |             | `optionFallback`        |
+| `option-languagedisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  |             | `optionLanguageDisplay` |
+| `option-localematcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` |             | `optionLocaleMatcher`   |
+| `option-style`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     |             | `optionStyle`           |
+| `option-type`            | `Intl.DisplayNamesOptions['type']`            | `'language'` |             | `optionType`            |
 
 ### Properties
 
-| Name                    | Type                                          | Default      | Read only? | Attribute                |
-| ----------------------- | --------------------------------------------- | ------------ | ---------- | ------------------------ |
-| `consumerElements`      | `ConsumerElement[]`                           | `undefined`  | Yes        |                          |
-| `intlObject`            | `Intl.DisplayNames`                           | `undefined`  | Yes        |                          |
-| `localeList`            | `LocaleList`                                  | `undefined`  | Yes        |                          |
-| `locales`               | `string \| undefined`                         | `undefined`  |            | `locales`                |
-| `localesFrom`           | `string \| undefined`                         | `undefined`  |            | `locales-from`           |
-| `localesFromElements`   | `HTMLIntlLocaleElement[]`                     | `undefined`  | Yes        |                          |
-| `optionFallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     |            | `option-fallback`        |
-| `optionLanguageDisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  |            | `option-languagedisplay` |
-| `optionLocaleMatcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` |            | `option-localematcher`   |
-| `optionStyle`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     |            | `option-style`           |
-| `optionType`            | `Intl.DisplayNamesOptions['type']`            | `'language'` |            | `option-type`            |
+| Name                    | Type                                          | Default      | Read only? | Description | Attribute                |
+| ----------------------- | --------------------------------------------- | ------------ | ---------- | ----------- | ------------------------ |
+| `consumerElements`      | `ConsumerElement[]`                           | `undefined`  | Yes        |             |                          |
+| `intlObject`            | `Intl.DisplayNames`                           | `undefined`  | Yes        |             |                          |
+| `localeList`            | `LocaleList`                                  | `undefined`  | Yes        |             |                          |
+| `locales`               | `string \| undefined`                         | `undefined`  |            |             | `locales`                |
+| `localesFrom`           | `string \| undefined`                         | `undefined`  |            |             | `locales-from`           |
+| `localesFromElements`   | `HTMLIntlLocaleElement[]`                     | `undefined`  | Yes        |             |                          |
+| `optionFallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     |            |             | `option-fallback`        |
+| `optionLanguageDisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  |            |             | `option-languagedisplay` |
+| `optionLocaleMatcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` |            |             | `option-localematcher`   |
+| `optionStyle`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     |            |             | `option-style`           |
+| `optionType`            | `Intl.DisplayNamesOptions['type']`            | `'language'` |            |             | `option-type`            |
 
 ### Methods
 
@@ -46,17 +46,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |            |
-| `value`           | `string`              | `undefined` | Yes        |            |
+| Name              | Type                  | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
+| `value`           | `string`              | `undefined` | Yes        |             |            |
 
 ### Slots
 

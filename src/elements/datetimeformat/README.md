@@ -6,61 +6,61 @@
 
 ### Attributes
 
-| Name                            | Type                                                                | Default      | Property                       |
-| ------------------------------- | ------------------------------------------------------------------- | ------------ | ------------------------------ |
-| `locales`                       | `string \| undefined`                                               | `undefined`  | `locales`                      |
-| `locales-from`                  | `string \| undefined`                                               | `undefined`  | `localesFrom`                  |
-| `option-calendar`               | `Intl.DateTimeFormatOptions['calendar'] \| undefined`               | `undefined`  | `optionCalendar`               |
-| `option-datestyle`              | `Intl.DateTimeFormatOptions['dateStyle'] \| undefined`              | `undefined`  | `optionDateStyle`              |
-| `option-day`                    | `Intl.DateTimeFormatOptions['day'] \| undefined`                    | `undefined`  | `optionDay`                    |
-| `option-dayperiod`              | `Intl.DateTimeFormatOptions['dayPeriod'] \| undefined`              | `undefined`  | `optionDayPeriod`              |
-| `option-era`                    | `Intl.DateTimeFormatOptions['era'] \| undefined`                    | `undefined`  | `optionEra`                    |
-| `option-formatmatcher`          | `Intl.DateTimeFormatOptions['formatMatcher']`                       | `'best fit'` | `optionFormatMatcher`          |
-| `option-fractionalseconddigits` | `Intl.DateTimeFormatOptions['fractionalSecondDigits'] \| undefined` | `undefined`  | `optionFractionalSecondDigits` |
-| `option-hour`                   | `Intl.DateTimeFormatOptions['hour'] \| undefined`                   | `undefined`  | `optionHour`                   |
-| `option-hour12`                 | `Intl.DateTimeFormatOptions['hour12'] \| undefined`                 | `undefined`  | `optionHour12`                 |
-| `option-hourcycle`              | `Intl.DateTimeFormatOptions['hourCycle'] \| undefined`              | `undefined`  | `optionHourCycle`              |
-| `option-localematcher`          | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` | `optionLocaleMatcher`          |
-| `option-minute`                 | `Intl.DateTimeFormatOptions['minute'] \| undefined`                 | `undefined`  | `optionMinute`                 |
-| `option-month`                  | `Intl.DateTimeFormatOptions['month'] \| undefined`                  | `undefined`  | `optionMonth`                  |
-| `option-numberingsystem`        | `Intl.DateTimeFormatOptions['numberingSystem'] \| undefined`        | `undefined`  | `optionNumberingSystem`        |
-| `option-second`                 | `Intl.DateTimeFormatOptions['second'] \| undefined`                 | `undefined`  | `optionSecond`                 |
-| `option-timestyle`              | `Intl.DateTimeFormatOptions['timeStyle'] \| undefined`              | `undefined`  | `optionTimeStyle`              |
-| `option-timezone`               | `Intl.DateTimeFormatOptions['timeZone'] \| undefined`               | `undefined`  | `optionTimeZone`               |
-| `option-timezonename`           | `Intl.DateTimeFormatOptions['timeZoneName'] \| undefined`           | `undefined`  | `optionTimeZoneName`           |
-| `option-weekday`                | `Intl.DateTimeFormatOptions['weekday'] \| undefined`                | `undefined`  | `optionWeekday`                |
-| `option-year`                   | `Intl.DateTimeFormatOptions['year'] \| undefined`                   | `undefined`  | `optionYear`                   |
+| Name                            | Type                                                                | Default      | Description | Property                       |
+| ------------------------------- | ------------------------------------------------------------------- | ------------ | ----------- | ------------------------------ |
+| `locales`                       | `string \| undefined`                                               | `undefined`  |             | `locales`                      |
+| `locales-from`                  | `string \| undefined`                                               | `undefined`  |             | `localesFrom`                  |
+| `option-calendar`               | `Intl.DateTimeFormatOptions['calendar'] \| undefined`               | `undefined`  |             | `optionCalendar`               |
+| `option-datestyle`              | `Intl.DateTimeFormatOptions['dateStyle'] \| undefined`              | `undefined`  |             | `optionDateStyle`              |
+| `option-day`                    | `Intl.DateTimeFormatOptions['day'] \| undefined`                    | `undefined`  |             | `optionDay`                    |
+| `option-dayperiod`              | `Intl.DateTimeFormatOptions['dayPeriod'] \| undefined`              | `undefined`  |             | `optionDayPeriod`              |
+| `option-era`                    | `Intl.DateTimeFormatOptions['era'] \| undefined`                    | `undefined`  |             | `optionEra`                    |
+| `option-formatmatcher`          | `Intl.DateTimeFormatOptions['formatMatcher']`                       | `'best fit'` |             | `optionFormatMatcher`          |
+| `option-fractionalseconddigits` | `Intl.DateTimeFormatOptions['fractionalSecondDigits'] \| undefined` | `undefined`  |             | `optionFractionalSecondDigits` |
+| `option-hour`                   | `Intl.DateTimeFormatOptions['hour'] \| undefined`                   | `undefined`  |             | `optionHour`                   |
+| `option-hour12`                 | `Intl.DateTimeFormatOptions['hour12'] \| undefined`                 | `undefined`  |             | `optionHour12`                 |
+| `option-hourcycle`              | `Intl.DateTimeFormatOptions['hourCycle'] \| undefined`              | `undefined`  |             | `optionHourCycle`              |
+| `option-localematcher`          | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |             | `optionLocaleMatcher`          |
+| `option-minute`                 | `Intl.DateTimeFormatOptions['minute'] \| undefined`                 | `undefined`  |             | `optionMinute`                 |
+| `option-month`                  | `Intl.DateTimeFormatOptions['month'] \| undefined`                  | `undefined`  |             | `optionMonth`                  |
+| `option-numberingsystem`        | `Intl.DateTimeFormatOptions['numberingSystem'] \| undefined`        | `undefined`  |             | `optionNumberingSystem`        |
+| `option-second`                 | `Intl.DateTimeFormatOptions['second'] \| undefined`                 | `undefined`  |             | `optionSecond`                 |
+| `option-timestyle`              | `Intl.DateTimeFormatOptions['timeStyle'] \| undefined`              | `undefined`  |             | `optionTimeStyle`              |
+| `option-timezone`               | `Intl.DateTimeFormatOptions['timeZone'] \| undefined`               | `undefined`  |             | `optionTimeZone`               |
+| `option-timezonename`           | `Intl.DateTimeFormatOptions['timeZoneName'] \| undefined`           | `undefined`  |             | `optionTimeZoneName`           |
+| `option-weekday`                | `Intl.DateTimeFormatOptions['weekday'] \| undefined`                | `undefined`  |             | `optionWeekday`                |
+| `option-year`                   | `Intl.DateTimeFormatOptions['year'] \| undefined`                   | `undefined`  |             | `optionYear`                   |
 
 ### Properties
 
-| Name                           | Type                                                                | Default      | Read only? | Attribute                       |
-| ------------------------------ | ------------------------------------------------------------------- | ------------ | ---------- | ------------------------------- |
-| `consumerElements`             | `ConsumerElement[]`                                                 | `undefined`  | Yes        |                                 |
-| `intlObject`                   | `Intl.DateTimeFormat`                                               | `undefined`  | Yes        |                                 |
-| `localeList`                   | `LocaleList`                                                        | `undefined`  | Yes        |                                 |
-| `locales`                      | `string \| undefined`                                               | `undefined`  |            | `locales`                       |
-| `localesFrom`                  | `string \| undefined`                                               | `undefined`  |            | `locales-from`                  |
-| `localesFromElements`          | `HTMLIntlLocaleElement[]`                                           | `undefined`  | Yes        |                                 |
-| `optionCalendar`               | `Intl.DateTimeFormatOptions['calendar'] \| undefined`               | `undefined`  |            | `option-calendar`               |
-| `optionDateStyle`              | `Intl.DateTimeFormatOptions['dateStyle'] \| undefined`              | `undefined`  |            | `option-datestyle`              |
-| `optionDay`                    | `Intl.DateTimeFormatOptions['day'] \| undefined`                    | `undefined`  |            | `option-day`                    |
-| `optionDayPeriod`              | `Intl.DateTimeFormatOptions['dayPeriod'] \| undefined`              | `undefined`  |            | `option-dayperiod`              |
-| `optionEra`                    | `Intl.DateTimeFormatOptions['era'] \| undefined`                    | `undefined`  |            | `option-era`                    |
-| `optionFormatMatcher`          | `Intl.DateTimeFormatOptions['formatMatcher']`                       | `'best fit'` |            | `option-formatmatcher`          |
-| `optionFractionalSecondDigits` | `Intl.DateTimeFormatOptions['fractionalSecondDigits'] \| undefined` | `undefined`  |            | `option-fractionalseconddigits` |
-| `optionHour`                   | `Intl.DateTimeFormatOptions['hour'] \| undefined`                   | `undefined`  |            | `option-hour`                   |
-| `optionHour12`                 | `Intl.DateTimeFormatOptions['hour12'] \| undefined`                 | `undefined`  |            | `option-hour12`                 |
-| `optionHourCycle`              | `Intl.DateTimeFormatOptions['hourCycle'] \| undefined`              | `undefined`  |            | `option-hourcycle`              |
-| `optionLocaleMatcher`          | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |            | `option-localematcher`          |
-| `optionMinute`                 | `Intl.DateTimeFormatOptions['minute'] \| undefined`                 | `undefined`  |            | `option-minute`                 |
-| `optionMonth`                  | `Intl.DateTimeFormatOptions['month'] \| undefined`                  | `undefined`  |            | `option-month`                  |
-| `optionNumberingSystem`        | `Intl.DateTimeFormatOptions['numberingSystem'] \| undefined`        | `undefined`  |            | `option-numberingsystem`        |
-| `optionSecond`                 | `Intl.DateTimeFormatOptions['second'] \| undefined`                 | `undefined`  |            | `option-second`                 |
-| `optionTimeStyle`              | `Intl.DateTimeFormatOptions['timeStyle'] \| undefined`              | `undefined`  |            | `option-timestyle`              |
-| `optionTimeZone`               | `Intl.DateTimeFormatOptions['timeZone'] \| undefined`               | `undefined`  |            | `option-timezone`               |
-| `optionTimeZoneName`           | `Intl.DateTimeFormatOptions['timeZoneName'] \| undefined`           | `undefined`  |            | `option-timezonename`           |
-| `optionWeekday`                | `Intl.DateTimeFormatOptions['weekday'] \| undefined`                | `undefined`  |            | `option-weekday`                |
-| `optionYear`                   | `Intl.DateTimeFormatOptions['year'] \| undefined`                   | `undefined`  |            | `option-year`                   |
+| Name                           | Type                                                                | Default      | Read only? | Description | Attribute                       |
+| ------------------------------ | ------------------------------------------------------------------- | ------------ | ---------- | ----------- | ------------------------------- |
+| `consumerElements`             | `ConsumerElement[]`                                                 | `undefined`  | Yes        |             |                                 |
+| `intlObject`                   | `Intl.DateTimeFormat`                                               | `undefined`  | Yes        |             |                                 |
+| `localeList`                   | `LocaleList`                                                        | `undefined`  | Yes        |             |                                 |
+| `locales`                      | `string \| undefined`                                               | `undefined`  |            |             | `locales`                       |
+| `localesFrom`                  | `string \| undefined`                                               | `undefined`  |            |             | `locales-from`                  |
+| `localesFromElements`          | `HTMLIntlLocaleElement[]`                                           | `undefined`  | Yes        |             |                                 |
+| `optionCalendar`               | `Intl.DateTimeFormatOptions['calendar'] \| undefined`               | `undefined`  |            |             | `option-calendar`               |
+| `optionDateStyle`              | `Intl.DateTimeFormatOptions['dateStyle'] \| undefined`              | `undefined`  |            |             | `option-datestyle`              |
+| `optionDay`                    | `Intl.DateTimeFormatOptions['day'] \| undefined`                    | `undefined`  |            |             | `option-day`                    |
+| `optionDayPeriod`              | `Intl.DateTimeFormatOptions['dayPeriod'] \| undefined`              | `undefined`  |            |             | `option-dayperiod`              |
+| `optionEra`                    | `Intl.DateTimeFormatOptions['era'] \| undefined`                    | `undefined`  |            |             | `option-era`                    |
+| `optionFormatMatcher`          | `Intl.DateTimeFormatOptions['formatMatcher']`                       | `'best fit'` |            |             | `option-formatmatcher`          |
+| `optionFractionalSecondDigits` | `Intl.DateTimeFormatOptions['fractionalSecondDigits'] \| undefined` | `undefined`  |            |             | `option-fractionalseconddigits` |
+| `optionHour`                   | `Intl.DateTimeFormatOptions['hour'] \| undefined`                   | `undefined`  |            |             | `option-hour`                   |
+| `optionHour12`                 | `Intl.DateTimeFormatOptions['hour12'] \| undefined`                 | `undefined`  |            |             | `option-hour12`                 |
+| `optionHourCycle`              | `Intl.DateTimeFormatOptions['hourCycle'] \| undefined`              | `undefined`  |            |             | `option-hourcycle`              |
+| `optionLocaleMatcher`          | `Intl.RelativeTimeFormatLocaleMatcher`                              | `'best fit'` |            |             | `option-localematcher`          |
+| `optionMinute`                 | `Intl.DateTimeFormatOptions['minute'] \| undefined`                 | `undefined`  |            |             | `option-minute`                 |
+| `optionMonth`                  | `Intl.DateTimeFormatOptions['month'] \| undefined`                  | `undefined`  |            |             | `option-month`                  |
+| `optionNumberingSystem`        | `Intl.DateTimeFormatOptions['numberingSystem'] \| undefined`        | `undefined`  |            |             | `option-numberingsystem`        |
+| `optionSecond`                 | `Intl.DateTimeFormatOptions['second'] \| undefined`                 | `undefined`  |            |             | `option-second`                 |
+| `optionTimeStyle`              | `Intl.DateTimeFormatOptions['timeStyle'] \| undefined`              | `undefined`  |            |             | `option-timestyle`              |
+| `optionTimeZone`               | `Intl.DateTimeFormatOptions['timeZone'] \| undefined`               | `undefined`  |            |             | `option-timezone`               |
+| `optionTimeZoneName`           | `Intl.DateTimeFormatOptions['timeZoneName'] \| undefined`           | `undefined`  |            |             | `option-timezonename`           |
+| `optionWeekday`                | `Intl.DateTimeFormatOptions['weekday'] \| undefined`                | `undefined`  |            |             | `option-weekday`                |
+| `optionYear`                   | `Intl.DateTimeFormatOptions['year'] \| undefined`                   | `undefined`  |            |             | `option-year`                   |
 
 ### Methods
 
@@ -76,17 +76,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |            |
-| `value`           | `string`              | `undefined` | Yes        |            |
+| Name              | Type                  | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
+| `value`           | `string`              | `undefined` | Yes        |             |            |
 
 ### Slots
 
@@ -108,17 +108,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |            |
-| `value`           | `string`              | `undefined` | Yes        |            |
+| Name              | Type                  | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
+| `value`           | `string`              | `undefined` | Yes        |             |            |
 
 ### Slots
 
@@ -142,17 +142,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                        | Default     | Read only? | Attribute  |
-| ----------------- | --------------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined`       | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`            | `undefined` | Yes        |            |
-| `value`           | `Intl.DateTimeFormatPart[]` | `undefined` | Yes        |            |
+| Name              | Type                        | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`       | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`            | `undefined` | Yes        |             |            |
+| `value`           | `Intl.DateTimeFormatPart[]` | `undefined` | Yes        |             |            |
 
 ### Slots
 
@@ -193,17 +193,17 @@
 
 ### Attributes
 
-| Name       | Type                  | Default     | Property   |
-| ---------- | --------------------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` | `provider` |
+| Name       | Type                  | Default     | Description | Property   |
+| ---------- | --------------------- | ----------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |             | `provider` |
 
 ### Properties
 
-| Name              | Type                        | Default     | Read only? | Attribute  |
-| ----------------- | --------------------------- | ----------- | ---------- | ---------- |
-| `provider`        | `string \| undefined`       | `undefined` |            | `provider` |
-| `providerElement` | `P \| undefined`            | `undefined` | Yes        |            |
-| `value`           | `Intl.DateTimeFormatPart[]` | `undefined` | Yes        |            |
+| Name              | Type                        | Default     | Read only? | Description | Attribute  |
+| ----------------- | --------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`       | `undefined` |            |             | `provider` |
+| `providerElement` | `P \| undefined`            | `undefined` | Yes        |             |            |
+| `value`           | `Intl.DateTimeFormatPart[]` | `undefined` | Yes        |             |            |
 
 ### Slots
 

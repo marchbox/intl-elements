@@ -15,12 +15,12 @@ const SECTIONS = [
   {
     heading: 'Attributes',
     key: 'attributes',
-    items: ['name', 'type', 'default', 'fieldName'],
+    items: ['name', 'type', 'default', 'description', 'fieldName'],
   },
   {
     heading: 'Properties',
     key: 'properties',
-    items: ['name', 'type', 'default', 'readonly', 'attribute'],
+    items: ['name', 'type', 'default', 'readonly', 'description', 'attribute'],
   },
   {
     heading: 'Methods',
@@ -80,7 +80,7 @@ function getTable(section, data) {
           value = value ? 'Yes' : '';
           break;
         case 'description':
-          if (section.key === 'methods' && item.intl && item.intlsee) {
+          if (item.intl && item.intlsee) {
             value = [
               value,
               `[Learn more about \`${item.intl}\`](${item.intlsee})`,
