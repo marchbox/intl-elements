@@ -84,7 +84,7 @@ function getTable(section, data) {
             value = [
               value,
               `[Learn more about \`${item.intl}\`](${item.intlsee})`,
-            ].filter(Boolean).join('\n\n');
+            ].filter(Boolean).join(' ');
           }
           break;
       }
