@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This plugin sorts the manifest, so that the order of modules
+ * and each module's declarations are consistent between builds. This makes code
+ * reviews easier.
+ */
+
 const TARGETS = [
   'cssProperties',
   'cssParts',
