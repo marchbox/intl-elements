@@ -138,11 +138,38 @@ Take the above JavaScript example, we can achieve this with `intl-element`:
 The naming convention of provider elements is `intl-{constructor}`, and consumer
 element’s is `intl-{constructor}-{method}`.
 
+Consumer elements don’t have to be desendants of their corresponding provider
+elements, you can use the `provider` attribute to link them together.
+
+```html
+<intl-relativetimeformat id="rtf" locales="th-u-nu-thai">
+</intl-relativetimeformat>
+
+<p>
+  {{message('Last seen')}}:
+  <intl-relativetimeformat-format provider="rtf">
+    <data slot="rtime" value="-10">10</data>
+    <data slot="unit" value="days">days</data>
+    ago
+  </intl-relativetimeformat-format>
+</p>
+<p>
+  {{message('Next available')}}:
+  <intl-relativetimeformat-format provider="rtf">
+    In
+    <data slot="rtime" value="5">5</data>
+    <data slot="unit" value="days">days</data>
+  </intl-relativetimeformat-format>
+</p>
+```
+
 ### Locale list
 
 TODO
 
 ### Attributes
+
+TODO
 
 ### Styling
 
@@ -213,3 +240,10 @@ otherwise, remove the `dir` attribute.
     - `intl-relativetimeformat-formattoparts`
 + [`intl-segmenter`](./src/elements/segmenter/README.md)
     - `intl-segmenter-segment`
+
+## Further readings
+
++ [`Intl` in MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
++ [ECMA-402 specs](https://tc39.es/ecma402/)
++ [Active proposals](https://github.com/tc39/proposals/blob/main/ecma402/README.md)
++ [Stage 0 proposals](https://github.com/tc39/proposals/blob/main/ecma402/stage-0-proposals.md)
