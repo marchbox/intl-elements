@@ -146,7 +146,7 @@ elements, you can use the `provider` attribute to link them together.
 </intl-relativetimeformat>
 
 <p>
-  {{message('Last seen')}}:
+  {{message('Last seen:')}}
   <intl-relativetimeformat-format provider="rtf">
     <data slot="rtime" value="-10">10</data>
     <data slot="unit" value="days">days</data>
@@ -154,7 +154,7 @@ elements, you can use the `provider` attribute to link them together.
   </intl-relativetimeformat-format>
 </p>
 <p>
-  {{message('Next available')}}:
+  {{message('Next available:')}}
   <intl-relativetimeformat-format provider="rtf">
     In
     <data slot="rtime" value="5">5</data>
