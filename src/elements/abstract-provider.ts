@@ -28,6 +28,7 @@ type ResolvedOptionsReturnType = Intl.ResolvedCollatorOptions |
 
 type ConsumerElement = AbstractConsumer<AbstractProvider, any>;
 
+/** @internal */
 export default abstract class AbstractProvider extends LitElement {
   #attrObserver!: MutationObserver;
   #localesFromElementsObserver!: MutationObserver;
@@ -44,8 +45,9 @@ export default abstract class AbstractProvider extends LitElement {
 
   protected static intlApi: IntlApiType;
 
-  abstract intlObject: IntlObjectType;
+  abstract get intlObject(): IntlObjectType;
 
+  /** @readonly */
   @property({attribute: false})
   get localeList(): LocaleList {
     return this.#localeList;
@@ -55,8 +57,9 @@ export default abstract class AbstractProvider extends LitElement {
   locales?: string;
 
   @property({attribute: 'locales-from'})
-  localesFrom = '';
+  localesFrom?: string;
 
+  /** @readonly */
   get localesFromElements(): HTMLIntlLocaleElement[] {
     return this.#localesFromElements;
   }
@@ -65,6 +68,7 @@ export default abstract class AbstractProvider extends LitElement {
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   // TODO: Cache the list.
+  /** @readonly */
   get consumerElements(): ConsumerElement[] {
     const names = (this.constructor as typeof AbstractProvider)
         .consumerElementNames;

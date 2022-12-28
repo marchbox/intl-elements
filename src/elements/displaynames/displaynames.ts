@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.DisplayNames()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames
+ * @intlprovider
+ *
+ * @element intl-displaynames
+ */
+export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-displaynames-of',
   ]);
@@ -14,6 +21,7 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.DisplayNames;
 
+  /** @readonly */
   get intlObject(): Intl.DisplayNames {
     return this.#intlObject;
   }
@@ -30,6 +38,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionFallback: Intl.DisplayNamesOptions['fallback'] = 'code';
 
+  /**
+   * @intl Intl.DisplayNames.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedDisplayNamesOptions {
     return this.#resolvedOptions;
   }

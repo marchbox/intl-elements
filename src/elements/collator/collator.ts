@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.Collator()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
+ * @intlprovider
+ *
+ * @element intl-collator
+ */
+export default class HTMLIntlCollatorElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-collator-compare',
   ]);
@@ -14,7 +21,8 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.Collator;
 
-  get intlObject(): Intl.Collator {
+  /** @readonly */
+  override get intlObject(): Intl.Collator {
     return this.#intlObject;
   }
 
@@ -36,6 +44,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionCollation?: Intl.CollatorOptions['collation'];
 
+  /**
+   * @intl Intl.Collator.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedCollatorOptions {
     return this.#resolvedOptions;
   }

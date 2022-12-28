@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.PluralRules()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
+ * @intlprovider
+ *
+ * @element intl-pluralrules
+ */
+export default class HTMLIntlPluralRulesElement extends AbstractProvider {
   protected static override intlApi = Intl.PluralRules;
 
   protected static override consumerElementNames = new Set([
@@ -15,6 +22,7 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.PluralRules;
 
+  /** @readonly */
   get intlObject(): Intl.PluralRules {
     return this.#intlObject;
   }
@@ -37,6 +45,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionMaximumSignificantDigits?: Intl.PluralRulesOptions['maximumSignificantDigits'];
 
+  /**
+   * @intl Intl.PluralRules.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedPluralRulesOptions {
     return this.#resolvedOptions;
   }

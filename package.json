@@ -18,10 +18,12 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "customElements": "./custom-elements.json",
   "files": [
     "dist/",
     "LICENSE",
     "CHANGELOG.md",
+    "custom-elements.json",
     "package.json"
   ],
   "scripts": {
@@ -31,12 +33,16 @@
     "dev:server": "run-s dev:server:wait dev:server:serve",
     "dev:server:wait": "wait-on dist/index.js",
     "dev:server:serve": "web-dev-server",
-    "build": "rm -rf dist && tsc --project tsconfig.prod.json",
+    "build": "rm -rf dist && tsc --project tsconfig.prod.json && yarn docs",
     "build:watch": "tsc --watch",
+    "docs": "run-s docs:manifest docs:readme",
+    "docs:manifest": "cem analyze",
+    "docs:readme": "node ./scripts/build-readmes/index.js",
     "test": "jest",
     "test:watch": "jest --watch --no-coverage"
   },
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.6.6",
     "@testing-library/dom": "^8.19.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jest": "^29.2.2",
@@ -47,6 +53,7 @@
     "jest-environment-jsdom": "^29.3.1",
     "jest-extended": "^3.2.0",
     "jest-ts-webcompat-resolver": "^1.0.0",
+    "markdown-table": "^3.0.3",
     "npm-run-all": "^4.1.5",
     "ts-jest": "^29.0.3",
     "typescript": "^4.8.4",

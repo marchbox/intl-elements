@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.Segmenter()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter
+ * @intlprovider
+ *
+ * @element intl-segmenter
+ */
+export default class HTMLIntlSegmenterElement extends AbstractProvider {
   protected static override intlApi = Intl.Segmenter;
 
   protected static override consumerElementNames = new Set([
@@ -17,10 +24,15 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionGranularity: Intl.SegmenterOptions['granularity'] = 'grapheme';
 
+  /** @readonly */
   get intlObject(): Intl.Segmenter {
     return this.#intlObject;
   }
 
+  /**
+   * @intl Intl.Segmenter.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedSegmenterOptions {
     return this.#resolvedOptions;
   }

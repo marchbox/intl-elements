@@ -3,7 +3,22 @@ import {html, nothing} from 'lit';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlDisplayNamesElement from './displaynames.js';
 
-export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
+/**
+ * @intl Intl.DisplayNames.prototype.of
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/of
+ * @intlconsumer
+ *
+ * @element intl-displaynames-of
+ *
+ * @slot - The slotted element must be a `<data>` element with a `value`
+ *    attribute. The value is used as the `code` argument of
+ *    `Intl.DisplayNames`’s `of()` method.
+ *
+ * @csspart value - The `<span>` element that contains the string of the
+ *     display name of the given code.
+ */
+export default class HTMLIntlDisplayNamesOfElement
+    extends AbstractConsumer<HTMLIntlDisplayNamesElement, string> {
   protected static override providerElementName = 'intl-displaynames';
 
   get #data(): string {
@@ -12,7 +27,8 @@ export default class extends AbstractConsumer<HTMLIntlDisplayNamesElement, strin
 
   #value: string = '';
 
-  override get value() {
+  /** @readonly */
+  override get value(): string {
     return this.#value;
   }
 

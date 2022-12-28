@@ -1,10 +1,12 @@
 // @ts-nocheck
 import AbstractConsumer from '../abstract-consumer.js';
-import DateTimeFormat from './datetimeformat.js';
+import HTMLIntlDateTimeFormatElement from './datetimeformat.js';
 
 type ValueType = string | Intl.DateTimeFormatPart[];
 
-export default abstract class extends AbstractConsumer<DateTimeFormat, ValueType> {
+/** @internal */
+export default abstract class AbstractDateTimeFormatConsumer
+    extends AbstractConsumer<HTMLIntlDateTimeFormatElement, ValueType> {
   protected static override providerElementName = 'intl-datetimeformat';
 
   protected get dateTime(): Date {

@@ -6,6 +6,11 @@
 
 - Removed `display-*` attributes from `<intl-locale>` element
 
+### Added
+
+- `localeList` property can access members via indexes now, e.g.
+  `myIntlElement.localeList[0]`.
+
 ### Fixed
 
 - Providers now observe `<html>`’s `lang` attribute changes

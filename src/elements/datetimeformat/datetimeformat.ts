@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.DateTimeFormat()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+ * @intlprovider
+ *
+ * @element intl-datetimeformat
+ */
+export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-datetimeformat-format',
     'intl-datetimeformat-formattoparts',
@@ -17,6 +24,7 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.DateTimeFormat;
 
+  /** @readonly */
   get intlObject(): Intl.DateTimeFormat {
     return this.#intlObject;
   }
@@ -78,6 +86,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionTimeZoneName?: Intl.DateTimeFormatOptions['timeZoneName'];
 
+  /**
+   * @intl Intl.DateTimeFormat.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedDateTimeFormatOptions {
     return this.#resolvedOptions;
   }

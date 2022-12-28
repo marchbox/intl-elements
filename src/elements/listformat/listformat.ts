@@ -3,7 +3,14 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.ListFormat()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat
+ * @intlprovider
+ *
+ * @element intl-listformat
+ */
+export default class HTMLIntlListFormatElement extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-listformat-format',
     'intl-listformat-formattoparts',
@@ -15,6 +22,7 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.ListFormat;
 
+  /** @readonly */
   get intlObject(): Intl.ListFormat {
     return this.#intlObject;
   }
@@ -25,6 +33,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionType: Intl.ListFormatOptions['type'] = 'conjunction';
 
+  /**
+   * @intl Intl.ListFormat.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedListFormatOptions {
     return this.#resolvedOptions;
   }

@@ -3,7 +3,15 @@ import {nothing} from 'lit';
 import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
-export default class extends AbstractProvider {
+/**
+ * @intl Intl.RelativeTimeFormat()
+ * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat
+ * @intlprovider
+ *
+ * @element intl-relativetimeformat
+ */
+export default class HTMLIntlRelativeTimeFormatElement
+    extends AbstractProvider {
   protected static override consumerElementNames = new Set([
     'intl-relativetimeformat-format',
     'intl-relativetimeformat-formattoparts',
@@ -15,6 +23,7 @@ export default class extends AbstractProvider {
 
   #intlObject!: Intl.RelativeTimeFormat;
 
+  /** @readonly */
   get intlObject(): Intl.RelativeTimeFormat {
     return this.#intlObject;
   }
@@ -25,6 +34,10 @@ export default class extends AbstractProvider {
   @optionProperty()
   optionNumeric: Intl.RelativeTimeFormatOptions['numeric'] = 'always';
 
+  /**
+   * @intl Intl.RelativeTimeFormat.prototype.resolvedOptions()
+   * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/resolvedOptions
+   */
   resolvedOptions(): Intl.ResolvedRelativeTimeFormatOptions {
     return this.#resolvedOptions;
   }
