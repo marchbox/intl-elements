@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+None.
+
+---
+
+## [0.0.1-alpha.16] - 2022-12-28
+
 ### BREAKING CHANGES
 
 - Removed `display-*` attributes from `<intl-locale>` element
@@ -10,6 +16,7 @@
 
 - `localeList` property can access members via indexes now, e.g.
   `myIntlElement.localeList[0]`.
+- Documentations
 
 ### Fixed
 
