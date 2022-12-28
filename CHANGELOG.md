@@ -17,6 +17,7 @@ None.
 - `localeList` property can access members via indexes now, e.g.
   `myIntlElement.localeList[0]`.
 - Documentations
+- Added Custom Elements Manifest file: `custom-elements.json`
 
 ### Fixed
 
