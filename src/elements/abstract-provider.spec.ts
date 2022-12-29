@@ -34,7 +34,7 @@ describe('AbstractProvider', () => {
     });
     const el = document.querySelector('intl-foo') as TestProvider;
 
-    expect(el.localeList.valueAsArray).toEqual(['en', 'ja']);
+    expect(Array.from(el.localeList.values())).toEqual(['en', 'ja']);
   });
 
   it('should add `none` role if role is missing', async () => {

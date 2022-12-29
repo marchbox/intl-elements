@@ -10,7 +10,7 @@ export type IntlApiType = typeof Intl.Collator |
     typeof Intl.Segmenter;
 
 export interface LocaleList extends DOMTokenList {
-  valueAsArray: string[];
+  __destroy__: () => void;
 }
 
 // Details about this implementation:
@@ -19,16 +19,15 @@ export function createLocaleList(
   intl: IntlApiType,
   value: string,
   onChange?: () => void,
-): {
-  localeList: LocaleList,
-  destroy: () => void,
-} {
+): LocaleList {
   const hostingElement = document.createElement('div');
+  let observer: MutationObserver | undefined;
 
   // @ts-ignore
   const localeList: LocaleList = hostingElement.classList;
   localeList.value = value;
-  Object.defineProperties(localeList, {
+
+  Object.defineProperties(hostingElement.classList, {
     supports: {
       value: function(locale: string): boolean {
         const normalizedLocale = normalizeLocale(locale);
@@ -36,12 +35,14 @@ export function createLocaleList(
             intl.supportedLocalesOf(normalizedLocale).length > 0;
       },
     },
-    valueAsArray: {
-      get: () => Array.from(localeList.values()),
+    __destroy__: {
+      value: function() {
+        observer?.disconnect();
+        hostingElement.remove();
+      },
     },
   });
 
-  let observer: MutationObserver | undefined;
   if (typeof onChange === 'function') {
     observer = new MutationObserver(() => {
       onChange();
@@ -52,11 +53,5 @@ export function createLocaleList(
     });
   }
 
-  return {
-    localeList,
-    destroy() {
-      observer?.disconnect();
-      hostingElement.remove();
-    },
-  };
+  return localeList;
 }

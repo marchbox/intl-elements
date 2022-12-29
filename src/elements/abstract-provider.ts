@@ -39,7 +39,6 @@ export default abstract class AbstractProvider extends LitElement {
   #ancestorObserver!: MutationObserver;
 
   #localeList!: LocaleList;
-  #localeListDestroyFunc!: () => void;
 
   #isUpdatingLocales = false;
 
@@ -103,16 +102,11 @@ export default abstract class AbstractProvider extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    const {
-      localeList,
-      destroy,
-    } = createLocaleList(
+    this.#localeList = createLocaleList(
       this.#getIntlApi(),
       this.#getAdditionalLocales(),
       this.#handleLocaleListChange.bind(this)
     );
-    this.#localeList = localeList;
-    this.#localeListDestroyFunc = destroy;
 
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'none');
@@ -125,7 +119,7 @@ export default abstract class AbstractProvider extends LitElement {
     this.#attrObserver.disconnect();
     this.#localesFromElementsObserver.disconnect();
     this.#ancestorObserver.disconnect();
-    this.#localeListDestroyFunc();
+    this.#localeList.__destroy__();
   }
 
   protected override willUpdate(changes: Map<string, unknown>) {

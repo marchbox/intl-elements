@@ -6,8 +6,8 @@ export interface FakeIntlApiOptions {
   timeZone?: string;
 }
 
-export type ResolvedFakeIntlApiOptions = FakeIntlApiOptions & {
-  locales: string[];
+export interface ResolvedFakeIntlApiOptions extends FakeIntlApiOptions {
+  locale: string;
 };
 
 export class FakeIntlApi {
@@ -42,7 +42,7 @@ export class FakeIntlApi {
 
   resolvedOptions(): ResolvedFakeIntlApiOptions {
     return {
-      locales: this.#locales.valueAsArray,
+      locale: this.#locales[0] ?? 'en',
       unit: this.#options.unit,
       currency: this.#options.currency,
       timeZone: this.#options.timeZone,

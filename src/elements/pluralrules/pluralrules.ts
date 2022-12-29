@@ -55,7 +55,7 @@ export default class HTMLIntlPluralRulesElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.PluralRules(this.localeList.valueAsArray, {
+      this.#intlObject = new Intl.PluralRules(Array.from(this.localeList.values()), {
         localeMatcher: this.optionLocaleMatcher,
         type: this.optionType,
         minimumIntegerDigits: this.optionMinimumIntegerDigits,

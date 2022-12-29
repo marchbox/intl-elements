@@ -87,7 +87,7 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.NumberFormat(this.localeList.valueAsArray, {
+      this.#intlObject = new Intl.NumberFormat(Array.from(this.localeList.values()), {
         localeMatcher: this.optionLocaleMatcher,
         style: this.optionStyle,
         compactDisplay: this.optionCompactDisplay,

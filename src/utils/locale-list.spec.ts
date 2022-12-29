@@ -23,7 +23,7 @@ class FakeIntlObj {
 describe('createLocaleList', () => {
   it('returns and sets correct value', async () => {
     const onChange = jest.fn();
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB',
@@ -31,21 +31,19 @@ describe('createLocaleList', () => {
     );
 
     expect(list.value).toBe('en-US en-GB');
-    expect(list.valueAsArray).toEqual(['en-US', 'en-GB']);
     expect(list.toString()).toBe('en-US en-GB');
 
     list.value = 'en-US en-AU';
     await waitOnChanges();
 
     expect(list.value).toBe('en-US en-AU');
-    expect(list.valueAsArray).toEqual(['en-US', 'en-AU']);
     expect(list.toString()).toBe('en-US en-AU');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('returns the length of the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.length).toBe(2);
 
@@ -55,7 +53,7 @@ describe('createLocaleList', () => {
 
   it('uses item() to return correct member with given index', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.item(0)).toBe('en-US');
     expect(list.item(1)).toBe('en-GB');
@@ -64,7 +62,7 @@ describe('createLocaleList', () => {
 
   it('uses contains() to check if the list contains given member', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.contains('en-US')).toBe(true);
     expect(list.contains('en-GB')).toBe(true);
@@ -73,7 +71,7 @@ describe('createLocaleList', () => {
 
   it('uses add() to add given members to the list', async () => {
     const onChange = jest.fn();
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB',
@@ -96,7 +94,7 @@ describe('createLocaleList', () => {
 
   it('uses remove() to remove given members from the list', async () => {
     const onChange = jest.fn();
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB',
@@ -119,7 +117,7 @@ describe('createLocaleList', () => {
 
   it('uses toggle() to toggle given members in the list', async () => {
     const onChange = jest.fn();
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB',
@@ -162,7 +160,7 @@ describe('createLocaleList', () => {
 
   it('uses replace() to replace given members in the list', async () => {
     const onChange = jest.fn();
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB',
@@ -185,7 +183,7 @@ describe('createLocaleList', () => {
 
   it('uses entries() to return an iterator of the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.entries();
 
     expect(iterator.next().value).toEqual([0, 'en-US']);
@@ -195,7 +193,7 @@ describe('createLocaleList', () => {
 
   it('uses keys() to return an iterator of the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.keys();
 
     expect(iterator.next().value).toBe(0);
@@ -205,7 +203,7 @@ describe('createLocaleList', () => {
 
   it('uses values() to return an iterator of the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.values();
 
     expect(iterator.next().value).toBe('en-US');
@@ -215,7 +213,7 @@ describe('createLocaleList', () => {
 
   it('uses forEach() to iterate over the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const values: string[] = [];
 
     list.forEach((value) => values.push(value));
@@ -224,7 +222,7 @@ describe('createLocaleList', () => {
 
   it('uses supports() to check if the item is supported', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.supports('zh-CN')).toBe(true);
     expect(list.supports('invalid')).toBe(false);
@@ -233,7 +231,7 @@ describe('createLocaleList', () => {
 
   it('uses [Symbol.iterator]() to return an iterator of the list', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list[Symbol.iterator]();
 
     expect(iterator.next().value).toBe('en-US');
@@ -243,7 +241,7 @@ describe('createLocaleList', () => {
 
   it('returns correct member with given index via bracket notion', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list[0]).toBe('en-US');
     expect(list[1]).toBe('en-GB');
@@ -275,14 +273,14 @@ describe('createLocaleList', () => {
 
   it('ignores setting values via bracket notion', async () => {
     // @ts-ignore
-    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
+    const list = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(() => list[1] = 'en-AU').toThrow();
     expect(list[1]).toBe('en-GB');
   });
 
   it('adds invalid locales', async () => {
-    const {localeList: list} = createLocaleList(
+    const list = createLocaleList(
       // @ts-ignore
       FakeIntlObj,
       'en-US en-GB invalid'
@@ -291,6 +289,35 @@ describe('createLocaleList', () => {
     expect(list.value).toBe('en-US en-GB invalid');
   });
 
-  it.todo('disconnects the observer when the list is destroyed');
-  it.todo('doesn’t create observer if `onChange` isn’t a function');
+  it('disconnects the observer when the list is destroyed', async () => {
+    const spy = jest.spyOn(MutationObserver.prototype, 'disconnect');
+    const onChange = jest.fn();
+
+    const list = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
+
+    list.__destroy__();
+
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+
+  it('doesn’t create observer if `onChange` isn’t a function', async () => {
+    const spy = jest.spyOn(MutationObserver.prototype, 'observe');
+
+    const list = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB'
+    );
+
+    list.__destroy__();
+
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
+  });
 });
