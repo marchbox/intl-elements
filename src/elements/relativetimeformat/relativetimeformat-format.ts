@@ -1,5 +1,6 @@
 import {html, nothing} from 'lit';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer.js';
 
 /**
@@ -45,11 +46,11 @@ export default class HTMLIntlRelativeTimeFormatFormatElement
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${this.#value}</span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-        <slot name="rtime"></slot>
-        <slot name="unit"></slot>
-      </span>
+      ${generateSlotContent([
+        '',
+        'rtime',
+        'unit',
+      ])}
     `;
   }
 }

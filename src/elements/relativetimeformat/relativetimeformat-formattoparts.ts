@@ -1,6 +1,7 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import {camelToKebab} from '../../utils/strings.js';
 import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer.js';
 
@@ -57,11 +58,11 @@ export default class HTMLIntlRelativeTimeFormatFormatToPartsElement
             html`<span part="${camelToKebab(part.type)}"
                 role="none">${part.value}</span>`)}
       </span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-        <slot name="rtime"></slot>
-        <slot name="unit"></slot>
-      </span>
+      ${generateSlotContent([
+        '',
+        'rtime',
+        'unit',
+      ])}
     `;
   }
 }

@@ -2,6 +2,7 @@ import {TemplateResult, html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 import {when} from 'lit/directives/when.js';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlSegmenterElement from './segmenter.js';
 
@@ -92,9 +93,7 @@ export default class HTMLIntlSegmenterSegmentElement
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${segmentHtml}</span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-      </span>
+      ${generateSlotContent([''])}
     `;
   }
 }

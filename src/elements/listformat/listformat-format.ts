@@ -1,5 +1,6 @@
 import {html, nothing} from 'lit';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 /**
@@ -37,9 +38,7 @@ export default class HTMLIntlListFormatFormatElement
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${this.#value}</span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-      </span>
+      ${generateSlotContent([''])}
     `;
   }
 }

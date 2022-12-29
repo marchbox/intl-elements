@@ -1,5 +1,6 @@
 import {html, nothing} from 'lit';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlCollatorElement from './collator.js';
 
@@ -86,10 +87,10 @@ export default class HTMLIntlCollatorCompareElement
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${result}</div>
-      <span aria-hidden="true" hidden>
-        <slot name="target"></slot>
-        <slot name="list"></slot>
-      </span>
+      ${generateSlotContent([
+        'target',
+        'list',
+      ])}
     `;
   }
 }

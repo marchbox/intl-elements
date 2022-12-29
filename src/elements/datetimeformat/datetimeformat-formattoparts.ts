@@ -1,6 +1,7 @@
 import {html, nothing} from 'lit';
 import {map} from 'lit/directives/map.js';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import {camelToKebab} from '../../utils/strings.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
@@ -74,9 +75,7 @@ export default class HTMLIntlDateTimeFormatFormatToPartsElement
             html`<span part="${camelToKebab(part.type)}"
                 role="none">${part.value}</span>`)}
       </span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-      </span>
+      ${generateSlotContent([''])}
     `;
   }
 }

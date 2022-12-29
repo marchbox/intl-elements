@@ -1,5 +1,6 @@
 import {html, nothing} from 'lit';
 
+import {generateSlotContent} from '../../utils/templates.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 /**
@@ -46,11 +47,11 @@ export default class HTMLIntlDateTimeFormatFormatRangeElement
         lang=${this.currentLang ?? nothing}
         dir=${this.currentDir ?? nothing}
       >${this.#value}</span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-        <slot name="start"></slot>
-        <slot name="end"></slot>
-      </span>
+      ${generateSlotContent([
+        '',
+        'start',
+        'end',
+      ])}
     `;
   }
 }
