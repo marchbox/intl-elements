@@ -40,4 +40,3 @@ export default class extends AbstractProvider {
     return nothing;
   }
 }
-

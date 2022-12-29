@@ -1,7 +1,11 @@
 import {LitElement} from 'lit';
 import {property} from 'lit/decorators.js';
 
-import {default as LocaleList, IntlApiType} from '../utils/locale-list.js';
+import {
+  IntlApiType,
+  LocaleList,
+  createLocaleList,
+} from '../utils/locale-list.js';
 import {optionProperty} from '../utils/properties.js';
 import AbstractConsumer from './abstract-consumer.js';
 import HTMLIntlLocaleElement from './locale/locale.js';
@@ -34,8 +38,8 @@ export default abstract class AbstractProvider extends LitElement {
   #localesFromElementsObserver!: MutationObserver;
   #ancestorObserver!: MutationObserver;
 
-  #previousLocaleList?: LocaleList;
   #localeList!: LocaleList;
+  #localeListDestroyFunc!: () => void;
 
   #isUpdatingLocales = false;
 
@@ -99,14 +103,20 @@ export default abstract class AbstractProvider extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    this.#localeList = new LocaleList(this.#getIntlApi(), '');
-    this.#localeList.onChange(this.#handleLocaleListChange.bind(this));
+    const {
+      localeList,
+      destroy,
+    } = createLocaleList(
+      this.#getIntlApi(),
+      this.#getAdditionalLocales(),
+      this.#handleLocaleListChange.bind(this)
+    );
+    this.#localeList = localeList;
+    this.#localeListDestroyFunc = destroy;
 
     if (!this.hasAttribute('role')) {
       this.setAttribute('role', 'none');
     }
-
-    this.#localeList.value = this.#getAdditionalLocales();
   }
 
   override disconnectedCallback(): void {
@@ -115,6 +125,7 @@ export default abstract class AbstractProvider extends LitElement {
     this.#attrObserver.disconnect();
     this.#localesFromElementsObserver.disconnect();
     this.#ancestorObserver.disconnect();
+    this.#localeListDestroyFunc();
   }
 
   protected override willUpdate(changes: Map<string, unknown>) {
@@ -146,9 +157,7 @@ export default abstract class AbstractProvider extends LitElement {
     } else {
       this.#isUpdatingLocales = false;
     }
-    this.requestUpdate('localeList', this.#previousLocaleList);
-    this.#previousLocaleList =
-        new LocaleList(this.#getIntlApi(), this.#localeList.value);
+    this.requestUpdate('localeList');
   }
 
   // An intl element uses multiple signals to determine the locales. The
@@ -173,7 +182,7 @@ export default abstract class AbstractProvider extends LitElement {
     ];
 
     for (const func of funcs) {
-      const locales = new LocaleList(this.#getIntlApi(), func.call(this)).value;
+      const locales = func.call(this);
       if (locales) {
         return locales;
       }

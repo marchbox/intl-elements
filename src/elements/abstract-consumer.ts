@@ -56,8 +56,9 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
   abstract get value(): V;
 
   protected get currentLang(): string | undefined {
-    return (this.providerElement as AbstractProvider)?.localeList.item(0)
-        ?? undefined;
+    const localeList = (this.providerElement as AbstractProvider)?.localeList;
+    const primaryLocale = localeList?.[0] || '';
+    return localeList?.supports(primaryLocale) ? primaryLocale : undefined;
   }
 
   protected get currentDir(): string | undefined {

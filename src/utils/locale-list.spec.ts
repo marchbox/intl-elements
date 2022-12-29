@@ -1,4 +1,8 @@
-import LocaleList from './locale-list';
+import {createLocaleList} from './locale-list';
+
+function waitOnChanges() {
+  return new Promise(process.nextTick);
+}
 
 class FakeIntlObj {
   static supportedLocalesOf(list: string | string[]) {
@@ -16,30 +20,32 @@ class FakeIntlObj {
   }
 }
 
-describe('LocaleList', () => {
-  it('returns and sets correct value', () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
-    const onChange1 = jest.fn();
-    const onChange2 = jest.fn();
-    list.onChange(onChange1);
-    list.onChange(onChange2);
+describe('createLocaleList', () => {
+  it('returns and sets correct value', async () => {
+    const onChange = jest.fn();
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
 
     expect(list.value).toBe('en-US en-GB');
+    expect(list.valueAsArray).toEqual(['en-US', 'en-GB']);
     expect(list.toString()).toBe('en-US en-GB');
 
     list.value = 'en-US en-AU';
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-AU');
+    expect(list.valueAsArray).toEqual(['en-US', 'en-AU']);
     expect(list.toString()).toBe('en-US en-AU');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange1).toHaveBeenCalledWith(list);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledWith(list);
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('returns the length of the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.length).toBe(2);
 
@@ -49,7 +55,7 @@ describe('LocaleList', () => {
 
   it('uses item() to return correct member with given index', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.item(0)).toBe('en-US');
     expect(list.item(1)).toBe('en-GB');
@@ -58,7 +64,7 @@ describe('LocaleList', () => {
 
   it('uses contains() to check if the list contains given member', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.contains('en-US')).toBe(true);
     expect(list.contains('en-GB')).toBe(true);
@@ -66,112 +72,120 @@ describe('LocaleList', () => {
   });
 
   it('uses add() to add given members to the list', async () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
-    const onChange1 = jest.fn();
-    const onChange2 = jest.fn();
-    list.onChange(onChange1);
-    list.onChange(onChange2);
+    const onChange = jest.fn();
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
 
     list.add('en-AU');
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB en-AU');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     list.add('en-AU');
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB en-AU');
-    expect(onChange1).not.toHaveBeenCalled();
-    expect(onChange2).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('uses remove() to remove given members from the list', async () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
-    const onChange1 = jest.fn();
-    const onChange2 = jest.fn();
-    list.onChange(onChange1);
-    list.onChange(onChange2);
+    const onChange = jest.fn();
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
 
     list.remove('en-US');
+    await waitOnChanges();
+
     expect(list.value).toBe('en-GB');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     list.remove('en-US');
+    await waitOnChanges();
+
     expect(list.value).toBe('en-GB');
-    expect(onChange1).not.toHaveBeenCalled();
-    expect(onChange2).not.toHaveBeenCalled();
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('uses toggle() to toggle given members in the list', async () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
-    const onChange1 = jest.fn();
-    const onChange2 = jest.fn();
-    list.onChange(onChange1);
-    list.onChange(onChange2);
+    const onChange = jest.fn();
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
 
     expect(list.toggle('en-AU')).toBe(true);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB en-AU');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     expect(list.toggle('en-AU')).toBe(false);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     expect(list.toggle('en-AU', true)).toBe(true);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB en-AU');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     expect(list.toggle('en-AU', false)).toBe(false);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-US en-GB');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     expect(list.toggle('en-AU', false)).toBe(false);
-    expect(onChange1).not.toHaveBeenCalled();
-    expect(onChange2).not.toHaveBeenCalled();
+    await waitOnChanges();
+
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('uses replace() to replace given members in the list', async () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
-    const onChange1 = jest.fn();
-    const onChange2 = jest.fn();
-    list.onChange(onChange1);
-    list.onChange(onChange2);
+    const onChange = jest.fn();
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB',
+      onChange
+    );
 
     expect(list.replace('en-US', 'en-AU')).toBe(true);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-AU en-GB');
-    expect(onChange1).toHaveBeenCalledTimes(1);
-    expect(onChange2).toHaveBeenCalledTimes(1);
-    onChange1.mockClear();
-    onChange2.mockClear();
+    expect(onChange).toHaveBeenCalledTimes(1);
+    onChange.mockClear();
 
     expect(list.replace('en-US', 'en-AU')).toBe(false);
+    await waitOnChanges();
+
     expect(list.value).toBe('en-AU en-GB');
-    expect(onChange1).not.toHaveBeenCalled();
-    expect(onChange2).not.toHaveBeenCalled();
+    expect(onChange).not.toHaveBeenCalled();
   });
 
   it('uses entries() to return an iterator of the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.entries();
 
     expect(iterator.next().value).toEqual([0, 'en-US']);
@@ -181,7 +195,7 @@ describe('LocaleList', () => {
 
   it('uses keys() to return an iterator of the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.keys();
 
     expect(iterator.next().value).toBe(0);
@@ -191,7 +205,7 @@ describe('LocaleList', () => {
 
   it('uses values() to return an iterator of the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list.values();
 
     expect(iterator.next().value).toBe('en-US');
@@ -201,7 +215,7 @@ describe('LocaleList', () => {
 
   it('uses forEach() to iterate over the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const values: string[] = [];
 
     list.forEach((value) => values.push(value));
@@ -210,7 +224,7 @@ describe('LocaleList', () => {
 
   it('uses supports() to check if the item is supported', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list.supports('zh-CN')).toBe(true);
     expect(list.supports('invalid')).toBe(false);
@@ -219,7 +233,7 @@ describe('LocaleList', () => {
 
   it('uses [Symbol.iterator]() to return an iterator of the list', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
     const iterator = list[Symbol.iterator]();
 
     expect(iterator.next().value).toBe('en-US');
@@ -229,7 +243,7 @@ describe('LocaleList', () => {
 
   it('returns correct member with given index via bracket notion', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
     expect(list[0]).toBe('en-US');
     expect(list[1]).toBe('en-GB');
@@ -252,9 +266,6 @@ describe('LocaleList', () => {
     list.replace('en-CA', 'en-IN');
     expect(list[1]).toBe('en-IN');
 
-    list.replace('en-IN', 'ar');
-    expect(list[1]).toBe('en-IN');
-
     list.value = 'zh-CN zh-TW zh-HK';
     expect(list[0]).toBe('zh-CN');
     expect(list[1]).toBe('zh-TW');
@@ -264,16 +275,22 @@ describe('LocaleList', () => {
 
   it('ignores setting values via bracket notion', async () => {
     // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB');
+    const {localeList: list} = createLocaleList(FakeIntlObj, 'en-US en-GB');
 
-    list[1] = 'en-AU';
+    expect(() => list[1] = 'en-AU').toThrow();
     expect(list[1]).toBe('en-GB');
   });
 
-  it('removes invalid locales', async () => {
-    // @ts-ignore
-    const list = new LocaleList(FakeIntlObj, 'en-US en-GB invalid');
+  it('adds invalid locales', async () => {
+    const {localeList: list} = createLocaleList(
+      // @ts-ignore
+      FakeIntlObj,
+      'en-US en-GB invalid'
+    );
 
-    expect(list.value).toBe('en-US en-GB');
+    expect(list.value).toBe('en-US en-GB invalid');
   });
+
+  it.todo('disconnects the observer when the list is destroyed');
+  it.todo('doesn’t create observer if `onChange` isn’t a function');
 });

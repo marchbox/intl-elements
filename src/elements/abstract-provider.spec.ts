@@ -11,20 +11,20 @@ import HTMLIntlLocaleElement from './locale/locale';
 defineTestIntlElements();
 
 describe('AbstractProvider', () => {
-  it('handles multiple locales and ignores unsupported and invalid ones', async () => {
+  it('handles multiple locales', async () => {
     await createTestPage({
       elements: ['intl-foo'],
       html: `
-        <intl-foo locales="he ja $invalid">
+        <intl-foo locales="he ja zh">
         </intl-foo>
       `,
     });
     const el = document.querySelector('intl-foo') as TestProvider;
 
-    expect(el.localeList.value).toBe('ja');
+    expect(el.localeList.value).toBe('he ja zh');
   });
 
-  it('trims `locales` attribute before parsing', async () => {
+  it('processes extra whitespaces properly', async () => {
     await createTestPage({
       elements: ['intl-foo'],
       html: `
@@ -34,7 +34,7 @@ describe('AbstractProvider', () => {
     });
     const el = document.querySelector('intl-foo') as TestProvider;
 
-    expect(el.localeList.value).toBe('en ja');
+    expect(el.localeList.valueAsArray).toEqual(['en', 'ja']);
   });
 
   it('should add `none` role if role is missing', async () => {
@@ -217,12 +217,13 @@ describe('AbstractProvider', () => {
     expect(el.localeList.value).toBe('en');
     expect(el).not.toHaveAttribute('locales');
 
-    el.setAttribute('locales', 'invalid');
+    el.setAttribute('locales', '');
     await el.updateComplete;
     expect(el.localeList.value).toBe('');
 
     el.lang = 'ja';
-    // TODO: Find out why this triggered 2 updates
+    // TODO: Find out why this triggered 3 updates
+    await el.updateComplete;
     await el.updateComplete;
     await el.updateComplete;
     expect(el).toHaveAttribute('lang', 'ja');
