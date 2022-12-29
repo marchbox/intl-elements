@@ -87,25 +87,28 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.NumberFormat(Array.from(this.localeList.values()), {
-        localeMatcher: this.optionLocaleMatcher,
-        style: this.optionStyle,
-        compactDisplay: this.optionCompactDisplay,
-        currency: this.optionCurrency,
-        currencyDisplay: this.optionCurrencyDisplay,
-        currencySign: this.optionCurrencySign,
-        notation: this.optionNotation,
-        // numberingSystem: this.optionNumberingSystem,
-        signDisplay: this.optionSignDisplay,
-        unit: this.optionUnit,
-        unitDisplay: this.optionUnitDisplay,
-        useGrouping: this.optionUseGrouping,
-        minimumIntegerDigits: this.optionMinimumIntegerDigits,
-        minimumFractionDigits: this.optionMinimumFractionDigits,
-        maximumFractionDigits: this.optionMaximumFractionDigits,
-        minimumSignificantDigits: this.optionMinimumSignificantDigits,
-        maximumSignificantDigits: this.optionMaximumSignificantDigits,
-      });
+      this.#intlObject = new Intl.NumberFormat(
+        Array.from(this.localeList.values()),
+        {
+          localeMatcher: this.optionLocaleMatcher,
+          style: this.optionStyle,
+          compactDisplay: this.optionCompactDisplay,
+          currency: this.optionCurrency,
+          currencyDisplay: this.optionCurrencyDisplay,
+          currencySign: this.optionCurrencySign,
+          notation: this.optionNotation,
+          // numberingSystem: this.optionNumberingSystem,
+          signDisplay: this.optionSignDisplay,
+          unit: this.optionUnit,
+          unitDisplay: this.optionUnitDisplay,
+          useGrouping: this.optionUseGrouping,
+          minimumIntegerDigits: this.optionMinimumIntegerDigits,
+          minimumFractionDigits: this.optionMinimumFractionDigits,
+          maximumFractionDigits: this.optionMaximumFractionDigits,
+          minimumSignificantDigits: this.optionMinimumSignificantDigits,
+          maximumSignificantDigits: this.optionMaximumSignificantDigits,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 

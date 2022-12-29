@@ -54,15 +54,18 @@ export default class HTMLIntlCollatorElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.Collator(Array.from(this.localeList.values()), {
-        localeMatcher: this.optionLocaleMatcher,
-        usage: this.optionUsage,
-        sensitivity: this.optionSensitivity,
-        ignorePunctuation: this.optionIgnorePunctuation,
-        numeric: this.optionNumeric,
-        caseFirst: this.optionCaseFirst,
-        collation: this.optionCollation,
-      });
+      this.#intlObject = new Intl.Collator(
+        Array.from(this.localeList.values()),
+        {
+          localeMatcher: this.optionLocaleMatcher,
+          usage: this.optionUsage,
+          sensitivity: this.optionSensitivity,
+          ignorePunctuation: this.optionIgnorePunctuation,
+          numeric: this.optionNumeric,
+          caseFirst: this.optionCaseFirst,
+          collation: this.optionCollation,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 
