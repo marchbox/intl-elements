@@ -31,7 +31,7 @@ export default class extends AbstractProvider {
   }
 
   override render() {
-    this.#intlObject = new FakeIntlApi(this.localeList.valueAsArray, {
+    this.#intlObject = new FakeIntlApi(Array.from(this.localeList.values()), {
       unit: this.optionUnit,
       currency: this.optionCurrency,
       timeZone: this.optionTimeZone,
@@ -40,4 +40,3 @@ export default class extends AbstractProvider {
     return nothing;
   }
 }
-

@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-None.
+### Changed
+
+- `localeList` property is now a `DOMTokenList` (#45)
 
 ---
 

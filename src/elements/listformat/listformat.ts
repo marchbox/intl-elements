@@ -43,11 +43,14 @@ export default class HTMLIntlListFormatElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.ListFormat(this.localeList.valueAsArray, {
-        type: this.optionType,
-        style: this.optionStyle,
-        localeMatcher: this.optionLocaleMatcher,
-      });
+      this.#intlObject = new Intl.ListFormat(
+        Array.from(this.localeList.values()),
+        {
+          type: this.optionType,
+          style: this.optionStyle,
+          localeMatcher: this.optionLocaleMatcher,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 

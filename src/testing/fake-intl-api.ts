@@ -1,22 +1,29 @@
+import type {LocaleList} from '../utils/locale-list';
+
 export interface FakeIntlApiOptions {
   unit?: string;
   currency?: string;
   timeZone?: string;
 }
 
-export type ResolvedFakeIntlApiOptions = FakeIntlApiOptions & {
-  locales: string[];
+export interface ResolvedFakeIntlApiOptions extends FakeIntlApiOptions {
+  locale: string;
 };
 
 export class FakeIntlApi {
   // @ts-ignore
-  #locales: string[];
+  #locales: LocaleList;
   // @ts-ignore
   #options: FakeIntlApiOptions;
 
   constructor(locales: string | string[], options: any = {}) {
-    // @ts-ignore
-    this.#locales = Intl.getCanonicalLocales(locales);
+    try {
+      // @ts-ignore
+      this.#locales = Intl.getCanonicalLocales(locales);
+    } catch {
+      // @ts-ignore
+      this.#locales = [];
+    }
     this.#options = options;
   }
 
@@ -35,7 +42,7 @@ export class FakeIntlApi {
 
   resolvedOptions(): ResolvedFakeIntlApiOptions {
     return {
-      locales: this.#locales,
+      locale: this.#locales[0] ?? 'en',
       unit: this.#options.unit,
       currency: this.#options.currency,
       timeZone: this.#options.timeZone,

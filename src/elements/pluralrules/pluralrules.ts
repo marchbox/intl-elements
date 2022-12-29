@@ -55,15 +55,18 @@ export default class HTMLIntlPluralRulesElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.PluralRules(this.localeList.valueAsArray, {
-        localeMatcher: this.optionLocaleMatcher,
-        type: this.optionType,
-        minimumIntegerDigits: this.optionMinimumIntegerDigits,
-        minimumFractionDigits: this.optionMinimumFractionDigits,
-        maximumFractionDigits: this.optionMaximumFractionDigits,
-        minimumSignificantDigits: this.optionMinimumSignificantDigits,
-        maximumSignificantDigits: this.optionMaximumSignificantDigits,
-      });
+      this.#intlObject = new Intl.PluralRules(
+        Array.from(this.localeList.values()),
+        {
+          localeMatcher: this.optionLocaleMatcher,
+          type: this.optionType,
+          minimumIntegerDigits: this.optionMinimumIntegerDigits,
+          minimumFractionDigits: this.optionMinimumFractionDigits,
+          maximumFractionDigits: this.optionMaximumFractionDigits,
+          minimumSignificantDigits: this.optionMinimumSignificantDigits,
+          maximumSignificantDigits: this.optionMaximumSignificantDigits,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 

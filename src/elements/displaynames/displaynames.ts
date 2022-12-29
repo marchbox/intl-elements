@@ -48,13 +48,16 @@ export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
 
   protected override render() {
     try {
-      this.#intlObject = new Intl.DisplayNames(this.localeList.valueAsArray, {
-        type: this.optionType,
-        style: this.optionStyle,
-        localeMatcher: this.optionLocaleMatcher,
-        languageDisplay: this.optionLanguageDisplay,
-        fallback: this.optionFallback,
-      });
+      this.#intlObject = new Intl.DisplayNames(
+        Array.from(this.localeList.values()),
+        {
+          type: this.optionType,
+          style: this.optionStyle,
+          localeMatcher: this.optionLocaleMatcher,
+          languageDisplay: this.optionLanguageDisplay,
+          fallback: this.optionFallback,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 

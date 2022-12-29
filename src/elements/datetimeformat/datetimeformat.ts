@@ -96,28 +96,31 @@ export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
 
   override render() {
     try {
-      this.#intlObject = new Intl.DateTimeFormat(this.localeList.valueAsArray, {
-        localeMatcher: this.optionLocaleMatcher,
-        dateStyle: this.optionDateStyle,
-        timeStyle: this.optionTimeStyle,
-        calendar: this.optionCalendar,
-        dayPeriod: this.optionDayPeriod,
-        numberingSystem: this.optionNumberingSystem,
-        timeZone: this.optionTimeZone,
-        hour12: this.optionHour12,
-        hourCycle: this.optionHourCycle,
-        formatMatcher: this.optionFormatMatcher,
-        weekday: this.optionWeekday,
-        era: this.optionEra,
-        year: this.optionYear,
-        month: this.optionMonth,
-        day: this.optionDay,
-        hour: this.optionHour,
-        minute: this.optionMinute,
-        second: this.optionSecond,
-        fractionalSecondDigits: this.optionFractionalSecondDigits,
-        timeZoneName: this.optionTimeZoneName,
-      });
+      this.#intlObject = new Intl.DateTimeFormat(
+        Array.from(this.localeList.values()),
+        {
+          localeMatcher: this.optionLocaleMatcher,
+          dateStyle: this.optionDateStyle,
+          timeStyle: this.optionTimeStyle,
+          calendar: this.optionCalendar,
+          dayPeriod: this.optionDayPeriod,
+          numberingSystem: this.optionNumberingSystem,
+          timeZone: this.optionTimeZone,
+          hour12: this.optionHour12,
+          hourCycle: this.optionHourCycle,
+          formatMatcher: this.optionFormatMatcher,
+          weekday: this.optionWeekday,
+          era: this.optionEra,
+          year: this.optionYear,
+          month: this.optionMonth,
+          day: this.optionDay,
+          hour: this.optionHour,
+          minute: this.optionMinute,
+          second: this.optionSecond,
+          fractionalSecondDigits: this.optionFractionalSecondDigits,
+          timeZoneName: this.optionTimeZoneName,
+        }
+      );
       this.#resolvedOptions = this.#intlObject.resolvedOptions();
     } catch {}
 
