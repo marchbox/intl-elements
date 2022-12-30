@@ -29,15 +29,16 @@ function generateParts(part: ContentPart): string {
 export function generateContent(opt: GenerateContentOption): TemplateResult {
   const srContent = opt.stringContent && opt.partsContent ?
       opt.stringContent : null;
-  const lang = opt.lang ?? nothing;
-  const dir = opt.dir ?? nothing;
+  const ariaHidden = srContent ? 'true' : nothing;
+  const lang = opt.lang || nothing;
+  const dir = opt.dir || nothing;
   let content: GenerateContentOption['stringContent'] | TemplateResult |
       GenerateContentOption['nodeContent'] = opt.stringContent;
 
   if (opt.partsContent) {
     content = html`${opt.partsContent.map(part => part.unwrap ?
         html`${part.value}` :
-        html`<span part=${generateParts(part) ?? nothing}
+        html`<span part=${generateParts(part) || nothing}
             role="none">${part.value}</span>`
     )}`;
   } else if (opt.nodeContent) {
@@ -52,17 +53,17 @@ export function generateContent(opt: GenerateContentOption): TemplateResult {
       html`<span class="sr" lang=${lang} dir=${dir}>${srContent}</span>` :
       nothing
     }
-    
+
     ${opt.block ? html`
       <div role="none" part="value" lang=${lang} dir=${dir}
-          aria-hidden=${srContent ? 'true' : nothing}>${content}</div>
+          aria-hidden=${ariaHidden}>${content}</div>
     ` : html`
       <span role="none" part="value" lang=${lang} dir=${dir}
-          aria-hidden=${srContent ? 'true' : nothing}>${content}</span>
+          aria-hidden=${ariaHidden}>${content}</span>
     `}
 
     <span aria-hidden="true" hidden>
-      ${opt.slots.map(slot => html`<slot name="${slot ?? nothing}"></slot>`)}
+      ${opt.slots.map(slot => html`<slot name=${slot || nothing}></slot>`)}
     </span>
   `;
 };
