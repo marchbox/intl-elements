@@ -1,6 +1,4 @@
-import {html, nothing} from 'lit';
-
-import {generateSlotContent} from '../../utils/templates.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractPluralRulesConsumer from './abstract-pluralrules-consumer.js';
 
 /**
@@ -59,20 +57,11 @@ export default class HTMLIntlPluralRulesSelectElement
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >${this.content}</span>
-      ${generateSlotContent([
-        '',
-        'zero',
-        'one',
-        'two',
-        'few',
-        'many',
-        'other',
-      ])}
-    `;
+    return generateContent({
+      nodeContent: this.content,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['', 'zero', 'one', 'two', 'few', 'many', 'other'],
+    });
   }
 }

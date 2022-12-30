@@ -1,6 +1,4 @@
-import {html, nothing} from 'lit';
-
-import {generateSlotContent} from '../../utils/templates.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractRelativeTimeFormatConsumer from './abstract-relativetimeformat-consumer.js';
 
 /**
@@ -41,16 +39,11 @@ export default class HTMLIntlRelativeTimeFormatFormatElement
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >${this.#value}</span>
-      ${generateSlotContent([
-        '',
-        'rtime',
-        'unit',
-      ])}
-    `;
+    return generateContent({
+      stringContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['', 'rtime', 'unit'],
+    });
   }
 }

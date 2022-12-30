@@ -1,6 +1,6 @@
-import {html, nothing} from 'lit';
+import {nothing} from 'lit';
 
-import {generateSlotContent} from '../../utils/templates.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlCollatorElement from './collator.js';
 
@@ -82,15 +82,12 @@ export default class HTMLIntlCollatorCompareElement
 
     this.#value = sorted.map(el => this.#getTarget(el));
 
-    return html`
-      <div role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >${result}</div>
-      ${generateSlotContent([
-        'target',
-        'list',
-      ])}
-    `;
+    return generateContent({
+      nodeContent: result,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['target', 'list'],
+      block: true,
+    });
   }
 }

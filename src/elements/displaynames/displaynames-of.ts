@@ -1,6 +1,4 @@
-import {html, nothing} from 'lit';
-
-import {generateSlotContent} from '../../utils/templates.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractConsumer from '../abstract-consumer.js';
 import HTMLIntlDisplayNamesElement from './displaynames.js';
 
@@ -44,12 +42,11 @@ export default class HTMLIntlDisplayNamesOfElement
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >${this.#value}</span>
-      ${generateSlotContent([''])}
-    `;
+    return generateContent({
+      stringContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: [''],
+    });
   }
 }

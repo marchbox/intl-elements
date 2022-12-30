@@ -110,7 +110,7 @@ describe('intl-datetimeformat-formattoparts', () => {
       elements: ['intl-datetimeformat', 'intl-datetimeformat-formattoparts'],
       html: `
         <intl-datetimeformat locales="ar" option-datestyle="long"
-            option-unit="kilometer">
+            option-timestyle="long">
           <intl-datetimeformat-formattoparts>
             <time datetime="1923-10-16"></time>
           </intl-datetimeformat-formattoparts>
@@ -136,5 +136,30 @@ describe('intl-datetimeformat-formattoparts', () => {
 
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
+  });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-datetimeformat', 'intl-datetimeformat-formattoparts'],
+      html: `
+        <intl-datetimeformat locales="ar" option-datestyle="long"
+            option-timestyle="long">
+          <intl-datetimeformat-formattoparts>
+            <time datetime="1923-10-16"></time>
+          </intl-datetimeformat-formattoparts>
+        </intl-datetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-datetimeformat-formattoparts') as HTMLIntlDateTimeFormatFormatToPartsElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    const intlResult = new Intl.DateTimeFormat('ar', {
+      dateStyle: 'long',
+      timeStyle: 'long',
+    }).format(new Date('1923-10-16'));
+
+    expect(srEl).toHaveTextContent(intlResult);
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
   });
 });

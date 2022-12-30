@@ -1,8 +1,4 @@
-import {html, nothing} from 'lit';
-import {map} from 'lit/directives/map.js';
-
-import {generateSlotContent} from '../../utils/templates.js';
-import {camelToKebab} from '../../utils/strings.js';
+import {generateContent} from '../../utils/templates.js';
 import HTMLIntlRelativeTimeFormatConsumerElement from './abstract-relativetimeformat-consumer.js';
 
 /**
@@ -40,29 +36,27 @@ export default class HTMLIntlRelativeTimeFormatFormatToPartsElement
   }
 
   override render() {
+    let stringContent = '';
+
     if (this.rtime && this.unit && this.providerElement) {
       try {
         this.#value = this.providerElement.intlObject.formatToParts(
           this.rtime,
           this.unit as Intl.RelativeTimeFormatUnit
         );
+        stringContent = this.providerElement.intlObject.format(
+          this.rtime,
+          this.unit as Intl.RelativeTimeFormatUnit
+        );
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >
-        ${map(this.#value, part =>
-            html`<span part="${camelToKebab(part.type)}"
-                role="none">${part.value}</span>`)}
-      </span>
-      ${generateSlotContent([
-        '',
-        'rtime',
-        'unit',
-      ])}
-    `;
+    return generateContent({
+      stringContent,
+      partsContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['', 'rtime', 'unit'],
+    });
   }
 }

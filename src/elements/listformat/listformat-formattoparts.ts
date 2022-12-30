@@ -1,8 +1,4 @@
-import {html, nothing} from 'lit';
-import {map} from 'lit/directives/map.js';
-
-import {generateSlotContent} from '../../utils/templates.js';
-import {camelToKebab} from '../../utils/strings.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractListFormatConsumer from './abstract-listformat-consumer.js';
 
 /**
@@ -33,22 +29,21 @@ export default class HTMLIntlListFormatFormatToPartsElement
   }
 
   override render() {
+    let stringContent = '';
+
     if (this.list && this.providerElement) {
       try {
         this.#value = this.providerElement.intlObject.formatToParts(this.list);
+        stringContent = this.providerElement.intlObject.format(this.list);
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >
-        ${map(this.#value, part =>
-            html`<span part="${camelToKebab(part.type)}"
-                role="none">${part.value}</span>`)}
-      </span>
-      ${generateSlotContent([''])}
-    `;
+    return generateContent({
+      stringContent,
+      partsContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: [''],
+    });
   }
 }

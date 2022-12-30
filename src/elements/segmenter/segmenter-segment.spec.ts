@@ -178,4 +178,20 @@ describe('intl-segmenter-segment', () => {
     expect(srEl).toHaveTextContent('Hello, world!');
     expect(valueEl).toHaveAttribute('aria-hidden', 'true');
   });
+
+  it('renders no content if no provider element', async () => {
+    await createTestPage({
+      elements: ['intl-segmenter-segment'],
+      html: `
+        <intl-segmenter-segment>
+          Hello, world!
+        </intl-segmenter-segment>
+      `,
+    });
+    const el = document.querySelector('intl-segmenter-segment') as HTMLIntlSegmenterElement;
+
+    expect(el.value).toBeUndefined();
+    expect(el.shadowRoot!.children.length).toBe(1);
+    expect(el.shadowRoot!.children[0]!.nodeName).toBe('STYLE');
+  });
 });

@@ -109,4 +109,29 @@ describe('intl-listformat-formattoparts', () => {
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
   });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-listformat', 'intl-listformat-formattoparts'],
+      html: `
+        <intl-listformat locales="ar">
+          <intl-listformat-formattoparts>
+            <data value="foo"></data>
+            <data value="bar"></data>
+          </intl-listformat-formattoparts>
+        </intl-listformat>
+      `,
+    });
+    const el = document.querySelector('intl-listformat-formattoparts') as HTMLIntlListFormatFormatToPartsElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    const intlResult = new Intl.ListFormat('ar').format([
+      'foo',
+      'bar',
+    ]);
+
+    expect(srEl).toHaveTextContent(intlResult);
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
+  });
 });
