@@ -156,4 +156,29 @@ describe('intl-numberformat-formattoparts', () => {
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
   });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-numberformat', 'intl-numberformat-formattoparts'],
+      html: `
+        <intl-numberformat locales="ar" option-style="unit"
+            option-unit="kilometer">
+          <intl-numberformat-formattoparts>
+            Amount: <data value="-100000.5"></data>
+          </intl-numberformat-formattoparts>
+        </intl-numberformat>
+      `,
+    });
+    const el = document.querySelector('intl-numberformat-formattoparts') as HTMLIntlNumberFormatFormatToPartsElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    const intlResult = new Intl.NumberFormat('ar', {
+      style: 'unit',
+      unit: 'kilometer',
+    }).format(-100000.5);
+
+    expect(srEl).toHaveTextContent(intlResult);
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
+  });
 });

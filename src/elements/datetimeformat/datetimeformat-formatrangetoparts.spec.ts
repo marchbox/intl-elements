@@ -132,7 +132,7 @@ describe('intl-datetimeformat-formatrangetoparts', () => {
       elements: ['intl-datetimeformat', 'intl-datetimeformat-formatrangetoparts'],
       html: `
         <intl-datetimeformat locales="ar" option-datestyle="long"
-            option-unit="kilometer">
+            option-timestyle="long">
           <intl-datetimeformat-formatrangetoparts>
             <time slot="start" datetime="1964-08-27"></time>
             <time slot="end" datetime="1989-11-17"></time>
@@ -159,5 +159,31 @@ describe('intl-datetimeformat-formatrangetoparts', () => {
 
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
+  });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-datetimeformat', 'intl-datetimeformat-formatrangetoparts'],
+      html: `
+        <intl-datetimeformat locales="ar" option-datestyle="long"
+            option-timestyle="long">
+          <intl-datetimeformat-formatrangetoparts>
+            <time slot="start" datetime="1964-08-27"></time>
+            <time slot="end" datetime="1989-11-17"></time>
+          </intl-datetimeformat-formatrangetoparts>
+        </intl-datetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-datetimeformat-formatrangetoparts') as HTMLIntlDateTimeFormatFormatRnageToPartsElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    const intlResult = new Intl.DateTimeFormat('ar', {
+      dateStyle: 'long',
+      timeStyle: 'long',
+    }).formatRange(new Date('1964-08-27'), new Date('1989-11-17'));
+
+    expect(srEl).toHaveTextContent(intlResult);
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
   });
 });

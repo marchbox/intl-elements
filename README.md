@@ -48,7 +48,7 @@ npm install intl-elements
 # yarn add intl-elements
 ```
 
-Or in browser:
+Or in browsers:
 
 ```js
 <script type="module">
@@ -136,9 +136,9 @@ Take the above JavaScript example, we can achieve this with `intl-element`:
 ```
 
 The naming convention of provider elements is `intl-{constructor}`, and consumer
-element’s is `intl-{constructor}-{method}`.
+elements’ is `intl-{constructor}-{method}`.
 
-Consumer elements don’t have to be desendants of their corresponding provider
+Consumer elements don’t have to be descendants of their corresponding provider
 elements, you can use the `provider` attribute to link them together.
 
 ```html
@@ -169,14 +169,14 @@ TODO
 
 ### Attributes
 
-TODO
+TODO: case insensitive
 
 ### Styling
 
 Although the consumer elements have shadow DOM, the content is usually plain
 text, so it’ll inherit CSS styles like colors and fonts. However, if you do want
 to style some of the internal components, you can use CSS Parts. All consumer
-elements have a part named `value` as the container element, usually it’s a
+elements have a part named `value` as the container element, usually, it’s a
 `<span>` element. Also when you use a consumer element to format to parts, e.g.
 `<intl-datetimeformat-formattoparts>`, each formatted part is usually inside its
 own container element and has its own CSS part, e.g `year`, `month`, `day`, etc.
@@ -196,8 +196,8 @@ Refer to the API reference documents below for all parts.
 
 ## Accessibility
 
-The intl elements look a bit verbose in HTML code, but the existence of them
-are invisible to the accessibility tree. Most elements has their content as
+The intl elements look a bit verbose in HTML code, but their existence is
+invisible to the accessibility tree. Most elements have their content as
 plain text, so screen readers can read through it with no problems. For all the
 `**toparts` elements and `intl-segmenter-segment` element, due to their purpose,
 they wrap content into many `<span>` elements in the shadow DOM, this could make

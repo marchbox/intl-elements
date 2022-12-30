@@ -1,7 +1,4 @@
-import {html, nothing} from 'lit';
-import {map} from 'lit/directives/map.js';
-
-import {camelToKebab} from '../../utils/strings.js';
+import {generateContent} from '../../utils/templates.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 /**
@@ -70,30 +67,23 @@ export default class HTMLIntlDateTimeFormatFormatRangeToPartsElement
   }
 
   override render() {
+    let stringContent = '';
+
     if (this.start && this.end && this.providerElement) {
       try {
         this.#value = this.providerElement.intlObject
             .formatRangeToParts(this.start, this.end);
+        stringContent = this.providerElement.intlObject
+            .formatRange(this.start, this.end);
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >
-        ${map(this.#value, part =>
-            html`<span part=${[
-              camelToKebab(part.type),
-              camelToKebab(part.source),
-            ].join(' ')}
-                role="none">${part.value}</span>`)}
-      </span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-        <slot name="start"></slot>
-        <slot name="end"></slot>
-      </span>
-    `;
+    return generateContent({
+      stringContent,
+      partsContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['', 'start', 'end'],
+    });
   }
 }

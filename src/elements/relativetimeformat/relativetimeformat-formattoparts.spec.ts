@@ -130,4 +130,26 @@ describe('intl-relativetimeformat-formattoparts', () => {
     expect(span).not.toHaveAttribute('lang');
     expect(span).not.toHaveAttribute('dir');
   });
+
+  it('renders screen reader text', async () => {
+    await createTestPage({
+      elements: ['intl-relativetimeformat', 'intl-relativetimeformat-formattoparts'],
+      html: `
+        <intl-relativetimeformat locales="ar">
+          <intl-relativetimeformat-formattoparts>
+            <data value="10.5"></data>
+            <data value="year"></data>
+          </intl-relativetimeformat-formattoparts>
+        </intl-relativetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-relativetimeformat-formattoparts') as HTMLIntlRelativeTimeFormatFormatToPartsElement;
+    const srEl = el.shadowRoot!.querySelector('.sr');
+    const valueEl = el.shadowRoot!.querySelector('span[part="value"]');
+
+    const intlResult = new Intl.RelativeTimeFormat('ar').format(10.5, 'year');
+
+    expect(srEl).toHaveTextContent(intlResult);
+    expect(valueEl).toHaveAttribute('aria-hidden', 'true');
+  });
 });

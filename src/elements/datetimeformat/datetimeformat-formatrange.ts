@@ -1,5 +1,4 @@
-import {html, nothing} from 'lit';
-
+import {generateContent} from '../../utils/templates.js';
 import AbstractDateTimeFormatConsumer from './abstract-datetimeformat-consumer.js';
 
 /**
@@ -41,16 +40,11 @@ export default class HTMLIntlDateTimeFormatFormatRangeElement
       } catch {}
     }
 
-    return html`
-      <span role="none" part="value"
-        lang=${this.currentLang ?? nothing}
-        dir=${this.currentDir ?? nothing}
-      >${this.#value}</span>
-      <span aria-hidden="true" hidden>
-        <slot></slot>
-        <slot name="start"></slot>
-        <slot name="end"></slot>
-      </span>
-    `;
+    return generateContent({
+      stringContent: this.#value,
+      lang: this.currentLang,
+      dir: this.currentDir,
+      slots: ['', 'start', 'end'],
+    });
   }
 }
