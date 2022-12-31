@@ -2410,7 +2410,11 @@
             "package": "lit"
           },
           "tagName": "intl-locale",
-          "summary": "A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)",
+          "summary": "A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)\n\nAn `<intl-locale>` element represents a Unicode locale identifier. It can be\nused with other intl elements to supply locale information for them. It can\nalso be used to normalize a locale identifier, its `value` property is an\n`Intl.Locale` object and its `valueAsString` property is a string value of\nthe locale identifier (by `Intl.Locale.prototype.toString()`).",
+          "example": [
+            "As an ancestor of other intl elements\n```html\n<intl-locale tag=\"ja-JP-u-ca-japanese\">\n<intl-datetimeformat option-datestyle=\"long\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"1923-10-16\">October 16, 1923</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n</intl-locale>\n```",
+            "As cousins of other intl elements\n```html\n<intl-locale id=\"locale1\" tag=\"ja\"></intl-locale>\n<intl-locale id=\"locale2\" tag=\"ja-JP-u-ca-japanese\"></intl-locale>\n\n<intl-datetimeformat option-datestyle=\"long\" locales-from=\"locale1 locale2\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"1923-10-16\">October 16, 1923</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n```"
+          ],
           "intl": "Intl.Locale()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale",
           "customElement": true

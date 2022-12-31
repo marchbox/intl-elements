@@ -106,7 +106,7 @@ export default function generateMarkdown(module) {
   const md = [];
   const data = transformData(module.declarations[0]);
 
-  if (data.intlprovider) {
+  if (data.intlprovider || data.tagName === 'intl-locale') {
     md.push(`# \`${data.tagName}\` elements`);
   }
   if (data.summary) {

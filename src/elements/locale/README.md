@@ -1,4 +1,42 @@
+# `intl-locale` elements
+
 A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)
+
+An `<intl-locale>` element represents a Unicode locale identifier. It can be
+used with other intl elements to supply locale information for them. It can
+also be used to normalize a locale identifier, its `value` property is an
+`Intl.Locale` object and its `valueAsString` property is a string value of
+the locale identifier (by `Intl.Locale.prototype.toString()`).
+
+## Example
+
+As an ancestor of other intl elements
+
+```html
+<intl-locale tag="ja-JP-u-ca-japanese">
+  <intl-datetimeformat option-datestyle="long">
+    <p>
+      <intl-datetimeformat-format>
+        <time datetime="1923-10-16">October 16, 1923</time>
+      </intl-datetimeformat-format>
+    </p>
+  </intl-datetimeformat>
+</intl-locale>
+```
+
+As cousins of other intl elements
+
+```html
+<intl-locale id="locale1" tag="ja"></intl-locale>
+<intl-locale id="locale2" tag="ja-JP-u-ca-japanese"></intl-locale>
+<intl-datetimeformat option-datestyle="long" locales-from="locale1 locale2">
+  <p>
+    <intl-datetimeformat-format>
+      <time datetime="1923-10-16">October 16, 1923</time>
+    </intl-datetimeformat-format>
+  </p>
+</intl-datetimeformat>
+```
 
 ## `<intl-locale>` (`HTMLIntlLocaleElement`)
 

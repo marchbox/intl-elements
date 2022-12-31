@@ -308,6 +308,10 @@ is `lang`’s value, and it uses `new Intl.Locale(locale).textInfo.direction`
 to check if this locale’s language is RTL, if so add `dir="rtl"` attribute,
 otherwise, remove the `dir` attribute.
 
+## Polyfills
+
+TODO([#24](https://github.com/marchbox/intl-elements/issues/24))
+
 ## API references
 
 + [`intl-collator`](./src/elements/collator/README.md)
