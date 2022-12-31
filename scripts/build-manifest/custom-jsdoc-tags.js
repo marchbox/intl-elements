@@ -1,10 +1,15 @@
-const CUSTOM_MEMBER_JS_DOC_TAGS = [
+const TAGS = [
+  'example',
   'intl',
   'intlsee',
   'intlprovider',
   'intlconsumer',
   'readonly',
 ];
+
+const TAGS_AS_LIST = [
+  'example',
+]
 
 export default () => ({
   name: 'INTL-ELEMENTS: Custom JsDoc tags',
@@ -34,8 +39,15 @@ export default () => ({
       node.jsDoc?.forEach(j => {
         j.tags?.forEach(t => {
           const tagName = t.tagName.getText();
-          if (CUSTOM_MEMBER_JS_DOC_TAGS.includes(tagName)) {
-            field[tagName] = t.comment ?? true;
+          if (TAGS.includes(tagName)) {
+            if (TAGS_AS_LIST.includes(tagName)) {
+              if (!(tagName in field)) {
+                field[tagName] = [];
+              }
+              field[tagName].push(t.comment || '');
+            } else {
+              field[tagName] = t.comment ?? true;
+            }
           }
         });
       });

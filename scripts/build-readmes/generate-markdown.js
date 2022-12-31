@@ -1,4 +1,5 @@
 import {markdownTable} from 'markdown-table';
+import htmlFormat from 'html-format';
 
 const TABLE_COLUMNS = new Map([
   ['name', {heading: 'Name', code: true}],
@@ -108,13 +109,26 @@ export default function generateMarkdown(module) {
   if (data.intlprovider) {
     md.push(`# \`${data.intl.replace('()', '')}\` elements`);
   }
+  if (data.summary) {
+    md.push(data.summary);
+  }
+  if (data.example) {
+    md.push('## Example');
+    data.example.forEach(example => {
+      const exampleLines = example.split('\n');
+      const caption = exampleLines.splice(0, 1);
+
+      md.push(caption);
+      md.push(htmlFormat(exampleLines.join('\n')));
+    });
+  }
 
   md.push(
     `## \`<${data.tagName}>\` (\`${data.name}\`)`,
     `[Learn more about \`${data.intl}\`](${data.intlsee})`,
   );
   if (data.description) {
-    md.push(data.description);
+    md.push(htmlFormat(data.description));
   }
   SECTIONS.forEach(section => {
     if (!data[section.key]?.length) {
