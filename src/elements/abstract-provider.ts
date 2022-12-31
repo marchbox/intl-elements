@@ -75,7 +75,7 @@ export default abstract class AbstractProvider extends LitElement {
 
   /** @readonly */
   @property({attribute: false})
-  get localeList(): LocaleList {
+  get localeList(): DOMTokenList {
     return this.#localeList;
   }
 

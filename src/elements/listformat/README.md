@@ -19,7 +19,7 @@
 | Name                  | Type                                   | Default         | Read only? | Description | Attribute              |
 | --------------------- | -------------------------------------- | --------------- | ---------- | ----------- | ---------------------- |
 | `intlObject`          | `Intl.ListFormat`                      | `undefined`     | Yes        |             |                        |
-| `localeList`          | `LocaleList`                           | `undefined`     | Yes        |             |                        |
+| `localeList`          | `DOMTokenList`                         | `undefined`     | Yes        |             |                        |
 | `locales`             | `string \| undefined`                  | `undefined`     |            |             | `locales`              |
 | `localesFrom`         | `string \| undefined`                  | `undefined`     |            |             | `locales-from`         |
 | `localesFromElements` | `HTMLIntlLocaleElement[]`              | `undefined`     | Yes        |             |                        |

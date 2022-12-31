@@ -27,7 +27,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -372,7 +372,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1332,7 +1332,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1651,7 +1651,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -2435,7 +2435,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3087,7 +3087,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3454,7 +3454,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3815,7 +3815,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
