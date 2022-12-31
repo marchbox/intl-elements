@@ -113,7 +113,7 @@ const nf = new Intl.NumberFormat(
 nf.format(100000);
 ```
 
-`intl-element` translates these as such:
+`intl-elements` translate these as such:
 
 + constructor → **provider element**, e.g. `<intl-numberformat>`
     - locale list → `locales` attribute of provider elements (there are other
@@ -165,11 +165,95 @@ elements, you can use the `provider` attribute to link them together.
 
 ### Locale list
 
-TODO
+All provider elements need a list of locales to create their `Intl` instances.
+It’s perfectly fine to only specify one locale, that’s likely the most common
+case. If multiple locales are specified, they will be passed into the `Intl`
+constructor for
+[locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/#locale_identification_and_negotiation). This could be useful if you support
+non-common locales and some of them may not be supported by all browsers.
+
+There are 4 ways to specify the locale list, and they are prioritized in the
+following order:
+
+1. `locales` attribute on the provider element.
+
+    The `locales` attribute is a space-separated list of BCP 47 locale
+    identifiers. This list is passed to the `Intl` constructor as-is, but any
+    invalid locale is ignored.
+
+2. `lang` attribute on the provider element.
+
+    If the provider element doesn’t have `locales` attribute, it will use the
+    `lang` attribute, if exists, as the locale list. Although you can only
+    specify one locale.
+
+3. The `<intl-locale>` elements that are referenced by the `locales-from`
+    attribute on the provider element.
+
+    If the provider element doesn’t have `locales` attribute or `lang`
+    attribute, it will look for the `<intl-locale>` elements that are referenced
+    by the `locales-from` attribute. The `locales-from` attribute is a
+    space-separated list of IDs of `<intl-locale>` elements. The locale list is
+    the concatenation of the `value` properties, which are `Intl.Locale`
+    objects, of the referenced `<intl-locale>` elements.
+
+    ```html
+    <intl-locale id="locale1" tag="en"></intl-locale>
+    <intl-locale id="locale2" tag="en" option-region="us"></intl-locale>
+
+    <intl-displaynames locales-from="locale1 locale2"></intl-displaynames>
+    ```
+
+    The locale list of the `<intl-displaynames>` element is `['en', 'en-US']`.
+
+4. An acenstor element of the provider element.
+
+    If the provider element doesn’t have `locales` attribute, `lang` attribute,
+    or `locales-from` attribute, it will look for the closest `<intl-locale>`
+    element or the closest element with `lang` attribute.
+
+    ```html
+    <intl-locale tag="ja">
+      <intl-numberformat></intl-numberformat>
+    </intl-locale>
+    ```
+
+    The locale list of the `<intl-numberformat>` element is `['ja']`.
+
+    ```html
+    <div lang="zh-Hant">
+      <div>
+        <intl-numberformat></intl-numberformat>
+      </div>
+    </div>
+    ```
+
+    The locale list of the `<intl-numberformat>` element is `['zh-Hant']`.
+
+    This allows you not to explicitly specify any locales for all the intl
+    elements if all of their locales are the same as the document’s language,
+    i.e. the `lang` attribute of the `<html>` element.
+
+#### `localeList` property
+
+All provider elements have a `localeList` property, which is a `DOMTokenList`.
+It is an exact reflection of value of the `locales` attribute. The `localeList`
+is read only, and works the same way as `classList`, `relList`, etc. You can
+refere to
+[`DOMTokenList`’s MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
+for more details.
 
 ### Attributes
 
-TODO: case insensitive
+All attribute names are in lowercase. For provider elements, they use`option-**`
+attributes to specify options for their `Intl` instances. These attributes are
+always in one word after “option-”, e.g. `option-style`,
+`option-numberingsystem`.
+
+All attribute values are case-insensitive. For example, the `type` option of
+`Intl.DisplayNames` constructor has `dateTimeField` as one of its possible
+values, but you can use `datetimefield` or `DATETIMEFIELD` as the value of
+`option-type` attribute.
 
 ### Styling
 
@@ -177,12 +261,21 @@ Although the consumer elements have shadow DOM, the content is usually plain
 text, so it’ll inherit CSS styles like colors and fonts. However, if you do want
 to style some of the internal components, you can use CSS Parts. All consumer
 elements have a part named `value` as the container element, usually, it’s a
-`<span>` element. Also when you use a consumer element to format to parts, e.g.
+`<span>` element. Also when you use a “format to parts’ consumer element, e.g.
 `<intl-datetimeformat-formattoparts>`, each formatted part is usually inside its
 own container element and has its own CSS part, e.g `year`, `month`, `day`, etc.
 
+The `format**ToParts` methods of `Intl` APIs return an array of objects, each
+object represents a formatted part, and has a `type` property and optionally
+a `source` property. The values of these 2 properties are used as the CSS part
+names. If a value is in camel case, it’ll be converted to kebab case when used
+as a CSS part name. For example, `relatedYear` → `related-year`. In the case of
+`<intl-segmenter-segment>`, each part has the name `segment`, and if a segment
+has `isWordLike` as `true`, its corresponding part element also has `wordlike`
+as one of its part names.
+
 ```css
-intl-datetimeformat-formattoparts::part(year) {
+intl-datetimeformat-formattoparts::part(related-year) {
   font-weight: 700;
 }
 
