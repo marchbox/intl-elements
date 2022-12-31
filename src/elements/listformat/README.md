@@ -47,11 +47,11 @@
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Description | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
-| `value`           | `string`              | `undefined` | Yes        |             |            |
+| Name              | Type                                     | Default     | Read only? | Description | Attribute  |
+| ----------------- | ---------------------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                    | `undefined` |            |             | `provider` |
+| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` | Yes        |             |            |
+| `value`           | `string`                                 | `undefined` | Yes        |             |            |
 
 ### Slots
 
@@ -79,11 +79,11 @@
 
 ### Properties
 
-| Name              | Type                    | Default     | Read only? | Description | Attribute  |
-| ----------------- | ----------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`   | `undefined` |            |             | `provider` |
-| `providerElement` | `P \| undefined`        | `undefined` | Yes        |             |            |
-| `value`           | `Intl.ListFormatPart[]` | `undefined` | Yes        |             |            |
+| Name              | Type                                     | Default     | Read only? | Description | Attribute  |
+| ----------------- | ---------------------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                    | `undefined` |            |             | `provider` |
+| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` | Yes        |             |            |
+| `value`           | `Intl.ListFormatPart[]`                  | `undefined` | Yes        |             |            |
 
 ### Slots
 

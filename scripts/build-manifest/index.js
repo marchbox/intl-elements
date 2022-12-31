@@ -1,6 +1,7 @@
 import customJsDocTags from './custom-jsdoc-tags.js';
 import fixAliasedMemberTypes from './fix-aliased-member-types.js';
 import fixInheritedFieldTypes from './fix-inherited-field-types.js';
+import fixProviderElementTypes from './fix-provider-element-types.js';
 import optionPropertyDecorator from './option-property-decorator.js';
 import removeMembers from './remove-members.js';
 import removeInternalClasses from './remove-internal-classes.js'
@@ -12,6 +13,7 @@ export default [
   optionPropertyDecorator(),
   fixInheritedFieldTypes(),
   fixAliasedMemberTypes(),
+  fixProviderElementTypes(),
   removeMembers(),
   removeInternalClasses(),
   sortManifest(),

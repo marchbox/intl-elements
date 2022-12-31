@@ -51,11 +51,11 @@
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Description | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
-| `value`           | `string`              | `undefined` | Yes        |             |            |
+| Name              | Type                                       | Default     | Read only? | Description | Attribute  |
+| ----------------- | ------------------------------------------ | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                      | `undefined` |            |             | `provider` |
+| `providerElement` | `HTMLIntlDisplayNamesElement \| undefined` | `undefined` | Yes        |             |            |
+| `value`           | `string`                                   | `undefined` | Yes        |             |            |
 
 ### Slots
 

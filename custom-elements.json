@@ -291,7 +291,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlCollatorElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -829,7 +829,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -931,7 +931,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1101,7 +1101,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1251,7 +1251,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1570,7 +1570,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDisplayNamesElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1855,7 +1855,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlListFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1957,7 +1957,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlListFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -2844,7 +2844,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlNumberFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3006,7 +3006,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlNumberFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3373,7 +3373,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlPluralRulesElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3666,7 +3666,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlRelativeTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -4019,7 +4019,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlSegmenterElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {

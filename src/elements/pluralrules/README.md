@@ -55,11 +55,11 @@
 
 ### Properties
 
-| Name              | Type                        | Default     | Read only? | Description | Attribute  |
-| ----------------- | --------------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`       | `undefined` |            |             | `provider` |
-| `providerElement` | `P \| undefined`            | `undefined` | Yes        |             |            |
-| `value`           | `Intl.LDMLPluralRule \| ''` | `undefined` | Yes        |             |            |
+| Name              | Type                                      | Default     | Read only? | Description | Attribute  |
+| ----------------- | ----------------------------------------- | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                     | `undefined` |            |             | `provider` |
+| `providerElement` | `HTMLIntlPluralRulesElement \| undefined` | `undefined` | Yes        |             |            |
+| `value`           | `Intl.LDMLPluralRule \| ''`               | `undefined` | Yes        |             |            |
 
 ### Slots
 
