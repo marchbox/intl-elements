@@ -23,8 +23,7 @@ export function createLocaleList(
   const hostingElement = document.createElement('div');
   let observer: MutationObserver | undefined;
 
-  // @ts-ignore
-  const localeList: LocaleList = hostingElement.classList;
+  const localeList: Partial<LocaleList> = hostingElement.classList;
   localeList.value = value;
 
   Object.defineProperties(hostingElement.classList, {
@@ -53,5 +52,5 @@ export function createLocaleList(
     });
   }
 
-  return localeList;
+  return localeList as LocaleList;
 }
