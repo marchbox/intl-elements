@@ -13,18 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.Collator"
@@ -368,18 +356,6 @@
           "description": "",
           "name": "HTMLIntlDateTimeFormatElement",
           "members": [
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
             {
               "kind": "field",
               "name": "intlObject",
@@ -1342,18 +1318,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.DisplayNames"
@@ -1671,18 +1635,6 @@
           "description": "",
           "name": "HTMLIntlListFormatElement",
           "members": [
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
             {
               "kind": "field",
               "name": "intlObject",
@@ -2469,18 +2421,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.NumberFormat"
@@ -3133,18 +3073,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.PluralRules"
@@ -3512,18 +3440,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.RelativeTimeFormat"
@@ -3883,18 +3799,6 @@
           "description": "",
           "name": "HTMLIntlSegmenterElement",
           "members": [
-            {
-              "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
             {
               "kind": "field",
               "name": "intlObject",

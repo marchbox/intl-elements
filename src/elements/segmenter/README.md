@@ -17,7 +17,6 @@
 
 | Name                  | Type                                   | Default      | Read only? | Description | Attribute              |
 | --------------------- | -------------------------------------- | ------------ | ---------- | ----------- | ---------------------- |
-| `consumerElements`    | `ConsumerElement[]`                    | `undefined`  | Yes        |             |                        |
 | `intlObject`          | `Intl.Segmenter`                       | `undefined`  | Yes        |             |                        |
 | `localeList`          | `LocaleList`                           | `undefined`  | Yes        |             |                        |
 | `locales`             | `string \| undefined`                  | `undefined`  |            |             | `locales`              |

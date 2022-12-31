@@ -44,6 +44,29 @@ export default abstract class AbstractProvider extends LitElement {
 
   #localesFromElements: HTMLIntlLocaleElement[] = [];
 
+  // TODO: Cache the list.
+  get #consumerElements(): ConsumerElement[] {
+    const names = (this.constructor as typeof AbstractProvider)
+        .consumerElementNames;
+    if (!names) {
+      return [];
+    }
+
+    const descendantQuery = Array.from(names.values()).join(',');
+    const descendantConsumers = Array.from(this
+        .querySelectorAll(descendantQuery) as NodeListOf<ConsumerElement>);
+    let cousinConsumers: ConsumerElement[] = [];
+
+    if (this.id) {
+      const cousinQuery = Array.from(names.values())
+          .map(name => `${name}[provider="${this.id}"]`).join(',');
+      cousinConsumers = Array.from(document
+          .querySelectorAll(cousinQuery) as NodeListOf<ConsumerElement>);
+    }
+
+    return [...descendantConsumers, ...cousinConsumers];
+  }
+
   protected static consumerElementNames: Set<string>;
 
   protected static intlApi: IntlApiType;
@@ -69,30 +92,6 @@ export default abstract class AbstractProvider extends LitElement {
 
   @optionProperty()
   optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
-
-  // TODO: Cache the list.
-  /** @readonly */
-  get consumerElements(): ConsumerElement[] {
-    const names = (this.constructor as typeof AbstractProvider)
-        .consumerElementNames;
-    if (!names) {
-      return [];
-    }
-
-    const descendantQuery = Array.from(names.values()).join(',');
-    const descendantConsumers = Array.from(this
-        .querySelectorAll(descendantQuery) as NodeListOf<ConsumerElement>);
-    let cousinConsumers: ConsumerElement[] = [];
-
-    if (this.id) {
-      const cousinQuery = Array.from(names.values())
-          .map(name => `${name}[provider="${this.id}"]`).join(',');
-      cousinConsumers = Array.from(document
-          .querySelectorAll(cousinQuery) as NodeListOf<ConsumerElement>);
-    }
-
-    return [...descendantConsumers, ...cousinConsumers];
-  }
 
   protected override createRenderRoot() {
     // No shadow DOM.
@@ -134,7 +133,7 @@ export default abstract class AbstractProvider extends LitElement {
   }
 
   override updated() {
-    this.consumerElements.forEach(el => el.requestUpdate());
+    this.#consumerElements.forEach(el => el.requestUpdate());
   }
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;
