@@ -1,3 +1,5 @@
+A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)
+
 ## `<intl-locale>` (`HTMLIntlLocaleElement`)
 
 [Learn more about `Intl.Locale()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)

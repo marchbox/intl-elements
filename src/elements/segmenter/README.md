@@ -1,4 +1,6 @@
-# `Intl.Segmenter` elements
+# `intl-segmenter` elements
+
+A custom element for [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter)
 
 ## `<intl-segmenter>` (`HTMLIntlSegmenterElement`)
 

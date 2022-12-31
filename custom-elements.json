@@ -232,6 +232,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-collator",
+          "summary": "A custom element for [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator)\n\n`intl-collator` elements can be used for language-sensitive list sorting and\nfiltering, both are done by using the `<intl-collator-compare>` element. The\n“list” here means the element you assign to the `list` slot, the\n`textContent` of each direct child element is a string member of the list.",
+          "example": [
+            "Sorting a list of strings:\n```html\n<intl-collator locales=\"de-u-co-phonebk\">\n<intl-collator-compare>\n<ol slot=\"list\">\n<li>Offenbach</li>\n<li>Österreich</li>\n<li>Odenwald</li>\n</ol>\n</intl-collator-compare>\n</intl-collator>\n```",
+            "Filtering a list of strings:\n```html\n<intl-collator locales=\"fr\">\n<intl-collator-compare>\n<data slot=\"target\" value=\"congres\"></data>\n<ul slot=\"list\">\n<li>Congrès</li>\n<li>congres</li>\n<li>Assemblée</li>\n<li>poisson</li>\n</ul>\n</intl-collator-compare>\n</intl-collator>\n```"
+          ],
           "intl": "Intl.Collator()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
           "intlprovider": true,
@@ -774,6 +779,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-datetimeformat",
+          "summary": "A custom element for [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)\n\n`intl-datetimeformat` elements can be used to format dates and times with\nlanguage sensitivity.",
+          "example": [
+            "Format a date and time:\n```html\n<intl-datetimeformat locales=\"hi\" option-date-style=\"long\"\noption-time-style=\"long\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"2023-01-01T00:00:00Z\">\nMidnight on January 1, 2023\n</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n```",
+            "Format a date range:\n```html\n<intl-datetimeformat locales=\"ar\" option-date-style=\"long\"\noption-time-style=\"long\">\n<p>\n<intl-datetimeformat-formatrange>\n<time slot=\"start\" datetime=\"2023-01-01T00:00:00Z\">\nMidnight on January 1, 2023\n</time>\n~\n<time slot=\"end\" datetime=\"2024-12-31T23:59:59Z\">\nMidnight on December 31, 2023\n</time>\n</intl-datetimeformat-formatrange>\n</p>\n</intl-datetimeformat>\n```"
+          ],
           "intl": "Intl.DateTimeFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat",
           "intlprovider": true,
@@ -1515,6 +1525,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-displaynames",
+          "summary": "A custom element for [Intl.DisplayNames](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames)\n\n`intl-displaynames` elements are used to create display names of language\nnames, region/country names, script names, calendar names, etc.",
+          "example": [
+            "Display language names:\n```html\n<intl-displaynames locales=\"en\" option-type=\"language\">\n<ul>\n<li>\n<intl-displaynames-of>\n<data value=\"ar-EG\">Arabic (Egypt)</data>\n</intl-displaynames-of>\n</li>\n<li>\n<intl-displaynames-of>\n<data value=\"zh-Hant\">Traditional Chinese</data>\n</intl-displaynames-of>\n</li>\n<li>\n<intl-displaynames-of>\n<data value=\"de\">German</data>\n</intl-displaynames-of>\n</li>\n</ul>\n</intl-displaynames>\n```",
+            "Display date time field names:\n```html\n<intl-displaynames locales=\"ja\" option-type=\"datetimefield\">\n<label>\n<intl-displaynames-of>\n<data value=\"year\">Year</data>\n</intl-displaynames-of>\n<input name=\"year\">\n</label>\n<label>\n<intl-displaynames-of>\n<data value=\"month\">Month</data>\n</intl-displaynames-of>\n<input name=\"month\">\n</label>\n<label>\n<intl-displaynames-of>\n<data value=\"day\">Day</data>\n</intl-displaynames-of>\n<input name=\"day\">\n</label>\n</intl-displaynames>\n```"
+          ],
           "intl": "Intl.DisplayNames()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames",
           "intlprovider": true,
@@ -1800,6 +1815,7 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-listformat",
+          "summary": "A custom element for [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat)",
           "intl": "Intl.ListFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat",
           "intlprovider": true,
@@ -2394,6 +2410,7 @@
             "package": "lit"
           },
           "tagName": "intl-locale",
+          "summary": "A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)",
           "intl": "Intl.Locale()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale",
           "customElement": true
@@ -2789,6 +2806,7 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-numberformat",
+          "summary": "A custom element for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)",
           "intl": "Intl.NumberFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat",
           "intlprovider": true,
@@ -3294,6 +3312,7 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-pluralrules",
+          "summary": "A custom element for [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)",
           "intl": "Intl.PluralRules()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules",
           "intlprovider": true,
@@ -3603,6 +3622,7 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-relativetimeformat",
+          "summary": "A custom element for [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)",
           "intl": "Intl.RelativeTimeFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat",
           "intlprovider": true,
@@ -3947,6 +3967,7 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-segmenter",
+          "summary": "A custom element for [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter)",
           "intl": "Intl.Segmenter()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter",
           "intlprovider": true,

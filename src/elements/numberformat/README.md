@@ -1,4 +1,6 @@
-# `Intl.NumberFormat` elements
+# `intl-numberformat` elements
+
+A custom element for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
 
 ## `<intl-numberformat>` (`HTMLIntlNumberFormatElement`)
 

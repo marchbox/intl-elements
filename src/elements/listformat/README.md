@@ -1,4 +1,6 @@
-# `Intl.ListFormat` elements
+# `intl-listformat` elements
+
+A custom element for [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat)
 
 ## `<intl-listformat>` (`HTMLIntlListFormatElement`)
 

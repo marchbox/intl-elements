@@ -6,6 +6,8 @@ import {optionProperty} from '../../utils/properties.js';
 type LocaleValue = Intl.Locale | null;
 
 /**
+ * @summary A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)
+ *
  * @intl Intl.Locale()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale
  *

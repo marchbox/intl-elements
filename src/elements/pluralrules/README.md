@@ -1,4 +1,6 @@
-# `Intl.PluralRules` elements
+# `intl-pluralrules` elements
+
+A custom element for [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)
 
 ## `<intl-pluralrules>` (`HTMLIntlPluralRulesElement`)
 

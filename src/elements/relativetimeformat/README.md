@@ -1,4 +1,6 @@
-# `Intl.RelativeTimeFormat` elements
+# `intl-relativetimeformat` elements
+
+A custom element for [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)
 
 ## `<intl-relativetimeformat>` (`HTMLIntlRelativeTimeFormatElement`)
 

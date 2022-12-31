@@ -107,7 +107,7 @@ export default function generateMarkdown(module) {
   const data = transformData(module.declarations[0]);
 
   if (data.intlprovider) {
-    md.push(`# \`${data.intl.replace('()', '')}\` elements`);
+    md.push(`# \`${data.tagName}\` elements`);
   }
   if (data.summary) {
     md.push(data.summary);
