@@ -20,9 +20,8 @@
 
 | Name                    | Type                                          | Default      | Read only? | Description | Attribute                |
 | ----------------------- | --------------------------------------------- | ------------ | ---------- | ----------- | ------------------------ |
-| `consumerElements`      | `ConsumerElement[]`                           | `undefined`  | Yes        |             |                          |
 | `intlObject`            | `Intl.DisplayNames`                           | `undefined`  | Yes        |             |                          |
-| `localeList`            | `LocaleList`                                  | `undefined`  | Yes        |             |                          |
+| `localeList`            | `DOMTokenList`                                | `undefined`  | Yes        |             |                          |
 | `locales`               | `string \| undefined`                         | `undefined`  |            |             | `locales`                |
 | `localesFrom`           | `string \| undefined`                         | `undefined`  |            |             | `locales-from`           |
 | `localesFromElements`   | `HTMLIntlLocaleElement[]`                     | `undefined`  | Yes        |             |                          |
@@ -52,11 +51,11 @@
 
 ### Properties
 
-| Name              | Type                  | Default     | Read only? | Description | Attribute  |
-| ----------------- | --------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined` | `undefined` |            |             | `provider` |
-| `providerElement` | `P \| undefined`      | `undefined` | Yes        |             |            |
-| `value`           | `string`              | `undefined` | Yes        |             |            |
+| Name              | Type                                       | Default     | Read only? | Description | Attribute  |
+| ----------------- | ------------------------------------------ | ----------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                      | `undefined` |            |             | `provider` |
+| `providerElement` | `HTMLIntlDisplayNamesElement \| undefined` | `undefined` | Yes        |             |            |
+| `value`           | `string`                                   | `undefined` | Yes        |             |            |
 
 ### Slots
 

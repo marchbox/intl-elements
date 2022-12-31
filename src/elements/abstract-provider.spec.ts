@@ -1,11 +1,9 @@
 import {
-  FakeIntlApi,
   TestProvider,
   TestConsumer,
   createTestPage,
   defineTestIntlElements,
 } from '../testing';
-import AbstractProvider from './abstract-provider';
 import HTMLIntlLocaleElement from './locale/locale';
 
 defineTestIntlElements();
@@ -683,48 +681,6 @@ describe('AbstractProvider', () => {
     });
   });
 
-  it('gets an empty array as locale list if the `consumerElementNames` static property isn’t defined', async () => {
-    class BadProvider extends AbstractProvider {
-      static override intlApi = FakeIntlApi;
-
-      // @ts-ignore
-      intlObject = new FakeIntlApi();
-
-      // @ts-ignore
-      resolvedOptions() {
-        return {};
-      }
-    }
-    customElements.define('bad-provider', BadProvider);
-
-    await createTestPage({
-      elements: ['bad-provider'],
-      html: `
-        <bad-provider></bad-provider>
-      `,
-    });
-    // @ts-ignore
-    const el = document.querySelector('bad-provider')! as BadProvider;
-
-    expect(el.consumerElements).toEqual([]);
-  });
-
-  it('gets consumer elements from both the descendants and referenced', async () => {
-    await createTestPage({
-      elements: ['intl-foo', 'intl-foo-bar'],
-      html: `
-        <intl-foo id="foo">
-          <intl-foo-bar></intl-foo-bar>
-        </intl-foo>
-        <intl-foo-bar provider="foo"></intl-foo-bar>
-      `,
-    });
-    const el = document.querySelector('intl-foo')! as TestProvider;
-    const bars = Array.from(document.querySelectorAll('intl-foo-bar')) as TestConsumer[];
-
-    expect(el.consumerElements).toEqual(bars);
-  });
-
   it('updates consumer elements when itself is updated', async () => {
     await createTestPage({
       elements: ['intl-foo', 'intl-foo-bar'],
@@ -748,20 +704,5 @@ describe('AbstractProvider', () => {
 
     spy1.mockRestore();
     spy2.mockRestore();
-  });
-
-  it('ignores unrecognized descendants from its consumer list', async () => {
-    await createTestPage({
-      elements: ['intl-foo'],
-      html: `
-        <intl-foo>
-          <intl-baz></intl-baz>
-          <intl-foo-bar></intl-foo-bar>
-        </intl-foo>
-      `,
-    });
-    const el = document.querySelector('intl-foo')! as TestProvider;
-
-    expect(el.consumerElements).toHaveLength(1);
   });
 });

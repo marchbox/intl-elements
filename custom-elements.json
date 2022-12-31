@@ -13,18 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.Collator"
@@ -39,7 +27,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -303,7 +291,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlCollatorElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -370,18 +358,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.DateTimeFormat"
@@ -396,7 +372,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -853,7 +829,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -955,7 +931,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1125,7 +1101,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1275,7 +1251,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDateTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1342,18 +1318,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.DisplayNames"
@@ -1368,7 +1332,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1606,7 +1570,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlDisplayNamesElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1673,18 +1637,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.ListFormat"
@@ -1699,7 +1651,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -1903,7 +1855,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlListFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -2005,7 +1957,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlListFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -2469,18 +2421,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.NumberFormat"
@@ -2495,7 +2435,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -2904,7 +2844,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlNumberFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3066,7 +3006,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlNumberFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3133,18 +3073,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.PluralRules"
@@ -3159,7 +3087,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3445,7 +3373,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlPluralRulesElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3512,18 +3440,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.RelativeTimeFormat"
@@ -3538,7 +3454,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3750,7 +3666,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlRelativeTimeFormatElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -3885,18 +3801,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "consumerElements",
-              "type": {
-                "text": "ConsumerElement[]"
-              },
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "AbstractProvider",
-                "module": "src/elements/abstract-provider.ts"
-              }
-            },
-            {
-              "kind": "field",
               "name": "intlObject",
               "type": {
                 "text": "Intl.Segmenter"
@@ -3911,7 +3815,7 @@
               "kind": "field",
               "name": "localeList",
               "type": {
-                "text": "LocaleList"
+                "text": "DOMTokenList"
               },
               "readonly": true,
               "inheritedFrom": {
@@ -4115,7 +4019,7 @@
               "kind": "field",
               "name": "providerElement",
               "type": {
-                "text": "P | undefined"
+                "text": "HTMLIntlSegmenterElement | undefined"
               },
               "readonly": true,
               "inheritedFrom": {

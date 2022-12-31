@@ -44,35 +44,8 @@ export default abstract class AbstractProvider extends LitElement {
 
   #localesFromElements: HTMLIntlLocaleElement[] = [];
 
-  protected static consumerElementNames: Set<string>;
-
-  protected static intlApi: IntlApiType;
-
-  abstract get intlObject(): IntlObjectType;
-
-  /** @readonly */
-  @property({attribute: false})
-  get localeList(): LocaleList {
-    return this.#localeList;
-  }
-
-  @property({reflect: true})
-  locales?: string;
-
-  @property({attribute: 'locales-from'})
-  localesFrom?: string;
-
-  /** @readonly */
-  get localesFromElements(): HTMLIntlLocaleElement[] {
-    return this.#localesFromElements;
-  }
-
-  @optionProperty()
-  optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
-
   // TODO: Cache the list.
-  /** @readonly */
-  get consumerElements(): ConsumerElement[] {
+  get #consumerElements(): ConsumerElement[] {
     const names = (this.constructor as typeof AbstractProvider)
         .consumerElementNames;
     if (!names) {
@@ -93,6 +66,32 @@ export default abstract class AbstractProvider extends LitElement {
 
     return [...descendantConsumers, ...cousinConsumers];
   }
+
+  protected static consumerElementNames: Set<string>;
+
+  protected static intlApi: IntlApiType;
+
+  abstract get intlObject(): IntlObjectType;
+
+  /** @readonly */
+  @property({attribute: false})
+  get localeList(): DOMTokenList {
+    return this.#localeList;
+  }
+
+  @property({reflect: true})
+  locales?: string;
+
+  @property({attribute: 'locales-from'})
+  localesFrom?: string;
+
+  /** @readonly */
+  get localesFromElements(): HTMLIntlLocaleElement[] {
+    return this.#localesFromElements;
+  }
+
+  @optionProperty()
+  optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
 
   protected override createRenderRoot() {
     // No shadow DOM.
@@ -134,7 +133,7 @@ export default abstract class AbstractProvider extends LitElement {
   }
 
   override updated() {
-    this.consumerElements.forEach(el => el.requestUpdate());
+    this.#consumerElements.forEach(el => el.requestUpdate());
   }
 
   abstract resolvedOptions(): ResolvedOptionsReturnType;

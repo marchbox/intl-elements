@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+
+- Removed `consumerElements` property from provider elements
+
 ### Changed
 
 - `localeList` property is now a `DOMTokenList` (#45)
