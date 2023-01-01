@@ -15,6 +15,12 @@
 - All `option*` properties are reflective now, meaning if its value is changed,
   its corresponding attribute will change as well
 
+### Fixed
+
+- Line wrapping issue in `<intl-segmenter-segment>` in Safari: It only wrapped
+  lines during the initial rendering, changing browser window size didn’t cause
+  line wrapping
+
 ---
 
 ## [0.0.1-alpha.17] - 2022-12-31

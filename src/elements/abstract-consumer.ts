@@ -17,6 +17,10 @@ export default abstract class AbstractConsumer<P, V> extends LitElement {
       position: absolute;
       width: 1px;
     }
+    /* Fix the issue in Safari that wordlike <span>’s don’t get line breaks. */
+    span[part="value"] {
+      display: inline-block;
+    }
   ` as CSSResultGroup;
 
   protected slottedElementObserver?: MutationObserver;
