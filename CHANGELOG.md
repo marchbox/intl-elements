@@ -8,6 +8,11 @@
   `undefined`, if you relied on `<intl-displaynames>`’s `option-type` attribute
   being `language` by default, you need to set it to `language` explicitly now
 
+### Changed
+
+- All `option*` properties are reflective now, meaning if its value is changed,
+  its corresponding attribute will change as well
+
 ---
 
 ## [0.0.1-alpha.17] - 2022-12-31
