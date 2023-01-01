@@ -2,6 +2,22 @@
 
 A custom element for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
 
+`intl-numberformat` elements can be used to format numbers with the given
+style (e.g. currency, percent, unit, etc.) and locale.
+
+## Example
+
+Format a number as currency
+
+```html
+<intl-numberformat locales="de-CH" option-style="currency"
+  option-currency="chf">
+  <intl-numberformat-format>
+    <data value="1234.56">1,234.56</data>
+  </intl-numberformat-format>
+</intl-numberformat>
+```
+
 ## `<intl-numberformat>` (`HTMLIntlNumberFormatElement`)
 
 [Learn more about `Intl.NumberFormat()`](http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat)
