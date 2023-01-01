@@ -2,9 +2,19 @@
 
 ## [Unreleased]
 
+None
+
+---
+
+## [0.0.1-alpha.17] - 2022-12-31
+
 ### BREAKING CHANGES
 
 - Removed `consumerElements` property from provider elements
+
+### Added
+
+- More documentations
 
 ### Changed
 
