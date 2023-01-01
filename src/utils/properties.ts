@@ -81,6 +81,10 @@ function getOptions(
   if (name.startsWith('option')) {
     const isSpecialOption = SPECIAL_OPTION_KEYS.includes(name);
 
+    if (options.reflect === undefined) {
+      Object.assign(options, {reflect: true});
+    }
+
     if (!options.attribute) {
       Object.assign(options, {
         attribute: name.toLowerCase().replace(/^option/, 'option-')

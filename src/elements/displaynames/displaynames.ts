@@ -80,16 +80,16 @@ export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   }
 
   @optionProperty()
-  optionType: Intl.DisplayNamesOptions['type'] = 'language';
+  optionType!: Intl.DisplayNamesOptions['type'];
 
   @optionProperty()
-  optionStyle: Intl.DisplayNamesOptions['style'] = 'long';
+  optionStyle?: Intl.DisplayNamesOptions['style'];
 
   @optionProperty()
-  optionLanguageDisplay: Intl.DisplayNamesOptions['languageDisplay'] = 'dialect';
+  optionLanguageDisplay?: Intl.DisplayNamesOptions['languageDisplay'];
 
   @optionProperty()
-  optionFallback: Intl.DisplayNamesOptions['fallback'] = 'code';
+  optionFallback?: Intl.DisplayNamesOptions['fallback'];
 
   /**
    * @intl Intl.DisplayNames.prototype.resolvedOptions()

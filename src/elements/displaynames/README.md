@@ -63,30 +63,30 @@ Display date time field names:
 
 ### Attributes
 
-| Name                     | Type                                          | Default      | Description | Property                |
-| ------------------------ | --------------------------------------------- | ------------ | ----------- | ----------------------- |
-| `locales`                | `string \| undefined`                         | `undefined`  |             | `locales`               |
-| `locales-from`           | `string \| undefined`                         | `undefined`  |             | `localesFrom`           |
-| `option-fallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     |             | `optionFallback`        |
-| `option-languagedisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  |             | `optionLanguageDisplay` |
-| `option-localematcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` |             | `optionLocaleMatcher`   |
-| `option-style`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     |             | `optionStyle`           |
-| `option-type`            | `Intl.DisplayNamesOptions['type']`            | `'language'` |             | `optionType`            |
+| Name                     | Type                                                       | Default     | Required? | Description | Property                |
+| ------------------------ | ---------------------------------------------------------- | ----------- | --------- | ----------- | ----------------------- |
+| `locales`                | `string \| undefined`                                      | `undefined` |           |             | `locales`               |
+| `locales-from`           | `string \| undefined`                                      | `undefined` |           |             | `localesFrom`           |
+| `option-fallback`        | `Intl.DisplayNamesOptions['fallback'] \| undefined`        | `undefined` |           |             | `optionFallback`        |
+| `option-languagedisplay` | `Intl.DisplayNamesOptions['languageDisplay'] \| undefined` | `undefined` |           |             | `optionLanguageDisplay` |
+| `option-localematcher`   | `Intl.RelativeTimeFormatLocaleMatcher \| undefined`        | `undefined` |           |             | `optionLocaleMatcher`   |
+| `option-style`           | `Intl.DisplayNamesOptions['style'] \| undefined`           | `undefined` |           |             | `optionStyle`           |
+| `option-type`            | `Intl.DisplayNamesOptions['type']`                         | `undefined` | Yes       |             | `optionType`            |
 
 ### Properties
 
-| Name                    | Type                                          | Default      | Read only? | Description | Attribute                |
-| ----------------------- | --------------------------------------------- | ------------ | ---------- | ----------- | ------------------------ |
-| `intlObject`            | `Intl.DisplayNames`                           | `undefined`  | Yes        |             |                          |
-| `localeList`            | `DOMTokenList`                                | `undefined`  | Yes        |             |                          |
-| `locales`               | `string \| undefined`                         | `undefined`  |            |             | `locales`                |
-| `localesFrom`           | `string \| undefined`                         | `undefined`  |            |             | `locales-from`           |
-| `localesFromElements`   | `HTMLIntlLocaleElement[]`                     | `undefined`  | Yes        |             |                          |
-| `optionFallback`        | `Intl.DisplayNamesOptions['fallback']`        | `'code'`     |            |             | `option-fallback`        |
-| `optionLanguageDisplay` | `Intl.DisplayNamesOptions['languageDisplay']` | `'dialect'`  |            |             | `option-languagedisplay` |
-| `optionLocaleMatcher`   | `Intl.RelativeTimeFormatLocaleMatcher`        | `'best fit'` |            |             | `option-localematcher`   |
-| `optionStyle`           | `Intl.DisplayNamesOptions['style']`           | `'long'`     |            |             | `option-style`           |
-| `optionType`            | `Intl.DisplayNamesOptions['type']`            | `'language'` |            |             | `option-type`            |
+| Name                    | Type                                                       | Default     | Required? | Read only? | Description | Attribute                |
+| ----------------------- | ---------------------------------------------------------- | ----------- | --------- | ---------- | ----------- | ------------------------ |
+| `intlObject`            | `Intl.DisplayNames`                                        | `undefined` |           | Yes        |             |                          |
+| `localeList`            | `DOMTokenList`                                             | `undefined` |           | Yes        |             |                          |
+| `locales`               | `string \| undefined`                                      | `undefined` |           |            |             | `locales`                |
+| `localesFrom`           | `string \| undefined`                                      | `undefined` |           |            |             | `locales-from`           |
+| `localesFromElements`   | `HTMLIntlLocaleElement[]`                                  | `undefined` |           | Yes        |             |                          |
+| `optionFallback`        | `Intl.DisplayNamesOptions['fallback'] \| undefined`        | `undefined` |           |            |             | `option-fallback`        |
+| `optionLanguageDisplay` | `Intl.DisplayNamesOptions['languageDisplay'] \| undefined` | `undefined` |           |            |             | `option-languagedisplay` |
+| `optionLocaleMatcher`   | `Intl.RelativeTimeFormatLocaleMatcher \| undefined`        | `undefined` |           |            |             | `option-localematcher`   |
+| `optionStyle`           | `Intl.DisplayNamesOptions['style'] \| undefined`           | `undefined` |           |            |             | `option-style`           |
+| `optionType`            | `Intl.DisplayNamesOptions['type']`                         | `undefined` | Yes       |            |             | `option-type`            |
 
 ### Methods
 
@@ -102,17 +102,17 @@ Display date time field names:
 
 ### Attributes
 
-| Name       | Type                  | Default     | Description | Property   |
-| ---------- | --------------------- | ----------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` |             | `provider` |
+| Name       | Type                  | Default     | Required? | Description | Property   |
+| ---------- | --------------------- | ----------- | --------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |           |             | `provider` |
 
 ### Properties
 
-| Name              | Type                                       | Default     | Read only? | Description | Attribute  |
-| ----------------- | ------------------------------------------ | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`                      | `undefined` |            |             | `provider` |
-| `providerElement` | `HTMLIntlDisplayNamesElement \| undefined` | `undefined` | Yes        |             |            |
-| `value`           | `string`                                   | `undefined` | Yes        |             |            |
+| Name              | Type                                       | Default     | Required? | Read only? | Description | Attribute  |
+| ----------------- | ------------------------------------------ | ----------- | --------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                      | `undefined` |           |            |             | `provider` |
+| `providerElement` | `HTMLIntlDisplayNamesElement \| undefined` | `undefined` |           | Yes        |             |            |
+| `value`           | `string`                                   | `undefined` |           | Yes        |             |            |
 
 ### Slots
 
