@@ -100,9 +100,8 @@
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -196,9 +195,8 @@
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -468,7 +466,6 @@
               "type": {
                 "text": "Intl.DateTimeFormatOptions['formatMatcher']"
               },
-              "default": "'best fit'",
               "attribute": "option-formatmatcher"
             },
             {
@@ -507,9 +504,8 @@
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -667,7 +663,6 @@
               "type": {
                 "text": "Intl.DateTimeFormatOptions['formatMatcher']"
               },
-              "default": "'best fit'",
               "fieldName": "optionFormatMatcher"
             },
             {
@@ -701,9 +696,8 @@
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -1391,27 +1385,24 @@
               "kind": "field",
               "name": "optionFallback",
               "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
+                "text": "Intl.DisplayNamesOptions['fallback'] | undefined"
               },
-              "default": "'code'",
               "attribute": "option-fallback"
             },
             {
               "kind": "field",
               "name": "optionLanguageDisplay",
               "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+                "text": "Intl.DisplayNamesOptions['languageDisplay'] | undefined"
               },
-              "default": "'dialect'",
               "attribute": "option-languagedisplay"
             },
             {
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -1422,9 +1413,8 @@
               "kind": "field",
               "name": "optionStyle",
               "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
+                "text": "Intl.DisplayNamesOptions['style'] | undefined"
               },
-              "default": "'long'",
               "attribute": "option-style"
             },
             {
@@ -1433,8 +1423,8 @@
               "type": {
                 "text": "Intl.DisplayNamesOptions['type']"
               },
-              "default": "'language'",
-              "attribute": "option-type"
+              "attribute": "option-type",
+              "required": true
             },
             {
               "kind": "method",
@@ -1478,25 +1468,22 @@
             {
               "name": "option-fallback",
               "type": {
-                "text": "Intl.DisplayNamesOptions['fallback']"
+                "text": "Intl.DisplayNamesOptions['fallback'] | undefined"
               },
-              "default": "'code'",
               "fieldName": "optionFallback"
             },
             {
               "name": "option-languagedisplay",
               "type": {
-                "text": "Intl.DisplayNamesOptions['languageDisplay']"
+                "text": "Intl.DisplayNamesOptions['languageDisplay'] | undefined"
               },
-              "default": "'dialect'",
               "fieldName": "optionLanguageDisplay"
             },
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -1506,9 +1493,8 @@
             {
               "name": "option-style",
               "type": {
-                "text": "Intl.DisplayNamesOptions['style']"
+                "text": "Intl.DisplayNamesOptions['style'] | undefined"
               },
-              "default": "'long'",
               "fieldName": "optionStyle"
             },
             {
@@ -1516,8 +1502,8 @@
               "type": {
                 "text": "Intl.DisplayNamesOptions['type']"
               },
-              "default": "'language'",
-              "fieldName": "optionType"
+              "fieldName": "optionType",
+              "required": true
             }
           ],
           "superclass": {
@@ -1715,9 +1701,8 @@
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -1784,9 +1769,8 @@
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -2281,7 +2265,8 @@
                 "text": "string"
               },
               "attribute": "tag",
-              "reflects": true
+              "reflects": true,
+              "required": true
             },
             {
               "kind": "field",
@@ -2406,7 +2391,8 @@
               "type": {
                 "text": "string"
               },
-              "fieldName": "tag"
+              "fieldName": "tag",
+              "required": true
             }
           ],
           "superclass": {
@@ -2509,9 +2495,8 @@
               "kind": "field",
               "name": "optionCompactDisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['compactDisplay']"
+                "text": "Intl.NumberFormatOptions['compactDisplay'] | undefined"
               },
-              "default": "'short'",
               "attribute": "option-compactdisplay"
             },
             {
@@ -2526,27 +2511,24 @@
               "kind": "field",
               "name": "optionCurrencyDisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['currencyDisplay']"
+                "text": "Intl.NumberFormatOptions['currencyDisplay'] | undefined"
               },
-              "default": "'symbol'",
               "attribute": "option-currencydisplay"
             },
             {
               "kind": "field",
               "name": "optionCurrencySign",
               "type": {
-                "text": "Intl.NumberFormatOptions['currencySign']"
+                "text": "Intl.NumberFormatOptions['currencySign'] | undefined"
               },
-              "default": "'standard'",
               "attribute": "option-currencysign"
             },
             {
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -2597,27 +2579,24 @@
               "kind": "field",
               "name": "optionNotation",
               "type": {
-                "text": "Intl.NumberFormatOptions['notation']"
+                "text": "Intl.NumberFormatOptions['notation'] | undefined"
               },
-              "default": "'standard'",
               "attribute": "option-notation"
             },
             {
               "kind": "field",
               "name": "optionSignDisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['signDisplay']"
+                "text": "Intl.NumberFormatOptions['signDisplay'] | undefined"
               },
-              "default": "'auto'",
               "attribute": "option-signdisplay"
             },
             {
               "kind": "field",
               "name": "optionStyle",
               "type": {
-                "text": "Intl.NumberFormatOptions['style']"
+                "text": "Intl.NumberFormatOptions['style'] | undefined"
               },
-              "default": "'decimal'",
               "attribute": "option-style"
             },
             {
@@ -2632,9 +2611,8 @@
               "kind": "field",
               "name": "optionUnitDisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['unitDisplay']"
+                "text": "Intl.NumberFormatOptions['unitDisplay'] | undefined"
               },
-              "default": "'short'",
               "attribute": "option-unitdisplay"
             },
             {
@@ -2687,9 +2665,8 @@
             {
               "name": "option-compactdisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['compactDisplay']"
+                "text": "Intl.NumberFormatOptions['compactDisplay'] | undefined"
               },
-              "default": "'short'",
               "fieldName": "optionCompactDisplay"
             },
             {
@@ -2702,25 +2679,22 @@
             {
               "name": "option-currencydisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['currencyDisplay']"
+                "text": "Intl.NumberFormatOptions['currencyDisplay'] | undefined"
               },
-              "default": "'symbol'",
               "fieldName": "optionCurrencyDisplay"
             },
             {
               "name": "option-currencysign",
               "type": {
-                "text": "Intl.NumberFormatOptions['currencySign']"
+                "text": "Intl.NumberFormatOptions['currencySign'] | undefined"
               },
-              "default": "'standard'",
               "fieldName": "optionCurrencySign"
             },
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -2765,25 +2739,22 @@
             {
               "name": "option-notation",
               "type": {
-                "text": "Intl.NumberFormatOptions['notation']"
+                "text": "Intl.NumberFormatOptions['notation'] | undefined"
               },
-              "default": "'standard'",
               "fieldName": "optionNotation"
             },
             {
               "name": "option-signdisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['signDisplay']"
+                "text": "Intl.NumberFormatOptions['signDisplay'] | undefined"
               },
-              "default": "'auto'",
               "fieldName": "optionSignDisplay"
             },
             {
               "name": "option-style",
               "type": {
-                "text": "Intl.NumberFormatOptions['style']"
+                "text": "Intl.NumberFormatOptions['style'] | undefined"
               },
-              "default": "'decimal'",
               "fieldName": "optionStyle"
             },
             {
@@ -2796,9 +2767,8 @@
             {
               "name": "option-unitdisplay",
               "type": {
-                "text": "Intl.NumberFormatOptions['unitDisplay']"
+                "text": "Intl.NumberFormatOptions['unitDisplay'] | undefined"
               },
-              "default": "'short'",
               "fieldName": "optionUnitDisplay"
             },
             {
@@ -3165,9 +3135,8 @@
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -3218,9 +3187,8 @@
               "kind": "field",
               "name": "optionType",
               "type": {
-                "text": "Intl.PluralRulesOptions['type']"
+                "text": "Intl.PluralRulesOptions['type'] | undefined"
               },
-              "default": "'cardinal'",
               "attribute": "option-type"
             },
             {
@@ -3265,9 +3233,8 @@
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -3312,9 +3279,8 @@
             {
               "name": "option-type",
               "type": {
-                "text": "Intl.PluralRulesOptions['type']"
+                "text": "Intl.PluralRulesOptions['type'] | undefined"
               },
-              "default": "'cardinal'",
               "fieldName": "optionType"
             }
           ],
@@ -3537,9 +3503,8 @@
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -3550,18 +3515,16 @@
               "kind": "field",
               "name": "optionNumeric",
               "type": {
-                "text": "Intl.RelativeTimeFormatOptions['numeric']"
+                "text": "Intl.RelativeTimeFormatOptions['numeric'] | undefined"
               },
-              "default": "'always'",
               "attribute": "option-numeric"
             },
             {
               "kind": "field",
               "name": "optionStyle",
               "type": {
-                "text": "Intl.RelativeTimeFormatOptions['style']"
+                "text": "Intl.RelativeTimeFormatOptions['style'] | undefined"
               },
-              "default": "'long'",
               "attribute": "option-style"
             },
             {
@@ -3606,9 +3569,8 @@
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -3618,17 +3580,15 @@
             {
               "name": "option-numeric",
               "type": {
-                "text": "Intl.RelativeTimeFormatOptions['numeric']"
+                "text": "Intl.RelativeTimeFormatOptions['numeric'] | undefined"
               },
-              "default": "'always'",
               "fieldName": "optionNumeric"
             },
             {
               "name": "option-style",
               "type": {
-                "text": "Intl.RelativeTimeFormatOptions['style']"
+                "text": "Intl.RelativeTimeFormatOptions['style'] | undefined"
               },
-              "default": "'long'",
               "fieldName": "optionStyle"
             }
           ],
@@ -3903,18 +3863,16 @@
               "kind": "field",
               "name": "optionGranularity",
               "type": {
-                "text": "Intl.SegmenterOptions['granularity']"
+                "text": "Intl.SegmenterOptions['granularity'] | undefined"
               },
-              "default": "'grapheme'",
               "attribute": "option-granularity"
             },
             {
               "kind": "field",
               "name": "optionLocaleMatcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "attribute": "option-localematcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",
@@ -3963,17 +3921,15 @@
             {
               "name": "option-granularity",
               "type": {
-                "text": "Intl.SegmenterOptions['granularity']"
+                "text": "Intl.SegmenterOptions['granularity'] | undefined"
               },
-              "default": "'grapheme'",
               "fieldName": "optionGranularity"
             },
             {
               "name": "option-localematcher",
               "type": {
-                "text": "Intl.RelativeTimeFormatLocaleMatcher"
+                "text": "Intl.RelativeTimeFormatLocaleMatcher | undefined"
               },
-              "default": "'best fit'",
               "fieldName": "optionLocaleMatcher",
               "inheritedFrom": {
                 "name": "AbstractProvider",

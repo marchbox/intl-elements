@@ -45,26 +45,26 @@ Format a future time
 
 ### Attributes
 
-| Name                   | Type                                        | Default      | Description | Property              |
-| ---------------------- | ------------------------------------------- | ------------ | ----------- | --------------------- |
-| `locales`              | `string \| undefined`                       | `undefined`  |             | `locales`             |
-| `locales-from`         | `string \| undefined`                       | `undefined`  |             | `localesFrom`         |
-| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher`      | `'best fit'` |             | `optionLocaleMatcher` |
-| `option-numeric`       | `Intl.RelativeTimeFormatOptions['numeric']` | `'always'`   |             | `optionNumeric`       |
-| `option-style`         | `Intl.RelativeTimeFormatOptions['style']`   | `'long'`     |             | `optionStyle`         |
+| Name                   | Type                                                     | Default     | Required? | Description | Property              |
+| ---------------------- | -------------------------------------------------------- | ----------- | --------- | ----------- | --------------------- |
+| `locales`              | `string \| undefined`                                    | `undefined` |           |             | `locales`             |
+| `locales-from`         | `string \| undefined`                                    | `undefined` |           |             | `localesFrom`         |
+| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined`      | `undefined` |           |             | `optionLocaleMatcher` |
+| `option-numeric`       | `Intl.RelativeTimeFormatOptions['numeric'] \| undefined` | `undefined` |           |             | `optionNumeric`       |
+| `option-style`         | `Intl.RelativeTimeFormatOptions['style'] \| undefined`   | `undefined` |           |             | `optionStyle`         |
 
 ### Properties
 
-| Name                  | Type                                        | Default      | Read only? | Description | Attribute              |
-| --------------------- | ------------------------------------------- | ------------ | ---------- | ----------- | ---------------------- |
-| `intlObject`          | `Intl.RelativeTimeFormat`                   | `undefined`  | Yes        |             |                        |
-| `localeList`          | `DOMTokenList`                              | `undefined`  | Yes        |             |                        |
-| `locales`             | `string \| undefined`                       | `undefined`  |            |             | `locales`              |
-| `localesFrom`         | `string \| undefined`                       | `undefined`  |            |             | `locales-from`         |
-| `localesFromElements` | `HTMLIntlLocaleElement[]`                   | `undefined`  | Yes        |             |                        |
-| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher`      | `'best fit'` |            |             | `option-localematcher` |
-| `optionNumeric`       | `Intl.RelativeTimeFormatOptions['numeric']` | `'always'`   |            |             | `option-numeric`       |
-| `optionStyle`         | `Intl.RelativeTimeFormatOptions['style']`   | `'long'`     |            |             | `option-style`         |
+| Name                  | Type                                                     | Default     | Required? | Read only? | Description | Attribute              |
+| --------------------- | -------------------------------------------------------- | ----------- | --------- | ---------- | ----------- | ---------------------- |
+| `intlObject`          | `Intl.RelativeTimeFormat`                                | `undefined` |           | Yes        |             |                        |
+| `localeList`          | `DOMTokenList`                                           | `undefined` |           | Yes        |             |                        |
+| `locales`             | `string \| undefined`                                    | `undefined` |           |            |             | `locales`              |
+| `localesFrom`         | `string \| undefined`                                    | `undefined` |           |            |             | `locales-from`         |
+| `localesFromElements` | `HTMLIntlLocaleElement[]`                                | `undefined` |           | Yes        |             |                        |
+| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined`      | `undefined` |           |            |             | `option-localematcher` |
+| `optionNumeric`       | `Intl.RelativeTimeFormatOptions['numeric'] \| undefined` | `undefined` |           |            |             | `option-numeric`       |
+| `optionStyle`         | `Intl.RelativeTimeFormatOptions['style'] \| undefined`   | `undefined` |           |            |             | `option-style`         |
 
 ### Methods
 
@@ -80,17 +80,17 @@ Format a future time
 
 ### Attributes
 
-| Name       | Type                  | Default     | Description | Property   |
-| ---------- | --------------------- | ----------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` |             | `provider` |
+| Name       | Type                  | Default     | Required? | Description | Property   |
+| ---------- | --------------------- | ----------- | --------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |           |             | `provider` |
 
 ### Properties
 
-| Name              | Type                                             | Default     | Read only? | Description | Attribute  |
-| ----------------- | ------------------------------------------------ | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`                            | `undefined` |            |             | `provider` |
-| `providerElement` | `HTMLIntlRelativeTimeFormatElement \| undefined` | `undefined` | Yes        |             |            |
-| `value`           | `string`                                         | `undefined` | Yes        |             |            |
+| Name              | Type                                             | Default     | Required? | Read only? | Description | Attribute  |
+| ----------------- | ------------------------------------------------ | ----------- | --------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                            | `undefined` |           |            |             | `provider` |
+| `providerElement` | `HTMLIntlRelativeTimeFormatElement \| undefined` | `undefined` |           | Yes        |             |            |
+| `value`           | `string`                                         | `undefined` |           | Yes        |             |            |
 
 ### Slots
 
@@ -114,9 +114,9 @@ Format a future time
 
 ### Properties
 
-| Name    | Type                            | Default     | Read only? | Description | Attribute |
-| ------- | ------------------------------- | ----------- | ---------- | ----------- | --------- |
-| `value` | `Intl.RelativeTimeFormatPart[]` | `undefined` | Yes        |             |           |
+| Name    | Type                            | Default     | Required? | Read only? | Description | Attribute |
+| ------- | ------------------------------- | ----------- | --------- | ---------- | ----------- | --------- |
+| `value` | `Intl.RelativeTimeFormatPart[]` | `undefined` |           | Yes        |             |           |
 
 ### Slots
 

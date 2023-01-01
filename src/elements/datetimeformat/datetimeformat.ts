@@ -92,7 +92,7 @@ export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
   optionHourCycle?: Intl.DateTimeFormatOptions['hourCycle'];
 
   @optionProperty()
-  optionFormatMatcher: Intl.DateTimeFormatOptions['formatMatcher'] = 'best fit';
+  optionFormatMatcher: Intl.DateTimeFormatOptions['formatMatcher'];
 
   @optionProperty()
   optionWeekday?: Intl.DateTimeFormatOptions['weekday'];

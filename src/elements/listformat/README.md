@@ -43,26 +43,26 @@ Format a list to parts
 
 ### Attributes
 
-| Name                   | Type                                   | Default         | Description | Property              |
-| ---------------------- | -------------------------------------- | --------------- | ----------- | --------------------- |
-| `locales`              | `string \| undefined`                  | `undefined`     |             | `locales`             |
-| `locales-from`         | `string \| undefined`                  | `undefined`     |             | `localesFrom`         |
-| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'`    |             | `optionLocaleMatcher` |
-| `option-style`         | `Intl.ListFormatOptions['style']`      | `'long'`        |             | `optionStyle`         |
-| `option-type`          | `Intl.ListFormatOptions['type']`       | `'conjunction'` |             | `optionType`          |
+| Name                   | Type                                                | Default         | Required? | Description | Property              |
+| ---------------------- | --------------------------------------------------- | --------------- | --------- | ----------- | --------------------- |
+| `locales`              | `string \| undefined`                               | `undefined`     |           |             | `locales`             |
+| `locales-from`         | `string \| undefined`                               | `undefined`     |           |             | `localesFrom`         |
+| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined` | `undefined`     |           |             | `optionLocaleMatcher` |
+| `option-style`         | `Intl.ListFormatOptions['style']`                   | `'long'`        |           |             | `optionStyle`         |
+| `option-type`          | `Intl.ListFormatOptions['type']`                    | `'conjunction'` |           |             | `optionType`          |
 
 ### Properties
 
-| Name                  | Type                                   | Default         | Read only? | Description | Attribute              |
-| --------------------- | -------------------------------------- | --------------- | ---------- | ----------- | ---------------------- |
-| `intlObject`          | `Intl.ListFormat`                      | `undefined`     | Yes        |             |                        |
-| `localeList`          | `DOMTokenList`                         | `undefined`     | Yes        |             |                        |
-| `locales`             | `string \| undefined`                  | `undefined`     |            |             | `locales`              |
-| `localesFrom`         | `string \| undefined`                  | `undefined`     |            |             | `locales-from`         |
-| `localesFromElements` | `HTMLIntlLocaleElement[]`              | `undefined`     | Yes        |             |                        |
-| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'`    |            |             | `option-localematcher` |
-| `optionStyle`         | `Intl.ListFormatOptions['style']`      | `'long'`        |            |             | `option-style`         |
-| `optionType`          | `Intl.ListFormatOptions['type']`       | `'conjunction'` |            |             | `option-type`          |
+| Name                  | Type                                                | Default         | Required? | Read only? | Description | Attribute              |
+| --------------------- | --------------------------------------------------- | --------------- | --------- | ---------- | ----------- | ---------------------- |
+| `intlObject`          | `Intl.ListFormat`                                   | `undefined`     |           | Yes        |             |                        |
+| `localeList`          | `DOMTokenList`                                      | `undefined`     |           | Yes        |             |                        |
+| `locales`             | `string \| undefined`                               | `undefined`     |           |            |             | `locales`              |
+| `localesFrom`         | `string \| undefined`                               | `undefined`     |           |            |             | `locales-from`         |
+| `localesFromElements` | `HTMLIntlLocaleElement[]`                           | `undefined`     |           | Yes        |             |                        |
+| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined` | `undefined`     |           |            |             | `option-localematcher` |
+| `optionStyle`         | `Intl.ListFormatOptions['style']`                   | `'long'`        |           |            |             | `option-style`         |
+| `optionType`          | `Intl.ListFormatOptions['type']`                    | `'conjunction'` |           |            |             | `option-type`          |
 
 ### Methods
 
@@ -78,17 +78,17 @@ Format a list to parts
 
 ### Attributes
 
-| Name       | Type                  | Default     | Description | Property   |
-| ---------- | --------------------- | ----------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` |             | `provider` |
+| Name       | Type                  | Default     | Required? | Description | Property   |
+| ---------- | --------------------- | ----------- | --------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |           |             | `provider` |
 
 ### Properties
 
-| Name              | Type                                     | Default     | Read only? | Description | Attribute  |
-| ----------------- | ---------------------------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`                    | `undefined` |            |             | `provider` |
-| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` | Yes        |             |            |
-| `value`           | `string`                                 | `undefined` | Yes        |             |            |
+| Name              | Type                                     | Default     | Required? | Read only? | Description | Attribute  |
+| ----------------- | ---------------------------------------- | ----------- | --------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                    | `undefined` |           |            |             | `provider` |
+| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` |           | Yes        |             |            |
+| `value`           | `string`                                 | `undefined` |           | Yes        |             |            |
 
 ### Slots
 
@@ -110,17 +110,17 @@ Format a list to parts
 
 ### Attributes
 
-| Name       | Type                  | Default     | Description | Property   |
-| ---------- | --------------------- | ----------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` |             | `provider` |
+| Name       | Type                  | Default     | Required? | Description | Property   |
+| ---------- | --------------------- | ----------- | --------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |           |             | `provider` |
 
 ### Properties
 
-| Name              | Type                                     | Default     | Read only? | Description | Attribute  |
-| ----------------- | ---------------------------------------- | ----------- | ---------- | ----------- | ---------- |
-| `provider`        | `string \| undefined`                    | `undefined` |            |             | `provider` |
-| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` | Yes        |             |            |
-| `value`           | `Intl.ListFormatPart[]`                  | `undefined` | Yes        |             |            |
+| Name              | Type                                     | Default     | Required? | Read only? | Description | Attribute  |
+| ----------------- | ---------------------------------------- | ----------- | --------- | ---------- | ----------- | ---------- |
+| `provider`        | `string \| undefined`                    | `undefined` |           |            |             | `provider` |
+| `providerElement` | `HTMLIntlListFormatElement \| undefined` | `undefined` |           | Yes        |             |            |
+| `value`           | `Intl.ListFormatPart[]`                  | `undefined` |           | Yes        |             |            |
 
 ### Slots
 

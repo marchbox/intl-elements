@@ -64,10 +64,10 @@ export default class HTMLIntlRelativeTimeFormatElement
   }
 
   @optionProperty()
-  optionStyle: Intl.RelativeTimeFormatOptions['style'] = 'long';
+  optionStyle?: Intl.RelativeTimeFormatOptions['style'];
 
   @optionProperty()
-  optionNumeric: Intl.RelativeTimeFormatOptions['numeric'] = 'always';
+  optionNumeric?: Intl.RelativeTimeFormatOptions['numeric'];
 
   /**
    * @intl Intl.RelativeTimeFormat.prototype.resolvedOptions()

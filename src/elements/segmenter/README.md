@@ -64,24 +64,24 @@ Segmenting a string into words
 
 ### Attributes
 
-| Name                   | Type                                   | Default      | Description | Property              |
-| ---------------------- | -------------------------------------- | ------------ | ----------- | --------------------- |
-| `locales`              | `string \| undefined`                  | `undefined`  |             | `locales`             |
-| `locales-from`         | `string \| undefined`                  | `undefined`  |             | `localesFrom`         |
-| `option-granularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` |             | `optionGranularity`   |
-| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` |             | `optionLocaleMatcher` |
+| Name                   | Type                                                | Default     | Required? | Description | Property              |
+| ---------------------- | --------------------------------------------------- | ----------- | --------- | ----------- | --------------------- |
+| `locales`              | `string \| undefined`                               | `undefined` |           |             | `locales`             |
+| `locales-from`         | `string \| undefined`                               | `undefined` |           |             | `localesFrom`         |
+| `option-granularity`   | `Intl.SegmenterOptions['granularity'] \| undefined` | `undefined` |           |             | `optionGranularity`   |
+| `option-localematcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined` | `undefined` |           |             | `optionLocaleMatcher` |
 
 ### Properties
 
-| Name                  | Type                                   | Default      | Read only? | Description | Attribute              |
-| --------------------- | -------------------------------------- | ------------ | ---------- | ----------- | ---------------------- |
-| `intlObject`          | `Intl.Segmenter`                       | `undefined`  | Yes        |             |                        |
-| `localeList`          | `DOMTokenList`                         | `undefined`  | Yes        |             |                        |
-| `locales`             | `string \| undefined`                  | `undefined`  |            |             | `locales`              |
-| `localesFrom`         | `string \| undefined`                  | `undefined`  |            |             | `locales-from`         |
-| `localesFromElements` | `HTMLIntlLocaleElement[]`              | `undefined`  | Yes        |             |                        |
-| `optionGranularity`   | `Intl.SegmenterOptions['granularity']` | `'grapheme'` |            |             | `option-granularity`   |
-| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher` | `'best fit'` |            |             | `option-localematcher` |
+| Name                  | Type                                                | Default     | Required? | Read only? | Description | Attribute              |
+| --------------------- | --------------------------------------------------- | ----------- | --------- | ---------- | ----------- | ---------------------- |
+| `intlObject`          | `Intl.Segmenter`                                    | `undefined` |           | Yes        |             |                        |
+| `localeList`          | `DOMTokenList`                                      | `undefined` |           | Yes        |             |                        |
+| `locales`             | `string \| undefined`                               | `undefined` |           |            |             | `locales`              |
+| `localesFrom`         | `string \| undefined`                               | `undefined` |           |            |             | `locales-from`         |
+| `localesFromElements` | `HTMLIntlLocaleElement[]`                           | `undefined` |           | Yes        |             |                        |
+| `optionGranularity`   | `Intl.SegmenterOptions['granularity'] \| undefined` | `undefined` |           |            |             | `option-granularity`   |
+| `optionLocaleMatcher` | `Intl.RelativeTimeFormatLocaleMatcher \| undefined` | `undefined` |           |            |             | `option-localematcher` |
 
 ### Methods
 
@@ -97,18 +97,18 @@ Segmenting a string into words
 
 ### Attributes
 
-| Name       | Type                  | Default     | Description | Property   |
-| ---------- | --------------------- | ----------- | ----------- | ---------- |
-| `provider` | `string \| undefined` | `undefined` |             | `provider` |
+| Name       | Type                  | Default     | Required? | Description | Property   |
+| ---------- | --------------------- | ----------- | --------- | ----------- | ---------- |
+| `provider` | `string \| undefined` | `undefined` |           |             | `provider` |
 
 ### Properties
 
-| Name              | Type                                    | Default     | Read only? | Description                                                                      | Attribute  |
-| ----------------- | --------------------------------------- | ----------- | ---------- | -------------------------------------------------------------------------------- | ---------- |
-| `input`           | `string`                                | `undefined` | Yes        | A read only reference to the `input` argument of `Intl.Segmenter`’s `segment()`. |            |
-| `provider`        | `string \| undefined`                   | `undefined` |            |                                                                                  | `provider` |
-| `providerElement` | `HTMLIntlSegmenterElement \| undefined` | `undefined` | Yes        |                                                                                  |            |
-| `value`           | `Intl.Segments \| undefined`            | `undefined` | Yes        |                                                                                  |            |
+| Name              | Type                                    | Default     | Required? | Read only? | Description                                                                      | Attribute  |
+| ----------------- | --------------------------------------- | ----------- | --------- | ---------- | -------------------------------------------------------------------------------- | ---------- |
+| `input`           | `string`                                | `undefined` |           | Yes        | A read only reference to the `input` argument of `Intl.Segmenter`’s `segment()`. |            |
+| `provider`        | `string \| undefined`                   | `undefined` |           |            |                                                                                  | `provider` |
+| `providerElement` | `HTMLIntlSegmenterElement \| undefined` | `undefined` |           | Yes        |                                                                                  |            |
+| `value`           | `Intl.Segments \| undefined`            | `undefined` |           | Yes        |                                                                                  |            |
 
 ### Slots
 

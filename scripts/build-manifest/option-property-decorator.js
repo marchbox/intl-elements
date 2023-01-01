@@ -9,7 +9,7 @@ export default () => ({
 
       node.members?.forEach(member => {
         const memberName = member.name.getText();
-        const messageField = classDeclaration.members.find(member =>
+        const field = classDeclaration.members.find(member =>
             member.name === memberName);
         const optionPropertyDecorator = member?.decorators?.find(decorator =>
             decorator.expression?.expression?.getText() === 'optionProperty');
@@ -19,16 +19,16 @@ export default () => ({
               .toLowerCase()
               .replace(/^option/, 'option-');
 
-          messageField.attribute = attributeName;
+          field.attribute = attributeName;
 
           if (!classDeclaration.attributes) {
             classDeclaration.attributes = [];
           }
 
           const attribute = {
-            ...messageField,
+            ...field,
             name: attributeName,
-            fieldName: messageField.name,
+            fieldName: field.name,
           };
           delete attribute.kind;
           delete attribute.static;

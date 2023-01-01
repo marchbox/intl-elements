@@ -10,18 +10,19 @@ const TABLE_COLUMNS = new Map([
   ['fieldName', {heading: 'Property', code: true}],
   ['attribute', {heading: 'Attribute', code: true}],
   ['readonly', {heading: 'Read only?'}],
+  ['required', {heading: 'Required?'}],
 ]);
 
 const SECTIONS = [
   {
     heading: 'Attributes',
     key: 'attributes',
-    items: ['name', 'type', 'default', 'description', 'fieldName'],
+    items: ['name', 'type', 'default', 'required', 'description', 'fieldName'],
   },
   {
     heading: 'Properties',
     key: 'properties',
-    items: ['name', 'type', 'default', 'readonly', 'description', 'attribute'],
+    items: ['name', 'type', 'default', 'required', 'readonly', 'description', 'attribute'],
   },
   {
     heading: 'Methods',
@@ -80,6 +81,7 @@ function getTable(section, data) {
         case 'default':
           value = value || 'undefined';
           break;
+        case 'required':
         case 'readonly':
           value = value ? 'Yes' : '';
           break;

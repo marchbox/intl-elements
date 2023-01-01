@@ -91,7 +91,7 @@ export default abstract class AbstractProvider extends LitElement {
   }
 
   @optionProperty()
-  optionLocaleMatcher: Intl.RelativeTimeFormatLocaleMatcher = 'best fit';
+  optionLocaleMatcher?: Intl.RelativeTimeFormatLocaleMatcher;
 
   protected override createRenderRoot() {
     // No Shadow DOM.
