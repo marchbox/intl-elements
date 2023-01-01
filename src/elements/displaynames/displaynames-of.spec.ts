@@ -6,7 +6,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of>
             <data value="zh"></data>
           </intl-displaynames-of>
@@ -24,7 +24,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of>
             <data value="ja"></data>
           </intl-displaynames-of>
@@ -65,7 +65,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of>
             <data value="ja"></data>
           </intl-displaynames-of>
@@ -82,7 +82,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of></intl-displaynames-of>
         </intl-displaynames>
       `,
@@ -97,7 +97,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of><data value="$invalid"></data></intl-displaynames-of>
         </intl-displaynames>
       `,
@@ -112,7 +112,8 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en" option-fallback="none">
+        <intl-displaynames locales="en" option-fallback="none"
+            option-type="language">
           <intl-displaynames-of><data value="zz"></data></intl-displaynames-of>
         </intl-displaynames>
       `,
@@ -127,7 +128,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="en">
+        <intl-displaynames locales="en" option-type="language">
           <intl-displaynames-of>
             <data value="zh"></data>
           </intl-displaynames-of>
@@ -143,7 +144,7 @@ describe('intl-displaynames-of', () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
       html: `
-        <intl-displaynames locales="ar">
+        <intl-displaynames locales="ar" option-type="language">
           <intl-displaynames-of>
             <data value="ar"></data>
           </intl-displaynames-of>

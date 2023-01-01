@@ -77,7 +77,7 @@ export default class HTMLIntlPluralRulesElement extends AbstractProvider {
   }
 
   @optionProperty()
-  optionType: Intl.PluralRulesOptions['type'] = 'cardinal';
+  optionType?: Intl.PluralRulesOptions['type'];
 
   @optionProperty()
   optionMinimumIntegerDigits?: Intl.PluralRulesOptions['minimumIntegerDigits'];

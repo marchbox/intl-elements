@@ -5,12 +5,14 @@ import fixProviderElementTypes from './fix-provider-element-types.js';
 import optionPropertyDecorator from './option-property-decorator.js';
 import removeMembers from './remove-members.js';
 import removeInternalClasses from './remove-internal-classes.js'
+import requiredAttributes from './required-attributes.js';
 import sortManifest from './sort-manifest.js';
 
 // The order of these plugins matters
 export default [
   customJsDocTags(),
   optionPropertyDecorator(),
+  requiredAttributes(),
   fixInheritedFieldTypes(),
   fixAliasedMemberTypes(),
   fixProviderElementTypes(),

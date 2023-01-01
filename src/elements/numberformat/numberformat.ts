@@ -45,34 +45,34 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
   }
 
   @optionProperty()
-  optionStyle: Intl.NumberFormatOptions['style'] = 'decimal';
+  optionStyle?: Intl.NumberFormatOptions['style'];
 
   @optionProperty()
-  optionCompactDisplay: Intl.NumberFormatOptions['compactDisplay'] = 'short';
+  optionCompactDisplay?: Intl.NumberFormatOptions['compactDisplay'];
 
   @optionProperty()
   optionCurrency?: Intl.NumberFormatOptions['currency'];
 
   @optionProperty()
-  optionCurrencyDisplay: Intl.NumberFormatOptions['currencyDisplay'] = 'symbol';
+  optionCurrencyDisplay?: Intl.NumberFormatOptions['currencyDisplay'];
 
   @optionProperty()
-  optionCurrencySign: Intl.NumberFormatOptions['currencySign'] = 'standard';
+  optionCurrencySign?: Intl.NumberFormatOptions['currencySign'];
 
   @optionProperty()
-  optionNotation: Intl.NumberFormatOptions['notation'] = 'standard';
+  optionNotation?: Intl.NumberFormatOptions['notation'];
 
   // @optionProperty()
   // optionNumberingSystem?: Intl.NumberFormatOptions['numberingSystem'];
 
   @optionProperty()
-  optionSignDisplay: Intl.NumberFormatOptions['signDisplay'] = 'auto';
+  optionSignDisplay?: Intl.NumberFormatOptions['signDisplay'];
 
   @optionProperty()
   optionUnit?: Intl.NumberFormatOptions['unit'];
 
   @optionProperty()
-  optionUnitDisplay: Intl.NumberFormatOptions['unitDisplay'] = 'short';
+  optionUnitDisplay?: Intl.NumberFormatOptions['unitDisplay'];
 
   @optionProperty({type: Boolean})
   optionUseGrouping?: Intl.NumberFormatOptions['useGrouping'];
