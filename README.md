@@ -169,8 +169,9 @@ All provider elements need a list of locales to create their `Intl` instances.
 It’s perfectly fine to only specify one locale, that’s likely the most common
 case. If multiple locales are specified, they will be passed into the `Intl`
 constructor for
-[locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/#locale_identification_and_negotiation). This could be useful if you support
-non-common locales and some of them may not be supported by all browsers.
+[locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/#locale_identification_and_negotiation).
+This could be useful if you support non-common locales and some of them may not
+be supported by all browsers. So that the list provides a fallback mechanism.
 
 There are 4 ways to specify the locale list, and they are prioritized in the
 following order:
@@ -242,6 +243,14 @@ is read only, and works the same way as `classList`, `relList`, etc. You can
 refere to
 [`DOMTokenList`’s MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
 for more details.
+
+Other than the methods that are available on `classList`, e.g. `add()`,
+`remove()`, `toggle()`, `replace()`, `localeList` also supports `supports()`,
+which is part of the `DOMTokenList` interface (`relList` supports it).
+`supports()` can be used to check if a locale is supported in the current
+provider element. Note that different provider elements could support different
+sets of locales, and the result of `supports()` depends on which provider
+element you are getting the `localeList` property from.
 
 ### Attributes
 
