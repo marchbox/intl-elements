@@ -4,6 +4,44 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
+ * @summary A custom element for [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)
+ *
+ * `intl-datetimeformat` elements can be used to format dates and times with
+ * language sensitivity. Use `<time>` elements with `datetime` attributes to
+ * pass the date and time to be formatted.
+ *
+ * @example Format a date and time:
+ * ```html
+ * <intl-datetimeformat locales="hi" option-datestyle="long"
+ *     option-timestyle="long">
+ *   <p>
+ *     <intl-datetimeformat-format>
+ *       <time datetime="2023-01-01T00:00:00Z">
+ *         Midnight on January 1, 2023
+ *       </time>
+ *     </intl-datetimeformat-format>
+ *   </p>
+ * </intl-datetimeformat>
+ * ```
+ *
+ * @example Format a date range:
+ * ```html
+ * <intl-datetimeformat locales="ar" option-datestyle="long"
+ *     option-timestyle="long">
+ *   <p>
+ *     <intl-datetimeformat-formatrange>
+ *       <time slot="start" datetime="2023-01-01T00:00:00Z">
+ *         Midnight on January 1, 2023
+ *       </time>
+ *       ~
+ *       <time slot="end" datetime="2024-12-31T23:59:59Z">
+ *         Midnight on December 31, 2023
+ *       </time>
+ *     </intl-datetimeformat-formatrange>
+ *   </p>
+ * </intl-datetimeformat>
+ * ```
+ *
  * @intl Intl.DateTimeFormat()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
  * @intlprovider

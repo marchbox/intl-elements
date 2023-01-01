@@ -4,6 +4,45 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
+ * @summary A custom element for [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator)
+ *
+ * `intl-collator` elements can be used for language-sensitive list sorting and
+ * filtering, both are done by using the `<intl-collator-compare>` element. The
+ * “list” here means the element you assign to the `list` slot, the
+ * `textContent` of each direct child element is a string member of the list.
+ *
+ * The `<intl-collator-compare>` element does NOT modify the author content, it
+ * makes a copy of the list element and its descendants, and then sorts or
+ * filters the copy inside its Shadow DOM.
+ *
+ * @example Sorting a list of strings:
+ * ```html
+ * <intl-collator locales="de-u-co-phonebk">
+ *   <intl-collator-compare>
+ *     <ol slot="list">
+ *       <li>Offenbach</li>
+ *       <li>Österreich</li>
+ *       <li>Odenwald</li>
+ *     </ol>
+ *   </intl-collator-compare>
+ * </intl-collator>
+ * ```
+ *
+ * @example Filtering a list of strings:
+ * ```html
+ * <intl-collator locales="fr">
+ *   <intl-collator-compare>
+ *     <data slot="target" value="congres"></data>
+ *     <ul slot="list">
+ *       <li>Congrès</li>
+ *       <li>congres</li>
+ *       <li>Assemblée</li>
+ *       <li>poisson</li>
+ *     </ul>
+ *   </intl-collator-compare>
+ * </intl-collator>
+ * ```
+ *
  * @intl Intl.Collator()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator
  * @intlprovider

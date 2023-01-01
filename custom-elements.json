@@ -232,6 +232,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-collator",
+          "summary": "A custom element for [Intl.Collator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator)\n\n`intl-collator` elements can be used for language-sensitive list sorting and\nfiltering, both are done by using the `<intl-collator-compare>` element. The\n“list” here means the element you assign to the `list` slot, the\n`textContent` of each direct child element is a string member of the list.\n\nThe `<intl-collator-compare>` element does NOT modify the author content, it\nmakes a copy of the list element and its descendants, and then sorts or\nfilters the copy inside its Shadow DOM.",
+          "example": [
+            "Sorting a list of strings:\n```html\n<intl-collator locales=\"de-u-co-phonebk\">\n<intl-collator-compare>\n<ol slot=\"list\">\n<li>Offenbach</li>\n<li>Österreich</li>\n<li>Odenwald</li>\n</ol>\n</intl-collator-compare>\n</intl-collator>\n```",
+            "Filtering a list of strings:\n```html\n<intl-collator locales=\"fr\">\n<intl-collator-compare>\n<data slot=\"target\" value=\"congres\"></data>\n<ul slot=\"list\">\n<li>Congrès</li>\n<li>congres</li>\n<li>Assemblée</li>\n<li>poisson</li>\n</ul>\n</intl-collator-compare>\n</intl-collator>\n```"
+          ],
           "intl": "Intl.Collator()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
           "intlprovider": true,
@@ -774,6 +779,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-datetimeformat",
+          "summary": "A custom element for [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)\n\n`intl-datetimeformat` elements can be used to format dates and times with\nlanguage sensitivity. Use `<time>` elements with `datetime` attributes to\npass the date and time to be formatted.",
+          "example": [
+            "Format a date and time:\n```html\n<intl-datetimeformat locales=\"hi\" option-datestyle=\"long\"\noption-timestyle=\"long\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"2023-01-01T00:00:00Z\">\nMidnight on January 1, 2023\n</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n```",
+            "Format a date range:\n```html\n<intl-datetimeformat locales=\"ar\" option-datestyle=\"long\"\noption-timestyle=\"long\">\n<p>\n<intl-datetimeformat-formatrange>\n<time slot=\"start\" datetime=\"2023-01-01T00:00:00Z\">\nMidnight on January 1, 2023\n</time>\n~\n<time slot=\"end\" datetime=\"2024-12-31T23:59:59Z\">\nMidnight on December 31, 2023\n</time>\n</intl-datetimeformat-formatrange>\n</p>\n</intl-datetimeformat>\n```"
+          ],
           "intl": "Intl.DateTimeFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat",
           "intlprovider": true,
@@ -1515,6 +1525,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-displaynames",
+          "summary": "A custom element for [Intl.DisplayNames](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames)\n\n`intl-displaynames` elements are used to create display names of language\nnames, region/country names, script names, calendar names, etc. Use `<data>`\nelements with `value` attributes to pass the codes to get display names.",
+          "example": [
+            "Display language names:\n```html\n<intl-displaynames locales=\"en\" option-type=\"language\">\n<ul>\n<li>\n<intl-displaynames-of>\n<data value=\"ar-EG\">Arabic (Egypt)</data>\n</intl-displaynames-of>\n</li>\n<li>\n<intl-displaynames-of>\n<data value=\"zh-Hant\">Traditional Chinese</data>\n</intl-displaynames-of>\n</li>\n<li>\n<intl-displaynames-of>\n<data value=\"de\">German</data>\n</intl-displaynames-of>\n</li>\n</ul>\n</intl-displaynames>\n```",
+            "Display date time field names:\n```html\n<intl-displaynames locales=\"ja\" option-type=\"datetimefield\">\n<label>\n<intl-displaynames-of>\n<data value=\"year\">Year</data>\n</intl-displaynames-of>\n<input name=\"year\">\n</label>\n<label>\n<intl-displaynames-of>\n<data value=\"month\">Month</data>\n</intl-displaynames-of>\n<input name=\"month\">\n</label>\n<label>\n<intl-displaynames-of>\n<data value=\"day\">Day</data>\n</intl-displaynames-of>\n<input name=\"day\">\n</label>\n</intl-displaynames>\n```"
+          ],
           "intl": "Intl.DisplayNames()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames",
           "intlprovider": true,
@@ -1800,6 +1815,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-listformat",
+          "summary": "A custom element for [Intl.ListFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat)\n\n`intl-listformat` elements can be used to format multiple strings (usually\nwords) with language-sensitivity. For example: “one, two, and three” in\nEnglish, or “uno, dos o tres” in Spanish. You can use `<data>` element’s\n`value` attribute to specify the list of strings to format.",
+          "example": [
+            "Format a list\n```html\n<intl-listformat locales=\"es\" option-type=\"disjunction\">\n<intl-listformat-format>\n<data value=\"uno\">uno</data>\n<data value=\"dos\">dos</data>\n<data value=\"tres\">tres</data>\n</intl-listformat-format>\n</intl-listformat>\n```",
+            "Format a list to parts\n```html\n<style>\n.list::part(element) { font-weight: 700; }\n.list::part(literal) { color: gray; }\n</style>\n<intl-listformat locales=\"es\" option-type=\"disjunction\">\n<intl-listformat-formattoparts class=\"list\">\n<data value=\"uno\">uno</data>\n<data value=\"dos\">dos</data>\n<data value=\"tres\">tres</data>\n</intl-listformat-formattoparts>\n</intl-listformat>\n```"
+          ],
           "intl": "Intl.ListFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat",
           "intlprovider": true,
@@ -2394,6 +2414,11 @@
             "package": "lit"
           },
           "tagName": "intl-locale",
+          "summary": "A custom element for [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)\n\nAn `<intl-locale>` element represents a Unicode locale identifier. It can be\nused with other intl elements to supply locale information for them. It can\nalso be used to normalize a locale identifier, its `value` property is an\n`Intl.Locale` object and its `valueAsString` property is a string value of\nthe locale identifier (by `Intl.Locale.prototype.toString()`).",
+          "example": [
+            "As an ancestor of other intl elements\n```html\n<intl-locale tag=\"ja-JP-u-ca-japanese\">\n<intl-datetimeformat option-datestyle=\"long\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"1923-10-16\">October 16, 1923</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n</intl-locale>\n```",
+            "As cousins of other intl elements\n```html\n<intl-locale id=\"locale1\" tag=\"ja\"></intl-locale>\n<intl-locale id=\"locale2\" tag=\"ja-JP-u-ca-japanese\"></intl-locale>\n\n<intl-datetimeformat option-datestyle=\"long\" locales-from=\"locale1 locale2\">\n<p>\n<intl-datetimeformat-format>\n<time datetime=\"1923-10-16\">October 16, 1923</time>\n</intl-datetimeformat-format>\n</p>\n</intl-datetimeformat>\n```"
+          ],
           "intl": "Intl.Locale()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale",
           "customElement": true
@@ -2789,6 +2814,10 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-numberformat",
+          "summary": "A custom element for [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)\n\n`intl-numberformat` elements can be used to format numbers with the given\nstyle (e.g. currency, percent, unit, etc.) and locale.",
+          "example": [
+            "Format a number as currency\n```html\n<intl-numberformat locales=\"de-CH\" option-style=\"currency\"\noption-currency=\"chf\">\n<intl-numberformat-format>\n<data value=\"1234.56\">1,234.56</data>\n</intl-numberformat-format>\n</intl-numberformat>\n```"
+          ],
           "intl": "Intl.NumberFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat",
           "intlprovider": true,
@@ -3294,6 +3323,11 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-pluralrules",
+          "summary": "A custom element for [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)\n\n`intl-pluralrules` elements can be used to pick the correct plural form for a\ngiven number and locale.\n\nYou can specify these plural forms in `<template>`\nelements and assign them to the slots that represent pluralization\ncategories. Note that at the minimal, you should specify a `<template>` to\nuse for the `other` category as it is the fallback when the\n`<intl-pluralrules-select>` element can’t find the `<template>` that is\nassigned to the slot that represents the selected pluralization category.\n\nYou can specify the number to be used for pluralization by assigning a\n`<data>` element to the default slot of the `<intl-pluralrules-select>`.\n\nIf you need to add the number into the pluralized string, you can use one or\nmultiple `<ins>` elements in the `<template>` elements as placeholders.\n\nIt also supports both ordinal and cardinal pluralization rules.",
+          "example": [
+            "Cardinal pluralization\n```html\n<intl-pluralrules locales=\"en\">\n<intl-pluralrules-select>\n<data value=\"10\"></data>\n<template slot=\"zero\">No notifications</template>\n<template slot=\"one\">1 notification</template>\n<template slot=\"other\"><ins></ins> notifications</template>\n</intl-pluralrules-select>\n</intl-pluralrules>\n```",
+            "Ordinal pluralization\n```html\n<intl-pluralrules locales=\"en\" option-type=\"ordinal\">\n<p>\nThe\n<intl-pluralrules-select>\n<data value=\"103\"></data>\n<template slot=\"one\">1st</template>\n<template slot=\"two\">2nd</template>\n<template slot=\"few\">3rd</template>\n<template slot=\"other\"><ins></ins>th</template>\n</intl-pluralrules-select>\ntime\n</p>\n</intl-pluralrules>\n```"
+          ],
           "intl": "Intl.PluralRules()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules",
           "intlprovider": true,
@@ -3603,9 +3637,14 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-relativetimeformat",
+          "summary": "A custom element for [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat)\n\n`intl-relativetimeformat` elements can be used to format relative dates and\ntimes with language-sensitivity. You can format both past and future dates\nand times. The `<intl-relativetimeformat-format>` and\n`<intl-relativetimeformat-formattoparts>` elements require 2 slots for the\nrelative time and the unit of time. You can either use named slots (`rtime`\nand `unit`) or unnamed slots (first and second `<data>` elements).",
+          "example": [
+            "Format a past time\n```html\n<intl-relativetimeformat locales=\"pt-BR\" option-style=\"long\">\n<p>\n<intl-relativetimeformat-format>\n<data slot=\"rtime\" value=\"-1\">1</data>\n<data slot=\"unit\" value=\"day\">day</data>\nago\n</intl-relativetimeformat-format>\n</p>\n</intl-relativetimeformat>\n```",
+            "Format a future time\n```html\n<intl-relativetimeformat locales=\"is\" option-style=\"long\">\n<p>\n<intl-relativetimeformat-format>\nin\n<data value=\"10\">10</data>\n<data value=\"years\">years</data>\n</intl-relativetimeformat-format>\n</p>\n</intl-relativetimeformat>\n```"
+          ],
           "intl": "Intl.RelativeTimeFormat()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat/RelativeTimeFormat",
-          "intlprovider": true,
+          "intlprovider": "\"",
           "customElement": true
         }
       ],
@@ -3947,6 +3986,10 @@
             "module": "/src/elements/abstract-provider.js"
           },
           "tagName": "intl-segmenter",
+          "summary": "A custom element for [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter)\n\n`intl-segmenter` elements can be used to separate a string with\nlanguage-sensitive sematic segmentation.\n\nA particularly useful case is a page title used in a hero area of a webpage.\nUsually this kind of title is used in a graphical way, and often in languages\nlike Chinese and Japanese, because they are written in characters without\nspaces to separate words, they could result in awkward line breaks. For\nexample, the Chinese sentence, “欢迎来到我的网站！” (Welcome to my website), has\nthe following semantic segments:\n\n+ “欢迎” (“Welcome”)\n+ “来到” (“to”)\n+ “我的” (“my”)\n+ “网站” (“website”)\n+ “！” (exclamation mark)\n\nBut it could be broken into:\n\n```\n欢迎来到我\n的网站！\n```\n(The word “我的” is broken into two lines)\n\nThe ideal result should be:\n\n```\n欢迎来到\n我的网站！\n```\n\nThe `<intl-segmenter-segment>` element takes its own `textContent`, segments\nit, and wraps each segment in a `<span part=\"segment\">` element in its shadow\nDOM. For the above case, the `<intl-segmenter>` element should have its\n`option-granularity` attribute set to `word`, and the `<span>` elements in\nthe Shadow DOM will have to `wordlike` as their parts, and non-wordlike\nsegments are not wrapped in a `<span>`, this makes sure that punctuation\nsegments will stay in the appropriate line between line breaks (e.g. a comma\nwon’t be at the beginning of a line and an opening quotation mark won’t be at\nthe beginning of a line).",
+          "example": [
+            "Segmenting a string into words\n```html\n<style>.title-content::part(wordlike) { white-space: nowrap; }</style>\n<intl-segmenter locales=\"zh-Hans\" option-granularity=\"word\">\n<h1>\n<intl-segmenter-segment class=\"title-content\">\n欢迎来到我的网站！\n</intl-segmenter-segment>\n</h1>\n</intl-segmenter>\n```"
+          ],
           "intl": "Intl.Segmenter()",
           "intlsee": "http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter",
           "intlprovider": true,

@@ -4,6 +4,55 @@ import AbstractProvider from '../abstract-provider.js';
 import {optionProperty} from '../../utils/properties.js';
 
 /**
+ * @summary A custom element for [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules)
+ *
+ * `intl-pluralrules` elements can be used to pick the correct plural form for a
+ * given number and locale.
+ *
+ * You can specify these plural forms in `<template>`
+ * elements and assign them to the slots that represent pluralization
+ * categories. Note that at the minimal, you should specify a `<template>` to
+ * use for the `other` category as it is the fallback when the
+ * `<intl-pluralrules-select>` element can’t find the `<template>` that is
+ * assigned to the slot that represents the selected pluralization category.
+ *
+ * You can specify the number to be used for pluralization by assigning a
+ * `<data>` element to the default slot of the `<intl-pluralrules-select>`.
+ *
+ * If you need to add the number into the pluralized string, you can use one or
+ * multiple `<ins>` elements in the `<template>` elements as placeholders.
+ *
+ * It also supports both ordinal and cardinal pluralization rules.
+ *
+ * @example Cardinal pluralization
+ * ```html
+ * <intl-pluralrules locales="en">
+ *   <intl-pluralrules-select>
+ *     <data value="10"></data>
+ *     <template slot="zero">No notifications</template>
+ *     <template slot="one">1 notification</template>
+ *     <template slot="other"><ins></ins> notifications</template>
+ *   </intl-pluralrules-select>
+ * </intl-pluralrules>
+ * ```
+ *
+ * @example Ordinal pluralization
+ * ```html
+ * <intl-pluralrules locales="en" option-type="ordinal">
+ *   <p>
+ *     The
+ *     <intl-pluralrules-select>
+ *       <data value="103"></data>
+ *       <template slot="one">1st</template>
+ *       <template slot="two">2nd</template>
+ *       <template slot="few">3rd</template>
+ *       <template slot="other"><ins></ins>th</template>
+ *     </intl-pluralrules-select>
+ *     time
+ *   </p>
+ * </intl-pluralrules>
+ * ```
+ *
  * @intl Intl.PluralRules()
  * @intlsee http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules
  * @intlprovider

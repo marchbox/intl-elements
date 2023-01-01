@@ -63,13 +63,15 @@ Or in browsers:
 The package doesn’t automatically define all the custom elements, but it
 provides multiple functions to do so.
 
-You can import them like so:
+You can define them all at once:
 
 ```js
 import {defineIntlElements} from 'intl-elements';
 
 defineIntlElements();
 ```
+
+Or you can define them individually:
 
 ```js
 import {
@@ -169,8 +171,9 @@ All provider elements need a list of locales to create their `Intl` instances.
 It’s perfectly fine to only specify one locale, that’s likely the most common
 case. If multiple locales are specified, they will be passed into the `Intl`
 constructor for
-[locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/#locale_identification_and_negotiation). This could be useful if you support
-non-common locales and some of them may not be supported by all browsers.
+[locale identification and negotiation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/#locale_identification_and_negotiation).
+This could be useful if you support non-common locales and some of them may not
+be supported by all browsers. So that the list provides a fallback mechanism.
 
 There are 4 ways to specify the locale list, and they are prioritized in the
 following order:
@@ -178,8 +181,7 @@ following order:
 1. `locales` attribute on the provider element.
 
     The `locales` attribute is a space-separated list of BCP 47 locale
-    identifiers. This list is passed to the `Intl` constructor as-is, but any
-    invalid locale is ignored.
+    identifiers.
 
 2. `lang` attribute on the provider element.
 
@@ -234,6 +236,11 @@ following order:
     elements if all of their locales are the same as the document’s language,
     i.e. the `lang` attribute of the `<html>` element.
 
+The provider elements also observe the DOM changes to make sure its locale list
+is always up to date, e.g. if you move a provider element that doesn’t have
+`locales`, `lang`, or `locales-from` attributes from one `<intl-locale>` element
+into another, its locale list will be updated accordingly.
+
 #### `localeList` property
 
 All provider elements have a `localeList` property, which is a `DOMTokenList`.
@@ -243,9 +250,18 @@ refere to
 [`DOMTokenList`’s MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
 for more details.
 
+Other than the methods that are available on `classList`, e.g. `add()`,
+`remove()`, `toggle()`, `replace()`, `localeList` also supports `supports()`,
+which is part of the `DOMTokenList` interface (`relList` supports it).
+`supports()` can be used to check if a locale is supported in the current
+provider element. Note that different provider elements could support different
+sets of locales, and the result of `supports()` depends on which provider
+element you are getting the `localeList` property from. Internally, `supports()`
+uses the `supportedLocalesOf()` method of the `Intl` constructor.
+
 ### Attributes
 
-All attribute names are in lowercase. For provider elements, they use`option-**`
+All attribute names are in lowercase. For provider elements, they use`option-*`
 attributes to specify options for their `Intl` instances. These attributes are
 always in one word after “option-”, e.g. `option-style`,
 `option-numberingsystem`.
@@ -255,9 +271,15 @@ All attribute values are case-insensitive. For example, the `type` option of
 values, but you can use `datetimefield` or `DATETIMEFIELD` as the value of
 `option-type` attribute.
 
+Some option attributes only accept a limited set of values. For example, the
+`option-calendar` attribute only accepts `buddhist`, `chinese`, `coptic`, etc.
+The provider elements use [`Intl.supportedValuesOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf)
+to verify if a value is valid before updating its consumer elements. If a value
+is invalid, the consumer elements will not be updated/rendered.
+
 ### Styling
 
-Although the consumer elements have shadow DOM, the content is usually plain
+Although the consumer elements have Shadow DOM, the content is usually plain
 text, so it’ll inherit CSS styles like colors and fonts. However, if you do want
 to style some of the internal components, you can use CSS Parts. All consumer
 elements have a part named `value` as the container element, usually, it’s a
@@ -293,7 +315,7 @@ The intl elements look a bit verbose in HTML code, but their existence is
 invisible to the accessibility tree. Most elements have their content as
 plain text, so screen readers can read through it with no problems. For all the
 `**toparts` elements and `intl-segmenter-segment` element, due to their purpose,
-they wrap content into many `<span>` elements in the shadow DOM, this could make
+they wrap content into many `<span>` elements in the Shadow DOM, this could make
 screen readers read the content span by span. So these elements mark the
 content container element with `aria-hidden="true"`, and use another visually
 invisible element to provide content for screen readers.
@@ -302,14 +324,19 @@ invisible element to provide content for screen readers.
 
 Because the content locale of an intl element could be different from the
 HTML document’s locale, the content container elements in all the consumer
-elements’ shadow DOMs have their own `lang` and `dir` attributes. Their values
+elements’ Shadow DOMs have their own `lang` and `dir` attributes. Their values
 are determined by the provider’s current active locale, this locale itself
 is `lang`’s value, and it uses `new Intl.Locale(locale).textInfo.direction`
 to check if this locale’s language is RTL, if so add `dir="rtl"` attribute,
 otherwise, remove the `dir` attribute.
 
+## Polyfills
+
+TODO([#24](https://github.com/marchbox/intl-elements/issues/24))
+
 ## API references
 
++ [`intl-locale`](./src/elements/locale/README.md)
 + [`intl-collator`](./src/elements/collator/README.md)
     - `intl-colaltor-compare`
 + [`intl-datetimeformat`](./src/elements/datetimeformat/README.md)
@@ -322,7 +349,6 @@ otherwise, remove the `dir` attribute.
 + [`intl-listformat`](./src/elements/listformat/README.md)
     - `intl-listformat-format`
     - `intl-listformat-formattoparts`
-+ [`intl-locale`](./src/elements/locale/README.md)
 + [`intl-numberformat`](./src/elements/numberformat/README.md)
     - `intl-numberformat-format`
     - `intl-numberformat-formattoparts`
