@@ -135,7 +135,7 @@ export default class HTMLIntlDateTimeFormatElement extends AbstractProvider {
   override render() {
     try {
       this.#intlObject = new Intl.DateTimeFormat(
-        Array.from(this.localeList.values()),
+        this.normalizedLocaleList,
         {
           localeMatcher: this.optionLocaleMatcher,
           dateStyle: this.optionDateStyle,

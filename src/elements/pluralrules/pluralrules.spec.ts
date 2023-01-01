@@ -15,4 +15,30 @@ describe('intl-pluralrules', () => {
 
     expect(el.resolvedOptions()).toEqual(intlResult);
   });
+
+  it('normalizes locales', async () => {
+    await createTestPage({
+      elements: ['intl-pluralrules'],
+      html: `
+        <intl-pluralrules locales="ar_eg"></intl-pluralrules>
+      `,
+    });
+    const el = document.querySelector('intl-pluralrules') as HTMLIntlPluralRulesElement;
+    const intlLocale = new Intl.PluralRules('ar-EG').resolvedOptions().locale;
+
+    expect(el.resolvedOptions().locale).toBe(intlLocale);
+  });
+
+  it('picks the runtime default locale if no valid locale specified', async () => {
+    await createTestPage({
+      elements: ['intl-pluralrules'],
+      html: `
+        <intl-pluralrules locales="$$invalid"></intl-pluralrules>
+      `,
+    });
+    const el = document.querySelector('intl-pluralrules') as HTMLIntlPluralRulesElement;
+    const defaultLocale = new Intl.PluralRules().resolvedOptions().locale;
+
+    expect(el.resolvedOptions().locale).toBe(defaultLocale);
+  });
 });

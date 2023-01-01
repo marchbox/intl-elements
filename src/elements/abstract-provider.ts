@@ -6,6 +6,7 @@ import {
   LocaleList,
   createLocaleList,
 } from '../utils/locale-list.js';
+import {normalizeLocale} from '../utils/locales.js';
 import {optionProperty} from '../utils/properties.js';
 import AbstractConsumer from './abstract-consumer.js';
 import HTMLIntlLocaleElement from './locale/locale.js';
@@ -48,10 +49,6 @@ export default abstract class AbstractProvider extends LitElement {
   get #consumerElements(): ConsumerElement[] {
     const names = (this.constructor as typeof AbstractProvider)
         .consumerElementNames;
-    if (!names) {
-      return [];
-    }
-
     const descendantQuery = Array.from(names.values()).join(',');
     const descendantConsumers = Array.from(this
         .querySelectorAll(descendantQuery) as NodeListOf<ConsumerElement>);
@@ -70,6 +67,12 @@ export default abstract class AbstractProvider extends LitElement {
   protected static consumerElementNames: Set<string>;
 
   protected static intlApi: IntlApiType;
+
+  protected get normalizedLocaleList(): string[] {
+    return Array.from(this.#localeList.values!())
+        .map(normalizeLocale)
+        .filter(Boolean);
+  }
 
   abstract get intlObject(): IntlObjectType;
 

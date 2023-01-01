@@ -24,4 +24,30 @@ describe('intl-datetimeformat', () => {
 
     expect(el.resolvedOptions()).toEqual(intlResult);
   });
+
+  it('normalizes locales', async () => {
+    await createTestPage({
+      elements: ['intl-datetimeformat'],
+      html: `
+        <intl-datetimeformat locales="zh_cn"></intl-datetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-datetimeformat') as HTMLIntlDateTimeFormatElement;
+    const intlLocale = new Intl.DateTimeFormat('zh-CN').resolvedOptions().locale;
+
+    expect(el.resolvedOptions().locale).toBe(intlLocale);
+  });
+
+  it('picks the runtime default locale if no valid locale specified', async () => {
+    await createTestPage({
+      elements: ['intl-datetimeformat'],
+      html: `
+        <intl-datetimeformat locales="$$invalid"></intl-datetimeformat>
+      `,
+    });
+    const el = document.querySelector('intl-datetimeformat') as HTMLIntlDateTimeFormatElement;
+    const defaultLocale = new Intl.DateTimeFormat().resolvedOptions().locale;
+
+    expect(el.resolvedOptions().locale).toBe(defaultLocale);
+  });
 });

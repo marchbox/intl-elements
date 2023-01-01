@@ -80,7 +80,7 @@ export default class HTMLIntlRelativeTimeFormatElement
   override render() {
     try {
       this.#intlObject = new Intl.RelativeTimeFormat(
-        Array.from(this.localeList.values()),
+        this.normalizedLocaleList,
         {
           localeMatcher: this.optionLocaleMatcher,
           numeric: this.optionNumeric,

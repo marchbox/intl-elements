@@ -102,7 +102,7 @@ export default class HTMLIntlDisplayNamesElement extends AbstractProvider {
   protected override render() {
     try {
       this.#intlObject = new Intl.DisplayNames(
-        Array.from(this.localeList.values()),
+        this.normalizedLocaleList,
         {
           type: this.optionType,
           style: this.optionStyle,

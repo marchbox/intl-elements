@@ -94,7 +94,7 @@ export default class HTMLIntlCollatorElement extends AbstractProvider {
   override render() {
     try {
       this.#intlObject = new Intl.Collator(
-        Array.from(this.localeList.values()),
+        this.normalizedLocaleList,
         {
           localeMatcher: this.optionLocaleMatcher,
           usage: this.optionUsage,

@@ -35,6 +35,20 @@ describe('AbstractProvider', () => {
     expect(Array.from(el.localeList.values())).toEqual(['en', 'ja']);
   });
 
+  it('returns normalized locale list', async () => {
+    await createTestPage({
+      elements: ['intl-foo'],
+      html: `
+        <intl-foo locales="en_us zh-cn hi $$invalid">
+        </intl-foo>
+      `,
+    });
+    const el = document.querySelector('intl-foo') as TestProvider;
+
+    // @ts-ignore
+    expect(el.normalizedLocaleList).toEqual(['en-US', 'zh-CN', 'hi']);
+  });
+
   it('should add `none` role if role is missing', async () => {
     await createTestPage({
       elements: ['intl-foo'],

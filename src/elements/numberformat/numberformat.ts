@@ -103,7 +103,7 @@ export default class HTMLIntlNumberFormatElement extends AbstractProvider {
   override render() {
     try {
       this.#intlObject = new Intl.NumberFormat(
-        Array.from(this.localeList.values()),
+        this.normalizedLocaleList,
         {
           localeMatcher: this.optionLocaleMatcher,
           style: this.optionStyle,
