@@ -63,13 +63,15 @@ Or in browsers:
 The package doesn’t automatically define all the custom elements, but it
 provides multiple functions to do so.
 
-You can import them like so:
+You can define them all at once:
 
 ```js
 import {defineIntlElements} from 'intl-elements';
 
 defineIntlElements();
 ```
+
+Or you can define them individually:
 
 ```js
 import {
@@ -179,8 +181,7 @@ following order:
 1. `locales` attribute on the provider element.
 
     The `locales` attribute is a space-separated list of BCP 47 locale
-    identifiers. This list is passed to the `Intl` constructor as-is, but any
-    invalid locale is ignored.
+    identifiers.
 
 2. `lang` attribute on the provider element.
 
@@ -250,7 +251,8 @@ which is part of the `DOMTokenList` interface (`relList` supports it).
 `supports()` can be used to check if a locale is supported in the current
 provider element. Note that different provider elements could support different
 sets of locales, and the result of `supports()` depends on which provider
-element you are getting the `localeList` property from.
+element you are getting the `localeList` property from. Internally, `supports()`
+uses the `supportedLocalesOf()` method of the `Intl` constructor.
 
 ### Attributes
 
@@ -263,6 +265,12 @@ All attribute values are case-insensitive. For example, the `type` option of
 `Intl.DisplayNames` constructor has `dateTimeField` as one of its possible
 values, but you can use `datetimefield` or `DATETIMEFIELD` as the value of
 `option-type` attribute.
+
+Some option attributes only accept a limited set of values. For example, the
+`option-calendar` attribute only accepts `buddhist`, `chinese`, `coptic`, etc.
+The provider elements use [`Intl.supportedValuesOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf)
+to verify if a value is valid before updating its consumer elements. If a value
+is invalid, the consumer elements will not be updated/rendered.
 
 ### Styling
 
