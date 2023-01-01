@@ -3,6 +3,8 @@
 > **Warning**
 > This project is under active development. Custom element APIs may change.
 
+![npm](https://img.shields.io/npm/v/intl-elements)
+
 **intl-elements** is a set of custom elements that make it easy to use the
 [`Intl` APIs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl),
 a set of built-in browser APIs, in a declarative way.
