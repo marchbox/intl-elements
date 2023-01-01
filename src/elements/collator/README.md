@@ -7,6 +7,10 @@ filtering, both are done by using the `<intl-collator-compare>` element. The
 “list” here means the element you assign to the `list` slot, the
 `textContent` of each direct child element is a string member of the list.
 
+The `<intl-collator-compare>` element does NOT modify the author content, it
+makes a copy of the list element and its descendants, and then sorts or
+filters the copy inside its Shadow DOM.
+
 ## Example
 
 Sorting a list of strings:

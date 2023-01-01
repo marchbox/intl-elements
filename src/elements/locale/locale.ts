@@ -235,7 +235,7 @@ export default class HTMLIntlLocaleElement extends LitElement {
   }
 
   protected override createRenderRoot() {
-    // No shadow DOM.
+    // No Shadow DOM.
     return this;
   }
 

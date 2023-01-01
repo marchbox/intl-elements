@@ -41,7 +41,7 @@ import {optionProperty} from '../../utils/properties.js';
  * it, and wraps each segment in a `<span part="segment">` element in its shadow
  * DOM. For the above case, the `<intl-segmenter>` element should have its
  * `option-granularity` attribute set to `word`, and the `<span>` elements in
- * the shadow DOM will have to `wordlike` as their parts, and non-wordlike
+ * the Shadow DOM will have to `wordlike` as their parts, and non-wordlike
  * segments are not wrapped in a `<span>`, this makes sure that punctuation
  * segments will stay in the appropriate line between line breaks (e.g. a comma
  * won’t be at the beginning of a line and an opening quotation mark won’t be at

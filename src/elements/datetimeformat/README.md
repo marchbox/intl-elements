@@ -3,15 +3,16 @@
 A custom element for [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat)
 
 `intl-datetimeformat` elements can be used to format dates and times with
-language sensitivity.
+language sensitivity. Use `<time>` elements with `datetime` attributes to
+pass the date and time to be formatted.
 
 ## Example
 
 Format a date and time:
 
 ```html
-<intl-datetimeformat locales="hi" option-date-style="long"
-  option-time-style="long">
+<intl-datetimeformat locales="hi" option-datestyle="long"
+  option-timestyle="long">
   <p>
     <intl-datetimeformat-format>
       <time datetime="2023-01-01T00:00:00Z">
@@ -25,8 +26,8 @@ Format a date and time:
 Format a date range:
 
 ```html
-<intl-datetimeformat locales="ar" option-date-style="long"
-  option-time-style="long">
+<intl-datetimeformat locales="ar" option-datestyle="long"
+  option-timestyle="long">
   <p>
     <intl-datetimeformat-formatrange>
       <time slot="start" datetime="2023-01-01T00:00:00Z">
