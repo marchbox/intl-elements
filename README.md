@@ -254,7 +254,7 @@ element you are getting the `localeList` property from.
 
 ### Attributes
 
-All attribute names are in lowercase. For provider elements, they use`option-**`
+All attribute names are in lowercase. For provider elements, they use`option-*`
 attributes to specify options for their `Intl` instances. These attributes are
 always in one word after “option-”, e.g. `option-style`,
 `option-numberingsystem`.
