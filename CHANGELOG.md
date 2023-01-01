@@ -10,6 +10,8 @@
 
 ### Changed
 
+- Locale list used by provider element’s internal `Intl` objects are now
+  normalized, e.g. `en_us`, `en-us`, `En-uS` are now treated the same as `en-US`
 - All `option*` properties are reflective now, meaning if its value is changed,
   its corresponding attribute will change as well
 
