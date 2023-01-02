@@ -124,6 +124,21 @@ describe('intl-displaynames-of', () => {
     expect(span).toHaveTextContent('');
   });
 
+  it('renders an empty string if `option-type` is not specified', async () => {
+    await createTestPage({
+      elements: ['intl-displaynames', 'intl-displaynames-of'],
+      html: `
+        <intl-displaynames locales="en">
+          <intl-displaynames-of><data value="en"></data></intl-displaynames-of>
+        </intl-displaynames>
+      `,
+    });
+    const el = document.querySelector('intl-displaynames-of') as HTMLIntlDisplayNamesOfElement;
+    const span = el.shadowRoot!.querySelector('span');
+
+    expect(span).toHaveTextContent('');
+  });
+
   it('renders Shadow Parts', async () => {
     await createTestPage({
       elements: ['intl-displaynames', 'intl-displaynames-of'],
