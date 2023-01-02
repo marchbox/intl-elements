@@ -31,11 +31,14 @@ export default class extends AbstractProvider {
   }
 
   override render() {
-    this.#intlObject = new FakeIntlApi(Array.from(this.localeList.values()), {
-      unit: this.optionUnit,
-      currency: this.optionCurrency,
-      timeZone: this.optionTimeZone,
-    });
+    this.#intlObject = new FakeIntlApi(
+      this.normalizedLocaleList,
+      {
+        unit: this.optionUnit,
+        currency: this.optionCurrency,
+        timeZone: this.optionTimeZone,
+      }
+    );
 
     return nothing;
   }

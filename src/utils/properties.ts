@@ -59,7 +59,8 @@ export function getCanonicalIntlOptionValue(
       value = value.toLowerCase();
     }
 
-    if (spec.intl && !Intl.supportedValuesOf(key).includes(value as string)) {
+    if (spec.intl && 'supportedValuesOf' in Intl &&
+        !Intl.supportedValuesOf(key).includes(value as string)) {
       value = '';
     }
   }
