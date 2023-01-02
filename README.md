@@ -355,8 +355,6 @@ import '@formatjs/intl-displaynames/locale-data/en';
 defineIntlDisplayNamesElements();
 ```
 
-TODO([#39](https://github.com/marchbox/intl-elements/issues/39)): Add clear support statement
-
 ## API references
 
 + [`intl-locale`](./src/elements/locale/README.md)
