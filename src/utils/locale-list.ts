@@ -30,8 +30,13 @@ export function createLocaleList(
     supports: {
       value: function(locale: string): boolean {
         const normalizedLocale = normalizeLocale(locale);
-        return Boolean(normalizedLocale) &&
-            intl.supportedLocalesOf(normalizedLocale).length > 0;
+        if (Boolean(normalizedLocale) && intl) {
+          if ('supportedLocalesOf' in intl) {
+            return intl.supportedLocalesOf(normalizedLocale).length > 0;
+          }
+          return true;
+        }
+        return false;
       },
     },
     __destroy__: {

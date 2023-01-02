@@ -8,7 +8,7 @@ class FakeIntlObj {
   static supportedLocalesOf(list: string | string[]) {
     const supportedLocales = ['en-US', 'en-GB', 'en-AU', 'en-CA', 'en-IN',
         'zh-CN', 'zh-TW', 'zh-HK'];
-    if (list.includes('veryveryinvalid')) {
+    if (list.includes('$invalid')) {
       throw new RangeError();
     }
     if (Array.isArray(list)) {
@@ -226,7 +226,17 @@ describe('createLocaleList', () => {
 
     expect(list.supports('zh-CN')).toBe(true);
     expect(list.supports('invalid')).toBe(false);
-    expect(list.supports('veryveryinvalid')).toBe(false);
+    expect(list.supports('$invalid')).toBe(false);
+  });
+
+  it('returns `true` on `supports()` if Intl object doesn’t support `supportedLocalesOf`', async () => {
+    // @ts-ignore
+    const list = createLocaleList({}, 'en-US en-GB');
+
+    expect(list.supports('zh-CN')).toBe(true);
+    expect(list.supports('invalid')).toBe(true);
+    // `Intl.getCandidateLocales()` throws error with `$invalid`
+    expect(list.supports('$invalid')).toBe(false);
   });
 
   it('uses [Symbol.iterator]() to return an iterator of the list', async () => {

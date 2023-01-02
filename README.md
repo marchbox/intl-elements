@@ -261,6 +261,10 @@ sets of locales, and the result of `supports()` depends on which provider
 element you are getting the `localeList` property from. Internally, `supports()`
 uses the `supportedLocalesOf()` method of the `Intl` constructor.
 
+> **Note**
+> If the user agent doesn’t support `Intl.<Constructor>.supportedLocalesOf()`,
+> `supports()` always returns `true`.
+
 ### Attributes
 
 All attribute names are in lowercase. For provider elements, they use`option-*`
@@ -278,6 +282,10 @@ Some option attributes only accept a limited set of values. For example, the
 The provider elements use [`Intl.supportedValuesOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf)
 to verify if a value is valid before updating its consumer elements. If a value
 is invalid, the consumer elements will not be updated/rendered.
+
+> **Note**
+> If the user agent doesn’t support `Intl.supportedValuesOf()`, the provider
+> elements doesn’t verify if a value is valid.
 
 ### Styling
 
@@ -334,7 +342,18 @@ otherwise, remove the `dir` attribute.
 
 ## Polyfills
 
-TODO([#24](https://github.com/marchbox/intl-elements/issues/24))
+Not all browsers support all the `Intl` APIs, you can find the current support
+from <caniuse.com/?search=intl>. You can use
+[`@formatjs`’s polyfills](https://formatjs.io/docs/polyfills) to provider better
+cross-browser support.
+
+```js
+import {defineIntlDisplayNamesElements} from 'intl-elements';
+import '@formatjs/intl-displaynames/polyfill';
+import '@formatjs/intl-displaynames/locale-data/en';
+
+defineIntlDisplayNamesElements();
+```
 
 ## API references
 
