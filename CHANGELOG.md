@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+---
+
+## [0.0.1-alpha.18] - 2023-01-01
+
 ### BREAKING CHANGES
 
 - All default values of provider elements’ `option-*` attributes are now
@@ -14,9 +18,15 @@
   normalized, e.g. `en_us`, `en-us`, `En-uS` are now treated the same as `en-US`
 - All `option*` properties are reflective now, meaning if its value is changed,
   its corresponding attribute will change as well
+- When `Intl.supportedValuesOf()` is not supported, provider elements don’t
+  verify if `option-*`/`option*` values are supported anymore
+- When `Intl.<Constructor>.supportedLocalesOf()` is not supported, `localeList`
+  property’s `supports()` always returns `true` now
 
 ### Fixed
 
+- Avoid throwing errors when `Intl.supportedValuesOf()` and/or
+  `Intl.<Constructor>.supportedLocalesOf()` not supported
 - Line wrapping issue in `<intl-segmenter-segment>` in Safari: It only wrapped
   lines during the initial rendering, changing browser window size didn’t cause
   line wrapping
