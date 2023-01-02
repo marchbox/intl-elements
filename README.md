@@ -342,7 +342,20 @@ otherwise, remove the `dir` attribute.
 
 ## Polyfills
 
-TODO([#24](https://github.com/marchbox/intl-elements/issues/24))
+Not all browsers support all the `Intl` APIs, you can find the current support
+from <caniuse.com/?search=intl>. You can use
+[`@formatjs`’s polyfills](https://formatjs.io/docs/polyfills) to provider better
+cross-browser support.
+
+```js
+import {defineIntlDisplayNamesElements} from 'intl-elements';
+import '@formatjs/intl-displaynames/polyfill';
+import '@formatjs/intl-displaynames/locale-data/en';
+
+defineIntlDisplayNamesElements();
+```
+
+TODO([#39](https://github.com/marchbox/intl-elements/issues/39)): Add clear support statement
 
 ## API references
 
