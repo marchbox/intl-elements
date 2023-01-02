@@ -263,7 +263,7 @@ uses the `supportedLocalesOf()` method of the `Intl` constructor.
 
 > **Note**
 > If the user agent doesn’t support `Intl.<Constructor>.supportedLocalesOf()`,
-> `supports()` will return `true`.
+> `supports()` always returns `true`.
 
 ### Attributes
 
@@ -285,7 +285,7 @@ is invalid, the consumer elements will not be updated/rendered.
 
 > **Note**
 > If the user agent doesn’t support `Intl.supportedValuesOf()`, the provider
-> elements will not verify if a value is valid.
+> elements doesn’t verify if a value is valid.
 
 ### Styling
 
