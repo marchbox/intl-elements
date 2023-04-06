@@ -24,7 +24,8 @@
     "LICENSE",
     "CHANGELOG.md",
     "custom-elements.json",
-    "package.json"
+    "package.json",
+    "README.md"
   ],
   "scripts": {
     "prepack": "yarn build",
