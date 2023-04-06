@@ -5,14 +5,16 @@ export default {
   collectCoverageFrom: [
     'src/{elements,utils}/**/*.ts',
   ],
-  testRegex: 'src/.*\\.spec\\.ts',
-  testEnvironment: 'jsdom',
+  maxConcurrency: 5,
+  maxWorkers: 5,
   resolver: 'jest-ts-webcompat-resolver',
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
     'jest-extended/all',
     './src/testing/jest-setup.ts',
   ],
+  testRegex: 'src/.*\\.spec\\.ts',
+  testEnvironment: 'jsdom',
   transform: {
     // transform files with ts-jest
     '^.+\\.(js|ts)$': 'ts-jest',
